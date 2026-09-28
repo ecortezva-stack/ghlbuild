@@ -10,18 +10,324 @@
 </head>
 <body>
 <!-- ============================================================
-     CBB HOME — 01 HERO
+     CBB HOME — 00 HEADER / NAVIGATION
      Paste into a GoHighLevel Custom HTML/JavaScript element.
-     All styles are scoped to .cbb-hero.
+     All styles are scoped to .cbb-header. No JavaScript: the mobile
+     menu uses a hidden checkbox toggle.
      ============================================================ -->
 <style>
-  .cbb-hero {
+  .cbb-header {
     --cbb-gold: #D5A756;
     --cbb-gold-light: #F3CF7C;
     --cbb-gold-deep: #C9994A;
     --cbb-black: #0A0B0C;
     --cbb-surface: #121415;
     --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    z-index: 50;
+    width: 100%;
+    margin: 0;
+    padding: 0 clamp(20px, 4vw, 48px);
+    background: var(--cbb-black);
+    border-bottom: 1px solid rgba(213, 167, 86, 0.45);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-header,
+  .cbb-header *,
+  .cbb-header *::before,
+  .cbb-header *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-header .cbb-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1320px;
+    min-height: 88px;
+    margin: 0 auto;
+  }
+
+  /* ---- Logo ---- */
+  .cbb-header .cbb-header__brand {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.4vw, 16px);
+    min-width: 0;
+    color: var(--cbb-gold);
+    text-decoration: none;
+  }
+  .cbb-header .cbb-header__mark {
+    display: block;
+    flex: 0 0 auto;
+    width: clamp(64px, 8vw, 118px);
+    height: auto;
+    max-width: 100%;
+  }
+  .cbb-header .cbb-header__logo-img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 60px;
+  }
+  .cbb-header .cbb-header__word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+  .cbb-header .cbb-header__name {
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.05rem, 1.3vw + 0.5rem, 1.7rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--cbb-gold);
+    background: linear-gradient(180deg, var(--cbb-gold-light), var(--cbb-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-header .cbb-header__sub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    font-family: var(--cbb-sans);
+    font-size: clamp(0.6rem, 0.3vw + 0.5rem, 0.8rem);
+    font-weight: 500;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-header .cbb-header__sub::before,
+  .cbb-header .cbb-header__sub::after {
+    content: "";
+    width: clamp(14px, 2vw, 26px);
+    height: 1px;
+    background: var(--cbb-gold);
+  }
+  /* letter-spacing adds space after the last letter; pull the line back in */
+  .cbb-header .cbb-header__sub span {
+    margin-right: -0.5em;
+  }
+
+  /* ---- Nav ---- */
+  .cbb-header .cbb-header__toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cbb-header .cbb-header__burger {
+    display: none;
+  }
+  .cbb-header .cbb-header__list {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 3.4vw, 48px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-header .cbb-header__item {
+    margin: 0;
+    padding: 0;
+  }
+  .cbb-header .cbb-header__item::marker {
+    content: none;
+  }
+  .cbb-header .cbb-header__link {
+    position: relative;
+    display: inline-block;
+    padding: 8px 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-header .cbb-header__link:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-header .cbb-header__link:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 4px;
+  }
+  .cbb-header .cbb-header__link.is-active {
+    color: var(--cbb-gold);
+  }
+  .cbb-header .cbb-header__link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cbb-gold-deep), var(--cbb-gold-light));
+  }
+
+  /* ---- Mobile menu ---- */
+  @media (max-width: 860px) {
+    .cbb-header .cbb-header__burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 44px;
+      height: 44px;
+      padding: 0 10px;
+      border: 1px solid rgba(213, 167, 86, 0.5);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .cbb-header .cbb-header__burger span {
+      display: block;
+      height: 1.5px;
+      background: var(--cbb-gold);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .cbb-header .cbb-header__toggle:focus-visible + .cbb-header__burger {
+      outline: 2px solid var(--cbb-gold-light);
+      outline-offset: 3px;
+    }
+    .cbb-header .cbb-header__toggle:checked + .cbb-header__burger span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    .cbb-header .cbb-header__toggle:checked + .cbb-header__burger span:nth-child(2) {
+      opacity: 0;
+    }
+    .cbb-header .cbb-header__toggle:checked + .cbb-header__burger span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+    .cbb-header .cbb-header__nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: none;
+      padding: 8px clamp(20px, 4vw, 48px) 20px;
+      background: var(--cbb-black);
+      border-bottom: 1px solid rgba(213, 167, 86, 0.45);
+    }
+    .cbb-header .cbb-header__toggle:checked ~ .cbb-header__nav {
+      display: block;
+    }
+    .cbb-header .cbb-header__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+    .cbb-header .cbb-header__link {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(213, 167, 86, 0.15);
+      font-size: 1rem;
+    }
+    .cbb-header .cbb-header__link.is-active::after {
+      display: none;
+    }
+  }
+  @media (max-width: 400px) {
+    .cbb-header .cbb-header__sub {
+      letter-spacing: 0.38em;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-header .cbb-header__link,
+    .cbb-header .cbb-header__burger span {
+      transition: none;
+    }
+  }
+</style>
+
+<header class="cbb-header">
+  <div class="cbb-header__inner">
+    <a class="cbb-header__brand" href="/" aria-label="Covered Bridge Brands home">
+      <!-- LOGO: this SVG + text is a stand-in for the Covered Bridge Brands logo.
+           To use the real logo file instead, delete the <svg> and the
+           .cbb-header__word <span> below and uncomment this <img>: -->
+      <!-- <img class="cbb-header__logo-img" src="PASTE-LOGO-URL-HERE" alt="Covered Bridge Brands"> -->
+      <svg class="cbb-header__mark" viewBox="0 0 120 64" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="cbb-hdr-gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F3CF7C"/>
+            <stop offset="1" stop-color="#C9994A"/>
+          </linearGradient>
+        </defs>
+        <g stroke="url(#cbb-hdr-gold)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M22 28 60 6l38 22"/>
+          <path d="M28 25v29M92 25v29"/>
+          <path d="M46 54V41a14 14 0 0 1 28 0v13"/>
+          <path d="M34 22v32M40 18v36M80 18v36M86 22v32M52 13v14M60 9v18M68 13v14"/>
+          <path d="M2 56h116"/>
+          <path d="M28 50H10M110 50H92"/>
+        </g>
+        <g fill="url(#cbb-hdr-gold)">
+          <path d="M6 56 12 42l6 14z"/>
+          <path d="M13 56l5-11 5 11z"/>
+          <path d="M114 56l-6-14-6 14z"/>
+          <path d="M107 56l-5-11-5 11z"/>
+        </g>
+      </svg>
+      <span class="cbb-header__word">
+        <span class="cbb-header__name">Covered Bridge</span>
+        <span class="cbb-header__sub"><span>Brands</span></span>
+      </span>
+    </a>
+
+    <input class="cbb-header__toggle" type="checkbox" id="cbb-header-toggle" aria-label="Open menu">
+    <label class="cbb-header__burger" for="cbb-header-toggle" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="cbb-header__nav" aria-label="Main">
+      <!-- LINKS: point these at your GHL page paths. Move class="is-active"
+           to the current page's link when reusing this header elsewhere. -->
+      <ul class="cbb-header__list">
+        <li class="cbb-header__item"><a class="cbb-header__link is-active" href="/" aria-current="page">Home</a></li>
+        <li class="cbb-header__item"><a class="cbb-header__link" href="#our-systems">Services</a></li>
+        <li class="cbb-header__item"><a class="cbb-header__link" href="/about">About</a></li>
+        <li class="cbb-header__item"><a class="cbb-header__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     CBB HOME — 01 HERO
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-hero.
+     ============================================================ -->
+<style>
+  .cbb-hero {
+    /* IMAGE: covered bridge at sunset (landscape, min. 1600px wide).
+       Replace `none` with the image URL from the GHL media library:
+       --cbb-hero-photo: url('PASTE-IMAGE-URL-HERE');
+       Until then a warm gradient stands in for the photo. */
+    --cbb-hero-photo: none;
+
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -29,9 +335,9 @@
     position: relative;
     width: 100%;
     margin: 0;
-    padding: clamp(72px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    padding: 0;
     background: var(--cbb-black);
-    color: var(--cbb-white);
+    color: var(--cbb-cream);
     font-family: var(--cbb-sans);
     overflow: hidden;
     isolation: isolate;
@@ -42,62 +348,81 @@
   .cbb-hero *::after {
     box-sizing: border-box;
   }
-  /* Soft warm glow behind the headline */
-  .cbb-hero::before {
+
+  /* ---- Photo (right side, fades into black on the left) ---- */
+  .cbb-hero .cbb-hero__photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 66%;
+    background-color: #1A140C;
+    background-image:
+      var(--cbb-hero-photo),
+      radial-gradient(45% 45% at 62% 28%, rgba(255, 214, 140, 0.55), rgba(255, 214, 140, 0) 70%),
+      radial-gradient(40% 55% at 62% 62%, rgba(150, 92, 38, 0.55), rgba(150, 92, 38, 0) 70%),
+      radial-gradient(35% 60% at 95% 40%, rgba(90, 70, 30, 0.6), rgba(90, 70, 30, 0) 70%),
+      linear-gradient(180deg, #3B2A16 0%, #22190F 55%, #120E09 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .cbb-hero .cbb-hero__photo::before {
     content: "";
     position: absolute;
-    top: -20%;
-    left: -10%;
-    width: 60%;
-    height: 80%;
-    background: radial-gradient(closest-side, rgba(213, 167, 86, 0.12), rgba(213, 167, 86, 0));
-    pointer-events: none;
-    z-index: -1;
+    inset: 0;
+    background:
+      linear-gradient(90deg, #0A0B0C 0%, rgba(10, 11, 12, 0.88) 14%, rgba(10, 11, 12, 0.35) 40%, rgba(10, 11, 12, 0) 62%),
+      linear-gradient(0deg, rgba(10, 11, 12, 0.65) 0%, rgba(10, 11, 12, 0) 30%);
   }
 
   .cbb-hero .cbb-hero__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    display: flex;
     align-items: center;
-    gap: clamp(40px, 6vw, 88px);
-    max-width: 1240px;
+    max-width: 1320px;
+    min-height: clamp(520px, 44vw, 680px);
     margin: 0 auto;
+    padding: clamp(64px, 8vw, 110px) clamp(20px, 4vw, 48px);
+  }
+  .cbb-hero .cbb-hero__content {
+    max-width: 640px;
   }
 
   .cbb-hero .cbb-hero__title {
-    margin: 0 0 clamp(20px, 2.5vw, 28px);
+    margin: 0 0 clamp(20px, 2.4vw, 30px);
     padding: 0;
     font-family: var(--cbb-serif);
-    font-size: clamp(2.15rem, 4.4vw + 0.4rem, 4.5rem);
+    font-size: clamp(2.4rem, 4.2vw + 0.6rem, 5rem);
     font-weight: 600;
-    line-height: 1.06;
-    letter-spacing: -0.015em;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
     text-transform: none;
-    color: var(--cbb-white);
+    color: var(--cbb-cream);
   }
   .cbb-hero .cbb-hero__line {
     display: block;
   }
   .cbb-hero .cbb-hero__line--gold {
     color: var(--cbb-gold);
-    background: linear-gradient(135deg, var(--cbb-gold-deep) 0%, var(--cbb-gold-light) 55%, var(--cbb-gold) 100%);
+    background: linear-gradient(180deg, var(--cbb-gold-light) 0%, var(--cbb-gold) 55%, var(--cbb-gold-deep) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .cbb-hero .cbb-hero__line--white {
-    color: var(--cbb-white);
+  .cbb-hero .cbb-hero__line--light {
+    color: var(--cbb-cream);
   }
 
   .cbb-hero .cbb-hero__sub {
-    max-width: 34em;
-    margin: 0 0 clamp(32px, 4vw, 44px);
+    max-width: 30em;
+    margin: 0 0 clamp(30px, 3.4vw, 40px);
     padding: 0;
     font-family: var(--cbb-sans);
     font-size: clamp(1rem, 0.35vw + 0.92rem, 1.15rem);
     font-weight: 400;
-    line-height: 1.7;
-    color: var(--cbb-muted);
+    line-height: 1.6;
+    color: var(--cbb-cream);
   }
 
   .cbb-hero .cbb-hero__actions {
@@ -109,19 +434,29 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
     min-height: 52px;
-    padding: 0 30px;
+    padding: 0 26px;
     border: 1px solid transparent;
-    border-radius: 2px;
+    border-radius: 3px;
     font-family: var(--cbb-sans);
-    font-size: 0.8125rem;
+    font-size: 0.975rem;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-transform: none;
     text-decoration: none;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+  .cbb-hero .cbb-hero__btn svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    transition: transform 0.2s ease;
+  }
+  .cbb-hero .cbb-hero__btn:hover svg {
+    transform: translateX(3px);
   }
   .cbb-hero .cbb-hero__btn--gold {
     background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
@@ -129,16 +464,16 @@
   }
   .cbb-hero .cbb-hero__btn--gold:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(213, 167, 86, 0.28);
+    box-shadow: 0 10px 28px rgba(213, 167, 86, 0.3);
     color: var(--cbb-black);
   }
   .cbb-hero .cbb-hero__btn--outline {
-    background: transparent;
+    background: rgba(10, 11, 12, 0.35);
     border-color: var(--cbb-gold);
-    color: var(--cbb-gold);
+    color: var(--cbb-gold-light);
   }
   .cbb-hero .cbb-hero__btn--outline:hover {
-    background: rgba(213, 167, 86, 0.08);
+    background: rgba(213, 167, 86, 0.1);
     color: var(--cbb-gold-light);
   }
   .cbb-hero .cbb-hero__btn:focus-visible {
@@ -146,67 +481,51 @@
     outline-offset: 3px;
   }
 
-  /* ---- Image area ---- */
-  .cbb-hero .cbb-hero__media {
-    position: relative;
-    min-height: clamp(380px, 44vw, 580px);
-    border: 1px solid rgba(213, 167, 86, 0.28);
-    border-radius: 4px;
-    overflow: hidden;
-    /* Placeholder fill: warm dusk tones until the photo is added */
-    background:
-      radial-gradient(120% 70% at 70% 30%, rgba(243, 207, 124, 0.22), rgba(243, 207, 124, 0) 60%),
-      linear-gradient(180deg, #2A241B 0%, #17150F 55%, #0E0E0D 100%);
-  }
-  .cbb-hero .cbb-hero__img {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  /* Darkens the bottom edge so the caption stays readable over any photo */
-  .cbb-hero .cbb-hero__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(10, 11, 12, 0) 55%, rgba(10, 11, 12, 0.75) 100%);
-    pointer-events: none;
-  }
+  /* ---- Caption ---- */
   .cbb-hero .cbb-hero__caption {
     position: absolute;
-    right: clamp(16px, 2.5vw, 28px);
-    bottom: clamp(16px, 2.5vw, 24px);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    right: clamp(20px, 4vw, 48px);
+    bottom: clamp(24px, 3vw, 40px);
     margin: 0;
     font-family: var(--cbb-sans);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.22em;
+    line-height: 1.9;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     text-align: right;
-    color: var(--cbb-gold-light);
+    color: var(--cbb-cream);
   }
-  .cbb-hero .cbb-hero__caption::before {
+  .cbb-hero .cbb-hero__caption::after {
     content: "";
-    flex: 0 0 28px;
-    height: 1px;
-    background: var(--cbb-gold);
+    display: block;
+    width: 52px;
+    height: 2px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, var(--cbb-gold-deep), var(--cbb-gold-light));
   }
 
-  @media (max-width: 900px) {
-    .cbb-hero .cbb-hero__inner {
-      grid-template-columns: minmax(0, 1fr);
+  /* ---- Stacked layout: text on top, photo below ---- */
+  @media (max-width: 860px) {
+    .cbb-hero {
+      display: flex;
+      flex-direction: column;
     }
-    .cbb-hero .cbb-hero__media {
+    .cbb-hero .cbb-hero__inner {
       min-height: 0;
-      aspect-ratio: 4 / 3;
+      width: 100%;
+      padding-bottom: 40px;
+    }
+    .cbb-hero .cbb-hero__photo {
+      position: relative;
+      order: 2;
+      width: 100%;
+      height: clamp(280px, 70vw, 440px);
+    }
+    .cbb-hero .cbb-hero__photo::before {
+      background:
+        linear-gradient(180deg, #0A0B0C 0%, rgba(10, 11, 12, 0) 35%),
+        linear-gradient(0deg, rgba(10, 11, 12, 0.7) 0%, rgba(10, 11, 12, 0) 35%);
     }
   }
   @media (max-width: 480px) {
@@ -217,47 +536,45 @@
       width: 100%;
     }
     .cbb-hero .cbb-hero__caption {
-      font-size: 0.625rem;
-      letter-spacing: 0.14em;
-      white-space: nowrap;
-    }
-    .cbb-hero .cbb-hero__caption::before {
-      display: none;
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .cbb-hero .cbb-hero__btn {
+    .cbb-hero .cbb-hero__btn,
+    .cbb-hero .cbb-hero__btn svg {
       transition: none;
     }
   }
 </style>
 
 <section class="cbb-hero" aria-labelledby="cbb-hero-title">
+  <div class="cbb-hero__photo" role="img" aria-label="Covered bridge at sunset"></div>
+
   <div class="cbb-hero__inner">
     <div class="cbb-hero__content">
       <h1 class="cbb-hero__title" id="cbb-hero-title">
         <span class="cbb-hero__line cbb-hero__line--gold">AI Marketing.</span>
-        <span class="cbb-hero__line cbb-hero__line--white">Focused on Results.</span>
+        <span class="cbb-hero__line cbb-hero__line--light">Focused on Results.</span>
       </h1>
       <p class="cbb-hero__sub">
         We build AI-powered systems, automation, and marketing solutions to help businesses
         grow smarter, work more efficiently, and achieve measurable results.
       </p>
       <div class="cbb-hero__actions">
-        <a class="cbb-hero__btn cbb-hero__btn--gold" href="#our-systems">Explore Services</a>
-        <a class="cbb-hero__btn cbb-hero__btn--outline" href="#contact">Contact Us</a>
+        <a class="cbb-hero__btn cbb-hero__btn--gold" href="#our-systems">
+          Explore Services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+        <a class="cbb-hero__btn cbb-hero__btn--outline" href="#contact">
+          Contact Us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
-
-    <div class="cbb-hero__media">
-      <!-- IMAGE: Covered bridge photograph (landscape, warm/dusk light works best,
-           min. 1400px wide). To add it, uncomment the <img> below and set src
-           to the image URL from the GHL media library. The gradient behind it
-           stays as a fallback while the image loads. -->
-      <!-- <img class="cbb-hero__img" src="PASTE-IMAGE-URL-HERE" alt="Historic covered bridge at dusk" loading="eager"> -->
-      <p class="cbb-hero__caption">Traditional Values. Modern Solutions.</p>
-    </div>
   </div>
+
+  <p class="cbb-hero__caption">Traditional Values.<br>Modern Solutions.</p>
 </section>
 
 <!-- ============================================================
@@ -273,6 +590,7 @@
     --cbb-black: #0A0B0C;
     --cbb-surface: #121415;
     --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -280,11 +598,14 @@
     position: relative;
     width: 100%;
     margin: 0;
-    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
-    background: var(--cbb-surface);
-    color: var(--cbb-white);
+    padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 48px);
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(213, 167, 86, 0.06), rgba(213, 167, 86, 0) 70%),
+      var(--cbb-black);
+    border-top: 1px solid rgba(213, 167, 86, 0.3);
+    color: var(--cbb-cream);
     font-family: var(--cbb-sans);
-    scroll-margin-top: 80px;
+    scroll-margin-top: 90px;
   }
   .cbb-systems,
   .cbb-systems *,
@@ -294,253 +615,211 @@
   }
 
   .cbb-systems .cbb-systems__inner {
-    max-width: 1240px;
+    max-width: 1320px;
     margin: 0 auto;
   }
 
-  /* ---- Section header ---- */
+  /* ---- Section header: title, then eyebrow below ---- */
   .cbb-systems .cbb-systems__header {
-    max-width: 720px;
-    margin: 0 auto clamp(48px, 6vw, 72px);
+    margin: 0 auto clamp(32px, 4vw, 48px);
     text-align: center;
   }
+  .cbb-systems .cbb-systems__title {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2.1rem, 3vw + 0.9rem, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    color: var(--cbb-cream);
+  }
   .cbb-systems .cbb-systems__eyebrow {
-    margin: 0 0 16px;
+    margin: 0;
     padding: 0;
     font-family: var(--cbb-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.22em;
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--cbb-gold);
   }
-  .cbb-systems .cbb-systems__title {
-    margin: 0;
-    padding: 0;
-    font-family: var(--cbb-serif);
-    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
-    font-weight: 600;
-    line-height: 1.12;
-    letter-spacing: -0.01em;
-    text-transform: none;
-    color: var(--cbb-white);
-  }
-  .cbb-systems .cbb-systems__rule {
-    display: block;
-    width: 56px;
-    height: 1px;
-    margin: 24px auto 0;
-    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
-  }
 
-  /* ---- Grid ---- */
+  /* ---- Cards ---- */
   .cbb-systems .cbb-systems__grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(20px, 2.4vw, 32px);
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(20px, 2vw, 28px);
   }
-
-  /* ---- Card ---- */
   .cbb-systems .cbb-systems__card {
     position: relative;
     display: flex;
-    flex-direction: column;
+    min-height: clamp(300px, 26vw, 360px);
     margin: 0;
-    padding: 0;
-    background: var(--cbb-black);
-    border: 1px solid rgba(213, 167, 86, 0.18);
+    border: 1px solid rgba(213, 167, 86, 0.6);
     border-radius: 4px;
+    background: #0D0E0F;
     overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    isolation: isolate;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .cbb-systems .cbb-systems__card--live:hover,
-  .cbb-systems .cbb-systems__card--live:focus-within {
-    transform: translateY(-4px);
-    border-color: rgba(213, 167, 86, 0.55);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  .cbb-systems .cbb-systems__card:hover {
+    border-color: var(--cbb-gold);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
   }
 
-  .cbb-systems .cbb-systems__media {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 16 / 10;
-    border-bottom: 1px solid rgba(213, 167, 86, 0.14);
-    background:
-      radial-gradient(90% 80% at 50% 40%, rgba(213, 167, 86, 0.16), rgba(213, 167, 86, 0) 70%),
-      linear-gradient(160deg, #1C1A16 0%, #121415 60%, #0D0E0F 100%);
-    color: var(--cbb-gold);
-    overflow: hidden;
-  }
-  .cbb-systems .cbb-systems__media svg {
-    width: clamp(44px, 5vw, 56px);
-    height: auto;
-    max-width: 100%;
-    opacity: 0.85;
-  }
-  .cbb-systems .cbb-systems__img {
+  /* Card photo: set --cbb-card-photo on each card (see the style="" attribute) */
+  .cbb-systems .cbb-systems__photo {
     position: absolute;
     inset: 0;
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
+    z-index: -1;
+    background-color: #151310;
+    background-image:
+      var(--cbb-card-photo, none),
+      radial-gradient(35% 45% at 82% 18%, rgba(243, 207, 124, 0.28), rgba(243, 207, 124, 0) 70%),
+      radial-gradient(45% 40% at 72% 85%, rgba(120, 82, 40, 0.4), rgba(120, 82, 40, 0) 70%),
+      linear-gradient(135deg, #111213 0%, #1B1712 60%, #231C12 100%);
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
   }
-
-  .cbb-systems .cbb-systems__badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 2;
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 2px;
-    background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
-    color: var(--cbb-black);
-    font-family: var(--cbb-sans);
-    font-size: 0.625rem;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  .cbb-systems .cbb-systems__body {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: clamp(22px, 2.4vw, 28px);
-  }
-  .cbb-systems .cbb-systems__name {
-    margin: 0 0 10px;
-    padding: 0;
-    font-family: var(--cbb-serif);
-    font-size: clamp(1.3rem, 0.8vw + 1rem, 1.5rem);
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--cbb-white);
-  }
-  .cbb-systems .cbb-systems__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: inherit;
-    text-decoration: none;
-  }
-  /* Makes the whole live card clickable while keeping "Notify Me" separate */
-  .cbb-systems .cbb-systems__link::after {
+  .cbb-systems .cbb-systems__photo::after {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 1;
-  }
-  .cbb-systems .cbb-systems__link:focus-visible {
-    outline: none;
-  }
-  .cbb-systems .cbb-systems__card--live:focus-within {
-    outline: 2px solid var(--cbb-gold-light);
-    outline-offset: 3px;
-  }
-  .cbb-systems .cbb-systems__out {
-    width: 16px;
-    height: 16px;
-    flex: 0 0 16px;
-    color: var(--cbb-gold);
-    transition: transform 0.25s ease;
-  }
-  .cbb-systems .cbb-systems__card--live:hover .cbb-systems__out {
-    transform: translate(2px, -2px);
+    background: linear-gradient(90deg, rgba(10, 11, 12, 0.94) 0%, rgba(10, 11, 12, 0.78) 42%, rgba(10, 11, 12, 0.2) 75%, rgba(10, 11, 12, 0.05) 100%);
   }
 
+  .cbb-systems .cbb-systems__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 78%;
+    padding: clamp(24px, 2.6vw, 32px);
+  }
+
+  .cbb-systems .cbb-systems__logo {
+    display: block;
+    align-self: flex-start;
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 220 / 90;
+    height: clamp(58px, 6vw, 84px);
+    margin: 0 0 auto;
+  }
+  .cbb-systems .cbb-systems__logo-img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: clamp(58px, 6vw, 84px);
+    margin: 0 0 auto;
+    align-self: flex-start;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .cbb-systems .cbb-systems__name {
+    margin: 20px 0 8px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.5rem, 1vw + 1.1rem, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--cbb-cream);
+  }
   .cbb-systems .cbb-systems__desc {
+    max-width: 26em;
     margin: 0 0 24px;
     padding: 0;
     font-family: var(--cbb-sans);
-    font-size: 0.9375rem;
+    font-size: 0.975rem;
     font-weight: 400;
-    line-height: 1.6;
-    color: var(--cbb-muted);
+    line-height: 1.55;
+    color: rgba(246, 239, 227, 0.86);
   }
 
-  .cbb-systems .cbb-systems__notify {
-    position: relative;
-    z-index: 2;
+  .cbb-systems .cbb-systems__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cbb-systems .cbb-systems__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    align-self: flex-start;
-    min-height: 44px;
-    margin-top: auto;
-    padding: 0 22px;
-    border: 1px solid var(--cbb-gold);
-    border-radius: 2px;
-    background: transparent;
-    color: var(--cbb-gold);
+    gap: 12px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    border-radius: 3px;
     font-family: var(--cbb-sans);
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    text-transform: none;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   }
-  .cbb-systems .cbb-systems__notify:hover {
+  .cbb-systems .cbb-systems__btn svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+  }
+  .cbb-systems .cbb-systems__btn--gold {
     background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
     color: var(--cbb-black);
   }
-  .cbb-systems .cbb-systems__notify:focus-visible {
+  .cbb-systems .cbb-systems__btn--gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(213, 167, 86, 0.28);
+    color: var(--cbb-black);
+  }
+  .cbb-systems .cbb-systems__btn--outline {
+    background: rgba(10, 11, 12, 0.55);
+    border-color: rgba(246, 239, 227, 0.7);
+    color: var(--cbb-cream);
+    font-weight: 500;
+  }
+  .cbb-systems .cbb-systems__btn--outline:hover {
+    border-color: var(--cbb-gold-light);
+    color: var(--cbb-gold-light);
+  }
+  .cbb-systems .cbb-systems__btn:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
     outline-offset: 3px;
   }
 
-  /* ---- Dimmed, non-clickable industry cards ---- */
-  .cbb-systems .cbb-systems__card--soon {
-    border-color: rgba(213, 167, 86, 0.1);
-  }
-  .cbb-systems .cbb-systems__card--soon .cbb-systems__media {
-    filter: saturate(0.55);
-    opacity: 0.6;
-  }
-  .cbb-systems .cbb-systems__card--soon .cbb-systems__name,
-  .cbb-systems .cbb-systems__card--soon .cbb-systems__desc {
-    opacity: 0.62;
-  }
-  .cbb-systems .cbb-systems__card--soon .cbb-systems__badge {
-    opacity: 0.85;
-  }
-  .cbb-systems .cbb-systems__card--soon .cbb-systems__notify {
-    border-color: rgba(213, 167, 86, 0.55);
-  }
-
-  @media (max-width: 1000px) {
-    .cbb-systems .cbb-systems__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  @media (max-width: 640px) {
+  @media (max-width: 900px) {
     .cbb-systems .cbb-systems__grid {
       grid-template-columns: minmax(0, 1fr);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 560px) {
+    .cbb-systems .cbb-systems__content {
+      max-width: 100%;
+    }
+    .cbb-systems .cbb-systems__photo::after {
+      background: linear-gradient(90deg, rgba(10, 11, 12, 0.92) 0%, rgba(10, 11, 12, 0.7) 60%, rgba(10, 11, 12, 0.45) 100%);
+    }
+    .cbb-systems .cbb-systems__actions {
+      flex-direction: column;
+    }
+    .cbb-systems .cbb-systems__btn {
+      width: 100%;
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .cbb-systems .cbb-systems__card,
-    .cbb-systems .cbb-systems__out,
-    .cbb-systems .cbb-systems__notify {
+    .cbb-systems .cbb-systems__btn {
       transition: none;
-    }
-    .cbb-systems .cbb-systems__card--live:hover,
-    .cbb-systems .cbb-systems__card--live:focus-within {
-      transform: none;
     }
   }
 </style>
@@ -548,121 +827,84 @@
 <section class="cbb-systems" id="our-systems" aria-labelledby="cbb-systems-title">
   <div class="cbb-systems__inner">
     <header class="cbb-systems__header">
-      <p class="cbb-systems__eyebrow">Powerful AI Solutions for Real Business Growth</p>
       <h2 class="cbb-systems__title" id="cbb-systems-title">Our Systems</h2>
-      <span class="cbb-systems__rule" aria-hidden="true"></span>
+      <p class="cbb-systems__eyebrow">Powerful AI Solutions for Real Business Growth</p>
     </header>
 
-    <!-- "Notify Me" buttons point to the contact section (#contact).
-         Swap each href for a GHL popup trigger or a dedicated waitlist
-         form URL if you set one up per system. -->
-    <ul class="cbb-systems__grid">
+    <div class="cbb-systems__grid">
 
-      <!-- ===== Card 1: Super LO (links out) ===== -->
-      <li class="cbb-systems__card cbb-systems__card--live">
-        <div class="cbb-systems__media" aria-hidden="true">
-          <!-- IMAGE: Super LO product visual (dashboard screenshot or loan officer
-               with phone). Uncomment the <img> and set src to use a photo. -->
-          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><circle cx="12" cy="13" r="1.6"/><path d="M12 14.6V17"/></svg>
-        </div>
-        <span class="cbb-systems__badge">Coming Soon</span>
-        <div class="cbb-systems__body">
-          <h3 class="cbb-systems__name">
-            <!-- LINK: replace href with the Super LO page/site URL -->
-            <a class="cbb-systems__link" href="#" target="_blank" rel="noopener">
-              Super LO
-              <svg class="cbb-systems__out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      <!-- ===== Card 1: Super LO =====
+           IMAGE: moody desk scene with laptop, warm window light (photo sits on the
+           right half of the card). Replace `none` with url('PASTE-IMAGE-URL-HERE'). -->
+      <article class="cbb-systems__card" style="--cbb-card-photo: none;">
+        <div class="cbb-systems__photo" aria-hidden="true"></div>
+        <div class="cbb-systems__content">
+          <!-- LOGO: stand-in Super LO wordmark. To use the real logo, delete the
+               <svg> and uncomment the <img>: -->
+          <!-- <img class="cbb-systems__logo-img" src="PASTE-LOGO-URL-HERE" alt="Super LO"> -->
+          <svg class="cbb-systems__logo" viewBox="0 0 220 90" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Super LO">
+            <defs>
+              <linearGradient id="cbb-sys-gold-1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F3CF7C"/>
+                <stop offset="1" stop-color="#C9994A"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="116" cy="46" rx="98" ry="30" transform="rotate(-12 116 46)" fill="none" stroke="url(#cbb-sys-gold-1)" stroke-width="5" stroke-dasharray="360 70" stroke-dashoffset="-40"/>
+            <text x="16" y="62" fill="#F6EFE3" font-family="'Inter', Arial, sans-serif" font-size="44" font-weight="800" font-style="italic" letter-spacing="-1.5">Super<tspan fill="url(#cbb-sys-gold-1)">LO</tspan></text>
+          </svg>
+          <h3 class="cbb-systems__name">Super LO</h3>
+          <p class="cbb-systems__desc">An AI-powered loan officer assistant that helps streamline outreach, follow up automatically, and keep your pipeline moving.</p>
+          <div class="cbb-systems__actions">
+            <!-- LINKS: replace both hrefs with the Super LO page and demo URLs -->
+            <a class="cbb-systems__btn cbb-systems__btn--gold" href="#" aria-label="Learn more about Super LO">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
-          </h3>
-          <p class="cbb-systems__desc">An AI assistant for loan officers that follows up with leads and keeps your pipeline moving.</p>
-          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when Super LO launches">Notify Me</a>
-        </div>
-      </li>
-
-      <!-- ===== Card 2: System Two (links out) — NAME TBC ===== -->
-      <li class="cbb-systems__card cbb-systems__card--live">
-        <div class="cbb-systems__media" aria-hidden="true">
-          <!-- IMAGE: AI marketing assistant product visual. Uncomment the <img> and set src. -->
-          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
-        </div>
-        <span class="cbb-systems__badge">Coming Soon</span>
-        <div class="cbb-systems__body">
-          <h3 class="cbb-systems__name">
-            <!-- NAME TBC: update "System Two" once the product name is final.
-                 LINK: replace href with the product page/site URL. -->
-            <a class="cbb-systems__link" href="#" target="_blank" rel="noopener">
-              System Two
-              <svg class="cbb-systems__out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+            <a class="cbb-systems__btn cbb-systems__btn--outline" href="#" aria-label="Try the Super LO demo">
+              Try Demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z" fill="currentColor"/></svg>
             </a>
-          </h3>
-          <p class="cbb-systems__desc">An AI marketing assistant that creates, schedules, and optimizes your campaigns for you.</p>
-          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when System Two launches">Notify Me</a>
+          </div>
         </div>
-      </li>
+      </article>
 
-      <!-- ===== Card 3: Roofers (not clickable, dimmed) ===== -->
-      <li class="cbb-systems__card cbb-systems__card--soon">
-        <div class="cbb-systems__media" aria-hidden="true">
-          <!-- IMAGE: Roofing contractor on a residential roof. Uncomment the <img> and set src. -->
-          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13 12 5l10 8"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M10 20v-5h4v5"/><path d="M16 7.4V4h2.5v5.4"/></svg>
+      <!-- ===== Card 2: Paige =====
+           IMAGE: desk scene with a branded coffee mug and notebook, warm light.
+           Replace `none` with url('PASTE-IMAGE-URL-HERE'). -->
+      <article class="cbb-systems__card" style="--cbb-card-photo: none;">
+        <div class="cbb-systems__photo" aria-hidden="true"></div>
+        <div class="cbb-systems__content">
+          <!-- LOGO: stand-in Paige script wordmark. To use the real logo, delete the
+               <svg> and uncomment the <img>: -->
+          <!-- <img class="cbb-systems__logo-img" src="PASTE-LOGO-URL-HERE" alt="Paige"> -->
+          <svg class="cbb-systems__logo" viewBox="0 0 220 90" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Paige">
+            <defs>
+              <linearGradient id="cbb-sys-gold-2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F3CF7C"/>
+                <stop offset="1" stop-color="#C9994A"/>
+              </linearGradient>
+            </defs>
+            <text x="14" y="68" fill="url(#cbb-sys-gold-2)" font-family="'Great Vibes', 'Playfair Display', Georgia, serif" font-size="66" font-style="italic" font-weight="400">Paige</text>
+            <path d="M172 14c.9 5.4 2.6 7.1 8 8-5.4.9-7.1 2.6-8 8-.9-5.4-2.6-7.1-8-8 5.4-.9 7.1-2.6 8-8z" fill="url(#cbb-sys-gold-2)"/>
+            <path d="M20 78c50-6 110-8 170-18" fill="none" stroke="url(#cbb-sys-gold-2)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3 class="cbb-systems__name">Paige</h3>
+          <p class="cbb-systems__desc">An AI marketing assistant that helps create content, manage campaigns, and drive consistent growth for your business.</p>
+          <div class="cbb-systems__actions">
+            <!-- LINKS: replace both hrefs with the Paige page and demo URLs -->
+            <a class="cbb-systems__btn cbb-systems__btn--gold" href="#" aria-label="Learn more about Paige">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+            <a class="cbb-systems__btn cbb-systems__btn--outline" href="#" aria-label="Try the Paige demo">
+              Try Demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z" fill="currentColor"/></svg>
+            </a>
+          </div>
         </div>
-        <span class="cbb-systems__badge">Coming Soon</span>
-        <div class="cbb-systems__body">
-          <h3 class="cbb-systems__name">Roofers</h3>
-          <p class="cbb-systems__desc">AI lead generation and instant follow-up built to book more roofing inspections.</p>
-          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the Roofers system launches">Notify Me</a>
-        </div>
-      </li>
+      </article>
 
-      <!-- ===== Card 4: HVAC Services (not clickable, dimmed) ===== -->
-      <li class="cbb-systems__card cbb-systems__card--soon">
-        <div class="cbb-systems__media" aria-hidden="true">
-          <!-- IMAGE: HVAC technician servicing an outdoor unit. Uncomment the <img> and set src. -->
-          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="1.4"/><path d="M12 10.6c-.4-2.6.4-5 2.6-5.4 1.5-.3 2.3 1 1.3 2.4-.8 1.2-2.2 2.2-3.9 3"/><path d="M12 10.6c-.4-2.6.4-5 2.6-5.4 1.5-.3 2.3 1 1.3 2.4-.8 1.2-2.2 2.2-3.9 3" transform="rotate(120 12 12)"/><path d="M12 10.6c-.4-2.6.4-5 2.6-5.4 1.5-.3 2.3 1 1.3 2.4-.8 1.2-2.2 2.2-3.9 3" transform="rotate(240 12 12)"/></svg>
-        </div>
-        <span class="cbb-systems__badge">Coming Soon</span>
-        <div class="cbb-systems__body">
-          <h3 class="cbb-systems__name">HVAC Services</h3>
-          <p class="cbb-systems__desc">Automated booking, reminders, and seasonal campaigns that keep your techs busy year-round.</p>
-          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the HVAC Services system launches">Notify Me</a>
-        </div>
-      </li>
-
-      <!-- ===== Card 5: Home Services (not clickable, dimmed) ===== -->
-      <li class="cbb-systems__card cbb-systems__card--soon">
-        <div class="cbb-systems__media" aria-hidden="true">
-          <!-- IMAGE: Home service pro (plumber/electrician) at a front door. Uncomment the <img> and set src. -->
-          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <span class="cbb-systems__badge">Coming Soon</span>
-        <div class="cbb-systems__body">
-          <h3 class="cbb-systems__name">Home Services</h3>
-          <p class="cbb-systems__desc">Lead capture, fast response, and review automation for plumbers, electricians, and more.</p>
-          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the Home Services system launches">Notify Me</a>
-        </div>
-      </li>
-
-      <!-- ===== Card 6: Medical Services (not clickable, dimmed) ===== -->
-      <li class="cbb-systems__card cbb-systems__card--soon">
-        <div class="cbb-systems__media" aria-hidden="true">
-          <!-- IMAGE: Modern clinic reception or practitioner with patient. Uncomment the <img> and set src. -->
-          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 13.6 12 21l-7.5-7.4A5 5 0 1 1 12 6.5a5 5 0 1 1 7.5 7.1z"/><path d="M3.5 12h4l1.5-3 3 6 1.5-3h7"/></svg>
-        </div>
-        <span class="cbb-systems__badge">Coming Soon</span>
-        <div class="cbb-systems__body">
-          <h3 class="cbb-systems__name">Medical Services</h3>
-          <p class="cbb-systems__desc">Patient acquisition, appointment reminders, and reputation systems for medical practices.</p>
-          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the Medical Services system launches">Notify Me</a>
-        </div>
-      </li>
-
-    </ul>
+    </div>
   </div>
 </section>
 
@@ -673,24 +915,38 @@
      ============================================================ -->
 <style>
   .cbb-process {
+    /* IMAGE: misty mountain ridges at dusk (wide landscape, darkened by the
+       overlay below). Replace `none` with url('PASTE-IMAGE-URL-HERE'). */
+    --cbb-process-photo: none;
+
     --cbb-gold: #D5A756;
     --cbb-gold-light: #F3CF7C;
     --cbb-gold-deep: #C9994A;
     --cbb-black: #0A0B0C;
     --cbb-surface: #121415;
     --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
-    --cbb-circle: 92px;
-    --cbb-gap: clamp(24px, 3vw, 40px);
+    --cbb-circle: 76px;
+    --cbb-gap: clamp(28px, 2.6vw, 40px);
 
     position: relative;
     width: 100%;
     margin: 0;
-    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
-    background: var(--cbb-black);
-    color: var(--cbb-white);
+    padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 48px);
+    background-color: var(--cbb-black);
+    background-image:
+      linear-gradient(180deg, rgba(10, 11, 12, 0.78) 0%, rgba(10, 11, 12, 0.6) 50%, rgba(10, 11, 12, 0.85) 100%),
+      var(--cbb-process-photo),
+      radial-gradient(70% 45% at 50% 55%, rgba(190, 130, 60, 0.28), rgba(190, 130, 60, 0) 70%),
+      linear-gradient(180deg, #0D0E0E 0%, #1A1712 45%, #14120E 70%, #0B0B0B 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: 1px solid rgba(213, 167, 86, 0.3);
+    color: var(--cbb-cream);
     font-family: var(--cbb-sans);
   }
   .cbb-process,
@@ -701,44 +957,36 @@
   }
 
   .cbb-process .cbb-process__inner {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: 0 auto;
   }
 
   /* ---- Section header ---- */
   .cbb-process .cbb-process__header {
-    max-width: 720px;
-    margin: 0 auto clamp(56px, 7vw, 84px);
+    margin: 0 auto clamp(20px, 2.4vw, 28px);
     text-align: center;
   }
-  .cbb-process .cbb-process__eyebrow {
-    margin: 0 0 16px;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cbb-gold);
-  }
   .cbb-process .cbb-process__title {
-    margin: 0;
+    margin: 0 0 14px;
     padding: 0;
     font-family: var(--cbb-serif);
-    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-size: clamp(2rem, 2.8vw + 0.9rem, 3.4rem);
     font-weight: 600;
     line-height: 1.12;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
     text-transform: none;
-    color: var(--cbb-white);
+    color: var(--cbb-cream);
   }
-  .cbb-process .cbb-process__rule {
-    display: block;
-    width: 56px;
-    height: 1px;
-    margin: 24px auto 0;
-    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  .cbb-process .cbb-process__eyebrow {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
   }
 
   /* ---- Steps ---- */
@@ -747,125 +995,111 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--cbb-gap);
     margin: 0;
-    padding: 0;
+    padding: calc(var(--cbb-circle) / 2) 0 0;
     list-style: none;
-    counter-reset: none;
   }
   .cbb-process .cbb-process__step {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
-    padding: 0;
+    padding: calc(var(--cbb-circle) / 2 + 22px) clamp(16px, 1.6vw, 24px) 28px;
+    border: 1px solid rgba(213, 167, 86, 0.4);
+    border-radius: 3px;
+    background: rgba(10, 11, 12, 0.62);
     text-align: center;
   }
-  .cbb-process .cbb-process__step::before,
   .cbb-process .cbb-process__step::marker {
     content: none;
   }
 
   .cbb-process .cbb-process__icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: var(--cbb-circle);
     height: var(--cbb-circle);
-    margin: 0 auto 28px;
-    border: 1px solid var(--cbb-gold);
+    border: 1.5px solid var(--cbb-gold);
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 35%, rgba(213, 167, 86, 0.12), rgba(213, 167, 86, 0) 70%);
-    box-shadow: 0 0 0 8px var(--cbb-black), 0 0 0 9px rgba(213, 167, 86, 0.16);
+    background: var(--cbb-black);
     color: var(--cbb-gold);
+    transform: translate(-50%, -50%);
   }
   .cbb-process .cbb-process__icon svg {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     max-width: 100%;
   }
 
-  /* Connecting arrow: runs from the right edge of this circle to the left
-     edge of the next one (desktop). */
+  /* Small arrow in the gap between boxes */
   .cbb-process .cbb-process__arrow {
     position: absolute;
-    top: calc(var(--cbb-circle) / 2);
-    left: calc(50% + var(--cbb-circle) / 2 + 18px);
-    width: calc(100% + var(--cbb-gap) - var(--cbb-circle) - 36px);
-    height: 1px;
-    background: linear-gradient(90deg, rgba(213, 167, 86, 0.15), var(--cbb-gold));
-  }
-  .cbb-process .cbb-process__arrow::after {
-    content: "";
-    position: absolute;
-    top: -3.5px;
-    right: 0;
-    width: 8px;
-    height: 8px;
-    border-top: 1px solid var(--cbb-gold);
-    border-right: 1px solid var(--cbb-gold);
-    transform: rotate(45deg);
+    top: 50%;
+    right: calc(var(--cbb-gap) / -2);
+    width: 18px;
+    height: 18px;
+    color: var(--cbb-gold);
+    transform: translate(50%, -50%);
   }
 
-  .cbb-process .cbb-process__num {
-    display: block;
-    margin: 0 0 8px;
-    font-family: var(--cbb-serif);
-    font-size: 0.9375rem;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1;
-    color: var(--cbb-gold);
-  }
   .cbb-process .cbb-process__name {
-    margin: 0 0 14px;
+    margin: 0 0 12px;
     padding: 0;
     font-family: var(--cbb-sans);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.2rem);
+    font-weight: 500;
+    font-variant: small-caps;
     line-height: 1.3;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--cbb-white);
+    letter-spacing: 0.1em;
+    text-transform: none;
+    color: var(--cbb-cream);
   }
   .cbb-process .cbb-process__desc {
     max-width: 17rem;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     font-family: var(--cbb-sans);
     font-size: 0.9375rem;
     font-weight: 400;
-    line-height: 1.65;
-    color: var(--cbb-muted);
+    line-height: 1.55;
+    color: rgba(246, 239, 227, 0.86);
   }
 
-  /* ---- Stacked layout (tablet + mobile) ---- */
-  @media (max-width: 860px) {
+  /* ---- 2 x 2 (tablet): arrows hidden, numbers carry the order ---- */
+  @media (max-width: 980px) {
     .cbb-process .cbb-process__steps {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0;
-      max-width: 420px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: calc(var(--cbb-gap) + var(--cbb-circle) / 2);
+      max-width: 720px;
       margin: 0 auto;
     }
-    /* move the arrow below each step's text so it points to the next step */
-    .cbb-process .cbb-process__step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .cbb-process .cbb-process__arrow {
+      display: none;
+    }
+  }
+
+  /* ---- Single column (mobile): arrows point down ---- */
+  @media (max-width: 600px) {
+    .cbb-process {
+      --cbb-gap: 72px;
+    }
+    .cbb-process .cbb-process__steps {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: var(--cbb-gap);
+      max-width: 420px;
     }
     .cbb-process .cbb-process__arrow {
-      order: 1;
-      position: relative;
-      top: auto;
-      left: auto;
       display: block;
-      width: 1px;
-      height: 48px;
-      margin: 28px auto;
-      background: linear-gradient(180deg, rgba(213, 167, 86, 0.15), var(--cbb-gold));
-    }
-    .cbb-process .cbb-process__arrow::after {
       top: auto;
       right: auto;
-      bottom: 0;
-      left: -3.5px;
-      transform: rotate(135deg);
+      left: 50%;
+      /* centered in the space left above the next step's circle */
+      bottom: calc((var(--cbb-gap) - var(--cbb-circle) / 2) / -2);
+      transform: translate(-50%, 50%) rotate(90deg);
     }
   }
 </style>
@@ -873,32 +1107,29 @@
 <section class="cbb-process" aria-labelledby="cbb-process-title">
   <div class="cbb-process__inner">
     <header class="cbb-process__header">
-      <p class="cbb-process__eyebrow">A Simple, Proven Process</p>
       <h2 class="cbb-process__title" id="cbb-process-title">How Covered Bridge Brands Works</h2>
-      <span class="cbb-process__rule" aria-hidden="true"></span>
+      <p class="cbb-process__eyebrow">A Simple, Proven Process</p>
     </header>
 
     <ol class="cbb-process__steps">
       <!-- Step 1: Strategy -->
       <li class="cbb-process__step">
         <div class="cbb-process__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/><path d="M12 1.5V4M12 20v2.5M1.5 12H4M20 12h2.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/><path d="M2 6h4M2 10h4M2 14h4M2 18h4"/><path d="M21.38 5.63a2.12 2.12 0 1 0-3-3l-5.02 5.01a2 2 0 0 0-.5.86l-.84 2.87a.5.5 0 0 0 .62.62l2.87-.84a2 2 0 0 0 .86-.5z"/></svg>
         </div>
-        <span class="cbb-process__arrow" aria-hidden="true"></span>
-        <span class="cbb-process__num">01</span>
-        <h3 class="cbb-process__name">Strategy</h3>
+        <h3 class="cbb-process__name">1. Strategy</h3>
         <p class="cbb-process__desc">We learn your goals, challenges, and opportunities to create a tailored plan.</p>
+        <svg class="cbb-process__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m14 7 5 5-5 5"/></svg>
       </li>
 
       <!-- Step 2: Build -->
       <li class="cbb-process__step">
         <div class="cbb-process__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
-        <span class="cbb-process__arrow" aria-hidden="true"></span>
-        <span class="cbb-process__num">02</span>
-        <h3 class="cbb-process__name">Build</h3>
+        <h3 class="cbb-process__name">2. Build</h3>
         <p class="cbb-process__desc">We design and implement AI systems, automation, and marketing solutions for your business.</p>
+        <svg class="cbb-process__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m14 7 5 5-5 5"/></svg>
       </li>
 
       <!-- Step 3: Launch -->
@@ -906,19 +1137,17 @@
         <div class="cbb-process__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
         </div>
-        <span class="cbb-process__arrow" aria-hidden="true"></span>
-        <span class="cbb-process__num">03</span>
-        <h3 class="cbb-process__name">Launch</h3>
+        <h3 class="cbb-process__name">3. Launch</h3>
         <p class="cbb-process__desc">We get your systems live and ensure everything works together seamlessly.</p>
+        <svg class="cbb-process__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m14 7 5 5-5 5"/></svg>
       </li>
 
       <!-- Step 4: Optimize (no arrow after the last step) -->
       <li class="cbb-process__step">
         <div class="cbb-process__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/><path d="M3 21h18"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 17v-4M12 17V9.5M16.5 17V6.5"/></svg>
         </div>
-        <span class="cbb-process__num">04</span>
-        <h3 class="cbb-process__name">Optimize</h3>
+        <h3 class="cbb-process__name">4. Optimize</h3>
         <p class="cbb-process__desc">We track performance, refine, and scale for measurable, long-term growth.</p>
       </li>
     </ol>
@@ -932,24 +1161,38 @@
      ============================================================ -->
 <style>
   .cbb-why {
+    /* IMAGE: forested valley / rolling hills at golden hour (wide landscape,
+       darkened by the overlay below). Replace `none` with url('PASTE-IMAGE-URL-HERE'). */
+    --cbb-why-photo: none;
+
     --cbb-gold: #D5A756;
     --cbb-gold-light: #F3CF7C;
     --cbb-gold-deep: #C9994A;
     --cbb-black: #0A0B0C;
     --cbb-surface: #121415;
     --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
-    --cbb-divider: linear-gradient(180deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.6) 20%, rgba(213, 167, 86, 0.6) 80%, rgba(213, 167, 86, 0));
-    --cbb-divider-h: linear-gradient(90deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.6) 20%, rgba(213, 167, 86, 0.6) 80%, rgba(213, 167, 86, 0));
+    --cbb-divider: linear-gradient(180deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.7) 25%, rgba(213, 167, 86, 0.7) 75%, rgba(213, 167, 86, 0));
+    --cbb-divider-h: linear-gradient(90deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.7) 25%, rgba(213, 167, 86, 0.7) 75%, rgba(213, 167, 86, 0));
 
     position: relative;
     width: 100%;
     margin: 0;
-    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
-    background: var(--cbb-surface);
-    color: var(--cbb-white);
+    padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 48px);
+    background-color: var(--cbb-black);
+    background-image:
+      linear-gradient(180deg, rgba(10, 11, 12, 0.72) 0%, rgba(10, 11, 12, 0.62) 45%, rgba(10, 11, 12, 0.86) 100%),
+      var(--cbb-why-photo),
+      radial-gradient(60% 40% at 55% 22%, rgba(214, 150, 70, 0.3), rgba(214, 150, 70, 0) 70%),
+      linear-gradient(180deg, #1E170F 0%, #16120D 35%, #0F0E0C 70%, #0A0B0C 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: 1px solid rgba(213, 167, 86, 0.3);
+    color: var(--cbb-cream);
     font-family: var(--cbb-sans);
   }
   .cbb-why,
@@ -960,44 +1203,36 @@
   }
 
   .cbb-why .cbb-why__inner {
-    max-width: 1240px;
+    max-width: 1320px;
     margin: 0 auto;
   }
 
   /* ---- Section header ---- */
   .cbb-why .cbb-why__header {
-    max-width: 720px;
-    margin: 0 auto clamp(56px, 7vw, 84px);
+    margin: 0 auto clamp(36px, 4.4vw, 56px);
     text-align: center;
   }
-  .cbb-why .cbb-why__eyebrow {
-    margin: 0 0 16px;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cbb-gold);
-  }
   .cbb-why .cbb-why__title {
-    margin: 0;
+    margin: 0 0 14px;
     padding: 0;
     font-family: var(--cbb-serif);
-    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-size: clamp(2rem, 2.8vw + 0.9rem, 3.4rem);
     font-weight: 600;
     line-height: 1.12;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
     text-transform: none;
-    color: var(--cbb-white);
+    color: var(--cbb-cream);
   }
-  .cbb-why .cbb-why__rule {
-    display: block;
-    width: 56px;
-    height: 1px;
-    margin: 24px auto 0;
-    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  .cbb-why .cbb-why__eyebrow {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
   }
 
   /* ---- Columns ---- */
@@ -1010,82 +1245,95 @@
   }
   .cbb-why .cbb-why__item {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
-    padding: 8px clamp(20px, 2.6vw, 40px);
+    padding: 4px clamp(16px, 2.2vw, 32px);
     text-align: center;
   }
   .cbb-why .cbb-why__item::marker {
     content: none;
   }
-  /* Thin vertical gold divider on the left of columns 2–4 */
+  /* Thin vertical gold divider between columns (shorter than the column) */
   .cbb-why .cbb-why__item + .cbb-why__item::before {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 18%;
+    bottom: 4%;
     left: 0;
     width: 1px;
     background: var(--cbb-divider);
   }
 
   .cbb-why .cbb-why__icon {
-    display: block;
-    width: 48px;
-    height: 48px;
-    max-width: 100%;
-    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    margin: 0 0 20px;
+    border: 1.5px solid var(--cbb-gold);
+    border-radius: 50%;
+    background: rgba(10, 11, 12, 0.55);
     color: var(--cbb-gold);
   }
+  .cbb-why .cbb-why__icon svg {
+    width: 34px;
+    height: 34px;
+    max-width: 100%;
+  }
   .cbb-why .cbb-why__name {
-    margin: 0 0 14px;
+    margin: 0 0 12px;
     padding: 0;
     font-family: var(--cbb-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cbb-white);
+    font-size: clamp(1.05rem, 0.4vw + 0.95rem, 1.2rem);
+    font-weight: 500;
+    font-variant: small-caps;
+    line-height: 1.3;
+    letter-spacing: 0.1em;
+    text-transform: none;
+    color: var(--cbb-cream);
   }
   .cbb-why .cbb-why__desc {
-    max-width: 16rem;
-    margin: 0 auto;
+    max-width: 15rem;
+    margin: 0;
     padding: 0;
     font-family: var(--cbb-sans);
     font-size: 0.9375rem;
     font-weight: 400;
-    line-height: 1.65;
-    color: var(--cbb-muted);
+    line-height: 1.55;
+    color: rgba(246, 239, 227, 0.86);
   }
 
   /* ---- 2 x 2 (tablet) ---- */
   @media (max-width: 960px) {
     .cbb-why .cbb-why__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 720px;
+      margin: 0 auto;
     }
     .cbb-why .cbb-why__item {
-      padding: 40px clamp(20px, 3vw, 40px);
+      padding: 36px clamp(16px, 3vw, 32px);
     }
     .cbb-why .cbb-why__item + .cbb-why__item::before {
       content: none;
     }
-    /* vertical divider between the two columns */
     .cbb-why .cbb-why__item:nth-child(2n)::before {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: 12%;
+      bottom: 12%;
       left: 0;
       width: 1px;
       background: var(--cbb-divider);
     }
-    /* horizontal divider between the two rows */
     .cbb-why .cbb-why__item:nth-child(n + 3)::after {
       content: "";
       position: absolute;
       top: 0;
-      left: 0;
-      right: 0;
+      left: 8%;
+      right: 8%;
       height: 1px;
       background: var(--cbb-divider-h);
     }
@@ -1097,7 +1345,7 @@
       grid-template-columns: minmax(0, 1fr);
     }
     .cbb-why .cbb-why__item {
-      padding: 36px 8px;
+      padding: 32px 8px;
     }
     .cbb-why .cbb-why__item:nth-child(2n)::before {
       content: none;
@@ -1106,8 +1354,8 @@
       content: "";
       position: absolute;
       top: 0;
-      left: 10%;
-      right: 10%;
+      left: 15%;
+      right: 15%;
       height: 1px;
       background: var(--cbb-divider-h);
     }
@@ -1117,36 +1365,43 @@
 <section class="cbb-why" aria-labelledby="cbb-why-title">
   <div class="cbb-why__inner">
     <header class="cbb-why__header">
-      <p class="cbb-why__eyebrow">More Than Marketing. A Smarter Way to Grow.</p>
       <h2 class="cbb-why__title" id="cbb-why-title">Why Covered Bridge Brands</h2>
-      <span class="cbb-why__rule" aria-hidden="true"></span>
+      <p class="cbb-why__eyebrow">More Than Marketing. A Smarter Way to Grow.</p>
     </header>
 
     <ul class="cbb-why__grid">
       <!-- AI Strategy -->
       <li class="cbb-why__item">
-        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9.5 9.5h5v5h-5z"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></svg>
+        <span class="cbb-why__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.6 6.5a3 3 0 0 0 .4-1.38M6 5.13a3 3 0 0 0 .4 1.37M3.48 10.9a4 4 0 0 1 .58-.4M19.94 10.5a4 4 0 0 1 .58.4M6 18a4 4 0 0 1-1.97-.52M19.97 17.48A4 4 0 0 1 18 18"/><path d="M12 5v13"/></svg>
+        </span>
         <h3 class="cbb-why__name">AI Strategy</h3>
         <p class="cbb-why__desc">Practical, results-driven AI strategy tailored to your business.</p>
       </li>
 
       <!-- Marketing Systems -->
       <li class="cbb-why__item">
-        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4z"/><path d="M6.3 8h11.4"/></svg>
+        <span class="cbb-why__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 15-6v14L3 13v-2z"/><path d="M18 9.5h1.5a1.5 1.5 0 0 1 0 5H18"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
         <h3 class="cbb-why__name">Marketing Systems</h3>
         <p class="cbb-why__desc">Complete marketing systems that attract, engage, and convert.</p>
       </li>
 
       <!-- Automation -->
       <li class="cbb-why__item">
-        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 21v-5h-5"/><circle cx="12" cy="12" r="2.2"/></svg>
+        <span class="cbb-why__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </span>
         <h3 class="cbb-why__name">Automation</h3>
         <p class="cbb-why__desc">Save time and increase efficiency with intelligent automation.</p>
       </li>
 
       <!-- Measurable Growth -->
       <li class="cbb-why__item">
-        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><rect x="4.5" y="14" width="3.5" height="4.5"/><rect x="10.25" y="10" width="3.5" height="8.5"/><rect x="16" y="6" width="3.5" height="12.5"/><path d="M4 9.5 10 5l3 2 6-4.5"/></svg>
+        <span class="cbb-why__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 17v-4M12 17V9.5M16.5 17V6.5"/></svg>
+        </span>
         <h3 class="cbb-why__name">Measurable Growth</h3>
         <p class="cbb-why__desc">Data-driven solutions designed to deliver real results.</p>
       </li>
@@ -1155,7 +1410,8 @@
 </section>
 
 <!-- ============================================================
-     CBB HOME — 05 CTA / CONTACT
+     CBB HOME — 05 CTA / CONTACT  (optional: not in the mockup, but the
+     "Contact" nav link and "Contact Us" button scroll here)
      Paste into a GoHighLevel Custom HTML/JavaScript element.
      All styles are scoped to .cbb-cta.
      ============================================================ -->
@@ -1167,6 +1423,7 @@
     --cbb-black: #0A0B0C;
     --cbb-surface: #121415;
     --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -1174,11 +1431,12 @@
     position: relative;
     width: 100%;
     margin: 0;
-    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 48px);
     background: var(--cbb-black);
-    color: var(--cbb-white);
+    border-top: 1px solid rgba(213, 167, 86, 0.3);
+    color: var(--cbb-cream);
     font-family: var(--cbb-sans);
-    scroll-margin-top: 80px;
+    scroll-margin-top: 90px;
   }
   .cbb-cta,
   .cbb-cta *,
@@ -1217,18 +1475,18 @@
   }
 
   .cbb-cta .cbb-cta__eyebrow {
-    margin: 0 0 16px;
+    margin: 0 0 20px;
     padding: 0;
     font-family: var(--cbb-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.22em;
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--cbb-gold);
   }
   .cbb-cta .cbb-cta__title {
-    margin: 0 0 20px;
+    margin: 0 0 14px;
     padding: 0;
     font-family: var(--cbb-serif);
     font-size: clamp(2rem, 3.4vw + 0.5rem, 3.25rem);
@@ -1236,7 +1494,7 @@
     line-height: 1.12;
     letter-spacing: -0.01em;
     text-transform: none;
-    color: var(--cbb-white);
+    color: var(--cbb-cream);
   }
   .cbb-cta .cbb-cta__gold {
     color: var(--cbb-gold);
@@ -1253,7 +1511,7 @@
     font-size: clamp(1rem, 0.3vw + 0.92rem, 1.125rem);
     font-weight: 400;
     line-height: 1.7;
-    color: var(--cbb-muted);
+    color: rgba(246, 239, 227, 0.86);
   }
 
   /* ---- Form slot ----
@@ -1325,8 +1583,8 @@
 <section class="cbb-cta" id="contact" aria-labelledby="cbb-cta-title">
   <div class="cbb-cta__panel">
     <div class="cbb-cta__text">
-      <p class="cbb-cta__eyebrow">Let's Build Your Bridge to Growth</p>
       <h2 class="cbb-cta__title" id="cbb-cta-title">Ready to Grow <span class="cbb-cta__gold">Smarter?</span></h2>
+      <p class="cbb-cta__eyebrow">Let's Build Your Bridge to Growth</p>
       <p class="cbb-cta__copy">Tell us about your business and we'll show you where AI can deliver the biggest results.</p>
     </div>
 
@@ -1342,6 +1600,297 @@
     --></div>
   </div>
 </section>
+
+<!-- ============================================================
+     CBB HOME — 06 FOOTER
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-footer.
+     ============================================================ -->
+<style>
+  .cbb-footer {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(36px, 4vw, 48px) clamp(20px, 4vw, 48px) 24px;
+    background: var(--cbb-black);
+    border-top: 1px solid rgba(213, 167, 86, 0.45);
+    color: var(--cbb-cream);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-footer,
+  .cbb-footer *,
+  .cbb-footer *::before,
+  .cbb-footer *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-footer .cbb-footer__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .cbb-footer .cbb-footer__top {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(24px, 4vw, 56px);
+    padding-bottom: clamp(24px, 3vw, 32px);
+    border-bottom: 1px solid rgba(213, 167, 86, 0.3);
+  }
+
+  /* ---- Logo ---- */
+  .cbb-footer .cbb-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cbb-gold);
+    text-decoration: none;
+  }
+  .cbb-footer .cbb-footer__mark {
+    display: block;
+    flex: 0 0 auto;
+    width: clamp(72px, 7vw, 110px);
+    height: auto;
+    max-width: 100%;
+  }
+  .cbb-footer .cbb-footer__logo-img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 56px;
+  }
+  .cbb-footer .cbb-footer__word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+  .cbb-footer .cbb-footer__name {
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.05rem, 0.8vw + 0.7rem, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--cbb-gold);
+    background: linear-gradient(180deg, var(--cbb-gold-light), var(--cbb-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-footer .cbb-footer__sub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-footer .cbb-footer__sub::before,
+  .cbb-footer .cbb-footer__sub::after {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--cbb-gold);
+  }
+  .cbb-footer .cbb-footer__sub span {
+    margin-right: -0.5em;
+  }
+
+  /* ---- Company info ---- */
+  .cbb-footer .cbb-footer__company {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--cbb-cream);
+  }
+  .cbb-footer .cbb-footer__tagline {
+    margin: 0;
+    padding: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cbb-cream);
+  }
+
+  /* ---- Legal links + social ---- */
+  .cbb-footer .cbb-footer__side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .cbb-footer .cbb-footer__legal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8125rem;
+    color: rgba(246, 239, 227, 0.5);
+  }
+  .cbb-footer .cbb-footer__link {
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-footer .cbb-footer__link:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-footer .cbb-footer__social {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-footer .cbb-footer__social li {
+    margin: 0;
+    padding: 0;
+  }
+  .cbb-footer .cbb-footer__social li::marker {
+    content: none;
+  }
+  .cbb-footer .cbb-footer__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-footer .cbb-footer__icon:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-footer .cbb-footer__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .cbb-footer .cbb-footer__link:focus-visible,
+  .cbb-footer .cbb-footer__icon:focus-visible,
+  .cbb-footer .cbb-footer__brand:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+
+  .cbb-footer .cbb-footer__copy {
+    margin: 0;
+    padding: 20px 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(246, 239, 227, 0.6);
+  }
+
+  @media (max-width: 860px) {
+    .cbb-footer .cbb-footer__top {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      text-align: center;
+    }
+    .cbb-footer .cbb-footer__side {
+      align-items: center;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-footer .cbb-footer__link,
+    .cbb-footer .cbb-footer__icon {
+      transition: none;
+    }
+  }
+</style>
+
+<footer class="cbb-footer">
+  <div class="cbb-footer__inner">
+    <div class="cbb-footer__top">
+      <a class="cbb-footer__brand" href="/" aria-label="Covered Bridge Brands home">
+        <!-- LOGO: stand-in for the Covered Bridge Brands logo. To use the real
+             logo file, delete the <svg> and .cbb-footer__word <span>, then
+             uncomment this <img>: -->
+        <!-- <img class="cbb-footer__logo-img" src="PASTE-LOGO-URL-HERE" alt="Covered Bridge Brands"> -->
+        <svg class="cbb-footer__mark" viewBox="0 0 120 64" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="cbb-ftr-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F3CF7C"/>
+              <stop offset="1" stop-color="#C9994A"/>
+            </linearGradient>
+          </defs>
+          <g stroke="url(#cbb-ftr-gold)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 28 60 6l38 22"/>
+            <path d="M28 25v29M92 25v29"/>
+            <path d="M46 54V41a14 14 0 0 1 28 0v13"/>
+            <path d="M34 22v32M40 18v36M80 18v36M86 22v32M52 13v14M60 9v18M68 13v14"/>
+            <path d="M2 56h116"/>
+            <path d="M28 50H10M110 50H92"/>
+          </g>
+          <g fill="url(#cbb-ftr-gold)">
+            <path d="M6 56 12 42l6 14z"/>
+            <path d="M13 56l5-11 5 11z"/>
+            <path d="M114 56l-6-14-6 14z"/>
+            <path d="M107 56l-5-11-5 11z"/>
+          </g>
+        </svg>
+        <span class="cbb-footer__word">
+          <span class="cbb-footer__name">Covered Bridge</span>
+          <span class="cbb-footer__sub"><span>Brands</span></span>
+        </span>
+      </a>
+
+      <div class="cbb-footer__info">
+        <p class="cbb-footer__company">Covered Bridge Brands, LLC</p>
+        <p class="cbb-footer__tagline">AI Marketing. Real Results.</p>
+      </div>
+
+      <div class="cbb-footer__side">
+        <!-- LINKS: point these at your GHL legal pages -->
+        <p class="cbb-footer__legal">
+          <a class="cbb-footer__link" href="/privacy-policy">Privacy Policy</a>
+          <span aria-hidden="true">|</span>
+          <a class="cbb-footer__link" href="/terms-of-service">Terms of Service</a>
+        </p>
+        <!-- LINKS: replace the # with your LinkedIn and YouTube URLs and your email -->
+        <ul class="cbb-footer__social">
+          <li>
+            <a class="cbb-footer__icon" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.83v1.5h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13v5.43h-4v-4.81c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.89h-4v-11z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="cbb-footer__icon" href="#" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="cbb-footer__icon" href="mailto:" aria-label="Email us">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="cbb-footer__copy">&copy; 2026 Covered Bridge Brands, LLC. All rights reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>

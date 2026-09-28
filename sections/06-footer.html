@@ -1,0 +1,290 @@
+<!-- ============================================================
+     CBB HOME — 06 FOOTER
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-footer.
+     ============================================================ -->
+<style>
+  .cbb-footer {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(36px, 4vw, 48px) clamp(20px, 4vw, 48px) 24px;
+    background: var(--cbb-black);
+    border-top: 1px solid rgba(213, 167, 86, 0.45);
+    color: var(--cbb-cream);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-footer,
+  .cbb-footer *,
+  .cbb-footer *::before,
+  .cbb-footer *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-footer .cbb-footer__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .cbb-footer .cbb-footer__top {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(24px, 4vw, 56px);
+    padding-bottom: clamp(24px, 3vw, 32px);
+    border-bottom: 1px solid rgba(213, 167, 86, 0.3);
+  }
+
+  /* ---- Logo ---- */
+  .cbb-footer .cbb-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cbb-gold);
+    text-decoration: none;
+  }
+  .cbb-footer .cbb-footer__mark {
+    display: block;
+    flex: 0 0 auto;
+    width: clamp(72px, 7vw, 110px);
+    height: auto;
+    max-width: 100%;
+  }
+  .cbb-footer .cbb-footer__logo-img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 56px;
+  }
+  .cbb-footer .cbb-footer__word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+  .cbb-footer .cbb-footer__name {
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.05rem, 0.8vw + 0.7rem, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--cbb-gold);
+    background: linear-gradient(180deg, var(--cbb-gold-light), var(--cbb-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-footer .cbb-footer__sub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-footer .cbb-footer__sub::before,
+  .cbb-footer .cbb-footer__sub::after {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--cbb-gold);
+  }
+  .cbb-footer .cbb-footer__sub span {
+    margin-right: -0.5em;
+  }
+
+  /* ---- Company info ---- */
+  .cbb-footer .cbb-footer__company {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--cbb-cream);
+  }
+  .cbb-footer .cbb-footer__tagline {
+    margin: 0;
+    padding: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cbb-cream);
+  }
+
+  /* ---- Legal links + social ---- */
+  .cbb-footer .cbb-footer__side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .cbb-footer .cbb-footer__legal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8125rem;
+    color: rgba(246, 239, 227, 0.5);
+  }
+  .cbb-footer .cbb-footer__link {
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-footer .cbb-footer__link:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-footer .cbb-footer__social {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-footer .cbb-footer__social li {
+    margin: 0;
+    padding: 0;
+  }
+  .cbb-footer .cbb-footer__social li::marker {
+    content: none;
+  }
+  .cbb-footer .cbb-footer__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-footer .cbb-footer__icon:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-footer .cbb-footer__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .cbb-footer .cbb-footer__link:focus-visible,
+  .cbb-footer .cbb-footer__icon:focus-visible,
+  .cbb-footer .cbb-footer__brand:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+
+  .cbb-footer .cbb-footer__copy {
+    margin: 0;
+    padding: 20px 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(246, 239, 227, 0.6);
+  }
+
+  @media (max-width: 860px) {
+    .cbb-footer .cbb-footer__top {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      text-align: center;
+    }
+    .cbb-footer .cbb-footer__side {
+      align-items: center;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-footer .cbb-footer__link,
+    .cbb-footer .cbb-footer__icon {
+      transition: none;
+    }
+  }
+</style>
+
+<footer class="cbb-footer">
+  <div class="cbb-footer__inner">
+    <div class="cbb-footer__top">
+      <a class="cbb-footer__brand" href="/" aria-label="Covered Bridge Brands home">
+        <!-- LOGO: stand-in for the Covered Bridge Brands logo. To use the real
+             logo file, delete the <svg> and .cbb-footer__word <span>, then
+             uncomment this <img>: -->
+        <!-- <img class="cbb-footer__logo-img" src="PASTE-LOGO-URL-HERE" alt="Covered Bridge Brands"> -->
+        <svg class="cbb-footer__mark" viewBox="0 0 120 64" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="cbb-ftr-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F3CF7C"/>
+              <stop offset="1" stop-color="#C9994A"/>
+            </linearGradient>
+          </defs>
+          <g stroke="url(#cbb-ftr-gold)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 28 60 6l38 22"/>
+            <path d="M28 25v29M92 25v29"/>
+            <path d="M46 54V41a14 14 0 0 1 28 0v13"/>
+            <path d="M34 22v32M40 18v36M80 18v36M86 22v32M52 13v14M60 9v18M68 13v14"/>
+            <path d="M2 56h116"/>
+            <path d="M28 50H10M110 50H92"/>
+          </g>
+          <g fill="url(#cbb-ftr-gold)">
+            <path d="M6 56 12 42l6 14z"/>
+            <path d="M13 56l5-11 5 11z"/>
+            <path d="M114 56l-6-14-6 14z"/>
+            <path d="M107 56l-5-11-5 11z"/>
+          </g>
+        </svg>
+        <span class="cbb-footer__word">
+          <span class="cbb-footer__name">Covered Bridge</span>
+          <span class="cbb-footer__sub"><span>Brands</span></span>
+        </span>
+      </a>
+
+      <div class="cbb-footer__info">
+        <p class="cbb-footer__company">Covered Bridge Brands, LLC</p>
+        <p class="cbb-footer__tagline">AI Marketing. Real Results.</p>
+      </div>
+
+      <div class="cbb-footer__side">
+        <!-- LINKS: point these at your GHL legal pages -->
+        <p class="cbb-footer__legal">
+          <a class="cbb-footer__link" href="/privacy-policy">Privacy Policy</a>
+          <span aria-hidden="true">|</span>
+          <a class="cbb-footer__link" href="/terms-of-service">Terms of Service</a>
+        </p>
+        <!-- LINKS: replace the # with your LinkedIn and YouTube URLs and your email -->
+        <ul class="cbb-footer__social">
+          <li>
+            <a class="cbb-footer__icon" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.83v1.5h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13v5.43h-4v-4.81c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.89h-4v-11z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="cbb-footer__icon" href="#" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="cbb-footer__icon" href="mailto:" aria-label="Email us">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="cbb-footer__copy">&copy; 2026 Covered Bridge Brands, LLC. All rights reserved.</p>
+  </div>
+</footer>

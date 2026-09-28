@@ -1,5 +1,6 @@
 <!-- ============================================================
-     CBB HOME — 05 CTA / CONTACT
+     CBB HOME — 05 CTA / CONTACT  (optional: not in the mockup, but the
+     "Contact" nav link and "Contact Us" button scroll here)
      Paste into a GoHighLevel Custom HTML/JavaScript element.
      All styles are scoped to .cbb-cta.
      ============================================================ -->
@@ -11,6 +12,7 @@
     --cbb-black: #0A0B0C;
     --cbb-surface: #121415;
     --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -18,11 +20,12 @@
     position: relative;
     width: 100%;
     margin: 0;
-    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 48px);
     background: var(--cbb-black);
-    color: var(--cbb-white);
+    border-top: 1px solid rgba(213, 167, 86, 0.3);
+    color: var(--cbb-cream);
     font-family: var(--cbb-sans);
-    scroll-margin-top: 80px;
+    scroll-margin-top: 90px;
   }
   .cbb-cta,
   .cbb-cta *,
@@ -61,18 +64,18 @@
   }
 
   .cbb-cta .cbb-cta__eyebrow {
-    margin: 0 0 16px;
+    margin: 0 0 20px;
     padding: 0;
     font-family: var(--cbb-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.22em;
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--cbb-gold);
   }
   .cbb-cta .cbb-cta__title {
-    margin: 0 0 20px;
+    margin: 0 0 14px;
     padding: 0;
     font-family: var(--cbb-serif);
     font-size: clamp(2rem, 3.4vw + 0.5rem, 3.25rem);
@@ -80,7 +83,7 @@
     line-height: 1.12;
     letter-spacing: -0.01em;
     text-transform: none;
-    color: var(--cbb-white);
+    color: var(--cbb-cream);
   }
   .cbb-cta .cbb-cta__gold {
     color: var(--cbb-gold);
@@ -97,7 +100,7 @@
     font-size: clamp(1rem, 0.3vw + 0.92rem, 1.125rem);
     font-weight: 400;
     line-height: 1.7;
-    color: var(--cbb-muted);
+    color: rgba(246, 239, 227, 0.86);
   }
 
   /* ---- Form slot ----
@@ -169,8 +172,8 @@
 <section class="cbb-cta" id="contact" aria-labelledby="cbb-cta-title">
   <div class="cbb-cta__panel">
     <div class="cbb-cta__text">
-      <p class="cbb-cta__eyebrow">Let's Build Your Bridge to Growth</p>
       <h2 class="cbb-cta__title" id="cbb-cta-title">Ready to Grow <span class="cbb-cta__gold">Smarter?</span></h2>
+      <p class="cbb-cta__eyebrow">Let's Build Your Bridge to Growth</p>
       <p class="cbb-cta__copy">Tell us about your business and we'll show you where AI can deliver the biggest results.</p>
     </div>
 
