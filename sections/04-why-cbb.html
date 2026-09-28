@@ -1,0 +1,228 @@
+<!-- ============================================================
+     CBB HOME — 04 WHY COVERED BRIDGE BRANDS
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-why.
+     ============================================================ -->
+<style>
+  .cbb-why {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    --cbb-divider: linear-gradient(180deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.6) 20%, rgba(213, 167, 86, 0.6) 80%, rgba(213, 167, 86, 0));
+    --cbb-divider-h: linear-gradient(90deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.6) 20%, rgba(213, 167, 86, 0.6) 80%, rgba(213, 167, 86, 0));
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-surface);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-why,
+  .cbb-why *,
+  .cbb-why *::before,
+  .cbb-why *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-why .cbb-why__inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* ---- Section header ---- */
+  .cbb-why .cbb-why__header {
+    max-width: 720px;
+    margin: 0 auto clamp(56px, 7vw, 84px);
+    text-align: center;
+  }
+  .cbb-why .cbb-why__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-why .cbb-why__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-why .cbb-why__rule {
+    display: block;
+    width: 56px;
+    height: 1px;
+    margin: 24px auto 0;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  }
+
+  /* ---- Columns ---- */
+  .cbb-why .cbb-why__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-why .cbb-why__item {
+    position: relative;
+    margin: 0;
+    padding: 8px clamp(20px, 2.6vw, 40px);
+    text-align: center;
+  }
+  .cbb-why .cbb-why__item::marker {
+    content: none;
+  }
+  /* Thin vertical gold divider on the left of columns 2–4 */
+  .cbb-why .cbb-why__item + .cbb-why__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: var(--cbb-divider);
+  }
+
+  .cbb-why .cbb-why__icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    max-width: 100%;
+    margin: 0 auto 24px;
+    color: var(--cbb-gold);
+  }
+  .cbb-why .cbb-why__name {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cbb-white);
+  }
+  .cbb-why .cbb-why__desc {
+    max-width: 16rem;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--cbb-muted);
+  }
+
+  /* ---- 2 x 2 (tablet) ---- */
+  @media (max-width: 960px) {
+    .cbb-why .cbb-why__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .cbb-why .cbb-why__item {
+      padding: 40px clamp(20px, 3vw, 40px);
+    }
+    .cbb-why .cbb-why__item + .cbb-why__item::before {
+      content: none;
+    }
+    /* vertical divider between the two columns */
+    .cbb-why .cbb-why__item:nth-child(2n)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      background: var(--cbb-divider);
+    }
+    /* horizontal divider between the two rows */
+    .cbb-why .cbb-why__item:nth-child(n + 3)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--cbb-divider-h);
+    }
+  }
+
+  /* ---- Single column (mobile) ---- */
+  @media (max-width: 600px) {
+    .cbb-why .cbb-why__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-why .cbb-why__item {
+      padding: 36px 8px;
+    }
+    .cbb-why .cbb-why__item:nth-child(2n)::before {
+      content: none;
+    }
+    .cbb-why .cbb-why__item:nth-child(n + 2)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--cbb-divider-h);
+    }
+  }
+</style>
+
+<section class="cbb-why" aria-labelledby="cbb-why-title">
+  <div class="cbb-why__inner">
+    <header class="cbb-why__header">
+      <p class="cbb-why__eyebrow">More Than Marketing. A Smarter Way to Grow.</p>
+      <h2 class="cbb-why__title" id="cbb-why-title">Why Covered Bridge Brands</h2>
+      <span class="cbb-why__rule" aria-hidden="true"></span>
+    </header>
+
+    <ul class="cbb-why__grid">
+      <!-- AI Strategy -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9.5 9.5h5v5h-5z"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></svg>
+        <h3 class="cbb-why__name">AI Strategy</h3>
+        <p class="cbb-why__desc">Practical, results-driven AI strategy tailored to your business.</p>
+      </li>
+
+      <!-- Marketing Systems -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4z"/><path d="M6.3 8h11.4"/></svg>
+        <h3 class="cbb-why__name">Marketing Systems</h3>
+        <p class="cbb-why__desc">Complete marketing systems that attract, engage, and convert.</p>
+      </li>
+
+      <!-- Automation -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 21v-5h-5"/><circle cx="12" cy="12" r="2.2"/></svg>
+        <h3 class="cbb-why__name">Automation</h3>
+        <p class="cbb-why__desc">Save time and increase efficiency with intelligent automation.</p>
+      </li>
+
+      <!-- Measurable Growth -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><rect x="4.5" y="14" width="3.5" height="4.5"/><rect x="10.25" y="10" width="3.5" height="8.5"/><rect x="16" y="6" width="3.5" height="12.5"/><path d="M4 9.5 10 5l3 2 6-4.5"/></svg>
+        <h3 class="cbb-why__name">Measurable Growth</h3>
+        <p class="cbb-why__desc">Data-driven solutions designed to deliver real results.</p>
+      </li>
+    </ul>
+  </div>
+</section>

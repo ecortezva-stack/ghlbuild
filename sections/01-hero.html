@@ -1,0 +1,250 @@
+<!-- ============================================================
+     CBB HOME — 01 HERO
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-hero.
+     ============================================================ -->
+<style>
+  .cbb-hero {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(72px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-black);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cbb-hero,
+  .cbb-hero *,
+  .cbb-hero *::before,
+  .cbb-hero *::after {
+    box-sizing: border-box;
+  }
+  /* Soft warm glow behind the headline */
+  .cbb-hero::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(closest-side, rgba(213, 167, 86, 0.12), rgba(213, 167, 86, 0));
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .cbb-hero .cbb-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 88px);
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .cbb-hero .cbb-hero__title {
+    margin: 0 0 clamp(20px, 2.5vw, 28px);
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2.15rem, 4.4vw + 0.4rem, 4.5rem);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-hero .cbb-hero__line {
+    display: block;
+  }
+  .cbb-hero .cbb-hero__line--gold {
+    color: var(--cbb-gold);
+    background: linear-gradient(135deg, var(--cbb-gold-deep) 0%, var(--cbb-gold-light) 55%, var(--cbb-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-hero .cbb-hero__line--white {
+    color: var(--cbb-white);
+  }
+
+  .cbb-hero .cbb-hero__sub {
+    max-width: 34em;
+    margin: 0 0 clamp(32px, 4vw, 44px);
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(1rem, 0.35vw + 0.92rem, 1.15rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--cbb-muted);
+  }
+
+  .cbb-hero .cbb-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .cbb-hero .cbb-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 30px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-family: var(--cbb-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+  .cbb-hero .cbb-hero__btn--gold {
+    background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
+    color: var(--cbb-black);
+  }
+  .cbb-hero .cbb-hero__btn--gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(213, 167, 86, 0.28);
+    color: var(--cbb-black);
+  }
+  .cbb-hero .cbb-hero__btn--outline {
+    background: transparent;
+    border-color: var(--cbb-gold);
+    color: var(--cbb-gold);
+  }
+  .cbb-hero .cbb-hero__btn--outline:hover {
+    background: rgba(213, 167, 86, 0.08);
+    color: var(--cbb-gold-light);
+  }
+  .cbb-hero .cbb-hero__btn:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+
+  /* ---- Image area ---- */
+  .cbb-hero .cbb-hero__media {
+    position: relative;
+    min-height: clamp(380px, 44vw, 580px);
+    border: 1px solid rgba(213, 167, 86, 0.28);
+    border-radius: 4px;
+    overflow: hidden;
+    /* Placeholder fill: warm dusk tones until the photo is added */
+    background:
+      radial-gradient(120% 70% at 70% 30%, rgba(243, 207, 124, 0.22), rgba(243, 207, 124, 0) 60%),
+      linear-gradient(180deg, #2A241B 0%, #17150F 55%, #0E0E0D 100%);
+  }
+  .cbb-hero .cbb-hero__img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Darkens the bottom edge so the caption stays readable over any photo */
+  .cbb-hero .cbb-hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 11, 12, 0) 55%, rgba(10, 11, 12, 0.75) 100%);
+    pointer-events: none;
+  }
+  .cbb-hero .cbb-hero__caption {
+    position: absolute;
+    right: clamp(16px, 2.5vw, 28px);
+    bottom: clamp(16px, 2.5vw, 24px);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: right;
+    color: var(--cbb-gold-light);
+  }
+  .cbb-hero .cbb-hero__caption::before {
+    content: "";
+    flex: 0 0 28px;
+    height: 1px;
+    background: var(--cbb-gold);
+  }
+
+  @media (max-width: 900px) {
+    .cbb-hero .cbb-hero__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-hero .cbb-hero__media {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
+  }
+  @media (max-width: 480px) {
+    .cbb-hero .cbb-hero__actions {
+      flex-direction: column;
+    }
+    .cbb-hero .cbb-hero__btn {
+      width: 100%;
+    }
+    .cbb-hero .cbb-hero__caption {
+      font-size: 0.625rem;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+    .cbb-hero .cbb-hero__caption::before {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-hero .cbb-hero__btn {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="cbb-hero" aria-labelledby="cbb-hero-title">
+  <div class="cbb-hero__inner">
+    <div class="cbb-hero__content">
+      <h1 class="cbb-hero__title" id="cbb-hero-title">
+        <span class="cbb-hero__line cbb-hero__line--gold">AI Marketing.</span>
+        <span class="cbb-hero__line cbb-hero__line--white">Focused on Results.</span>
+      </h1>
+      <p class="cbb-hero__sub">
+        We build AI-powered systems, automation, and marketing solutions to help businesses
+        grow smarter, work more efficiently, and achieve measurable results.
+      </p>
+      <div class="cbb-hero__actions">
+        <a class="cbb-hero__btn cbb-hero__btn--gold" href="#our-systems">Explore Services</a>
+        <a class="cbb-hero__btn cbb-hero__btn--outline" href="#contact">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="cbb-hero__media">
+      <!-- IMAGE: Covered bridge photograph (landscape, warm/dusk light works best,
+           min. 1400px wide). To add it, uncomment the <img> below and set src
+           to the image URL from the GHL media library. The gradient behind it
+           stays as a fallback while the image loads. -->
+      <!-- <img class="cbb-hero__img" src="PASTE-IMAGE-URL-HERE" alt="Historic covered bridge at dusk" loading="eager"> -->
+      <p class="cbb-hero__caption">Traditional Values. Modern Solutions.</p>
+    </div>
+  </div>
+</section>

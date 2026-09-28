@@ -1,0 +1,258 @@
+<!-- ============================================================
+     CBB HOME — 03 HOW IT WORKS
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-process.
+     ============================================================ -->
+<style>
+  .cbb-process {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    --cbb-circle: 92px;
+    --cbb-gap: clamp(24px, 3vw, 40px);
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-black);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-process,
+  .cbb-process *,
+  .cbb-process *::before,
+  .cbb-process *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-process .cbb-process__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ---- Section header ---- */
+  .cbb-process .cbb-process__header {
+    max-width: 720px;
+    margin: 0 auto clamp(56px, 7vw, 84px);
+    text-align: center;
+  }
+  .cbb-process .cbb-process__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-process .cbb-process__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-process .cbb-process__rule {
+    display: block;
+    width: 56px;
+    height: 1px;
+    margin: 24px auto 0;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  }
+
+  /* ---- Steps ---- */
+  .cbb-process .cbb-process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--cbb-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+  }
+  .cbb-process .cbb-process__step {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .cbb-process .cbb-process__step::before,
+  .cbb-process .cbb-process__step::marker {
+    content: none;
+  }
+
+  .cbb-process .cbb-process__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--cbb-circle);
+    height: var(--cbb-circle);
+    margin: 0 auto 28px;
+    border: 1px solid var(--cbb-gold);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, rgba(213, 167, 86, 0.12), rgba(213, 167, 86, 0) 70%);
+    box-shadow: 0 0 0 8px var(--cbb-black), 0 0 0 9px rgba(213, 167, 86, 0.16);
+    color: var(--cbb-gold);
+  }
+  .cbb-process .cbb-process__icon svg {
+    width: 34px;
+    height: 34px;
+    max-width: 100%;
+  }
+
+  /* Connecting arrow: runs from the right edge of this circle to the left
+     edge of the next one (desktop). */
+  .cbb-process .cbb-process__arrow {
+    position: absolute;
+    top: calc(var(--cbb-circle) / 2);
+    left: calc(50% + var(--cbb-circle) / 2 + 18px);
+    width: calc(100% + var(--cbb-gap) - var(--cbb-circle) - 36px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0.15), var(--cbb-gold));
+  }
+  .cbb-process .cbb-process__arrow::after {
+    content: "";
+    position: absolute;
+    top: -3.5px;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--cbb-gold);
+    border-right: 1px solid var(--cbb-gold);
+    transform: rotate(45deg);
+  }
+
+  .cbb-process .cbb-process__num {
+    display: block;
+    margin: 0 0 8px;
+    font-family: var(--cbb-serif);
+    font-size: 0.9375rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--cbb-gold);
+  }
+  .cbb-process .cbb-process__name {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cbb-white);
+  }
+  .cbb-process .cbb-process__desc {
+    max-width: 17rem;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--cbb-muted);
+  }
+
+  /* ---- Stacked layout (tablet + mobile) ---- */
+  @media (max-width: 860px) {
+    .cbb-process .cbb-process__steps {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    /* move the arrow below each step's text so it points to the next step */
+    .cbb-process .cbb-process__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cbb-process .cbb-process__arrow {
+      order: 1;
+      position: relative;
+      top: auto;
+      left: auto;
+      display: block;
+      width: 1px;
+      height: 48px;
+      margin: 28px auto;
+      background: linear-gradient(180deg, rgba(213, 167, 86, 0.15), var(--cbb-gold));
+    }
+    .cbb-process .cbb-process__arrow::after {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: -3.5px;
+      transform: rotate(135deg);
+    }
+  }
+</style>
+
+<section class="cbb-process" aria-labelledby="cbb-process-title">
+  <div class="cbb-process__inner">
+    <header class="cbb-process__header">
+      <p class="cbb-process__eyebrow">A Simple, Proven Process</p>
+      <h2 class="cbb-process__title" id="cbb-process-title">How Covered Bridge Brands Works</h2>
+      <span class="cbb-process__rule" aria-hidden="true"></span>
+    </header>
+
+    <ol class="cbb-process__steps">
+      <!-- Step 1: Strategy -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/><path d="M12 1.5V4M12 20v2.5M1.5 12H4M20 12h2.5"/></svg>
+        </div>
+        <span class="cbb-process__arrow" aria-hidden="true"></span>
+        <span class="cbb-process__num">01</span>
+        <h3 class="cbb-process__name">Strategy</h3>
+        <p class="cbb-process__desc">We learn your goals, challenges, and opportunities to create a tailored plan.</p>
+      </li>
+
+      <!-- Step 2: Build -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+        </div>
+        <span class="cbb-process__arrow" aria-hidden="true"></span>
+        <span class="cbb-process__num">02</span>
+        <h3 class="cbb-process__name">Build</h3>
+        <p class="cbb-process__desc">We design and implement AI systems, automation, and marketing solutions for your business.</p>
+      </li>
+
+      <!-- Step 3: Launch -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <span class="cbb-process__arrow" aria-hidden="true"></span>
+        <span class="cbb-process__num">03</span>
+        <h3 class="cbb-process__name">Launch</h3>
+        <p class="cbb-process__desc">We get your systems live and ensure everything works together seamlessly.</p>
+      </li>
+
+      <!-- Step 4: Optimize (no arrow after the last step) -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/><path d="M3 21h18"/></svg>
+        </div>
+        <span class="cbb-process__num">04</span>
+        <h3 class="cbb-process__name">Optimize</h3>
+        <p class="cbb-process__desc">We track performance, refine, and scale for measurable, long-term growth.</p>
+      </li>
+    </ol>
+  </div>
+</section>

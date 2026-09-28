@@ -1,0 +1,188 @@
+<!-- ============================================================
+     CBB HOME — 05 CTA / CONTACT
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-cta.
+     ============================================================ -->
+<style>
+  .cbb-cta {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-black);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+    scroll-margin-top: 80px;
+  }
+  .cbb-cta,
+  .cbb-cta *,
+  .cbb-cta *::before,
+  .cbb-cta *::after {
+    box-sizing: border-box;
+  }
+
+  /* ---- Gold-bordered panel ---- */
+  .cbb-cta .cbb-cta__panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(36px, 5vw, 72px);
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: clamp(36px, 6vw, 80px);
+    border: 1px solid rgba(213, 167, 86, 0.55);
+    border-radius: 4px;
+    background:
+      radial-gradient(70% 90% at 0% 0%, rgba(213, 167, 86, 0.14), rgba(213, 167, 86, 0) 60%),
+      radial-gradient(60% 80% at 100% 100%, rgba(201, 153, 74, 0.08), rgba(201, 153, 74, 0) 60%),
+      var(--cbb-surface);
+    overflow: hidden;
+  }
+  /* Bright gold hairline along the top edge */
+  .cbb-cta .cbb-cta__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(201, 153, 74, 0), var(--cbb-gold-light), rgba(201, 153, 74, 0));
+  }
+
+  .cbb-cta .cbb-cta__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-cta .cbb-cta__title {
+    margin: 0 0 20px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.4vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-cta .cbb-cta__gold {
+    color: var(--cbb-gold);
+    background: linear-gradient(135deg, var(--cbb-gold-deep) 0%, var(--cbb-gold-light) 60%, var(--cbb-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-cta .cbb-cta__copy {
+    max-width: 28em;
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(1rem, 0.3vw + 0.92rem, 1.125rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--cbb-muted);
+  }
+
+  /* ---- Form slot ----
+     The GHL form goes here. The dashed outline + label only show while
+     the slot is empty, so they disappear once the form is embedded. */
+  .cbb-cta .cbb-cta__form {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+  }
+  .cbb-cta .cbb-cta__form:empty {
+    min-height: 360px;
+    border: 1px dashed rgba(213, 167, 86, 0.45);
+    border-radius: 4px;
+  }
+  .cbb-cta .cbb-cta__form:empty::before {
+    content: "Contact form goes here";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(213, 167, 86, 0.7);
+  }
+  .cbb-cta .cbb-cta__form iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+  }
+
+  /* If the form slot is removed (Option B below), center the text block */
+  .cbb-cta .cbb-cta__text:only-child {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  .cbb-cta .cbb-cta__text:only-child .cbb-cta__copy {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 860px) {
+    .cbb-cta .cbb-cta__panel {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-cta .cbb-cta__text {
+      text-align: center;
+    }
+    .cbb-cta .cbb-cta__copy {
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 480px) {
+    .cbb-cta .cbb-cta__panel {
+      padding: 32px 20px;
+    }
+    .cbb-cta .cbb-cta__form:empty {
+      min-height: 300px;
+    }
+  }
+</style>
+
+<section class="cbb-cta" id="contact" aria-labelledby="cbb-cta-title">
+  <div class="cbb-cta__panel">
+    <div class="cbb-cta__text">
+      <p class="cbb-cta__eyebrow">Let's Build Your Bridge to Growth</p>
+      <h2 class="cbb-cta__title" id="cbb-cta-title">Ready to Grow <span class="cbb-cta__gold">Smarter?</span></h2>
+      <p class="cbb-cta__copy">Tell us about your business and we'll show you where AI can deliver the biggest results.</p>
+    </div>
+
+    <div class="cbb-cta__form" id="cbb-contact-form"><!--
+      ================= GHL CONTACT FORM GOES HERE =================
+      Option A (keeps the form inside this gold panel):
+        Sites > Forms > your form > Integrate > copy the "Embed" code
+        and paste it between these div tags, replacing this comment.
+      Option B (native form element):
+        Delete this div, then drop a native Form element directly
+        below this Custom HTML element in the same GHL section.
+      ==============================================================
+    --></div>
+  </div>
+</section>

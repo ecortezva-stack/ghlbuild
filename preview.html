@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CBB Home Preview</title>
+<!-- Preview only: GHL loads these fonts itself -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap">
+<style>body { margin: 0; background: #0A0B0C; }</style>
+</head>
+<body>
+<!-- ============================================================
+     CBB HOME — 01 HERO
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-hero.
+     ============================================================ -->
+<style>
+  .cbb-hero {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(72px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-black);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cbb-hero,
+  .cbb-hero *,
+  .cbb-hero *::before,
+  .cbb-hero *::after {
+    box-sizing: border-box;
+  }
+  /* Soft warm glow behind the headline */
+  .cbb-hero::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(closest-side, rgba(213, 167, 86, 0.12), rgba(213, 167, 86, 0));
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .cbb-hero .cbb-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 88px);
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .cbb-hero .cbb-hero__title {
+    margin: 0 0 clamp(20px, 2.5vw, 28px);
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2.15rem, 4.4vw + 0.4rem, 4.5rem);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-hero .cbb-hero__line {
+    display: block;
+  }
+  .cbb-hero .cbb-hero__line--gold {
+    color: var(--cbb-gold);
+    background: linear-gradient(135deg, var(--cbb-gold-deep) 0%, var(--cbb-gold-light) 55%, var(--cbb-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-hero .cbb-hero__line--white {
+    color: var(--cbb-white);
+  }
+
+  .cbb-hero .cbb-hero__sub {
+    max-width: 34em;
+    margin: 0 0 clamp(32px, 4vw, 44px);
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(1rem, 0.35vw + 0.92rem, 1.15rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--cbb-muted);
+  }
+
+  .cbb-hero .cbb-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .cbb-hero .cbb-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 30px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-family: var(--cbb-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+  .cbb-hero .cbb-hero__btn--gold {
+    background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
+    color: var(--cbb-black);
+  }
+  .cbb-hero .cbb-hero__btn--gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(213, 167, 86, 0.28);
+    color: var(--cbb-black);
+  }
+  .cbb-hero .cbb-hero__btn--outline {
+    background: transparent;
+    border-color: var(--cbb-gold);
+    color: var(--cbb-gold);
+  }
+  .cbb-hero .cbb-hero__btn--outline:hover {
+    background: rgba(213, 167, 86, 0.08);
+    color: var(--cbb-gold-light);
+  }
+  .cbb-hero .cbb-hero__btn:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+
+  /* ---- Image area ---- */
+  .cbb-hero .cbb-hero__media {
+    position: relative;
+    min-height: clamp(380px, 44vw, 580px);
+    border: 1px solid rgba(213, 167, 86, 0.28);
+    border-radius: 4px;
+    overflow: hidden;
+    /* Placeholder fill: warm dusk tones until the photo is added */
+    background:
+      radial-gradient(120% 70% at 70% 30%, rgba(243, 207, 124, 0.22), rgba(243, 207, 124, 0) 60%),
+      linear-gradient(180deg, #2A241B 0%, #17150F 55%, #0E0E0D 100%);
+  }
+  .cbb-hero .cbb-hero__img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Darkens the bottom edge so the caption stays readable over any photo */
+  .cbb-hero .cbb-hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 11, 12, 0) 55%, rgba(10, 11, 12, 0.75) 100%);
+    pointer-events: none;
+  }
+  .cbb-hero .cbb-hero__caption {
+    position: absolute;
+    right: clamp(16px, 2.5vw, 28px);
+    bottom: clamp(16px, 2.5vw, 24px);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: right;
+    color: var(--cbb-gold-light);
+  }
+  .cbb-hero .cbb-hero__caption::before {
+    content: "";
+    flex: 0 0 28px;
+    height: 1px;
+    background: var(--cbb-gold);
+  }
+
+  @media (max-width: 900px) {
+    .cbb-hero .cbb-hero__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-hero .cbb-hero__media {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
+  }
+  @media (max-width: 480px) {
+    .cbb-hero .cbb-hero__actions {
+      flex-direction: column;
+    }
+    .cbb-hero .cbb-hero__btn {
+      width: 100%;
+    }
+    .cbb-hero .cbb-hero__caption {
+      font-size: 0.625rem;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+    .cbb-hero .cbb-hero__caption::before {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-hero .cbb-hero__btn {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="cbb-hero" aria-labelledby="cbb-hero-title">
+  <div class="cbb-hero__inner">
+    <div class="cbb-hero__content">
+      <h1 class="cbb-hero__title" id="cbb-hero-title">
+        <span class="cbb-hero__line cbb-hero__line--gold">AI Marketing.</span>
+        <span class="cbb-hero__line cbb-hero__line--white">Focused on Results.</span>
+      </h1>
+      <p class="cbb-hero__sub">
+        We build AI-powered systems, automation, and marketing solutions to help businesses
+        grow smarter, work more efficiently, and achieve measurable results.
+      </p>
+      <div class="cbb-hero__actions">
+        <a class="cbb-hero__btn cbb-hero__btn--gold" href="#our-systems">Explore Services</a>
+        <a class="cbb-hero__btn cbb-hero__btn--outline" href="#contact">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="cbb-hero__media">
+      <!-- IMAGE: Covered bridge photograph (landscape, warm/dusk light works best,
+           min. 1400px wide). To add it, uncomment the <img> below and set src
+           to the image URL from the GHL media library. The gradient behind it
+           stays as a fallback while the image loads. -->
+      <!-- <img class="cbb-hero__img" src="PASTE-IMAGE-URL-HERE" alt="Historic covered bridge at dusk" loading="eager"> -->
+      <p class="cbb-hero__caption">Traditional Values. Modern Solutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CBB HOME — 02 OUR SYSTEMS
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-systems.
+     ============================================================ -->
+<style>
+  .cbb-systems {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-surface);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+    scroll-margin-top: 80px;
+  }
+  .cbb-systems,
+  .cbb-systems *,
+  .cbb-systems *::before,
+  .cbb-systems *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-systems .cbb-systems__inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* ---- Section header ---- */
+  .cbb-systems .cbb-systems__header {
+    max-width: 720px;
+    margin: 0 auto clamp(48px, 6vw, 72px);
+    text-align: center;
+  }
+  .cbb-systems .cbb-systems__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-systems .cbb-systems__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-systems .cbb-systems__rule {
+    display: block;
+    width: 56px;
+    height: 1px;
+    margin: 24px auto 0;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  }
+
+  /* ---- Grid ---- */
+  .cbb-systems .cbb-systems__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(20px, 2.4vw, 32px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* ---- Card ---- */
+  .cbb-systems .cbb-systems__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background: var(--cbb-black);
+    border: 1px solid rgba(213, 167, 86, 0.18);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .cbb-systems .cbb-systems__card--live:hover,
+  .cbb-systems .cbb-systems__card--live:focus-within {
+    transform: translateY(-4px);
+    border-color: rgba(213, 167, 86, 0.55);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .cbb-systems .cbb-systems__media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 10;
+    border-bottom: 1px solid rgba(213, 167, 86, 0.14);
+    background:
+      radial-gradient(90% 80% at 50% 40%, rgba(213, 167, 86, 0.16), rgba(213, 167, 86, 0) 70%),
+      linear-gradient(160deg, #1C1A16 0%, #121415 60%, #0D0E0F 100%);
+    color: var(--cbb-gold);
+    overflow: hidden;
+  }
+  .cbb-systems .cbb-systems__media svg {
+    width: clamp(44px, 5vw, 56px);
+    height: auto;
+    max-width: 100%;
+    opacity: 0.85;
+  }
+  .cbb-systems .cbb-systems__img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cbb-systems .cbb-systems__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
+    color: var(--cbb-black);
+    font-family: var(--cbb-sans);
+    font-size: 0.625rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .cbb-systems .cbb-systems__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: clamp(22px, 2.4vw, 28px);
+  }
+  .cbb-systems .cbb-systems__name {
+    margin: 0 0 10px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.3rem, 0.8vw + 1rem, 1.5rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-systems .cbb-systems__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+  }
+  /* Makes the whole live card clickable while keeping "Notify Me" separate */
+  .cbb-systems .cbb-systems__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .cbb-systems .cbb-systems__link:focus-visible {
+    outline: none;
+  }
+  .cbb-systems .cbb-systems__card--live:focus-within {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+  .cbb-systems .cbb-systems__out {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    color: var(--cbb-gold);
+    transition: transform 0.25s ease;
+  }
+  .cbb-systems .cbb-systems__card--live:hover .cbb-systems__out {
+    transform: translate(2px, -2px);
+  }
+
+  .cbb-systems .cbb-systems__desc {
+    margin: 0 0 24px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--cbb-muted);
+  }
+
+  .cbb-systems .cbb-systems__notify {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    min-height: 44px;
+    margin-top: auto;
+    padding: 0 22px;
+    border: 1px solid var(--cbb-gold);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--cbb-gold);
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .cbb-systems .cbb-systems__notify:hover {
+    background: linear-gradient(135deg, var(--cbb-gold-deep), var(--cbb-gold-light));
+    color: var(--cbb-black);
+  }
+  .cbb-systems .cbb-systems__notify:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+
+  /* ---- Dimmed, non-clickable industry cards ---- */
+  .cbb-systems .cbb-systems__card--soon {
+    border-color: rgba(213, 167, 86, 0.1);
+  }
+  .cbb-systems .cbb-systems__card--soon .cbb-systems__media {
+    filter: saturate(0.55);
+    opacity: 0.6;
+  }
+  .cbb-systems .cbb-systems__card--soon .cbb-systems__name,
+  .cbb-systems .cbb-systems__card--soon .cbb-systems__desc {
+    opacity: 0.62;
+  }
+  .cbb-systems .cbb-systems__card--soon .cbb-systems__badge {
+    opacity: 0.85;
+  }
+  .cbb-systems .cbb-systems__card--soon .cbb-systems__notify {
+    border-color: rgba(213, 167, 86, 0.55);
+  }
+
+  @media (max-width: 1000px) {
+    .cbb-systems .cbb-systems__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .cbb-systems .cbb-systems__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-systems .cbb-systems__card,
+    .cbb-systems .cbb-systems__out,
+    .cbb-systems .cbb-systems__notify {
+      transition: none;
+    }
+    .cbb-systems .cbb-systems__card--live:hover,
+    .cbb-systems .cbb-systems__card--live:focus-within {
+      transform: none;
+    }
+  }
+</style>
+
+<section class="cbb-systems" id="our-systems" aria-labelledby="cbb-systems-title">
+  <div class="cbb-systems__inner">
+    <header class="cbb-systems__header">
+      <p class="cbb-systems__eyebrow">Powerful AI Solutions for Real Business Growth</p>
+      <h2 class="cbb-systems__title" id="cbb-systems-title">Our Systems</h2>
+      <span class="cbb-systems__rule" aria-hidden="true"></span>
+    </header>
+
+    <!-- "Notify Me" buttons point to the contact section (#contact).
+         Swap each href for a GHL popup trigger or a dedicated waitlist
+         form URL if you set one up per system. -->
+    <ul class="cbb-systems__grid">
+
+      <!-- ===== Card 1: Super LO (links out) ===== -->
+      <li class="cbb-systems__card cbb-systems__card--live">
+        <div class="cbb-systems__media" aria-hidden="true">
+          <!-- IMAGE: Super LO product visual (dashboard screenshot or loan officer
+               with phone). Uncomment the <img> and set src to use a photo. -->
+          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><circle cx="12" cy="13" r="1.6"/><path d="M12 14.6V17"/></svg>
+        </div>
+        <span class="cbb-systems__badge">Coming Soon</span>
+        <div class="cbb-systems__body">
+          <h3 class="cbb-systems__name">
+            <!-- LINK: replace href with the Super LO page/site URL -->
+            <a class="cbb-systems__link" href="#" target="_blank" rel="noopener">
+              Super LO
+              <svg class="cbb-systems__out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+            </a>
+          </h3>
+          <p class="cbb-systems__desc">An AI assistant for loan officers that follows up with leads and keeps your pipeline moving.</p>
+          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when Super LO launches">Notify Me</a>
+        </div>
+      </li>
+
+      <!-- ===== Card 2: System Two (links out) — NAME TBC ===== -->
+      <li class="cbb-systems__card cbb-systems__card--live">
+        <div class="cbb-systems__media" aria-hidden="true">
+          <!-- IMAGE: AI marketing assistant product visual. Uncomment the <img> and set src. -->
+          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 4V5L7 9H4a1 1 0 0 0-1 1z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+        </div>
+        <span class="cbb-systems__badge">Coming Soon</span>
+        <div class="cbb-systems__body">
+          <h3 class="cbb-systems__name">
+            <!-- NAME TBC: update "System Two" once the product name is final.
+                 LINK: replace href with the product page/site URL. -->
+            <a class="cbb-systems__link" href="#" target="_blank" rel="noopener">
+              System Two
+              <svg class="cbb-systems__out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+            </a>
+          </h3>
+          <p class="cbb-systems__desc">An AI marketing assistant that creates, schedules, and optimizes your campaigns for you.</p>
+          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when System Two launches">Notify Me</a>
+        </div>
+      </li>
+
+      <!-- ===== Card 3: Roofers (not clickable, dimmed) ===== -->
+      <li class="cbb-systems__card cbb-systems__card--soon">
+        <div class="cbb-systems__media" aria-hidden="true">
+          <!-- IMAGE: Roofing contractor on a residential roof. Uncomment the <img> and set src. -->
+          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13 12 5l10 8"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M10 20v-5h4v5"/><path d="M16 7.4V4h2.5v5.4"/></svg>
+        </div>
+        <span class="cbb-systems__badge">Coming Soon</span>
+        <div class="cbb-systems__body">
+          <h3 class="cbb-systems__name">Roofers</h3>
+          <p class="cbb-systems__desc">AI lead generation and instant follow-up built to book more roofing inspections.</p>
+          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the Roofers system launches">Notify Me</a>
+        </div>
+      </li>
+
+      <!-- ===== Card 4: HVAC Services (not clickable, dimmed) ===== -->
+      <li class="cbb-systems__card cbb-systems__card--soon">
+        <div class="cbb-systems__media" aria-hidden="true">
+          <!-- IMAGE: HVAC technician servicing an outdoor unit. Uncomment the <img> and set src. -->
+          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="1.4"/><path d="M12 10.6c-.4-2.6.4-5 2.6-5.4 1.5-.3 2.3 1 1.3 2.4-.8 1.2-2.2 2.2-3.9 3"/><path d="M12 10.6c-.4-2.6.4-5 2.6-5.4 1.5-.3 2.3 1 1.3 2.4-.8 1.2-2.2 2.2-3.9 3" transform="rotate(120 12 12)"/><path d="M12 10.6c-.4-2.6.4-5 2.6-5.4 1.5-.3 2.3 1 1.3 2.4-.8 1.2-2.2 2.2-3.9 3" transform="rotate(240 12 12)"/></svg>
+        </div>
+        <span class="cbb-systems__badge">Coming Soon</span>
+        <div class="cbb-systems__body">
+          <h3 class="cbb-systems__name">HVAC Services</h3>
+          <p class="cbb-systems__desc">Automated booking, reminders, and seasonal campaigns that keep your techs busy year-round.</p>
+          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the HVAC Services system launches">Notify Me</a>
+        </div>
+      </li>
+
+      <!-- ===== Card 5: Home Services (not clickable, dimmed) ===== -->
+      <li class="cbb-systems__card cbb-systems__card--soon">
+        <div class="cbb-systems__media" aria-hidden="true">
+          <!-- IMAGE: Home service pro (plumber/electrician) at a front door. Uncomment the <img> and set src. -->
+          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <span class="cbb-systems__badge">Coming Soon</span>
+        <div class="cbb-systems__body">
+          <h3 class="cbb-systems__name">Home Services</h3>
+          <p class="cbb-systems__desc">Lead capture, fast response, and review automation for plumbers, electricians, and more.</p>
+          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the Home Services system launches">Notify Me</a>
+        </div>
+      </li>
+
+      <!-- ===== Card 6: Medical Services (not clickable, dimmed) ===== -->
+      <li class="cbb-systems__card cbb-systems__card--soon">
+        <div class="cbb-systems__media" aria-hidden="true">
+          <!-- IMAGE: Modern clinic reception or practitioner with patient. Uncomment the <img> and set src. -->
+          <!-- <img class="cbb-systems__img" src="PASTE-IMAGE-URL-HERE" alt=""> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 13.6 12 21l-7.5-7.4A5 5 0 1 1 12 6.5a5 5 0 1 1 7.5 7.1z"/><path d="M3.5 12h4l1.5-3 3 6 1.5-3h7"/></svg>
+        </div>
+        <span class="cbb-systems__badge">Coming Soon</span>
+        <div class="cbb-systems__body">
+          <h3 class="cbb-systems__name">Medical Services</h3>
+          <p class="cbb-systems__desc">Patient acquisition, appointment reminders, and reputation systems for medical practices.</p>
+          <a class="cbb-systems__notify" href="#contact" aria-label="Notify me when the Medical Services system launches">Notify Me</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     CBB HOME — 03 HOW IT WORKS
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-process.
+     ============================================================ -->
+<style>
+  .cbb-process {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    --cbb-circle: 92px;
+    --cbb-gap: clamp(24px, 3vw, 40px);
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-black);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-process,
+  .cbb-process *,
+  .cbb-process *::before,
+  .cbb-process *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-process .cbb-process__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ---- Section header ---- */
+  .cbb-process .cbb-process__header {
+    max-width: 720px;
+    margin: 0 auto clamp(56px, 7vw, 84px);
+    text-align: center;
+  }
+  .cbb-process .cbb-process__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-process .cbb-process__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-process .cbb-process__rule {
+    display: block;
+    width: 56px;
+    height: 1px;
+    margin: 24px auto 0;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  }
+
+  /* ---- Steps ---- */
+  .cbb-process .cbb-process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--cbb-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+  }
+  .cbb-process .cbb-process__step {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .cbb-process .cbb-process__step::before,
+  .cbb-process .cbb-process__step::marker {
+    content: none;
+  }
+
+  .cbb-process .cbb-process__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--cbb-circle);
+    height: var(--cbb-circle);
+    margin: 0 auto 28px;
+    border: 1px solid var(--cbb-gold);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, rgba(213, 167, 86, 0.12), rgba(213, 167, 86, 0) 70%);
+    box-shadow: 0 0 0 8px var(--cbb-black), 0 0 0 9px rgba(213, 167, 86, 0.16);
+    color: var(--cbb-gold);
+  }
+  .cbb-process .cbb-process__icon svg {
+    width: 34px;
+    height: 34px;
+    max-width: 100%;
+  }
+
+  /* Connecting arrow: runs from the right edge of this circle to the left
+     edge of the next one (desktop). */
+  .cbb-process .cbb-process__arrow {
+    position: absolute;
+    top: calc(var(--cbb-circle) / 2);
+    left: calc(50% + var(--cbb-circle) / 2 + 18px);
+    width: calc(100% + var(--cbb-gap) - var(--cbb-circle) - 36px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0.15), var(--cbb-gold));
+  }
+  .cbb-process .cbb-process__arrow::after {
+    content: "";
+    position: absolute;
+    top: -3.5px;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--cbb-gold);
+    border-right: 1px solid var(--cbb-gold);
+    transform: rotate(45deg);
+  }
+
+  .cbb-process .cbb-process__num {
+    display: block;
+    margin: 0 0 8px;
+    font-family: var(--cbb-serif);
+    font-size: 0.9375rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--cbb-gold);
+  }
+  .cbb-process .cbb-process__name {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cbb-white);
+  }
+  .cbb-process .cbb-process__desc {
+    max-width: 17rem;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--cbb-muted);
+  }
+
+  /* ---- Stacked layout (tablet + mobile) ---- */
+  @media (max-width: 860px) {
+    .cbb-process .cbb-process__steps {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    /* move the arrow below each step's text so it points to the next step */
+    .cbb-process .cbb-process__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cbb-process .cbb-process__arrow {
+      order: 1;
+      position: relative;
+      top: auto;
+      left: auto;
+      display: block;
+      width: 1px;
+      height: 48px;
+      margin: 28px auto;
+      background: linear-gradient(180deg, rgba(213, 167, 86, 0.15), var(--cbb-gold));
+    }
+    .cbb-process .cbb-process__arrow::after {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: -3.5px;
+      transform: rotate(135deg);
+    }
+  }
+</style>
+
+<section class="cbb-process" aria-labelledby="cbb-process-title">
+  <div class="cbb-process__inner">
+    <header class="cbb-process__header">
+      <p class="cbb-process__eyebrow">A Simple, Proven Process</p>
+      <h2 class="cbb-process__title" id="cbb-process-title">How Covered Bridge Brands Works</h2>
+      <span class="cbb-process__rule" aria-hidden="true"></span>
+    </header>
+
+    <ol class="cbb-process__steps">
+      <!-- Step 1: Strategy -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/><path d="M12 1.5V4M12 20v2.5M1.5 12H4M20 12h2.5"/></svg>
+        </div>
+        <span class="cbb-process__arrow" aria-hidden="true"></span>
+        <span class="cbb-process__num">01</span>
+        <h3 class="cbb-process__name">Strategy</h3>
+        <p class="cbb-process__desc">We learn your goals, challenges, and opportunities to create a tailored plan.</p>
+      </li>
+
+      <!-- Step 2: Build -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 12.5 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+        </div>
+        <span class="cbb-process__arrow" aria-hidden="true"></span>
+        <span class="cbb-process__num">02</span>
+        <h3 class="cbb-process__name">Build</h3>
+        <p class="cbb-process__desc">We design and implement AI systems, automation, and marketing solutions for your business.</p>
+      </li>
+
+      <!-- Step 3: Launch -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <span class="cbb-process__arrow" aria-hidden="true"></span>
+        <span class="cbb-process__num">03</span>
+        <h3 class="cbb-process__name">Launch</h3>
+        <p class="cbb-process__desc">We get your systems live and ensure everything works together seamlessly.</p>
+      </li>
+
+      <!-- Step 4: Optimize (no arrow after the last step) -->
+      <li class="cbb-process__step">
+        <div class="cbb-process__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/><path d="M3 21h18"/></svg>
+        </div>
+        <span class="cbb-process__num">04</span>
+        <h3 class="cbb-process__name">Optimize</h3>
+        <p class="cbb-process__desc">We track performance, refine, and scale for measurable, long-term growth.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     CBB HOME — 04 WHY COVERED BRIDGE BRANDS
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-why.
+     ============================================================ -->
+<style>
+  .cbb-why {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    --cbb-divider: linear-gradient(180deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.6) 20%, rgba(213, 167, 86, 0.6) 80%, rgba(213, 167, 86, 0));
+    --cbb-divider-h: linear-gradient(90deg, rgba(213, 167, 86, 0), rgba(213, 167, 86, 0.6) 20%, rgba(213, 167, 86, 0.6) 80%, rgba(213, 167, 86, 0));
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-surface);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-why,
+  .cbb-why *,
+  .cbb-why *::before,
+  .cbb-why *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-why .cbb-why__inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* ---- Section header ---- */
+  .cbb-why .cbb-why__header {
+    max-width: 720px;
+    margin: 0 auto clamp(56px, 7vw, 84px);
+    text-align: center;
+  }
+  .cbb-why .cbb-why__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-why .cbb-why__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.6vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-why .cbb-why__rule {
+    display: block;
+    width: 56px;
+    height: 1px;
+    margin: 24px auto 0;
+    background: linear-gradient(90deg, rgba(213, 167, 86, 0), var(--cbb-gold), rgba(213, 167, 86, 0));
+  }
+
+  /* ---- Columns ---- */
+  .cbb-why .cbb-why__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-why .cbb-why__item {
+    position: relative;
+    margin: 0;
+    padding: 8px clamp(20px, 2.6vw, 40px);
+    text-align: center;
+  }
+  .cbb-why .cbb-why__item::marker {
+    content: none;
+  }
+  /* Thin vertical gold divider on the left of columns 2–4 */
+  .cbb-why .cbb-why__item + .cbb-why__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: var(--cbb-divider);
+  }
+
+  .cbb-why .cbb-why__icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    max-width: 100%;
+    margin: 0 auto 24px;
+    color: var(--cbb-gold);
+  }
+  .cbb-why .cbb-why__name {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cbb-white);
+  }
+  .cbb-why .cbb-why__desc {
+    max-width: 16rem;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--cbb-muted);
+  }
+
+  /* ---- 2 x 2 (tablet) ---- */
+  @media (max-width: 960px) {
+    .cbb-why .cbb-why__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .cbb-why .cbb-why__item {
+      padding: 40px clamp(20px, 3vw, 40px);
+    }
+    .cbb-why .cbb-why__item + .cbb-why__item::before {
+      content: none;
+    }
+    /* vertical divider between the two columns */
+    .cbb-why .cbb-why__item:nth-child(2n)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      background: var(--cbb-divider);
+    }
+    /* horizontal divider between the two rows */
+    .cbb-why .cbb-why__item:nth-child(n + 3)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--cbb-divider-h);
+    }
+  }
+
+  /* ---- Single column (mobile) ---- */
+  @media (max-width: 600px) {
+    .cbb-why .cbb-why__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-why .cbb-why__item {
+      padding: 36px 8px;
+    }
+    .cbb-why .cbb-why__item:nth-child(2n)::before {
+      content: none;
+    }
+    .cbb-why .cbb-why__item:nth-child(n + 2)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--cbb-divider-h);
+    }
+  }
+</style>
+
+<section class="cbb-why" aria-labelledby="cbb-why-title">
+  <div class="cbb-why__inner">
+    <header class="cbb-why__header">
+      <p class="cbb-why__eyebrow">More Than Marketing. A Smarter Way to Grow.</p>
+      <h2 class="cbb-why__title" id="cbb-why-title">Why Covered Bridge Brands</h2>
+      <span class="cbb-why__rule" aria-hidden="true"></span>
+    </header>
+
+    <ul class="cbb-why__grid">
+      <!-- AI Strategy -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9.5 9.5h5v5h-5z"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></svg>
+        <h3 class="cbb-why__name">AI Strategy</h3>
+        <p class="cbb-why__desc">Practical, results-driven AI strategy tailored to your business.</p>
+      </li>
+
+      <!-- Marketing Systems -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4z"/><path d="M6.3 8h11.4"/></svg>
+        <h3 class="cbb-why__name">Marketing Systems</h3>
+        <p class="cbb-why__desc">Complete marketing systems that attract, engage, and convert.</p>
+      </li>
+
+      <!-- Automation -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 21v-5h-5"/><circle cx="12" cy="12" r="2.2"/></svg>
+        <h3 class="cbb-why__name">Automation</h3>
+        <p class="cbb-why__desc">Save time and increase efficiency with intelligent automation.</p>
+      </li>
+
+      <!-- Measurable Growth -->
+      <li class="cbb-why__item">
+        <svg class="cbb-why__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><rect x="4.5" y="14" width="3.5" height="4.5"/><rect x="10.25" y="10" width="3.5" height="8.5"/><rect x="16" y="6" width="3.5" height="12.5"/><path d="M4 9.5 10 5l3 2 6-4.5"/></svg>
+        <h3 class="cbb-why__name">Measurable Growth</h3>
+        <p class="cbb-why__desc">Data-driven solutions designed to deliver real results.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     CBB HOME — 05 CTA / CONTACT
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-cta.
+     ============================================================ -->
+<style>
+  .cbb-cta {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 40px);
+    background: var(--cbb-black);
+    color: var(--cbb-white);
+    font-family: var(--cbb-sans);
+    scroll-margin-top: 80px;
+  }
+  .cbb-cta,
+  .cbb-cta *,
+  .cbb-cta *::before,
+  .cbb-cta *::after {
+    box-sizing: border-box;
+  }
+
+  /* ---- Gold-bordered panel ---- */
+  .cbb-cta .cbb-cta__panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(36px, 5vw, 72px);
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: clamp(36px, 6vw, 80px);
+    border: 1px solid rgba(213, 167, 86, 0.55);
+    border-radius: 4px;
+    background:
+      radial-gradient(70% 90% at 0% 0%, rgba(213, 167, 86, 0.14), rgba(213, 167, 86, 0) 60%),
+      radial-gradient(60% 80% at 100% 100%, rgba(201, 153, 74, 0.08), rgba(201, 153, 74, 0) 60%),
+      var(--cbb-surface);
+    overflow: hidden;
+  }
+  /* Bright gold hairline along the top edge */
+  .cbb-cta .cbb-cta__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(201, 153, 74, 0), var(--cbb-gold-light), rgba(201, 153, 74, 0));
+  }
+
+  .cbb-cta .cbb-cta__eyebrow {
+    margin: 0 0 16px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-cta .cbb-cta__title {
+    margin: 0 0 20px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(2rem, 3.4vw + 0.5rem, 3.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--cbb-white);
+  }
+  .cbb-cta .cbb-cta__gold {
+    color: var(--cbb-gold);
+    background: linear-gradient(135deg, var(--cbb-gold-deep) 0%, var(--cbb-gold-light) 60%, var(--cbb-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cbb-cta .cbb-cta__copy {
+    max-width: 28em;
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(1rem, 0.3vw + 0.92rem, 1.125rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--cbb-muted);
+  }
+
+  /* ---- Form slot ----
+     The GHL form goes here. The dashed outline + label only show while
+     the slot is empty, so they disappear once the form is embedded. */
+  .cbb-cta .cbb-cta__form {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+  }
+  .cbb-cta .cbb-cta__form:empty {
+    min-height: 360px;
+    border: 1px dashed rgba(213, 167, 86, 0.45);
+    border-radius: 4px;
+  }
+  .cbb-cta .cbb-cta__form:empty::before {
+    content: "Contact form goes here";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(213, 167, 86, 0.7);
+  }
+  .cbb-cta .cbb-cta__form iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+  }
+
+  /* If the form slot is removed (Option B below), center the text block */
+  .cbb-cta .cbb-cta__text:only-child {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  .cbb-cta .cbb-cta__text:only-child .cbb-cta__copy {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 860px) {
+    .cbb-cta .cbb-cta__panel {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-cta .cbb-cta__text {
+      text-align: center;
+    }
+    .cbb-cta .cbb-cta__copy {
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 480px) {
+    .cbb-cta .cbb-cta__panel {
+      padding: 32px 20px;
+    }
+    .cbb-cta .cbb-cta__form:empty {
+      min-height: 300px;
+    }
+  }
+</style>
+
+<section class="cbb-cta" id="contact" aria-labelledby="cbb-cta-title">
+  <div class="cbb-cta__panel">
+    <div class="cbb-cta__text">
+      <p class="cbb-cta__eyebrow">Let's Build Your Bridge to Growth</p>
+      <h2 class="cbb-cta__title" id="cbb-cta-title">Ready to Grow <span class="cbb-cta__gold">Smarter?</span></h2>
+      <p class="cbb-cta__copy">Tell us about your business and we'll show you where AI can deliver the biggest results.</p>
+    </div>
+
+    <div class="cbb-cta__form" id="cbb-contact-form"><!--
+      ================= GHL CONTACT FORM GOES HERE =================
+      Option A (keeps the form inside this gold panel):
+        Sites > Forms > your form > Integrate > copy the "Embed" code
+        and paste it between these div tags, replacing this comment.
+      Option B (native form element):
+        Delete this div, then drop a native Form element directly
+        below this Custom HTML element in the same GHL section.
+      ==============================================================
+    --></div>
+  </div>
+</section>
+
+</body>
+</html>
