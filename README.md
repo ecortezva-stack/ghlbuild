@@ -39,5 +39,5 @@ Until you add a photo, a warm gradient fills its space. The dark fade overlays s
 Search the files for these markers:
 
 - `LOGO:` The Covered Bridge Brands logo is already embedded in the header and footer, so it shows as soon as you paste. To make those blocks lighter, upload `assets/cbb-logo.png` to the GHL media library and replace the `src="data:..."` value with its URL. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
-- `LINKS:` marks the nav paths, the Learn More / Try Demo URLs, the legal pages, and the social and email links.
+- `LINKS:` marks the nav paths, the Learn More URLs, the legal pages, and the social and email links.
 - `GHL CONTACT FORM GOES HERE` is in `05-cta.html`. Paste your form's embed code inside that div, or delete the div and put a native Form element below the block.
