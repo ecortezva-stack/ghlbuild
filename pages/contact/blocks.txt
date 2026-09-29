@@ -1,0 +1,5 @@
+# Paste order for the Contact page (/contact).
+sections/00-header.html
+pages/contact/01-contact-hero.html
+pages/contact/02-contact-main.html
+sections/06-footer.html

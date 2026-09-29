@@ -9,7 +9,8 @@
 | Terms of Service | `/terms` | [`pages/terms/README.md`](pages/terms/README.md) | Done |
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done, David's section to add |
-| Contact, Super LOA, MapScore | | | To do |
+| Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
+| Super LOA, MapScore | | | To do |
 
 ## Home page
 
@@ -56,5 +57,5 @@ Search the files for these markers:
 
 - `LOGO:` The Covered Bridge Brands logo is already embedded in the header and footer, so it shows as soon as you paste. To make those blocks lighter, upload `assets/cbb-logo.png` to the GHL media library and replace the `src="data:..."` value with its URL. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
 - **Page links:** Nav links use `/`, `/services`, `/about`, `/contact`. The Learn More buttons go to `/super-loa` and `/mapscore`. Footer legal links use `/privacy-policy` and `/terms`. These only work once your own domain is connected; on GHL's shared preview address they lead to a "Not found" page.
-- `SOCIAL:` in the footer marks the LinkedIn, YouTube and email links, which are `#` for now.
+- `SOCIAL:` the footer shows call and email icons. LinkedIn and YouTube are left out until those accounts are ready.
 - `GHL CONTACT FORM GOES HERE` is in `05-cta.html`. Paste your form's embed code inside that div, or delete the div and put a native Form element below the block.

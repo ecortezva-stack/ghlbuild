@@ -1,0 +1,388 @@
+<!-- ============================================================
+     CBB CONTACT — 02 CONTACT DETAILS + FORM
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-contact. No JavaScript.
+     ============================================================ -->
+<style>
+  .cbb-contact {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: clamp(64px, 7vw, 104px) clamp(20px, 4vw, 48px);
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(213, 167, 86, 0.06), rgba(213, 167, 86, 0) 70%),
+      var(--cbb-black);
+    color: var(--cbb-cream);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-contact,
+  .cbb-contact *,
+  .cbb-contact *::before,
+  .cbb-contact *::after {
+    box-sizing: border-box;
+  }
+  .cbb-contact .cbb-contact__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: clamp(36px, 5vw, 72px);
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .cbb-contact .cbb-contact__eyebrow {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-contact .cbb-contact__title {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.875rem, 1.8vw + 1.1rem, 2.75rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    color: var(--cbb-cream);
+  }
+  .cbb-contact .cbb-contact__intro {
+    margin: 0 0 clamp(28px, 3vw, 36px);
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(246, 239, 227, 0.86);
+  }
+
+  /* ---- Detail cards ---- */
+  .cbb-contact .cbb-contact__list {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-contact .cbb-contact__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin: 0;
+    padding: 20px 22px;
+    border: 1px solid rgba(213, 167, 86, 0.35);
+    border-radius: 4px;
+    background: #0D0E0F;
+    transition: border-color 0.2s ease;
+  }
+  .cbb-contact .cbb-contact__item::marker {
+    content: none;
+  }
+  .cbb-contact .cbb-contact__item:hover {
+    border-color: rgba(213, 167, 86, 0.7);
+  }
+  .cbb-contact .cbb-contact__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid var(--cbb-gold);
+    border-radius: 50%;
+    background: var(--cbb-black);
+    color: var(--cbb-gold);
+  }
+  .cbb-contact .cbb-contact__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .cbb-contact .cbb-contact__body {
+    min-width: 0;
+  }
+  .cbb-contact .cbb-contact__label {
+    display: block;
+    margin: 2px 0 6px;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-contact .cbb-contact__value {
+    display: block;
+    margin: 0;
+    font-family: var(--cbb-sans);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1.5;
+    color: var(--cbb-cream);
+    overflow-wrap: anywhere;
+  }
+  .cbb-contact .cbb-contact__link {
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-contact .cbb-contact__link:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-contact .cbb-contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 10px;
+  }
+  .cbb-contact .cbb-contact__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--cbb-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--cbb-gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-contact .cbb-contact__action svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+    transition: transform 0.2s ease;
+  }
+  .cbb-contact .cbb-contact__action:hover {
+    color: var(--cbb-gold-light);
+  }
+  .cbb-contact .cbb-contact__action:hover svg {
+    transform: translateX(2px);
+  }
+  .cbb-contact .cbb-contact__link:focus-visible,
+  .cbb-contact .cbb-contact__action:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+
+  /* ---- Form panel ---- */
+  .cbb-contact .cbb-contact__panel {
+    position: relative;
+    padding: clamp(28px, 3.4vw, 44px);
+    border: 1px solid rgba(213, 167, 86, 0.55);
+    border-radius: 4px;
+    background:
+      radial-gradient(70% 60% at 100% 0%, rgba(213, 167, 86, 0.1), rgba(213, 167, 86, 0) 70%),
+      var(--cbb-surface);
+    overflow: hidden;
+    scroll-margin-top: 110px;
+  }
+  .cbb-contact .cbb-contact__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(201, 153, 74, 0), var(--cbb-gold-light), rgba(201, 153, 74, 0));
+  }
+  .cbb-contact .cbb-contact__panel-title {
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.5rem, 1vw + 1.1rem, 1.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: none;
+    color: var(--cbb-cream);
+  }
+  .cbb-contact .cbb-contact__panel-sub {
+    margin: 0 0 24px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgba(246, 239, 227, 0.8);
+  }
+
+  /* The GHL form goes in this box. The dashed outline and label only show
+     while it's empty, so they disappear once the form is embedded. */
+  .cbb-contact .cbb-contact__form {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+  }
+  .cbb-contact .cbb-contact__form:empty {
+    min-height: 460px;
+    border: 1px dashed rgba(213, 167, 86, 0.45);
+    border-radius: 4px;
+  }
+  .cbb-contact .cbb-contact__form:empty::before {
+    content: "Contact form goes here";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: var(--cbb-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(213, 167, 86, 0.7);
+  }
+  .cbb-contact .cbb-contact__form iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 960px) {
+    .cbb-contact .cbb-contact__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .cbb-contact .cbb-contact__item {
+      gap: 14px;
+      padding: 18px 16px;
+    }
+    .cbb-contact .cbb-contact__icon {
+      width: 42px;
+      height: 42px;
+    }
+    .cbb-contact .cbb-contact__value {
+      font-size: 0.9375rem;
+    }
+    .cbb-contact .cbb-contact__panel {
+      padding: 28px 18px;
+    }
+    .cbb-contact .cbb-contact__form:empty {
+      min-height: 380px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-contact .cbb-contact__item,
+    .cbb-contact .cbb-contact__link,
+    .cbb-contact .cbb-contact__action,
+    .cbb-contact .cbb-contact__action svg {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="cbb-contact" id="contact" aria-labelledby="cbb-contact-title">
+  <div class="cbb-contact__inner">
+
+    <!-- ===== Contact details ===== -->
+    <div class="cbb-contact__details">
+      <p class="cbb-contact__eyebrow">Get in Touch</p>
+      <h2 class="cbb-contact__title" id="cbb-contact-title">We'd Love to Hear From You</h2>
+      <p class="cbb-contact__intro">Reach us whichever way works best for you.</p>
+
+      <ul class="cbb-contact__list">
+        <!-- Phone: calls and texts -->
+        <li class="cbb-contact__item">
+          <span class="cbb-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <div class="cbb-contact__body">
+            <span class="cbb-contact__label">Call or Text</span>
+            <a class="cbb-contact__value cbb-contact__link" href="tel:+18148931075">814-893-1075</a>
+            <div class="cbb-contact__actions">
+              <a class="cbb-contact__action" href="tel:+18148931075">
+                Call now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+              <a class="cbb-contact__action" href="sms:+18148931075">
+                Send a text
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Email -->
+        <li class="cbb-contact__item">
+          <span class="cbb-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+          </span>
+          <div class="cbb-contact__body">
+            <span class="cbb-contact__label">Email</span>
+            <a class="cbb-contact__value cbb-contact__link" href="mailto:david@coveredbridgebrands.com">david@coveredbridgebrands.com</a>
+          </div>
+        </li>
+
+        <!-- Address -->
+        <li class="cbb-contact__item">
+          <span class="cbb-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div class="cbb-contact__body">
+            <span class="cbb-contact__label">Address</span>
+            <address class="cbb-contact__value">
+              Covered Bridge Brands, LLC<br>
+              664 Tire Hill Road<br>
+              Johnstown, PA 15905
+            </address>
+            <div class="cbb-contact__actions">
+              <a class="cbb-contact__action" href="https://www.google.com/maps/dir/?api=1&amp;destination=664+Tire+Hill+Road%2C+Johnstown%2C+PA+15905" target="_blank" rel="noopener">
+                Get directions
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Hours -->
+        <li class="cbb-contact__item">
+          <span class="cbb-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></svg>
+          </span>
+          <div class="cbb-contact__body">
+            <span class="cbb-contact__label">Hours</span>
+            <span class="cbb-contact__value">Mon&ndash;Fri, 9am&ndash;5pm EDT</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ===== Form ===== -->
+    <div class="cbb-contact__panel" id="contact-form">
+      <h2 class="cbb-contact__panel-title">Send Us a Message</h2>
+      <p class="cbb-contact__panel-sub">Tell us a little about your business and what you'd like help with.</p>
+
+      <div class="cbb-contact__form"><!--
+        ================= GHL CONTACT FORM GOES HERE =================
+        Use the Contact page's own form (not the home page form).
+        Sites > Forms > your contact form > Integrate > copy the
+        "Embed" code and paste it between these div tags, replacing
+        this comment. See pages/contact/README.md for the SMS consent
+        checkbox wording.
+        ==============================================================
+      --></div>
+    </div>
+
+  </div>
+</section>
