@@ -1,0 +1,5 @@
+# Paste order for the Privacy Policy page (/privacy-policy).
+sections/00-header.html
+pages/privacy/01-privacy-hero.html
+pages/privacy/02-privacy-content.html
+sections/06-footer.html
