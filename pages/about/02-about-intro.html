@@ -1,0 +1,196 @@
+<!-- ============================================================
+     CBB ABOUT — 02 WHAT WE DO
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-aboutintro.
+     ============================================================ -->
+<style>
+  .cbb-aboutintro {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: clamp(64px, 7vw, 104px) clamp(20px, 4vw, 48px);
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(213, 167, 86, 0.06), rgba(213, 167, 86, 0) 70%),
+      var(--cbb-black);
+    color: var(--cbb-cream);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-aboutintro,
+  .cbb-aboutintro *,
+  .cbb-aboutintro *::before,
+  .cbb-aboutintro *::after {
+    box-sizing: border-box;
+  }
+  .cbb-aboutintro .cbb-aboutintro__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  /* ---- Two-column text ---- */
+  .cbb-aboutintro .cbb-aboutintro__text {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(28px, 5vw, 80px);
+    margin: 0 0 clamp(44px, 5vw, 64px);
+  }
+  .cbb-aboutintro .cbb-aboutintro__eyebrow {
+    margin: 0 0 18px;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-aboutintro .cbb-aboutintro__lead {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.5rem, 1.3vw + 1.05rem, 2.25rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--cbb-cream);
+  }
+  .cbb-aboutintro .cbb-aboutintro__gold {
+    color: var(--cbb-gold);
+  }
+  .cbb-aboutintro .cbb-aboutintro__body {
+    margin: 0;
+    padding: 0 0 0 clamp(20px, 2.4vw, 32px);
+    border-left: 1px solid rgba(213, 167, 86, 0.45);
+    font-family: var(--cbb-sans);
+    font-size: clamp(1rem, 0.3vw + 0.94rem, 1.125rem);
+    font-weight: 400;
+    line-height: 1.75;
+    color: rgba(246, 239, 227, 0.86);
+  }
+  /* aligns the paragraph with the lead text, below the eyebrow */
+  .cbb-aboutintro .cbb-aboutintro__col--body {
+    padding-top: calc(clamp(0.6875rem, 0.3vw + 0.6rem, 0.8125rem) * 1.6 + 18px);
+  }
+
+  /* ---- Three highlight cards ---- */
+  .cbb-aboutintro .cbb-aboutintro__pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-aboutintro .cbb-aboutintro__pillar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    padding: clamp(22px, 2.4vw, 30px);
+    border: 1px solid rgba(213, 167, 86, 0.4);
+    border-radius: 4px;
+    background:
+      radial-gradient(90% 90% at 0% 0%, rgba(213, 167, 86, 0.08), rgba(213, 167, 86, 0) 70%),
+      #0D0E0F;
+  }
+  .cbb-aboutintro .cbb-aboutintro__pillar::marker {
+    content: none;
+  }
+  .cbb-aboutintro .cbb-aboutintro__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border: 1.5px solid var(--cbb-gold);
+    border-radius: 50%;
+    background: var(--cbb-black);
+    color: var(--cbb-gold);
+  }
+  .cbb-aboutintro .cbb-aboutintro__icon svg {
+    width: 28px;
+    height: 28px;
+    max-width: 100%;
+  }
+  .cbb-aboutintro .cbb-aboutintro__pillar-text {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.2rem, 0.6vw + 1rem, 1.45rem);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--cbb-cream);
+  }
+
+  @media (max-width: 960px) {
+    .cbb-aboutintro .cbb-aboutintro__pillars {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 560px;
+    }
+  }
+  @media (max-width: 860px) {
+    .cbb-aboutintro .cbb-aboutintro__text {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cbb-aboutintro .cbb-aboutintro__col--body {
+      padding-top: 0;
+    }
+  }
+</style>
+
+<section class="cbb-aboutintro" aria-labelledby="cbb-aboutintro-title">
+  <div class="cbb-aboutintro__inner">
+    <div class="cbb-aboutintro__text">
+      <div class="cbb-aboutintro__col">
+        <p class="cbb-aboutintro__eyebrow">What We Do</p>
+        <h2 class="cbb-aboutintro__lead" id="cbb-aboutintro-title">
+          Covered Bridge Brands combines <span class="cbb-aboutintro__gold">AI, automation, and digital marketing</span>
+          to help local businesses attract more leads, respond faster, follow up automatically, and grow without
+          adding more work to their day.
+        </h2>
+      </div>
+      <div class="cbb-aboutintro__col cbb-aboutintro__col--body">
+        <p class="cbb-aboutintro__body">
+          From lead generation and websites to Google visibility, social media, advertising, CRM
+          automation, and AI-powered customer engagement, we build systems designed to help your
+          business get noticed, get leads, and get more business.
+        </p>
+      </div>
+    </div>
+
+    <ul class="cbb-aboutintro__pillars">
+      <li class="cbb-aboutintro__pillar">
+        <span class="cbb-aboutintro__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </span>
+        <p class="cbb-aboutintro__pillar-text">Less manual work.</p>
+      </li>
+      <li class="cbb-aboutintro__pillar">
+        <span class="cbb-aboutintro__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 15-6v14L3 13v-2z"/><path d="M18 9.5h1.5a1.5 1.5 0 0 1 0 5H18"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <p class="cbb-aboutintro__pillar-text">Better marketing.</p>
+      </li>
+      <li class="cbb-aboutintro__pillar">
+        <span class="cbb-aboutintro__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/><path d="M3 21h18"/></svg>
+        </span>
+        <p class="cbb-aboutintro__pillar-text">More opportunities to grow.</p>
+      </li>
+    </ul>
+  </div>
+</section>

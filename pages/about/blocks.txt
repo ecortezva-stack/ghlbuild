@@ -1,0 +1,7 @@
+# Paste order for the About page (/about).
+sections/00-header.html
+pages/about/01-about-hero.html
+pages/about/02-about-intro.html
+pages/about/03-about-cbb.html
+sections/05-cta.html
+sections/06-footer.html
