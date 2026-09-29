@@ -151,8 +151,8 @@
     transform-origin: left center;
     transition: transform 0.25s ease;
   }
-  /* Hover / keyboard focus: same look as the active page (gold text +
-     gold underline), with the underline sliding in from the left */
+  /* Hover / keyboard focus: gold text + gold underline sliding in from
+     the left. Same for every link, including the current page. */
   .cbb-header .cbb-header__link:hover,
   .cbb-header .cbb-header__link:focus-visible {
     color: var(--cbb-gold);
@@ -164,13 +164,6 @@
   .cbb-header .cbb-header__link:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
     outline-offset: 4px;
-  }
-  /* Active page: gold text + gold underline */
-  .cbb-header .cbb-header__link.is-active {
-    color: var(--cbb-gold);
-  }
-  .cbb-header .cbb-header__link.is-active::after {
-    transform: scaleX(1);
   }
 
   /* ---- Hamburger (mobile only) ---- */
@@ -264,7 +257,7 @@
       border-bottom: 1px solid rgba(213, 167, 86, 0.15);
       font-size: 1.0625rem;
     }
-    /* On mobile the active page gets a short gold bar under the label */
+    /* On mobile the hover underline is a short gold bar under the label */
     .cbb-header .cbb-header__link::after {
       right: auto;
       bottom: 10px;
@@ -301,10 +294,11 @@
       </button>
 
       <nav class="cbb-header__nav" id="cbb-header-nav" aria-label="Main">
-        <!-- The active page is detected automatically from the URL.
-             "Home" is marked active by default in case scripts are off. -->
+        <!-- Links only turn gold and underline on hover. The current page is
+             tagged for screen readers (aria-current) from the URL, with no
+             visual change. -->
         <ul class="cbb-header__list">
-          <li class="cbb-header__item"><a class="cbb-header__link is-active" href="/" aria-current="page">Home</a></li>
+          <li class="cbb-header__item"><a class="cbb-header__link" href="/">Home</a></li>
           <li class="cbb-header__item"><a class="cbb-header__link" href="/services">Services</a></li>
           <li class="cbb-header__item"><a class="cbb-header__link" href="/about">About</a></li>
           <li class="cbb-header__item"><a class="cbb-header__link" href="/contact">Contact</a></li>
@@ -324,7 +318,7 @@
       var links = root.querySelectorAll('.cbb-header__link');
       var desktop = window.matchMedia('(min-width: 861px)');
 
-      /* Active page: match the current path to a nav link */
+      /* Current page: tag the matching link for screen readers */
       var clean = function (p) { return (p || '/').replace(/\/+$/, '') || '/'; };
       var here = clean(window.location.pathname);
       var match = null;
@@ -332,14 +326,7 @@
         var path = clean(a.getAttribute('href'));
         if (path === here || (path !== '/' && here.indexOf(path + '/') === 0)) match = a;
       });
-      if (match) {
-        Array.prototype.forEach.call(links, function (a) {
-          a.classList.remove('is-active');
-          a.removeAttribute('aria-current');
-        });
-        match.classList.add('is-active');
-        match.setAttribute('aria-current', 'page');
-      }
+      if (match) match.setAttribute('aria-current', 'page');
 
       /* Mobile menu */
       var setOpen = function (open) {

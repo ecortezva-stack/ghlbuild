@@ -19,7 +19,7 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 - **Section/row settings:** Set each GHL section to full width with 0 padding and no background. Each block brings its own background and spacing.
 - **Fonts:** Choose *Playfair Display* and *Inter* in the site's typography settings. If they aren't loaded, the blocks fall back to Georgia and the system sans-serif.
 - **Header/footer:** If you already use GHL's global header or footer, you can skip `00-header` and `06-footer`.
-- **Header behavior:** The header stays pinned to the top with `position: fixed` (sticky wouldn't work inside GHL's element containers), and its outer box reserves the same height so content isn't hidden underneath. The active page is detected from the URL, and the mobile menu uses a small inline script. In the GHL editor the pinned bar may sit over the canvas while you edit; that's expected, and the live page is unaffected.
+- **Header behavior:** The header stays pinned to the top with `position: fixed` (sticky wouldn't work inside GHL's element containers), and its outer box reserves the same height so content isn't hidden underneath. Links only turn gold and underline on hover (the current page is tagged for screen readers from the URL, with no visual change), and the mobile menu uses a small inline script. In the GHL editor the pinned bar may sit over the canvas while you edit; that's expected, and the live page is unaffected.
 
 ## Photos
 
