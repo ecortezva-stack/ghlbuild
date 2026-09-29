@@ -3,5 +3,6 @@ sections/00-header.html
 pages/about/01-about-hero.html
 pages/about/02-about-intro.html
 pages/about/03-about-cbb.html
+pages/about/04-about-david.html
 sections/05-cta.html
 sections/06-footer.html

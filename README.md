@@ -8,7 +8,7 @@
 | Services | `/services` | [`pages/services/README.md`](pages/services/README.md) | Done |
 | Terms of Service | `/terms` | [`pages/terms/README.md`](pages/terms/README.md) | Done |
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
-| About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done, David's section to add |
+| About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done |
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
 | Super LOA, MapScore | | | To do |
 
