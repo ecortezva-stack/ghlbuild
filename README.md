@@ -42,6 +42,6 @@ The four industry cards have no photos yet. Set `style="--cbb-box-photo: none;"`
 Search the files for these markers:
 
 - `LOGO:` The Covered Bridge Brands logo is already embedded in the header and footer, so it shows as soon as you paste. To make those blocks lighter, upload `assets/cbb-logo.png` to the GHL media library and replace the `src="data:..."` value with its URL. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
-- `LINKS:` marks the Learn More URLs. Nav links use `/`, `/services`, `/about`, `/contact`; footer legal links use `/privacy-policy` and `/terms`.
+- **Page links:** Nav links use `/`, `/services`, `/about`, `/contact`. The Learn More buttons go to `/super-loa` and `/mapscore`. Footer legal links use `/privacy-policy` and `/terms`. These only work once your own domain is connected; on GHL's shared preview address they lead to a "Not found" page.
 - `SOCIAL:` in the footer marks the LinkedIn, YouTube and email links, which are `#` for now.
 - `GHL CONTACT FORM GOES HERE` is in `05-cta.html`. Paste your form's embed code inside that div, or delete the div and put a native Form element below the block.
