@@ -140,8 +140,15 @@
     transform-origin: left center;
     transition: transform 0.25s ease;
   }
-  .cbb-header .cbb-header__link:hover {
-    color: var(--cbb-gold-light);
+  /* Hover / keyboard focus: same look as the active page (gold text +
+     gold underline), with the underline sliding in from the left */
+  .cbb-header .cbb-header__link:hover,
+  .cbb-header .cbb-header__link:focus-visible {
+    color: var(--cbb-gold);
+  }
+  .cbb-header .cbb-header__link:hover::after,
+  .cbb-header .cbb-header__link:focus-visible::after {
+    transform: scaleX(1);
   }
   .cbb-header .cbb-header__link:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
