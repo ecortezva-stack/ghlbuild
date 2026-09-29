@@ -19,6 +19,7 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 - **Section/row settings:** Set each GHL section to full width with 0 padding and no background. Each block brings its own background and spacing.
 - **Fonts:** Choose *Playfair Display* and *Inter* in the site's typography settings. If they aren't loaded, the blocks fall back to Georgia and the system sans-serif.
 - **Header/footer:** If you already use GHL's global header or footer, you can skip `00-header` and `06-footer`.
+- **Header behavior:** The header stays pinned to the top with `position: fixed` (sticky wouldn't work inside GHL's element containers), and its outer box reserves the same height so content isn't hidden underneath. The active page is detected from the URL, and the mobile menu uses a small inline script. In the GHL editor the pinned bar may sit over the canvas while you edit; that's expected, and the live page is unaffected.
 
 ## Photos
 
@@ -41,5 +42,6 @@ The four industry cards have no photos yet. Set `style="--cbb-box-photo: none;"`
 Search the files for these markers:
 
 - `LOGO:` The Covered Bridge Brands logo is already embedded in the header and footer, so it shows as soon as you paste. To make those blocks lighter, upload `assets/cbb-logo.png` to the GHL media library and replace the `src="data:..."` value with its URL. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
-- `LINKS:` marks the nav paths, the Learn More URLs, the legal pages, and the social and email links.
+- `LINKS:` marks the Learn More URLs. Nav links use `/`, `/services`, `/about`, `/contact`; footer legal links use `/privacy-policy` and `/terms`.
+- `SOCIAL:` in the footer marks the LinkedIn, YouTube and email links, which are `#` for now.
 - `GHL CONTACT FORM GOES HERE` is in `05-cta.html`. Paste your form's embed code inside that div, or delete the div and put a native Form element below the block.
