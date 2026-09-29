@@ -6,7 +6,7 @@
 |---|---|---|---|
 | Home | `/` | below | Done |
 | Services | `/services` | [`pages/services/README.md`](pages/services/README.md) | Done |
-| Terms of Service | `/terms` | [`pages/terms/README.md`](pages/terms/README.md) | Built, waiting on the rest of the text |
+| Terms of Service | `/terms` | [`pages/terms/README.md`](pages/terms/README.md) | Done |
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | Contact, Super LOA, MapScore, About | | | To do |
 
