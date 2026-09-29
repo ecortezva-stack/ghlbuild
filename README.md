@@ -10,7 +10,7 @@
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done |
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
-| Super LOA, MapScore | | | To do |
+| Super LOA, MapScore | `/super-loa`, `/mapscore` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
 
 ## Home page
 

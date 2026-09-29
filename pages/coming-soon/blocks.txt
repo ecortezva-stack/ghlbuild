@@ -1,0 +1,4 @@
+# Paste order for BOTH the Super LOA page (/super-loa) and the MapScore page (/mapscore).
+sections/00-header.html
+pages/coming-soon/01-coming-soon.html
+sections/06-footer.html
