@@ -1,0 +1,9 @@
+# Paste order for the Services page. Blocks under sections/ are the same
+# files used on the home page; blocks under pages/services/ are new.
+sections/00-header.html
+pages/services/01-services-hero.html
+pages/services/02-what-we-do.html
+sections/02-our-systems.html
+sections/03-how-it-works.html
+sections/05-cta.html
+sections/06-footer.html

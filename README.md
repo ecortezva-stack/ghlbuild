@@ -1,4 +1,14 @@
-# Covered Bridge Brands — Home Page (GoHighLevel)
+# Covered Bridge Brands — Website (GoHighLevel)
+
+## Pages
+
+| Page | Path | Paste guide | Status |
+|---|---|---|---|
+| Home | `/` | below | Done |
+| Services | `/services` | [`pages/services/README.md`](pages/services/README.md) | Done |
+| Contact, Super LOA, MapScore, About, Privacy Policy, Terms | | | To do |
+
+## Home page
 
 Each file in `sections/` is one self-contained block for a GHL **Custom HTML/JavaScript** element. Paste them in order:
 
@@ -12,7 +22,7 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 | `sections/05-cta.html` | CTA / Contact (optional) | `.cbb-cta` | `#contact` |
 | `sections/06-footer.html` | Footer | `.cbb-footer` | none |
 
-`preview.html` joins all the blocks into one page so you can look it over in a browser. **Don't paste it into GHL.** To rebuild it after you edit a section, run `./scripts/build-preview.sh`.
+`preview.html` (and `pages/<page>/preview.html` for other pages) joins all the blocks into one page so you can look it over in a browser. **Don't paste it into GHL.** To rebuild it after you edit a section, run `./scripts/build-preview.sh`.
 
 ## GHL setup
 
