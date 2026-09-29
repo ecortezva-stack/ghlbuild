@@ -20,19 +20,21 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 - **Fonts:** Choose *Playfair Display* and *Inter* in the site's typography settings. If they aren't loaded, the blocks fall back to Georgia and the system sans-serif.
 - **Header/footer:** If you already use GHL's global header or footer, you can skip `00-header` and `06-footer`.
 
-## Adding photos
+## Photos
 
-Photos are set with one CSS variable, so you don't need to edit any other markup. Replace `none` with `url('YOUR-IMAGE-URL')`:
+Your photos are already built into the blocks, so they show as soon as you paste:
 
-| Photo | Where to change it |
-|---|---|
-| Hero covered bridge | `--cbb-hero-photo` at the top of `01-hero.html` |
-| Super LOA / MapScore card backgrounds | `style="--cbb-card-photo: none;"` on each card in `02-our-systems.html` |
-| Industry card images (Roofers, HVAC, Home, Medical) | `style="--cbb-box-photo: none;"` on each card in `02-our-systems.html` |
-| How It Works landscape | `--cbb-process-photo` at the top of `03-how-it-works.html` |
-| Why CBB landscape | `--cbb-why-photo` at the top of `04-why-cbb.html` |
+| Photo | Block | Optimized file |
+|---|---|---|
+| Covered bridge | `01-hero.html` (`--cbb-hero-photo`) | `assets/photos/hero-bridge.webp` |
+| Desk with laptops | Super LOA card in `02-our-systems.html` | `assets/photos/card-superloa.webp` |
+| Desk with CBB mug | MapScore card in `02-our-systems.html` | `assets/photos/card-mapscore.webp` |
+| Misty mountains | `03-how-it-works.html` (`--cbb-process-photo`) | `assets/photos/bg-how-it-works.webp` |
+| Mountain sunset | `04-why-cbb.html` (`--cbb-why-photo`) | `assets/photos/bg-why-cbb.webp` |
 
-Until you add a photo, a warm gradient fills its space. The dark fade overlays stay in place over real photos, so the text stays readable.
+**Optional, for faster loading:** upload the optimized files to the GHL media library, then replace each `url('data:...')` value with `url('YOUR-MEDIA-URL')`. The hero block drops from about 195 KB to about 7 KB this way.
+
+The four industry cards have no photos yet. Set `style="--cbb-box-photo: none;"` on each one to `url('YOUR-MEDIA-URL')` to add them.
 
 ## Other things to fill in
 
