@@ -1,0 +1,130 @@
+TERMS OF SERVICE
+Effective Date: September 28, 2026
+Welcome to Covered Bridge Brands, LLC ("Covered Bridge Brands," "CBB," "we," "us," or "our"). These Terms of Service ("Terms") govern your access to and use of our website, services, software, technology, content, and related offerings.
+By accessing our website or purchasing, subscribing to, or using any CBB service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our website or services.
+1. Our Services
+Covered Bridge Brands provides marketing, lead generation, automation, artificial intelligence, website, advertising, customer relationship management, reputation management, social media, business optimization, and related services to businesses and organizations.
+Our services may include, but are not limited to:
+* Marketing strategy and consulting
+* AI-powered marketing and automation
+* Lead generation and lead management
+* Website and landing-page development
+* Search engine optimization (SEO)
+* Google Business Profile optimization and management
+* Online reputation and review management
+* Social media content and management
+* Digital advertising and campaign management
+* Customer relationship management (CRM) systems
+* Automated communications, including email, SMS, and voice
+* Marketing analytics and reporting
+* Business audits and assessments
+* Marketing content, graphics, video, and other creative services
+* Software configuration, integrations, and automation
+* Training and consulting
+Specific services, deliverables, fees, timelines, and other project requirements may be established in a separate proposal, order form, statement of work, service agreement, or other written agreement ("Service Agreement"). If a Service Agreement conflicts with these Terms, the Service Agreement will control with respect to that specific engagement.
+2. Eligibility
+You must be at least 18 years old and legally capable of entering into a binding agreement to use our services.
+If you are using our services on behalf of a company, organization, or other legal entity, you represent and warrant that you have authority to bind that entity to these Terms.
+3. Accounts and Access
+Certain CBB services may require you to create an account or provide access to third-party platforms, including CRM systems, advertising platforms, social media platforms, website platforms, email services, communication services, or other software.
+You are responsible for:
+* Providing accurate and current information;
+* Maintaining the security of your login credentials;
+* Maintaining appropriate administrative access to your accounts;
+* Authorizing CBB to access third-party platforms when necessary to provide services; and
+* Promptly notifying us of unauthorized access or security concerns.
+You remain responsible for your accounts and for activity conducted through credentials or permissions you provide to CBB.
+4. Third-Party Services and Platforms
+CBB may use or integrate with third-party software, platforms, applications, advertising networks, communication providers, artificial intelligence services, hosting providers, and other third-party services.
+Examples may include CRM platforms, Google services, Meta platforms, social media platforms, advertising networks, website providers, payment processors, communication providers, AI platforms, analytics services, and other technology providers.
+Third-party services are governed by their own terms, policies, and privacy practices. CBB does not control and is not responsible for the availability, functionality, security, policies, pricing, or actions of third-party services.
+A change, suspension, limitation, or discontinuation by a third-party provider may affect the services we provide to you. We are not responsible for losses caused solely by changes or failures of third-party platforms.
+5. Artificial Intelligence
+Some CBB services may use artificial intelligence ("AI") and automated technologies to assist with research, content creation, marketing, communications, analysis, lead management, customer service, or other business processes.
+AI-generated or AI-assisted content may contain errors, omissions, inaccuracies, or unintended results. Unless otherwise agreed in writing, you are responsible for reviewing and approving material generated for your business before it is published or used in a manner that could create legal, financial, regulatory, or reputational consequences.
+You acknowledge that AI systems may produce results that are not unique and may not always accurately reflect current information.
+CBB does not guarantee that AI-generated content will be error-free, complete, or suitable for any particular purpose.
+6. Client Responsibilities
+To provide services effectively, CBB may require information, access, approvals, materials, or decisions from you.
+You agree to provide information that is accurate and lawful and to respond within a reasonable period to requests necessary for the performance of services.
+You are responsible for:
+* The accuracy of information you provide;
+* The legality of your products, services, offers, and business practices;
+* Obtaining necessary licenses, permissions, and consents;
+* Reviewing and approving content when approval is requested;
+* Maintaining appropriate access to your third-party accounts;
+* Complying with applicable laws and regulations; and
+* Ensuring that information supplied to CBB does not knowingly infringe the rights of others.
+Delays caused by missing information, approvals, access, or other client dependencies may affect project schedules or results.
+7. Marketing and Lead Generation
+CBB may provide marketing, advertising, lead-generation, appointment-setting, or related services.
+Marketing results depend on numerous factors outside CBB's control, including market conditions, competition, advertising-platform policies, budgets, pricing, offer quality, sales performance, customer demand, geographic market, seasonality, and the quality of information supplied by the client.
+CBB does not guarantee a specific number of leads, appointments, customers, sales, revenue, return on advertising spend, or other financial result unless expressly guaranteed in a written Service Agreement.
+Any examples, case studies, projections, estimates, or representations concerning potential marketing performance are illustrative and are not guarantees of future results.
+8. Advertising Platforms
+Where CBB manages advertising campaigns, advertising spend paid to third-party platforms is separate from CBB's service fees unless otherwise stated in writing.
+Advertising platforms may reject, restrict, suspend, modify, or discontinue advertisements or accounts for reasons outside CBB's control.
+CBB does not guarantee that any advertisement will be approved, remain approved, receive a particular amount of traffic, or produce a particular result.
+9. Communications and Messaging Compliance
+Certain CBB services may facilitate email, text messaging, telephone calls, automated communications, or other electronic communications.
+You are responsible for ensuring that your use of these services complies with all applicable laws, regulations, industry requirements, platform rules, and required consent standards.
+This may include applicable requirements relating to commercial email, text messaging, telephone communications, automated calling, consumer consent, opt-out requests, privacy, and marketing disclosures.
+CBB may assist with technical implementation, but providing such assistance does not constitute legal advice or a representation that your particular marketing program complies with applicable law.
+You are responsible for the content of communications sent on your behalf and for obtaining any legally required consent.
+10. Fees and Payment
+Fees for CBB services will be stated in the applicable Service Agreement, proposal, order form, invoice, or checkout page.
+Unless otherwise agreed in writing:
+* Fees are due according to the payment terms stated at the time of purchase.
+* Recurring services may automatically renew according to the applicable subscription terms.
+* Client accounts with overdue balances may be suspended.
+* You remain responsible for approved charges incurred before cancellation or suspension.
+* Advertising spend, software subscriptions, third-party fees, domain registrations, hosting fees, and other pass-through expenses may be billed separately.
+CBB may modify pricing for future services or renewal periods by providing reasonable notice.
+11. Cancellation and Termination
+Cancellation terms for a specific service may be established in the applicable Service Agreement.
+Unless otherwise stated in writing, either party may terminate a month-to-month service arrangement upon written notice.
+CBB may suspend or terminate services immediately if:
+* You fail to pay amounts when due;
+* You materially breach these Terms;
+* You use the services for unlawful, fraudulent, abusive, or harmful purposes;
+* You provide false or misleading information;
+* Your activities create material legal, security, or reputational risk for CBB; or
+* Continued provision of the services becomes impractical because of circumstances outside CBB's reasonable control.
+Upon termination, amounts accrued before termination remain due.
+12. Intellectual Property
+Unless otherwise stated in a written Service Agreement, CBB retains ownership of its pre-existing intellectual property, proprietary systems, processes, templates, frameworks, methodologies, software, automation systems, know-how, and other materials developed independently of a particular client engagement.
+Client-specific deliverables and ownership rights will be governed by the applicable Service Agreement.
+Nothing in these Terms transfers ownership of CBB's proprietary technology, processes, templates, systems, or know-how merely because those materials are used in providing services.
+You retain ownership of materials and content that you provide to CBB, subject to the rights necessary for CBB to provide the contracted services.
+13. Client Content and Authorization
+By providing content, images, logos, trademarks, business information, customer information, or other materials to CBB, you represent that you have the necessary rights and permissions for CBB to use those materials for the purpose of providing the services.
+You grant CBB a limited, non-exclusive right to use such materials as reasonably necessary to perform the services.
+Unless otherwise agreed in writing, you remain responsible for ensuring that client-provided materials do not infringe the intellectual property, privacy, publicity, or other rights of third parties.
+14. Confidentiality
+CBB will use reasonable measures to protect confidential business information provided to us in connection with our services.
+Neither party may use or disclose the other party's confidential information except as necessary to perform its obligations, exercise its rights, comply with law, or as otherwise authorized.
+Confidential information does not include information that:
+* Is or becomes publicly available through no fault of the receiving party;
+* Was already lawfully known to the receiving party;
+* Is independently developed without use of confidential information; or
+* Is lawfully obtained from another source without a confidentiality obligation.
+15. Privacy
+Your use of our website and services may involve the collection and processing of personal information.
+Our handling of personal information is described in our Privacy Policy, which is incorporated into these Terms by reference.
+Nothing in these Terms limits any rights or obligations that cannot lawfully be limited under applicable privacy laws.
+16. Website Use
+You agree not to use the CBB website or services to:
+* Violate any applicable law or regulation;
+* Commit fraud or facilitate fraudulent activity;
+* Infringe intellectual property or other rights;
+* Distribute malicious software;
+* Attempt unauthorized access to systems or accounts;
+* Interfere with the operation or security of our website or services;
+* Abuse, harass, threaten, or impersonate others;
+* Scrape or collect information through unauthorized automated means; or
+* Use CBB services for unlawful, deceptive, or abusive purposes.
+We reserve the right to restrict or terminate access to users who violate these requirements.
+17. Disclaimers
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, CBB PROVIDES ITS WEBSITE AND SERVICES ON AN "AS IS" AND "AS AVAILABLE" BASIS.
+CBB DOES NOT WARRANT THAT THE WEBSITE OR SERVICES WILL ALWAYS BE AVAILABLE, ERROR-FREE, SECURE, OR UNINTERRUPTED.
+[[INCOMPLETE: the rest of section 17 and any later sections were cut off. Add them below this line.]]
