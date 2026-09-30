@@ -1,0 +1,140 @@
+/* ============================================================
+   CBB | Website Inquiry — form styling
+   Paste into the form builder: Edit > (right panel) Advanced > Custom CSS.
+   The form renders in its own frame, so these rules only affect the form.
+   ============================================================ */
+
+/* Form background: dark, no white box */
+#_builder-form,
+.form-builder--wrap,
+.ghl-form-wrap,
+.hl-app,
+form {
+  background: #0A0B0C !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Field labels (First Name, Email, ...) */
+label,
+.field-label,
+.form-builder--item label {
+  color: #F6EFE3 !important;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Required asterisk in gold */
+label .required,
+.field-label .required,
+label span[style*="red"] {
+  color: #D5A756 !important;
+}
+
+/* Inputs, text areas and dropdowns */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+textarea,
+select,
+.form-control {
+  background: #121415 !important;
+  color: #F6EFE3 !important;
+  border: 1px solid rgba(213, 167, 86, 0.35) !important;
+  border-radius: 4px !important;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
+  font-size: 15px !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(185, 190, 196, 0.6) !important;
+}
+
+/* Gold glow when a field is selected */
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+  border-color: #D5A756 !important;
+  box-shadow: 0 0 0 3px rgba(213, 167, 86, 0.18) !important;
+  outline: none !important;
+}
+
+/* Email field icon */
+.form-builder--item svg,
+.input-group-text,
+.input-group svg {
+  color: #D5A756 !important;
+  fill: none !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* SMS consent checkboxes: gold when ticked */
+input[type="checkbox"] {
+  accent-color: #D5A756 !important;
+  width: 17px !important;
+  height: 17px !important;
+  cursor: pointer !important;
+}
+
+/* Consent wording: smaller and softer so it reads as fine print */
+.option label,
+.checkbox label,
+.form-check-label,
+.terms-and-conditions,
+.checkbox-container label {
+  color: #B9BEC4 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+}
+
+.option a,
+.checkbox a,
+.form-check-label a {
+  color: #D5A756 !important;
+}
+
+/* Submit button: gold gradient, dark text */
+button[type="submit"],
+.btn-dark,
+.form-builder--btn-submit button,
+.button-element {
+  background: linear-gradient(135deg, #C9994A, #F3CF7C) !important;
+  color: #0A0B0C !important;
+  border: 0 !important;
+  border-radius: 3px !important;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  min-height: 50px !important;
+  box-shadow: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+button[type="submit"]:hover,
+.btn-dark:hover,
+.form-builder--btn-submit button:hover,
+.button-element:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 10px 26px rgba(213, 167, 86, 0.3) !important;
+}
+
+/* Error messages */
+.error,
+.invalid-feedback,
+.text-danger {
+  color: #F3A07C !important;
+  font-size: 13px !important;
+}
