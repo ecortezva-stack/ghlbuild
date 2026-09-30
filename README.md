@@ -10,7 +10,7 @@
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done |
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
-| Super LOA, MapScore | `/super-loa`, `/mapscore` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
+| Super LOA, MapScore, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/mapscore`, `/roofrocket`, `/comfortflow`, `/serviceflow`, `/practiceflow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
 
 ## Home page
 
@@ -20,7 +20,7 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 |---|---|---|---|
 | `sections/00-header.html` | Header / nav | `.cbb-header` | none |
 | `sections/01-hero.html` | Hero | `.cbb-hero` | none |
-| `sections/02-our-systems.html` | Our Systems (Super LOA, MapScore™ by CBB, 4 industry cards) | `.cbb-systems` | `#our-systems` |
+| `sections/02-our-systems.html` | Our Systems (Super LOA, MapScore™, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow) | `.cbb-systems` | `#our-systems` |
 | `sections/03-how-it-works.html` | How It Works | `.cbb-process` | none |
 | `sections/04-why-cbb.html` | Why CBB | `.cbb-why` | none |
 | `sections/05-cta.html` | CTA / Contact (optional) | `.cbb-cta` | `#contact` |
@@ -49,7 +49,7 @@ Your photos are already built into the blocks, so they show as soon as you paste
 
 **Optional, for faster loading:** upload the optimized files to the GHL media library, then replace each `url('data:...')` value with `url('YOUR-MEDIA-URL')`. The hero block drops from about 195 KB to about 7 KB this way.
 
-The four industry cards have no photos yet. Set `style="--cbb-box-photo: none;"` on each one to `url('YOUR-MEDIA-URL')` to add them.
+The four industry cards (RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow) use their logos plus a glow in the logo colour instead of a photo. The logo files are in `assets/logos/`.
 
 ## Other things to fill in
 
