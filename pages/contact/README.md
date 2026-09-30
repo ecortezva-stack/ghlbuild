@@ -26,3 +26,7 @@ Add this in the GHL form builder as its **own checkbox**, **unticked by default*
 > I agree to receive text messages from Covered Bridge Brands, LLC at the phone number I provided regarding my inquiry and related follow-up. Consent is not a condition of purchasing any goods or services. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our Privacy Policy and Terms of Service.
 
 Link "Privacy Policy" to `/privacy-policy` and "Terms of Service" to `/terms` if the form builder allows links in the label. This is a starting point based on your policy, not legal advice.
+
+## Form thank-you message
+
+`pages/contact/form-thank-you-message.html` is a styled "Thank you" message for the form's **Settings → On Submit → Message** box. It uses inline styles only, because the GHL message editor removes `<style>` tags. In the editor, switch to the code view (the `</>` icon in the lower toolbar), select everything, paste the file's contents, then **Save**.
