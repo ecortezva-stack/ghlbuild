@@ -44,12 +44,16 @@ Your photos are already built into the blocks, so they show as soon as you paste
 | Covered bridge | `01-hero.html` (`--cbb-hero-photo`) | `assets/photos/hero-bridge.webp` |
 | Desk with laptops | Super LOA card in `02-our-systems.html` | `assets/photos/card-superloa.webp` |
 | Desk with CBB mug | MapScore card in `02-our-systems.html` | `assets/photos/card-mapscore.webp` |
+| Roof with hard hat at sunset | RoofRocket card in `02-our-systems.html` | `assets/photos/card-roofrocket.webp` |
+| AC unit at dusk | ComfortFlow card in `02-our-systems.html` | `assets/photos/card-comfortflow.webp` |
+| Laptop with map pins | ServiceFlow card in `02-our-systems.html` | `assets/photos/card-serviceflow.webp` |
+| Desk with laptop and mug | PracticeFlow card in `02-our-systems.html` | `assets/photos/card-practiceflow.webp` |
 | Misty mountains | `03-how-it-works.html` (`--cbb-process-photo`) | `assets/photos/bg-how-it-works.webp` |
 | Mountain sunset | `04-why-cbb.html` (`--cbb-why-photo`) | `assets/photos/bg-why-cbb.webp` |
 
 **Optional, for faster loading:** upload the optimized files to the GHL media library, then replace each `url('data:...')` value with `url('YOUR-MEDIA-URL')`. The hero block drops from about 195 KB to about 7 KB this way.
 
-The four industry cards (RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow) use their logos plus a glow in the logo colour instead of a photo. The logo files are in `assets/logos/`.
+The four industry card logos are in `assets/logos/`. With six photos and four logos built in, `02-our-systems.html` is about 420 KB; if GHL is slow to save or load it, upload the photos and logos to the media library and swap in their URLs.
 
 ## Other things to fill in
 
