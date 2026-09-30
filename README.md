@@ -53,13 +53,13 @@ Your photos are already built into the blocks, so they show as soon as you paste
 
 **Optional, for faster loading:** upload the optimized files to the GHL media library, then replace each `url('data:...')` value with `url('YOUR-MEDIA-URL')`. The hero block drops from about 195 KB to about 7 KB this way.
 
-The four industry card logos are in `assets/logos/`. With six photos and four logos built in, `02-our-systems.html` is about 420 KB; if GHL is slow to save or load it, upload the photos and logos to the media library and swap in their URLs.
+The four industry card logos now load from the GHL media library. The six card photos are still built in, so `02-our-systems.html` is about 254 KB; uploading `assets/photos/card-*.webp` to the media library and sending the links would bring it down to about 20 KB.
 
 ## Other things to fill in
 
 Search the files for these markers:
 
-- `LOGO:` The Covered Bridge Brands logo is already embedded in the header and footer, so it shows as soon as you paste. To make those blocks lighter, upload `assets/cbb-logo.png` to the GHL media library and replace the `src="data:..."` value with its URL. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
+- `LOGO:` The Covered Bridge Brands logo (header and footer) and the RoofRocket, ComfortFlow, ServiceFlow and PracticeFlow logos (Our Systems) are served from the GHL media library. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
 - **Page links:** Nav links use `/`, `/services`, `/about`, `/contact`. The Learn More buttons go to `/super-loa` and `/mapscore`. Footer legal links use `/privacy-policy` and `/terms`. These only work once your own domain is connected; on GHL's shared preview address they lead to a "Not found" page.
 - `SOCIAL:` the footer shows call and email icons. LinkedIn and YouTube are left out until those accounts are ready.
 - `GHL CONTACT FORM GOES HERE` is in `05-cta.html`. Paste your form's embed code inside that div, or delete the div and put a native Form element below the block.
