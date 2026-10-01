@@ -6,10 +6,10 @@ One block serves all six product pages. It reads the page address and shows the 
 |---|---|
 | `/super-loa` | Super LOA Is Coming Soon |
 | `/mapscore` | MapScore™ by CBB Is Coming Soon |
-| `/roofrocket` | RoofRocket by CBB Is Coming Soon |
-| `/comfortflow` | ComfortFlow by CBB Is Coming Soon |
-| `/serviceflow` | ServiceFlow by CBB Is Coming Soon |
-| `/practiceflow` | PracticeFlow by CBB Is Coming Soon |
+| `/roof-rocket` | RoofRocket by CBB Is Coming Soon |
+| `/comfort-flow` | ComfortFlow by CBB Is Coming Soon |
+| `/service-flow` | ServiceFlow by CBB Is Coming Soon |
+| `/practice-flow` | PracticeFlow by CBB Is Coming Soon |
 | anything else | Something New Is Coming Soon |
 
 Paste these blocks, in this order, on **each** product page:

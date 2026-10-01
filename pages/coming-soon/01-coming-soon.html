@@ -4,13 +4,14 @@
      the header and footer. All styles are scoped to .cbb-soon.
 
      The product name is picked from the page address:
-       /super-loa  -> "Super LOA"
-       /mapscore   -> "MapScore™ by CBB"
-       /roofrocket   -> "RoofRocket by CBB"
-       /comfortflow  -> "ComfortFlow by CBB"
-       /serviceflow  -> "ServiceFlow by CBB"
-       /practiceflow -> "PracticeFlow by CBB"
-     Any other address shows the general "Coming Soon" wording.
+       /super-loa     -> "Super LOA"
+       /mapscore      -> "MapScore™ by CBB"
+       /roof-rocket   -> "RoofRocket by CBB"
+       /comfort-flow  -> "ComfortFlow by CBB"
+       /service-flow  -> "ServiceFlow by CBB"
+       /practice-flow -> "PracticeFlow by CBB"
+     Any other address (including GHL's preview links, which use page
+     IDs instead of these paths) shows the general "Coming Soon" wording.
      To add another product later, add a line to PRODUCTS in the
      script at the bottom.
      ============================================================ -->
@@ -274,10 +275,10 @@
     var PRODUCTS = {
       'super-loa': 'Super LOA',
       'mapscore': 'MapScore™ by CBB',
-      'roofrocket': 'RoofRocket by CBB',
-      'comfortflow': 'ComfortFlow by CBB',
-      'serviceflow': 'ServiceFlow by CBB',
-      'practiceflow': 'PracticeFlow by CBB'
+      'roof-rocket': 'RoofRocket by CBB',
+      'comfort-flow': 'ComfortFlow by CBB',
+      'service-flow': 'ServiceFlow by CBB',
+      'practice-flow': 'PracticeFlow by CBB'
     };
     var path = (window.location.pathname || '').toLowerCase().replace(/\/+$/, '');
     var slug = path.split('/').pop();

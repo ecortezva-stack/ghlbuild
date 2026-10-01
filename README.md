@@ -10,7 +10,7 @@
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done |
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
-| Super LOA, MapScore, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/mapscore`, `/roofrocket`, `/comfortflow`, `/serviceflow`, `/practiceflow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
+| Super LOA, MapScore, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/mapscore`, `/roof-rocket`, `/comfort-flow`, `/service-flow`, `/practice-flow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
 
 ## Home page
 
@@ -60,6 +60,6 @@ The four industry card logos now load from the GHL media library. The six card p
 Search the files for these markers:
 
 - `LOGO:` The Covered Bridge Brands logo (header and footer) and the RoofRocket, ComfortFlow, ServiceFlow and PracticeFlow logos (Our Systems) are served from the GHL media library. The Super LOA and MapScore wordmarks are drawn stand-ins, and each has a commented-out `<img>` ready for the real logo file.
-- **Page links:** Nav links use `/`, `/services`, `/about`, `/contact`. The Learn More buttons go to `/super-loa` and `/mapscore`. Footer legal links use `/privacy-policy` and `/terms`. These only work once your own domain is connected; on GHL's shared preview address they lead to a "Not found" page.
+- **Page links:** Nav links use `/`, `/services`, `/about`, `/contact`. The Learn More buttons go to `/super-loa`, `/mapscore`, `/roof-rocket`, `/comfort-flow`, `/service-flow` and `/practice-flow`. Footer legal links use `/privacy-policy` and `/terms`. These only work once your own domain is connected; on GHL's shared preview address they lead to a "Not found" page.
 - `SOCIAL:` the footer shows call and email icons. LinkedIn and YouTube are left out until those accounts are ready.
 - `GHL CONTACT FORM GOES HERE` is in `05-cta.html`. Paste your form's embed code inside that div, or delete the div and put a native Form element below the block.
