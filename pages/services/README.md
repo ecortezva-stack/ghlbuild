@@ -12,7 +12,7 @@ Paste these blocks, in this order, each into its own GHL Custom HTML/JavaScript 
 | 6 | `sections/05-cta.html` | Contact form section | Reused |
 | 7 | `sections/06-footer.html` | Footer | Reused |
 
-Keep block 6 on this page. The "Notify Me", "Get in Touch" and "Talk to us about…" buttons all scroll to it. Add the same GHL form you used on the home page. Its thank-you setup is in the main [README](../../README.md#after-someone-sends-the-form-home-and-services).
+Keep block 6 on this page. The "Notify Me", "Get in Touch" and "Talk to us about…" buttons all scroll to it. Add the same GHL form you used on the home page.
 
 To review the whole page in a browser, open `pages/services/preview.html` (don't paste it into GHL).
 

@@ -1336,8 +1336,7 @@
      CBB HOME — 05 CTA / CONTACT  (optional: not in the mockup, but the
      "Contact" nav link and "Contact Us" button scroll here)
      Paste into a GoHighLevel Custom HTML/JavaScript element.
-     All styles are scoped to .cbb-cta; the script only touches
-     elements inside .cbb-cta.
+     All styles are scoped to .cbb-cta.
      ============================================================ -->
 <style>
   .cbb-cta {
@@ -1474,122 +1473,6 @@
     border: 0;
   }
 
-  /* ---- Thank-you card ----
-     Replaces the form after someone submits it. The GHL form's
-     On Submit setting redirects back to this page with ?sent=1 (see the
-     README), and the script below swaps the form for this card, so the
-     panel stays compact instead of keeping the form's full height. */
-  .cbb-cta .cbb-cta__thanks {
-    width: 100%;
-    margin: 0;
-    padding: clamp(36px, 4vw, 52px) clamp(20px, 3vw, 36px);
-    border: 1px solid rgba(213, 167, 86, 0.45);
-    border-radius: 4px;
-    background: var(--cbb-black);
-    text-align: center;
-    outline: none;
-  }
-  .cbb-cta .cbb-cta__thanks[hidden],
-  .cbb-cta .cbb-cta__form[hidden] {
-    display: none;
-  }
-  .cbb-cta .cbb-cta__check {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    margin: 0 0 20px;
-    border: 1.5px solid var(--cbb-gold);
-    border-radius: 50%;
-    color: var(--cbb-gold);
-  }
-  .cbb-cta .cbb-cta__check svg {
-    display: block;
-    width: 28px;
-    height: 28px;
-  }
-  .cbb-cta .cbb-cta__thanks-eyebrow {
-    margin: 0 0 10px;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--cbb-gold);
-  }
-  .cbb-cta .cbb-cta__thanks-title {
-    margin: 0 0 14px;
-    padding: 0;
-    font-family: var(--cbb-serif);
-    font-size: clamp(1.375rem, 1vw + 1rem, 1.625rem);
-    font-weight: 600;
-    line-height: 1.25;
-    text-transform: none;
-    color: var(--cbb-cream);
-  }
-  .cbb-cta .cbb-cta__thanks-brand {
-    color: var(--cbb-gold);
-  }
-  .cbb-cta .cbb-cta__thanks-copy {
-    max-width: 26em;
-    margin: 0 auto 24px;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #E5DDD0;
-  }
-  .cbb-cta .cbb-cta__thanks-rule {
-    display: block;
-    width: 56px;
-    height: 1px;
-    margin: 0 auto 20px;
-    border: 0;
-    background: var(--cbb-gold-deep);
-  }
-  .cbb-cta .cbb-cta__thanks-small {
-    margin: 0 0 6px;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: var(--cbb-muted);
-  }
-  .cbb-cta .cbb-cta__thanks-phone {
-    margin: 0 0 24px;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 1.125rem;
-    font-weight: 600;
-    line-height: 1.4;
-  }
-  .cbb-cta .cbb-cta__thanks-phone a {
-    color: var(--cbb-gold-light);
-    text-decoration: none;
-  }
-  .cbb-cta .cbb-cta__thanks-phone a:hover {
-    text-decoration: underline;
-  }
-  .cbb-cta .cbb-cta__thanks-phone a:focus-visible {
-    outline: 2px solid var(--cbb-gold-light);
-    outline-offset: 3px;
-  }
-  .cbb-cta .cbb-cta__thanks-tag {
-    margin: 0;
-    padding: 0;
-    font-family: var(--cbb-sans);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cbb-gold-deep);
-  }
-
   /* If the form slot is removed (Option B below), center the text block */
   .cbb-cta .cbb-cta__text:only-child {
     grid-column: 1 / -1;
@@ -1638,67 +1521,8 @@
         below this Custom HTML element in the same GHL section.
       ==============================================================
     --></div>
-
-    <!-- Shown instead of the form after a submission (see the README) -->
-    <div class="cbb-cta__thanks" id="cbb-cta-thanks" role="status" tabindex="-1" hidden>
-      <div class="cbb-cta__check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-      </div>
-      <p class="cbb-cta__thanks-eyebrow">Message Received</p>
-      <h3 class="cbb-cta__thanks-title">Thank you for <span data-cbb-thanks-lead>contacting</span> <span class="cbb-cta__thanks-brand">Covered Bridge Brands!</span></h3>
-      <p class="cbb-cta__thanks-copy">We&rsquo;ve received your <span data-cbb-thanks-kind>inquiry</span>. Our team will review your details and get in touch soon.</p>
-      <hr class="cbb-cta__thanks-rule">
-      <p class="cbb-cta__thanks-small">Need us sooner? Call or text</p>
-      <p class="cbb-cta__thanks-phone"><a href="tel:+18148931075">814-893-1075</a></p>
-      <p class="cbb-cta__thanks-tag">AI Marketing. Real Results.</p>
-    </div>
   </div>
 </section>
-
-<script>
-  (function () {
-    var root = document.querySelector('.cbb-cta:not([data-cbb-ready])');
-    if (!root) return;
-    root.setAttribute('data-cbb-ready', '');
-    var KEY = 'cbb-cta-from';
-    var sent = null;
-    try { sent = new URLSearchParams(window.location.search).get('sent'); } catch (e) { return; }
-
-    /* Normal visit: remember which page the form is on, so a submission
-       made on /services comes back to /services. */
-    if (sent === null) {
-      try { sessionStorage.setItem(KEY, window.location.pathname); } catch (e) {}
-      return;
-    }
-
-    /* After a submission: return to the page it was sent from, if different */
-    var from = null;
-    try { from = sessionStorage.getItem(KEY); sessionStorage.removeItem(KEY); } catch (e) {}
-    if (from && from !== window.location.pathname && /^\/[\w\-\/]*$/.test(from)) {
-      window.location.replace(from + window.location.search + '#contact');
-      return;
-    }
-
-    /* Swap the form for the thank-you card */
-    var form = root.querySelector('.cbb-cta__form');
-    var thanks = root.querySelector('.cbb-cta__thanks');
-    if (sent === 'service') {
-      thanks.querySelector('[data-cbb-thanks-lead]').textContent = 'your interest in';
-      thanks.querySelector('[data-cbb-thanks-kind]').textContent = 'service inquiry';
-    }
-    if (form) form.hidden = true;
-    thanks.hidden = false;
-
-    /* Drop ?sent from the address so a refresh shows the form again */
-    try { history.replaceState(null, '', window.location.pathname + '#contact'); } catch (e) {}
-    var show = function () {
-      root.scrollIntoView({ block: 'start' });
-      try { thanks.focus({ preventScroll: true }); } catch (e) {}
-    };
-    if (document.readyState === 'complete') show();
-    else window.addEventListener('load', show);
-  })();
-</script>
 
 <!-- ============================================================
      CBB — FOOTER
