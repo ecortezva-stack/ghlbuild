@@ -63,8 +63,8 @@ AI-generated or AI-assisted content may require human review and may contain err
 Clients remain responsible for reviewing and approving materials when approval is requested and for ensuring that information used in their marketing is accurate and appropriate for their business.
 8. Communications and Consent
 By submitting information through this website, you may request that Covered Bridge Brands contact you regarding your inquiry or requested services.
-Where required by applicable law, we will obtain appropriate consent before sending certain marketing communications or making certain types of automated or prerecorded calls or messages.
-If you separately consent to receive text messages or telephone calls, the terms of that consent will be governed by the disclosures presented at the time consent is provided and by applicable law.
+Where required by applicable law, we will obtain appropriate consent before sending marketing communications, including marketing text messages.
+If you consent to receive text messages, the terms of that consent will be governed by the disclosures presented at the time consent is provided and by applicable law.
 Text messages from our SMS program are sent by COVERED BRIDGE BRANDS LLC. If you explicitly opt in, you may receive promotional offers, discounts, and service updates by text message. Submitting an inquiry through this website does not, by itself, enroll you in text-message marketing. Consent to receive text messages is not a condition of purchase.
 Message frequency varies. Message and data rates may apply for any messages sent to you from us and to us from you. If you have any questions about your text plan or data plan, it is best to contact your wireless provider.
 You can cancel the SMS service at any time. Just text "STOP" to 814-893-1075. After you send the SMS message "STOP" to us, we will send you an SMS message to confirm that you have been unsubscribed. After this, you will no longer receive SMS messages from us. If you want to join again, just sign up as you did the first time and we will start sending SMS messages to you again. If you are experiencing issues with the messaging program you can reply with the keyword HELP for more assistance, or you can get help directly at david@coveredbridgebrands.com.
@@ -142,3 +142,5 @@ Questions regarding these Terms may be directed to:
 > Covered Bridge Brands, LLC
 > 664 Tire Hill Road
 > Johnstown, PA 15905
+> Email: david@coveredbridgebrands.com
+> Phone: [814-893-1075](tel:+18148931075)

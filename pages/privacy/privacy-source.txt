@@ -30,11 +30,11 @@ We may use information we collect to:
 * Comply with applicable legal obligations
 * Otherwise use information for purposes reasonably related to your inquiry or our business relationship with you
 ## Telephone Calls, Text Messages, and Consent
-Telephone-call and text-message consent is optional and is not a condition of purchasing any goods or services.
-If you provide your telephone number and submit an inquiry, Covered Bridge Brands, LLC may contact you by telephone regarding your inquiry, requested services, scheduling, or related follow-up, subject to applicable law.
-If you affirmatively consent to receive telephone calls or text messages from Covered Bridge Brands, LLC, you authorize us to contact you at the telephone number you provided regarding your inquiry and related follow-up.
-If you separately and explicitly opt in to our text-message marketing program, you may also receive promotional offers, discounts, and service updates by text message from COVERED BRIDGE BRANDS LLC, as described in our Terms of Service.
-Depending on the services and technology being used, communications may involve automated technology where permitted by applicable law.
+When you submit an inquiry or contact us, we may respond by email or, if you provide a telephone number, by telephone regarding your inquiry, requested services, scheduling, or related follow-up, subject to applicable law.
+Providing a telephone number or submitting an inquiry does not, by itself, give consent to receive text messages from us.
+If you explicitly opt in to text messages from COVERED BRIDGE BRANDS LLC, you may receive promotional offers, discounts, and service updates through our text-message marketing program, as described in our Terms of Service.
+Consent to receive text messages is optional and is not a condition of purchasing any goods or services.
+Text messages may be sent using text-messaging and CRM software. We do not use automated, AI, or prerecorded voice calls.
 Message and data rates may apply to text messages. Message frequency may vary.
 You may opt out of text messages at any time by replying STOP. You may reply HELP for assistance with text messages.
 You may request that we stop contacting you by telephone by asking us not to call you or by contacting us using the information provided below.
@@ -43,7 +43,7 @@ No mobile information will be shared with third parties/affiliates for marketing
 Where applicable, Covered Bridge Brands maintains records of consent and opt-out requests for compliance and business-record purposes.
 ## How We Share Information
 We do not sell personal information.
-Mobile information and text-message opt-in data and consent are shared only as described in the Telephone Calls, Text Messages, and Consent section above.
+Mobile information and text-message opt-in data and consent are shared only as described in the Telephone Calls, Text Messages, and Consent section above. The sharing described in this section, including sharing with advertising and analytics providers, does not override those protections.
 We may share information with service providers that help us operate and support our website and business. These providers may include companies that provide:
 * Website hosting and infrastructure
 * CRM and customer-management systems
@@ -65,12 +65,13 @@ We may also disclose information:
 We do not authorize service providers to use information provided to us for their own independent marketing purposes where prohibited by applicable law or our agreements with those providers.
 ## Third-Party Services
 Our website and related services may use third-party technology and service providers, including forms, scheduling tools, website hosting and infrastructure, CRM platforms, analytics services, advertising platforms, AI and automation services, email providers, SMS providers, and telephone or communications platforms.
-These providers may process information according to their own privacy policies and terms in addition to the practices described in this Privacy Policy.
+These providers may process information according to their own privacy policies and terms in addition to the practices described in this Privacy Policy. Those policies do not change the mobile-information and text-message consent protections described in the Telephone Calls, Text Messages, and Consent section.
 We may also provide links to third-party websites or services for convenience. Those websites and services are not controlled by Covered Bridge Brands, LLC, and their privacy practices are governed by their own policies.
 ## Cookies and Similar Technologies
 Our website and third-party service providers may use cookies, pixels, tags, scripts, or similar technologies to operate the website, understand website usage, measure advertising performance, improve services, and support marketing activities.
 The information collected through these technologies may include technical or usage information and may be associated with information you voluntarily provide to us.
-You may be able to control certain cookies and similar technologies through your browser or device settings. Disabling certain technologies may affect website functionality.
+Our website displays a cookie banner that lets you choose Accept essential, Accept all, or Customize.
+You may also be able to control certain cookies and similar technologies through your browser or device settings. Disabling certain technologies may affect website functionality.
 ## Retention and Security
 We retain personal information for as long as reasonably necessary to:
 * Respond to inquiries
@@ -104,7 +105,9 @@ We may update this Privacy Policy from time to time as our services, technology,
 The "Last updated" date at the top of this Privacy Policy indicates when the latest version took effect.
 We encourage you to review this Privacy Policy periodically for changes.
 ## Contact
-Questions, privacy requests, or other communications regarding this Privacy Policy may be mailed to:
+Questions, privacy requests, or other communications regarding this Privacy Policy may be sent by email, telephone, or mail:
 > Covered Bridge Brands, LLC
 > 664 Tire Hill Road
 > Johnstown, PA 15905
+> Email: david@coveredbridgebrands.com
+> Phone: [814-893-1075](tel:+18148931075)

@@ -71,7 +71,7 @@ def parse(path):
     return effective, intro, sections
 
 
-LINK = re.compile(r"\[([^\]]+)\]\(((?:https?|mailto):[^)\s]+)\)")
+LINK = re.compile(r"\[([^\]]+)\]\(((?:https?|mailto|tel):[^)\s]+)\)")
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 
 
