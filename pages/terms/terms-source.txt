@@ -1,17 +1,17 @@
 TERMS OF SERVICE
-Last updated: September 29, 2026
-These Terms of Service ("Terms") govern your use of the Covered Bridge Brands, LLC ("Covered Bridge Brands," "CBB," "we," "us," or "our") website and, where applicable, our marketing, lead-generation, automation, consulting, and related services.
+Last updated: October 8, 2026
+These Terms of Service ("Terms") govern your use of the Covered Bridge Brands, LLC ("Covered Bridge Brands," "CBB," "we," "us," or "our") website and, where applicable, our marketing, advertising, automation, consulting, and related services.
 By accessing or using this website, submitting an inquiry, scheduling a consultation, or purchasing or using services from Covered Bridge Brands, you agree to these Terms. If you do not agree with these Terms, please do not use the website or services.
 1. Business-to-Business Services
-Covered Bridge Brands provides marketing, lead-generation, advertising, automation, artificial-intelligence, customer-relationship-management, and related services primarily to businesses and organizations.
+Covered Bridge Brands provides marketing, customer-acquisition, advertising, automation, artificial-intelligence, customer-relationship-management, and related services primarily to businesses and organizations.
 Our services may include, depending on the package or engagement:
 * Digital advertising
-* Lead generation
+* Customer-acquisition marketing
 * Website and landing-page development
 * Search and local marketing
 * Google Business Profile and local SEO services
 * Social media marketing and management
-* Lead follow-up and communication automation
+* Inquiry follow-up and communication automation
 * CRM setup and management
 * Appointment scheduling systems
 * Email and text-message marketing
@@ -32,9 +32,9 @@ You agree not to:
 * Use information obtained through the website in a manner that violates applicable law.
 We reserve the right to restrict or terminate access to the website when reasonably necessary to protect the website, our business, our users, or others.
 3. Services and Results
-Covered Bridge Brands provides marketing services intended to help businesses improve their marketing, lead-generation, follow-up, and customer-acquisition processes.
+Covered Bridge Brands provides marketing services intended to help businesses improve their marketing, inquiry follow-up, and customer-acquisition processes.
 Marketing performance depends on many factors, including the client's industry, geographic market, offer, pricing, competition, advertising budget, sales process, responsiveness, customer demand, market conditions, and other factors outside our control.
-We do not guarantee any particular number of leads, appointments, customers, sales, revenue, return on investment, search ranking, advertising performance, or other business result unless a specific written agreement expressly provides otherwise.
+We do not guarantee any particular number of inquiries, appointments, customers, sales, revenue, return on investment, search ranking, advertising performance, or other business result unless a specific written agreement expressly provides otherwise.
 Any examples, case studies, testimonials, projections, estimates, or descriptions of potential outcomes are provided for informational purposes and should not be interpreted as a guarantee of future performance.
 4. Client Responsibilities
 Clients are responsible for providing accurate, complete, and timely information reasonably necessary for us to provide services.
@@ -42,7 +42,7 @@ Clients are also responsible for:
 * Reviewing and approving advertising materials where requested;
 * Providing accurate business information, offers, pricing, and service descriptions;
 * Maintaining appropriate access to business accounts and platforms;
-* Responding appropriately to leads and prospective customers;
+* Responding appropriately to inquiries and prospective customers;
 * Complying with laws and regulations applicable to their business and industry;
 * Obtaining any licenses, permissions, disclosures, or consents required for their business activities; and
 * Ensuring that information and materials supplied to Covered Bridge Brands may lawfully be used for the purposes requested.
@@ -58,16 +58,20 @@ Covered Bridge Brands is not responsible for outages, policy changes, account re
 Where a client's services depend on a third-party account, the client remains responsible for maintaining that account and complying with the third party's applicable terms and policies.
 7. Artificial Intelligence and Automation
 Covered Bridge Brands may use artificial-intelligence systems, automation tools, software agents, and other technology in providing services.
-AI and automated systems may be used for purposes such as content creation, lead qualification, customer communications, scheduling, data organization, analysis, workflow automation, and other marketing functions.
+AI and automated systems may be used for purposes such as content creation, reviewing inquiries for needs and service fit, customer communications, scheduling, data organization, analysis, workflow automation, and other marketing functions.
 AI-generated or AI-assisted content may require human review and may contain errors or inaccuracies. We may use reasonable processes to review or monitor AI-assisted outputs, but we do not guarantee that all AI-generated content or outputs will be error-free.
 Clients remain responsible for reviewing and approving materials when approval is requested and for ensuring that information used in their marketing is accurate and appropriate for their business.
 8. Communications and Consent
 By submitting information through this website, you may request that Covered Bridge Brands contact you regarding your inquiry or requested services.
 Where required by applicable law, we will obtain appropriate consent before sending certain marketing communications or making certain types of automated or prerecorded calls or messages.
 If you separately consent to receive text messages or telephone calls, the terms of that consent will be governed by the disclosures presented at the time consent is provided and by applicable law.
-You may opt out of text messages by replying STOP and may request that we stop contacting you by telephone.
+Text messages from our SMS program are sent by COVERED BRIDGE BRANDS LLC. If you explicitly opt in, you may receive promotional offers, discounts, and service updates by text message. Submitting an inquiry through this website does not, by itself, enroll you in text-message marketing. Consent to receive text messages is not a condition of purchase.
+Message frequency varies. Message and data rates may apply for any messages sent to you from us and to us from you. If you have any questions about your text plan or data plan, it is best to contact your wireless provider.
+You can cancel the SMS service at any time. Just text "STOP" to 814-893-1075. After you send the SMS message "STOP" to us, we will send you an SMS message to confirm that you have been unsubscribed. After this, you will no longer receive SMS messages from us. If you want to join again, just sign up as you did the first time and we will start sending SMS messages to you again. If you are experiencing issues with the messaging program you can reply with the keyword HELP for more assistance, or you can get help directly at david@coveredbridgebrands.com.
+Carriers are not liable for delayed or undelivered messages.
+You may also request that we stop contacting you by telephone.
 Commercial email communications will be handled in accordance with applicable law, including applicable requirements concerning identification and opt-out requests.
-For additional information regarding how we collect and use personal information, please review our Privacy Policy.
+If you have any questions regarding privacy, please read our [Privacy Policy](https://coveredbridgebrands.com/privacy-policy).
 9. Intellectual Property
 Unless otherwise agreed in writing, the Covered Bridge Brands website and its contents, including text, graphics, logos, designs, photographs, videos, software, layouts, and other materials, are owned by or licensed to Covered Bridge Brands and are protected by applicable intellectual-property laws.
 You may not reproduce, distribute, modify, publicly display, sell, or create derivative works from our website content without our prior written permission, except as permitted by law.

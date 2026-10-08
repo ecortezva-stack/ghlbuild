@@ -13,6 +13,8 @@ Source format (plain text, one item per line):
     "N. Heading"              a numbered section heading
     "## Heading"              an unnumbered section heading
     "* text"                  a bullet point
+    [label](https://...)      an inline link (email addresses link
+                              automatically)
     "> text"                  a line of a mailing address (consecutive lines
                               are grouped into one address block)
     [[...]]                   a note to yourself; becomes an HTML comment
@@ -69,10 +71,29 @@ def parse(path):
     return effective, intro, sections
 
 
+LINK = re.compile(r"\[([^\]]+)\]\(((?:https?|mailto):[^)\s]+)\)")
+EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
+
+
+def anchor(href, label):
+    return f'<a class="cbb-legal__inline-link" href="{html.escape(href)}">{label}</a>'
+
+
 def text(s, slug):
-    out = html.escape(s, quote=False)
-    phrase, href = OTHER_PAGE[slug]
-    return out.replace(phrase, f'<a class="cbb-legal__inline-link" href="{href}">{phrase}</a>', 1)
+    # [label](https://...) writes an explicit link; on those lines the
+    # automatic link to the other legal page is skipped.
+    links = []
+
+    def stash(m):
+        links.append((m.group(2), html.escape(m.group(1), quote=False)))
+        return f"\x00{len(links) - 1}\x00"
+
+    out = html.escape(LINK.sub(stash, s), quote=False)
+    if not links:
+        phrase, href = OTHER_PAGE[slug]
+        out = out.replace(phrase, anchor(href, phrase), 1)
+    out = EMAIL.sub(lambda m: anchor("mailto:" + m.group(0), m.group(0)), out)
+    return re.sub("\x00(\\d+)\x00", lambda m: anchor(*links[int(m.group(1))]), out)
 
 
 def render_items(items, slug, indent):
