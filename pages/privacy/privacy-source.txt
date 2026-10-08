@@ -1,5 +1,5 @@
 PRIVACY POLICY
-Last updated: October 8, 2026
+Last updated: September 22, 2026
 This Privacy Policy explains how Covered Bridge Brands, LLC ("Covered Bridge Brands," "CBB," "we," "us," or "our") collects, uses, discloses, and protects information in connection with this website and our related services.
 By using this website or submitting information through the website, you acknowledge that you have read this Privacy Policy.
 ## Information We Collect
@@ -23,34 +23,32 @@ We may use information we collect to:
 * Communicate with you by telephone, email, or text message where permitted and where you have provided appropriate consent when required
 * Maintain business and customer records
 * Improve our website, services, marketing systems, and customer experience
-* Operate marketing, advertising, CRM, and automation services
-* Evaluate and improve advertising and marketing campaigns
+* Operate marketing, lead-generation, CRM, and automation services
+* Evaluate and improve advertising and lead-generation campaigns
 * Provide services you request
 * Protect the security and integrity of our website and systems
 * Comply with applicable legal obligations
 * Otherwise use information for purposes reasonably related to your inquiry or our business relationship with you
 ## Telephone Calls, Text Messages, and Consent
-When you submit an inquiry or contact us, we may respond by email or, if you provide a telephone number, by telephone regarding your inquiry, requested services, scheduling, or related follow-up, subject to applicable law.
-Providing a telephone number or submitting an inquiry does not, by itself, give consent to receive text messages from us.
-If you explicitly opt in to text messages from COVERED BRIDGE BRANDS LLC, you may receive promotional offers, discounts, and service updates through our text-message marketing program, as described in our Terms of Service.
-Consent to receive text messages is optional and is not a condition of purchasing any goods or services.
-Text messages may be sent using text-messaging and CRM software. We do not use automated, AI, or prerecorded voice calls.
+Telephone-call and text-message consent is optional and is not a condition of purchasing any goods or services.
+If you provide your telephone number and submit an inquiry, Covered Bridge Brands, LLC may contact you by telephone regarding your inquiry, requested services, scheduling, or related follow-up, subject to applicable law.
+If you affirmatively consent to receive telephone calls or text messages from Covered Bridge Brands, LLC, you authorize us to contact you at the telephone number you provided regarding your inquiry and related follow-up.
+Depending on the services and technology being used, communications may involve automated technology where permitted by applicable law.
 Message and data rates may apply to text messages. Message frequency may vary.
 You may opt out of text messages at any time by replying STOP. You may reply HELP for assistance with text messages.
 You may request that we stop contacting you by telephone by asking us not to call you or by contacting us using the information provided below.
 Opting out of text messages or telephone calls does not necessarily prevent us from communicating with you through another method you have provided, where permitted by law and where reasonably necessary to respond to your inquiry or maintain an existing business relationship.
-No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+Phone numbers and consent to receive telephone calls or text messages are not shared with third parties for their own marketing purposes.
 Where applicable, Covered Bridge Brands maintains records of consent and opt-out requests for compliance and business-record purposes.
 ## How We Share Information
 We do not sell personal information.
-Mobile information and text-message opt-in data and consent are shared only as described in the Telephone Calls, Text Messages, and Consent section above. The sharing described in this section, including sharing with advertising and analytics providers, does not override those protections.
 We may share information with service providers that help us operate and support our website and business. These providers may include companies that provide:
 * Website hosting and infrastructure
 * CRM and customer-management systems
 * Scheduling and appointment services
 * Email and text-message communications
 * Telephone and communication services
-* Advertising services
+* Advertising and lead-generation services
 * Analytics and website-performance services
 * AI and automation technology
 * Data storage and security
@@ -65,13 +63,12 @@ We may also disclose information:
 We do not authorize service providers to use information provided to us for their own independent marketing purposes where prohibited by applicable law or our agreements with those providers.
 ## Third-Party Services
 Our website and related services may use third-party technology and service providers, including forms, scheduling tools, website hosting and infrastructure, CRM platforms, analytics services, advertising platforms, AI and automation services, email providers, SMS providers, and telephone or communications platforms.
-These providers may process information according to their own privacy policies and terms in addition to the practices described in this Privacy Policy. Those policies do not change the mobile-information and text-message consent protections described in the Telephone Calls, Text Messages, and Consent section.
+These providers may process information according to their own privacy policies and terms in addition to the practices described in this Privacy Policy.
 We may also provide links to third-party websites or services for convenience. Those websites and services are not controlled by Covered Bridge Brands, LLC, and their privacy practices are governed by their own policies.
 ## Cookies and Similar Technologies
 Our website and third-party service providers may use cookies, pixels, tags, scripts, or similar technologies to operate the website, understand website usage, measure advertising performance, improve services, and support marketing activities.
 The information collected through these technologies may include technical or usage information and may be associated with information you voluntarily provide to us.
-Our website displays a cookie banner that lets you choose Accept essential, Accept all, or Customize.
-You may also be able to control certain cookies and similar technologies through your browser or device settings. Disabling certain technologies may affect website functionality.
+You may be able to control certain cookies and similar technologies through your browser or device settings. Disabling certain technologies may affect website functionality.
 ## Retention and Security
 We retain personal information for as long as reasonably necessary to:
 * Respond to inquiries
@@ -105,9 +102,7 @@ We may update this Privacy Policy from time to time as our services, technology,
 The "Last updated" date at the top of this Privacy Policy indicates when the latest version took effect.
 We encourage you to review this Privacy Policy periodically for changes.
 ## Contact
-Questions, privacy requests, or other communications regarding this Privacy Policy may be sent by email, telephone, or mail:
+Questions, privacy requests, or other communications regarding this Privacy Policy may be mailed to:
 > Covered Bridge Brands, LLC
 > 664 Tire Hill Road
 > Johnstown, PA 15905
-> Email: david@coveredbridgebrands.com
-> Phone: [814-893-1075](tel:+18148931075)
