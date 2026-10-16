@@ -1,0 +1,4 @@
+# Paste order for the MapScore Free Audit page (/mapscore-free-audit).
+sections/00-header.html
+pages/mapscore-free-audit/mapscore-free-audit.html
+sections/06-footer.html
