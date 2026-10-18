@@ -1,4 +1,0 @@
-# Paste order for the MapScore main page (/mapscore). Replaces the Coming Soon block.
-sections/00-header.html
-pages/mapscore/mapscore-main.html
-sections/06-footer.html

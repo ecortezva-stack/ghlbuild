@@ -1,6 +1,6 @@
 # MapScore main page (`/mapscore`)
 
-Replaces the Coming Soon block on the existing `/mapscore` page. The Free Audit page (`/mapscore-free-audit`) is separate and unchanged.
+Replaces the Coming Soon block on the existing `/mapscore` page. The audit-tool page (`/mapscore-free-audit`) stays published and unchanged for officers to share during booked calls, but this page doesn't link to it.
 
 ## Placement in GHL
 
@@ -10,50 +10,51 @@ Replaces the Coming Soon block on the existing `/mapscore` page. The Free Audit 
 | 2 | **Replace** the Coming Soon Custom HTML element with this file | `pages/mapscore/mapscore-main.html` |
 | 3 | Shared footer (already on the page) | `sections/06-footer.html` |
 
-Keep the section/row full width with 0 padding and no background. Don't add another header, footer, pixel, chat loader or cookie banner. The block has none.
+Keep the section full width with 0 padding and no background. Don't add another header, footer, pixel, chat loader or cookie banner. The block has none.
 
-## Settings (one place)
+## Upload and configure
 
-Open `mapscore-main.html`, find **MAPSCORE PAGE SETTINGS** near the top of the `<script>` at the bottom:
+1. Upload each file below to **GHL Media** and copy its public URL.
+2. In `mapscore-main.html`, find **MAPSCORE PAGE SETTINGS** in the `<script>` at the bottom. Each setting is labeled with the file it expects (`/* upload: … */`).
+3. Paste each URL between the matching quotes, then paste the whole block into GHL.
 
-```js
-var SETTINGS = {
-  bookingUrl: '',        // GHL calendar link
-  demoVideo: '',         // YouTube link or 11-character ID
-  demoVideoTitle: 'MapScore by Covered Bridge Brands demo video',
-  rankingAnimation: ''   // public https:// URL of the uploaded MP4
-};
-```
+Anything left `''` is hidden on the page; it never shows a broken image.
 
-| Setting | While empty | Once filled in |
+| Setting | Upload this file (`assets/mapscore/…`) | Used for |
 |---|---|---|
-| `bookingUrl` | All 4 guided-call buttons go to `https://coveredbridgebrands.com/contact` and read **Request Your Free Audit Call**, with a note that we'll reach out to arrange a time | All 4 go to the calendar and read **Book Your Free Audit Call**; the contact note is hidden |
-| `demoVideo` | The `#demo` section and the hero's **Watch the Demo** link stay hidden | Section and link appear; responsive YouTube player (privacy-enhanced domain), no autoplay |
-| `rankingAnimation` | The animation stays hidden | Muted, looping inline MP4 with controls in the results section; it starts only when scrolled into view and never autoplays for visitors who prefer reduced motion. If the URL fails to load, it hides itself |
+| `bookingUrl` | — (GHL calendar link) | Every **Book a Free Guided Audit** button. While empty, the buttons scroll to the guided-audit section on the page. |
+| `marketingVideo` | — (YouTube link or ID) | **Discover MapScore** player. Shows "Coming soon" until set. |
+| `demoVideo` | — (YouTube link or ID) | **See MapScore in Action** player. Shows "Coming soon" until set. |
+| `assets.mapscoreLogo` | approved MapScore logo (not supplied yet) | Replaces the drawn MapScore wordmark in the hero. |
+| `assets.graphicProfile` | `graphics/google-business-profile.webp` | Google Business Profile illustration |
+| `assets.graphicPosts` | `graphics/automated-google-posts.webp` | Posts illustration |
+| `assets.graphicReviews` | `graphics/review-collection.webp` | Review collection illustration |
+| `assets.graphicApproval` | `graphics/review-approval.webp` | Review approval illustration |
+| `assets.graphicDirectory` | `graphics/directory-and-search-network.webp` | Directory network illustration |
+| `assets.rroofLogo` / `rroofBefore` / `rroofAfter` | `customers/rooster-roofers-logo.webp`, `-before.webp`, `-after.webp` | Rooster Roofers story |
+| `assets.hybridLogo` / `hybridBefore` / `hybridAfter` | `customers/hybrid-clinic-logo.webp`, `-before.webp`, `-after.webp` | The Hybrid Clinic story |
+| `assets.homecrushLogo` / `homecrushBefore` / `homecrushAfter` | `customers/home-crush-logo.webp`, `-before.webp`, `-after.webp` | Home Crush story |
+| `assets.rankingAnimation` | `ranking-improvement.mp4` | Ranking animation (muted, inline, with controls; stays paused for visitors who prefer reduced motion) |
+| `assets.rankingAnimationPoster` | `ranking-improvement-poster.webp` | Still frame shown before the animation plays |
+| `assets.presentationDownload` | `CBB_MapScore_Presentation.pptx` | "Download the presentation" link |
+| `assets.slides` (11 entries, in order) | `slides/slide-01.webp` … `slide-11.webp` | Presentation viewer |
 
-Only full `https://` links are accepted; anything else is ignored. For the animation, upload `Ranking Improvement GIF.mp4` to the GHL media library and paste its URL.
+The hero photo (`hero-gold-pin.webp`) is already embedded in the block.
+
+## The presentation
+
+`assets/mapscore/CBB_MapScore_Presentation.pptx` is the corrected deck: the guarantee and website-builder wording are removed, supplier names are out of the slides and speaker notes, slide 11 has a single **Book a Free Guided Audit** action, and slide 6 now identifies its heatmaps as Home Crush (before and after 30 days). `slides/` holds its 11 slides exported for the viewer, and `CBB_MapScore_Presentation.pdf` is a PDF copy. Slide 11's link points to `https://coveredbridgebrands.com/mapscore#ms-book`.
 
 ## Editing
 
-Edit `mapscore-main.template.html`, then run `python3 scripts/build-mapscore.py` to rebuild `mapscore-main.html` (it embeds the images below). Run `./scripts/build-preview.sh` to refresh `preview.html`.
+Edit `mapscore-main.template.html`, then run `python3 scripts/build-mapscore.py`. It rebuilds `mapscore-main.html` (empty URLs, ready for GHL) and `preview.html` (uses the local files so everything shows).
 
-## Assets and sources
+## Asset sources
 
-| Asset | Source | Used for |
-|---|---|---|
-| `assets/mapscore/hero-gold-pin.webp` | CBB MapScore sales deck, slide 1 background (resized from 1672×941 PNG) | Hero |
-| `assets/mapscore/heatmap-before.webp`, `heatmap-after.webp` | CBB sales deck, slide 6 (provider-supplied Paige example pair, resized from 740×740) | Heatmap example, shown together with the deck's caveats. Map tiles are OpenStreetMap, credited on the page |
-| Case studies (Home Crush, Rooster Roofers, The Hybrid Clinic) | CBB sales deck, slide 5 (Paige customer results, with the deck's disclaimer) | Results |
-| 4.9/5, 1,000+ reviews, 13,000+ businesses; Will Higgins and Ryan Fullarton quotes | CBB sales deck, slide 8 (Paige / Merchynt review material) | Reviews, labeled as provider figures |
-| Six-month guarantee wording | CBB sales deck, slide 10 | Pricing |
-| Calculator | `Agency_ROI_Explainer_Guide_Iframe_Code.docx`, rebuilt and scoped | Revenue scenario calculator |
-| MapScore pin mark | Stand-in mark from `sections/02-our-systems.html` (no approved MapScore logo file is in the project) | Hero eyebrow |
-| Ranking animation | `Ranking Improvement GIF.mp4` (MP4, 1280×1280, 4.1 s, no audio) | Hidden until hosted |
-
-To lighten the block (about 237 KB), upload the three `.webp` files to the GHL media library and replace each `data:image/webp;base64,...` value with its media URL.
-
-## Provider-side items to confirm before selling
-
-- Citations/directory sync: confirm citation credits or provisioning are enabled for each client account in Paige. The page presents citations as included in the plan.
-- AI search visibility, social publishing (Facebook, Instagram, LinkedIn), YouTube and TikTok publishing, and website widgets each need the client's account connections and the matching Paige features active.
-- CBB-branded newsletter: confirm it's set up before promising it to a client. The page names it only as an included extra, with no schedule.
+| Files | Source |
+|---|---|
+| `graphics/*` | Merchynt agency marketing assets, https://www.merchynt.com/marketingassets (originals listed in the supplied `asset-sources.csv`), resized to 960 px |
+| `customers/*` | Merchynt customer heatmaps and logos, https://www.merchynt.com/paige (supplied pack), resized to 560 px |
+| `ranking-improvement.mp4` | Supplied `Ranking Improvement GIF.mp4` (H.264, 1280×1280, 4.1 s, no audio); poster is its frame at 0.3 s |
+| `hero-gold-pin.webp`, `slides/*`, `.pptx`, `.pdf` | CBB MapScore sales presentation |
+| Case-study figures, review excerpts, provider ratings | CBB sales presentation, slides 5 and 8 (provider material) |

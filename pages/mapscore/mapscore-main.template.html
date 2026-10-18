@@ -1,20 +1,15 @@
 <!-- ============================================================
      CBB — MAPSCORE MAIN PAGE (/mapscore)
      Paste into ONE GoHighLevel Custom HTML/JavaScript element, between
-     the shared header and footer. Replaces the Coming Soon block on
-     the /mapscore page.
+     the shared header and footer. Replaces the Coming Soon block.
 
      All styles are scoped to .cbb-mapscore. The script only touches
      elements inside .cbb-mapscore and creates no global variables.
 
-     >>> SETTINGS: see "MAPSCORE PAGE SETTINGS" at the top of the
-         <script> at the bottom of this block (booking link, demo
-         video, ranking animation). That is the only place to edit.
-
-     IMAGES: the hero photo and the two heatmaps are embedded so the
-     block works as soon as you paste. To make it lighter, upload
-     assets/mapscore/*.webp to the GHL media library and replace each
-     data:image/webp;base64,... value with its media URL.
+     >>> SETTINGS: "MAPSCORE PAGE SETTINGS" at the top of the <script>
+         at the bottom of this block holds the booking link, both video
+         links and every hosted image/media URL. That is the only place
+         to edit. See pages/mapscore/README.md for the upload list.
      ============================================================ -->
 <style>
   .cbb-mapscore {
@@ -169,7 +164,8 @@
   .cbb-mapscore button:focus-visible,
   .cbb-mapscore input:focus-visible,
   .cbb-mapscore summary:focus-visible,
-  .cbb-mapscore video:focus-visible {
+  .cbb-mapscore video:focus-visible,
+  .cbb-mapscore [tabindex]:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
     outline-offset: 3px;
   }
@@ -220,40 +216,29 @@
     box-shadow: 0 10px 28px rgba(213, 167, 86, 0.3);
     color: var(--cbb-black);
   }
-  .cbb-mapscore .cbb-ms__btn--outline {
-    background: rgba(10, 11, 12, 0.35);
+  .cbb-mapscore .cbb-ms__btn--ghost {
+    min-height: 44px;
+    padding: 0 18px;
+    border-color: rgba(246, 239, 227, 0.28);
+    background: transparent;
+    color: var(--cbb-cream);
+  }
+  .cbb-mapscore .cbb-ms__btn--ghost:hover {
     border-color: var(--cbb-gold);
     color: var(--cbb-gold-light);
   }
-  .cbb-mapscore .cbb-ms__btn--outline:hover {
-    background: rgba(213, 167, 86, 0.1);
-    color: var(--cbb-gold-light);
+  .cbb-mapscore .cbb-ms__btn--ghost:hover svg {
+    transform: none;
   }
-  .cbb-mapscore .cbb-ms__textlink {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 44px;
-    padding: 0 4px;
-    font-family: var(--cbb-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--cbb-cream);
-    text-decoration: none;
-  }
-  .cbb-mapscore .cbb-ms__textlink svg {
-    width: 20px;
-    height: 20px;
-    color: var(--cbb-gold);
-  }
-  .cbb-mapscore .cbb-ms__textlink:hover {
-    color: var(--cbb-gold-light);
+  .cbb-mapscore .cbb-ms__btn[disabled] {
+    opacity: 0.4;
+    cursor: default;
   }
 
   /* ---------- 1. Hero ---------- */
   .cbb-mapscore .cbb-ms__hero {
     position: relative;
-    padding: clamp(64px, 8vw, 112px) var(--cbb-ms-gutter) clamp(56px, 7vw, 96px);
+    padding: clamp(56px, 7vw, 104px) var(--cbb-ms-gutter) clamp(56px, 7vw, 96px);
     background-color: var(--cbb-black);
     background-image:
       linear-gradient(90deg, rgba(10, 11, 12, 1) 0%, rgba(10, 11, 12, 0.92) 38%, rgba(10, 11, 12, 0.35) 70%, rgba(10, 11, 12, 0.1) 100%),
@@ -264,13 +249,13 @@
     border-bottom: 1px solid rgba(213, 167, 86, 0.3);
   }
   .cbb-mapscore .cbb-ms__hero-content {
-    max-width: 640px;
+    max-width: 660px;
   }
   .cbb-mapscore .cbb-ms__crumbs {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 0 0 clamp(20px, 2.4vw, 28px);
+    margin: 0 0 clamp(22px, 2.6vw, 30px);
     padding: 0;
     list-style: none;
     font-size: 0.8125rem;
@@ -299,37 +284,61 @@
   .cbb-mapscore .cbb-ms__crumb[aria-current] {
     color: var(--cbb-gold);
   }
-  .cbb-mapscore .cbb-ms__brand {
-    display: inline-flex;
+  /* MapScore logo lockup (replaced by the approved logo file once
+     SETTINGS.assets.mapscoreLogo is set) */
+  .cbb-mapscore .cbb-ms__logo {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    margin: 0 0 18px;
+    gap: clamp(14px, 1.6vw, 20px);
+    margin: 0 0 clamp(22px, 2.6vw, 30px);
   }
-  .cbb-mapscore .cbb-ms__brand svg {
-    width: 34px;
-    height: 44px;
-    flex: 0 0 34px;
+  .cbb-mapscore .cbb-ms__logo-mark {
+    width: clamp(52px, 5.4vw, 72px);
+    height: auto;
+    flex: 0 0 auto;
   }
-  .cbb-mapscore .cbb-ms__brand .cbb-ms__eyebrow {
+  .cbb-mapscore .cbb-ms__logo-text {
+    display: flex;
+    flex-direction: column;
     margin: 0;
+    line-height: 1;
+  }
+  .cbb-mapscore .cbb-ms__logo-name {
+    font-family: var(--cbb-serif);
+    font-size: clamp(2.5rem, 4vw + 1rem, 4.25rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--cbb-cream);
+  }
+  .cbb-mapscore .cbb-ms__logo-by {
+    margin-top: 8px;
+    font-size: clamp(0.6875rem, 0.4vw + 0.6rem, 0.875rem);
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cbb-gold);
+  }
+  .cbb-mapscore .cbb-ms__logo-img {
+    display: block;
+    width: auto;
+    max-width: min(440px, 100%);
+    height: auto;
+    max-height: 140px;
   }
   .cbb-mapscore .cbb-ms__h1 {
-    margin: 0 0 clamp(18px, 2vw, 24px);
+    margin: 0 0 clamp(16px, 2vw, 22px);
     padding: 0;
     font-family: var(--cbb-serif);
-    font-size: clamp(2.375rem, 3.6vw + 0.9rem, 4.25rem);
+    font-size: clamp(1.875rem, 2.4vw + 0.9rem, 3rem);
     font-weight: 600;
-    line-height: 1.08;
+    line-height: 1.12;
     letter-spacing: -0.01em;
     text-transform: none;
     color: var(--cbb-cream);
   }
-  .cbb-mapscore .cbb-ms__h1 span {
-    display: block;
-  }
   .cbb-mapscore .cbb-ms__sub {
     max-width: 34em;
-    margin: 0 0 clamp(28px, 3vw, 36px);
+    margin: 0 0 clamp(26px, 3vw, 34px);
     padding: 0;
     font-size: clamp(1rem, 0.35vw + 0.92rem, 1.125rem);
     line-height: 1.65;
@@ -379,6 +388,9 @@
     line-height: 1.4;
     color: var(--cbb-cream);
   }
+  .cbb-mapscore .cbb-ms__intro-p {
+    margin-bottom: 24px;
+  }
   .cbb-mapscore .cbb-ms__numbered {
     margin: 0;
     padding: 0;
@@ -410,7 +422,111 @@
     margin-bottom: 4px;
   }
 
+  /* ---------- Video sections ---------- */
+  .cbb-mapscore .cbb-ms__video-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+  .cbb-mapscore .cbb-ms__video-wrap--flip {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+  .cbb-mapscore .cbb-ms__video-wrap--flip .cbb-ms__video-copy {
+    order: 2;
+  }
+  .cbb-mapscore .cbb-ms__video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+  .cbb-mapscore .cbb-ms__video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .cbb-mapscore .cbb-ms__video-soon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 20px;
+    border: 1px solid rgba(213, 167, 86, 0.35);
+    border-radius: 4px;
+    background:
+      radial-gradient(70% 90% at 50% 40%, rgba(213, 167, 86, 0.16), rgba(213, 167, 86, 0) 65%),
+      linear-gradient(160deg, #15171A 0%, #0A0B0C 100%);
+    text-align: center;
+  }
+  .cbb-mapscore .cbb-ms__video-soon svg {
+    width: clamp(30px, 4vw, 46px);
+    height: auto;
+  }
+  .cbb-mapscore .cbb-ms__video-soon-name {
+    font-family: var(--cbb-serif);
+    font-size: clamp(1.125rem, 1.4vw + 0.7rem, 1.75rem);
+    font-weight: 600;
+    color: var(--cbb-cream);
+  }
+  .cbb-mapscore .cbb-ms__video-soon-tag {
+    padding: 6px 14px;
+    border: 1px solid rgba(213, 167, 86, 0.55);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--cbb-gold-light);
+  }
+
   /* ---------- 3. What's included ---------- */
+  .cbb-mapscore .cbb-ms__spots {
+    display: grid;
+    gap: clamp(48px, 6vw, 80px);
+    margin: 0 0 clamp(56px, 7vw, 88px);
+  }
+  .cbb-mapscore .cbb-ms__spot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+  .cbb-mapscore .cbb-ms__spot:nth-child(even) .cbb-ms__spot-media {
+    order: 2;
+  }
+  .cbb-mapscore .cbb-ms__spot-media {
+    max-width: 520px;
+    margin: 0;
+    justify-self: center;
+    width: 100%;
+  }
+  .cbb-mapscore .cbb-ms__spot-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 960 / 876;
+    border-radius: 6px;
+    background: #E8F1FC;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  }
+  .cbb-mapscore .cbb-ms__spot-media figcaption {
+    margin: 10px 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--cbb-muted);
+  }
+  .cbb-mapscore .cbb-ms__spot .cbb-ms__h3 {
+    font-size: clamp(1.5rem, 1vw + 1.15rem, 2rem);
+  }
   .cbb-mapscore .cbb-ms__groups {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -471,99 +587,69 @@
     background: var(--cbb-gold);
   }
   .cbb-mapscore .cbb-ms__notice {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 28px;
     margin: clamp(20px, 2.4vw, 28px) 0 0;
     padding: 18px 22px;
     border-radius: 3px;
     background: rgba(213, 167, 86, 0.07);
-  }
-  .cbb-mapscore .cbb-ms__notice p {
-    margin: 0;
     font-size: 0.9375rem;
     line-height: 1.55;
     color: rgba(246, 239, 227, 0.88);
   }
-  .cbb-mapscore .cbb-ms__notice strong {
-    color: var(--cbb-gold-light);
-    font-weight: 600;
-  }
 
-  /* ---------- 4. Two ways to start ---------- */
-  .cbb-mapscore .cbb-ms__paths {
+  /* ---------- 4. Guided audit ---------- */
+  .cbb-mapscore .cbb-ms__guided {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(18px, 2.4vw, 28px);
-  }
-  .cbb-mapscore .cbb-ms__path {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(28px, 3.4vw, 44px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    padding: clamp(28px, 4vw, 56px);
+    border: 1px solid rgba(213, 167, 86, 0.5);
     border-radius: 4px;
-    background: var(--cbb-black);
-    border: 1px solid rgba(246, 239, 227, 0.12);
-  }
-  .cbb-mapscore .cbb-ms__path--featured {
-    border-color: rgba(213, 167, 86, 0.55);
     background:
-      radial-gradient(80% 70% at 0% 0%, rgba(213, 167, 86, 0.13), rgba(213, 167, 86, 0) 60%),
+      radial-gradient(70% 80% at 0% 0%, rgba(213, 167, 86, 0.14), rgba(213, 167, 86, 0) 60%),
       var(--cbb-black);
   }
-  .cbb-mapscore .cbb-ms__path-tag {
-    align-self: flex-start;
-    margin: 0 0 18px;
-    padding: 5px 12px;
-    border-radius: 999px;
-    background: rgba(213, 167, 86, 0.14);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cbb-gold-light);
+  .cbb-mapscore .cbb-ms__guided .cbb-ms__actions {
+    margin-top: 26px;
   }
-  .cbb-mapscore .cbb-ms__path .cbb-ms__h3 {
-    font-size: clamp(1.375rem, 0.8vw + 1.1rem, 1.75rem);
-  }
-  .cbb-mapscore .cbb-ms__path-steps {
-    margin: 18px 0 26px;
+  .cbb-mapscore .cbb-ms__guided-steps {
+    margin: 0;
     padding: 0;
     list-style: none;
-    counter-reset: cbb-ms-path;
+    counter-reset: cbb-ms-g;
   }
-  .cbb-mapscore .cbb-ms__path-step {
+  .cbb-mapscore .cbb-ms__guided-step {
     position: relative;
     margin: 0;
-    padding: 0 0 12px 36px;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: rgba(246, 239, 227, 0.86);
-    counter-increment: cbb-ms-path;
+    padding: 0 0 22px 60px;
+    counter-increment: cbb-ms-g;
   }
-  .cbb-mapscore .cbb-ms__path-step::marker {
+  .cbb-mapscore .cbb-ms__guided-step:last-child {
+    padding-bottom: 0;
+  }
+  .cbb-mapscore .cbb-ms__guided-step::marker {
     content: none;
   }
-  .cbb-mapscore .cbb-ms__path-step::before {
-    content: counter(cbb-ms-path);
+  .cbb-mapscore .cbb-ms__guided-step::before {
+    content: counter(cbb-ms-g);
     position: absolute;
-    top: 1px;
+    top: 0;
     left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    border: 1px solid rgba(213, 167, 86, 0.6);
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--cbb-gold);
     border-radius: 50%;
-    font-size: 0.75rem;
+    font-family: var(--cbb-serif);
+    font-size: 1.0625rem;
     font-weight: 600;
-    color: var(--cbb-gold);
+    color: var(--cbb-gold-light);
   }
-  .cbb-mapscore .cbb-ms__path-foot {
-    margin-top: auto;
-  }
-  .cbb-mapscore .cbb-ms__path-foot .cbb-ms__small {
-    margin-top: 12px;
+  .cbb-mapscore .cbb-ms__guided-step .cbb-ms__h3 {
+    margin-bottom: 4px;
+    font-size: 1.1875rem;
   }
 
   /* ---------- 5. How it works ---------- */
@@ -616,113 +702,100 @@
     font-size: 0.9375rem;
   }
 
-  /* ---------- 6. Demo video (hidden until configured) ---------- */
-  .cbb-mapscore .cbb-ms__video {
-    position: relative;
-    max-width: 980px;
-    margin: 0 auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 4px;
-    background: #000;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-  }
-  .cbb-mapscore .cbb-ms__video iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  /* ---------- 7. Results & reviews ---------- */
-  .cbb-mapscore .cbb-ms__cases {
+  /* ---------- 6. Results, stories and reviews ---------- */
+  .cbb-mapscore .cbb-ms__stories {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(22px, 3vw, 32px);
     margin: 0;
     padding: 0;
     list-style: none;
-    border-top: 1px solid var(--cbb-ms-line);
-    border-bottom: 1px solid var(--cbb-ms-line);
   }
-  .cbb-mapscore .cbb-ms__case {
+  .cbb-mapscore .cbb-ms__story {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(22px, 3.4vw, 48px);
+    align-items: center;
     margin: 0;
-    padding: clamp(26px, 3vw, 36px) clamp(18px, 2.4vw, 32px);
+    padding: clamp(22px, 3vw, 36px);
+    border-radius: 4px;
+    background: var(--cbb-black);
+    border: 1px solid rgba(246, 239, 227, 0.1);
   }
-  .cbb-mapscore .cbb-ms__case::marker {
+  .cbb-mapscore .cbb-ms__story::marker {
     content: none;
   }
-  .cbb-mapscore .cbb-ms__case + .cbb-ms__case {
-    border-left: 1px solid var(--cbb-ms-line);
+  .cbb-mapscore .cbb-ms__story-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 18px;
   }
-  .cbb-mapscore .cbb-ms__case-name {
+  .cbb-mapscore .cbb-ms__story-logo {
+    display: block;
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    border-radius: 6px;
+    background: #F6F3EE;
+    object-fit: contain;
+  }
+  .cbb-mapscore .cbb-ms__story-name {
     margin: 0;
     font-family: var(--cbb-serif);
-    font-size: 1.3125rem;
+    font-size: clamp(1.25rem, 0.8vw + 1rem, 1.5rem);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.2;
     color: var(--cbb-cream);
   }
-  .cbb-mapscore .cbb-ms__case-type {
-    margin: 2px 0 18px;
-    font-size: 0.8125rem;
-    letter-spacing: 0.08em;
+  .cbb-mapscore .cbb-ms__story-type {
+    margin: 4px 0 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--cbb-muted);
   }
-  .cbb-mapscore .cbb-ms__case-big {
+  .cbb-mapscore .cbb-ms__story-big {
     margin: 0;
     font-family: var(--cbb-serif);
     font-size: clamp(2.25rem, 2.4vw + 1.2rem, 3.25rem);
     font-weight: 600;
     line-height: 1;
   }
-  .cbb-mapscore .cbb-ms__case-label {
-    margin: 8px 0 18px;
+  .cbb-mapscore .cbb-ms__story-label {
+    margin: 6px 0 16px;
     font-size: 0.9375rem;
-    line-height: 1.5;
-    color: rgba(246, 239, 227, 0.88);
+    color: rgba(246, 239, 227, 0.9);
   }
-  .cbb-mapscore .cbb-ms__case-stats {
-    margin: 0;
+  .cbb-mapscore .cbb-ms__story-stats {
+    margin: 16px 0 0;
     padding: 14px 0 0;
     border-top: 1px dashed rgba(213, 167, 86, 0.25);
   }
-  .cbb-mapscore .cbb-ms__case-stats dt {
+  .cbb-mapscore .cbb-ms__story-stats dt {
     margin: 10px 0 0;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--cbb-muted);
   }
-  .cbb-mapscore .cbb-ms__case-stats dt:first-child {
+  .cbb-mapscore .cbb-ms__story-stats dt:first-child {
     margin-top: 0;
   }
-  .cbb-mapscore .cbb-ms__case-stats dd {
+  .cbb-mapscore .cbb-ms__story-stats dd {
     margin: 2px 0 0;
     font-size: 0.9375rem;
     line-height: 1.5;
     color: var(--cbb-cream);
   }
-  .cbb-mapscore .cbb-ms__disclaimer {
-    margin: 16px 0 0;
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--cbb-muted);
-  }
-  .cbb-mapscore .cbb-ms__subhead {
-    margin: clamp(56px, 6vw, 80px) 0 clamp(24px, 3vw, 32px);
-  }
-  .cbb-mapscore .cbb-ms__heatmaps {
+  .cbb-mapscore .cbb-ms__compare {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.9fr);
-    gap: clamp(16px, 2.4vw, 28px);
-    align-items: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(10px, 1.4vw, 16px);
   }
-  .cbb-mapscore .cbb-ms__heatmap {
+  .cbb-mapscore .cbb-ms__compare figure {
     margin: 0;
   }
-  .cbb-mapscore .cbb-ms__heatmap img {
+  .cbb-mapscore .cbb-ms__compare img {
     display: block;
     width: 100%;
     height: auto;
@@ -730,22 +803,19 @@
     border-radius: 4px;
     background: var(--cbb-surface-2);
   }
-  .cbb-mapscore .cbb-ms__heatmap figcaption {
-    margin: 10px 0 0;
+  .cbb-mapscore .cbb-ms__compare figcaption {
+    margin: 8px 0 0;
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--cbb-gold);
-  }
-  .cbb-mapscore .cbb-ms__heatmap-note .cbb-ms__h3 {
-    margin-top: 0;
   }
   .cbb-mapscore .cbb-ms__legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 16px;
-    margin: 16px 0;
+    gap: 8px 18px;
+    margin: 18px 0 0;
     padding: 0;
     list-style: none;
     font-size: 0.875rem;
@@ -765,9 +835,27 @@
     height: 14px;
     border-radius: 50%;
   }
+  .cbb-mapscore .cbb-ms__disclaimer {
+    margin: 16px 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--cbb-muted);
+  }
+  .cbb-mapscore .cbb-ms__subhead {
+    margin: clamp(56px, 6vw, 80px) 0 clamp(24px, 3vw, 32px);
+  }
+  .cbb-mapscore .cbb-ms__anim-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: center;
+    margin-top: clamp(48px, 6vw, 72px);
+  }
   .cbb-mapscore .cbb-ms__anim {
-    max-width: 520px;
-    margin: clamp(36px, 4vw, 48px) auto 0;
+    width: 100%;
+    max-width: 480px;
+    margin: 0;
+    justify-self: center;
   }
   .cbb-mapscore .cbb-ms__anim video {
     display: block;
@@ -820,14 +908,17 @@
     padding: 0;
     list-style: none;
   }
+  .cbb-mapscore .cbb-ms__quotes > li {
+    margin: 0;
+  }
+  .cbb-mapscore .cbb-ms__quotes > li::marker {
+    content: none;
+  }
   .cbb-mapscore .cbb-ms__quote {
     margin: 0;
     padding: clamp(22px, 2.6vw, 30px);
     border-radius: 4px;
     background: var(--cbb-surface-2);
-  }
-  .cbb-mapscore .cbb-ms__quote::marker {
-    content: none;
   }
   .cbb-mapscore .cbb-ms__quote blockquote {
     margin: 0 0 14px;
@@ -848,6 +939,83 @@
   .cbb-mapscore .cbb-ms__quote figcaption strong {
     color: var(--cbb-cream);
     font-weight: 600;
+  }
+
+  /* ---------- 7. Presentation viewer ---------- */
+  .cbb-mapscore .cbb-ms__deck {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .cbb-mapscore .cbb-ms__deck-stage {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .cbb-mapscore .cbb-ms__deck-stage img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .cbb-mapscore .cbb-ms__deck-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 18px;
+    margin: 16px 0 0;
+  }
+  .cbb-mapscore .cbb-ms__deck-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cbb-mapscore .cbb-ms__deck-nav .cbb-ms__btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .cbb-mapscore .cbb-ms__deck-count {
+    min-width: 64px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--cbb-cream);
+    font-variant-numeric: tabular-nums;
+  }
+  .cbb-mapscore .cbb-ms__deck-title {
+    margin: 10px 0 0;
+    font-size: 0.875rem;
+    color: var(--cbb-muted);
+  }
+  .cbb-mapscore .cbb-ms__deck-text {
+    margin: 24px 0 0;
+    border-top: 1px solid var(--cbb-ms-line);
+    border-bottom: 1px solid var(--cbb-ms-line);
+  }
+  .cbb-mapscore .cbb-ms__deck-text summary {
+    padding: 16px 0;
+    font-weight: 600;
+    color: var(--cbb-cream);
+    cursor: pointer;
+  }
+  .cbb-mapscore .cbb-ms__deck-text ol {
+    margin: 0 0 20px;
+    padding: 0 0 0 22px;
+  }
+  .cbb-mapscore .cbb-ms__deck-text li {
+    margin: 0 0 10px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgba(246, 239, 227, 0.86);
+  }
+  .cbb-mapscore .cbb-ms__deck-text li strong {
+    color: var(--cbb-cream);
   }
 
   /* ---------- 8. ROI calculator ---------- */
@@ -912,11 +1080,6 @@
     -moz-appearance: textfield;
     appearance: textfield;
   }
-  .cbb-mapscore .cbb-ms__input::-webkit-outer-spin-button,
-  .cbb-mapscore .cbb-ms__input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
   .cbb-mapscore .cbb-ms__input--pre {
     padding-left: 30px;
   }
@@ -931,7 +1094,6 @@
   }
   .cbb-mapscore .cbb-ms__error {
     display: block;
-    min-height: 0;
     margin: 6px 0 0;
     font-size: 0.8125rem;
     line-height: 1.4;
@@ -988,6 +1150,7 @@
     font-weight: 600;
     color: var(--cbb-cream);
     font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
   }
   .cbb-mapscore .cbb-ms__calc-row--key dd {
     font-size: 2rem;
@@ -1001,6 +1164,7 @@
     font-size: 0.8125rem;
     line-height: 1.7;
     color: var(--cbb-muted);
+    overflow-wrap: anywhere;
   }
   .cbb-mapscore .cbb-ms__calc-neg {
     margin: 14px 0 0;
@@ -1015,15 +1179,15 @@
     color: var(--cbb-muted);
   }
 
-  /* ---------- 9. Pricing & guarantee ---------- */
-  .cbb-mapscore .cbb-ms__pricing {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(20px, 3vw, 36px);
-    align-items: stretch;
-  }
+  /* ---------- 9. Pricing ---------- */
   .cbb-mapscore .cbb-ms__plan {
-    padding: clamp(28px, 3.6vw, 48px);
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: clamp(28px, 4vw, 56px);
     border: 1px solid rgba(213, 167, 86, 0.55);
     border-radius: 4px;
     background:
@@ -1058,7 +1222,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 24px;
-    margin: 0 0 26px;
+    margin: 0;
     padding: 0;
     list-style: none;
   }
@@ -1066,7 +1230,7 @@
     display: flex;
     gap: 10px;
     margin: 0;
-    padding: 10px 0;
+    padding: 12px 0;
     border-top: 1px solid var(--cbb-ms-line);
     font-size: 0.9375rem;
     line-height: 1.5;
@@ -1082,41 +1246,8 @@
     margin-top: 2px;
     color: var(--cbb-gold);
   }
-  .cbb-mapscore .cbb-ms__term--x svg {
+  .cbb-mapscore .cbb-ms__term--info svg {
     color: var(--cbb-muted);
-  }
-  .cbb-mapscore .cbb-ms__guarantee {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(28px, 3.6vw, 48px);
-    border-radius: 4px;
-    background: var(--cbb-surface-2);
-  }
-  .cbb-mapscore .cbb-ms__seal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
-    margin: 0 0 22px;
-    border: 1px solid var(--cbb-gold);
-    border-radius: 50%;
-    color: var(--cbb-gold);
-  }
-  .cbb-mapscore .cbb-ms__seal svg {
-    width: 34px;
-    height: 34px;
-  }
-  .cbb-mapscore .cbb-ms__guarantee blockquote {
-    margin: 0 0 18px;
-    padding: 0;
-    font-family: var(--cbb-serif);
-    font-size: clamp(1.25rem, 0.8vw + 1rem, 1.5rem);
-    line-height: 1.45;
-    color: var(--cbb-cream);
-  }
-  .cbb-mapscore .cbb-ms__guarantee blockquote p {
-    margin: 0;
   }
 
   /* ---------- 10. FAQs ---------- */
@@ -1214,29 +1345,27 @@
       grid-row: span 2;
       margin: 0;
     }
-    .cbb-mapscore .cbb-ms__heatmaps {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-    .cbb-mapscore .cbb-ms__heatmap-note {
-      grid-column: 1 / -1;
+    .cbb-mapscore .cbb-ms__story {
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   @media (max-width: 900px) {
     .cbb-mapscore .cbb-ms__split,
     .cbb-mapscore .cbb-ms__groups,
-    .cbb-mapscore .cbb-ms__paths,
+    .cbb-mapscore .cbb-ms__spot,
+    .cbb-mapscore .cbb-ms__guided,
+    .cbb-mapscore .cbb-ms__video-wrap,
+    .cbb-mapscore .cbb-ms__video-wrap--flip,
+    .cbb-mapscore .cbb-ms__anim-wrap,
     .cbb-mapscore .cbb-ms__reviews,
     .cbb-mapscore .cbb-ms__calc,
-    .cbb-mapscore .cbb-ms__pricing,
+    .cbb-mapscore .cbb-ms__plan,
     .cbb-mapscore .cbb-ms__faq-wrap {
       grid-template-columns: minmax(0, 1fr);
     }
-    .cbb-mapscore .cbb-ms__cases {
-      grid-template-columns: minmax(0, 1fr);
-    }
-    .cbb-mapscore .cbb-ms__case + .cbb-ms__case {
-      border-left: 0;
-      border-top: 1px solid var(--cbb-ms-line);
+    .cbb-mapscore .cbb-ms__spot:nth-child(even) .cbb-ms__spot-media,
+    .cbb-mapscore .cbb-ms__video-wrap--flip .cbb-ms__video-copy {
+      order: 0;
     }
     .cbb-mapscore .cbb-ms__section {
       scroll-margin-top: 84px;
@@ -1252,7 +1381,6 @@
     }
   }
   @media (max-width: 560px) {
-    .cbb-mapscore .cbb-ms__heatmaps,
     .cbb-mapscore .cbb-ms__terms,
     .cbb-mapscore .cbb-ms__fieldrow {
       grid-template-columns: minmax(0, 1fr);
@@ -1266,13 +1394,26 @@
     .cbb-mapscore .cbb-ms__numbered-item {
       grid-template-columns: 48px minmax(0, 1fr);
     }
+    .cbb-mapscore .cbb-ms__deck-bar {
+      justify-content: center;
+    }
+    .cbb-mapscore .cbb-ms__deck-nav .cbb-ms__btn {
+      padding: 0 14px;
+    }
+    .cbb-mapscore .cbb-ms__video-soon-tag {
+      padding: 4px 10px;
+      font-size: 0.6875rem;
+    }
   }
   @media (max-width: 480px) {
+    .cbb-mapscore .cbb-ms__compare {
+      grid-template-columns: minmax(0, 1fr);
+    }
     .cbb-mapscore .cbb-ms__actions {
       flex-direction: column;
       align-items: stretch;
     }
-    .cbb-mapscore .cbb-ms__btn {
+    .cbb-mapscore .cbb-ms__actions .cbb-ms__btn {
       width: 100%;
     }
   }
@@ -1299,8 +1440,11 @@
             <li class="cbb-ms__crumb" aria-current="page">MapScore</li>
           </ol>
         </nav>
-        <div class="cbb-ms__brand">
-          <svg viewBox="0 0 34 48" aria-hidden="true" focusable="false">
+
+        <!-- MapScore logo. Replaced automatically by the approved logo file
+             once SETTINGS.assets.mapscoreLogo is set. -->
+        <div class="cbb-ms__logo" data-ms-logo>
+          <svg class="cbb-ms__logo-mark" viewBox="0 0 34 48" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="ms-pin-gold" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#F3CF7C"/>
@@ -1310,11 +1454,14 @@
             <path d="M17 2C8.7 2 2 8.4 2 16.4 2 27.5 17 46 17 46s15-18.5 15-29.6C32 8.4 25.3 2 17 2z" fill="none" stroke="url(#ms-pin-gold)" stroke-width="2.6"/>
             <path d="M10 20l4.4-5.3 3.5 3.5 6.1-7" fill="none" stroke="url(#ms-pin-gold)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p class="cbb-ms__eyebrow">MapScore by CBB</p>
+          <p class="cbb-ms__logo-text" role="img" aria-label="MapScore by Covered Bridge Brands">
+            <span class="cbb-ms__logo-name" aria-hidden="true">MapScore</span>
+            <span class="cbb-ms__logo-by" aria-hidden="true">by Covered Bridge Brands</span>
+          </p>
         </div>
+
         <h1 class="cbb-ms__h1" id="ms-hero-title">
-          Local visibility.
-          <span class="cbb-ms__gold">Managed by CBB.</span>
+          Local visibility. <span class="cbb-ms__gold">Managed by CBB.</span>
         </h1>
         <p class="cbb-ms__sub">
           MapScore keeps your Google Business Profile, reviews, listings and local content up to date,
@@ -1322,16 +1469,9 @@
           local businesses across the United States.
         </p>
         <div class="cbb-ms__actions">
-          <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://coveredbridgebrands.com/contact" data-ms-book>
-            <span data-ms-book-label>Request Your Free Audit Call</span>
+          <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+            Book a Free Guided Audit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-          </a>
-          <a class="cbb-ms__btn cbb-ms__btn--outline" href="https://coveredbridgebrands.com/mapscore-free-audit">
-            Start Free Audit
-          </a>
-          <a class="cbb-ms__textlink" href="#demo" data-ms-demo-link hidden>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none"/></svg>
-            Watch the Demo
           </a>
         </div>
         <ul class="cbb-ms__hero-terms" aria-label="Plan at a glance">
@@ -1358,7 +1498,7 @@
           <p class="cbb-ms__pullquote">A one-time setup is only the beginning.</p>
         </div>
         <div>
-          <p class="cbb-ms__p" style="margin-bottom:24px">
+          <p class="cbb-ms__p cbb-ms__intro-p">
             MapScore brings that ongoing work into one managed service from Covered Bridge Brands, coordinated
             around your preferences and the accounts you connect.
           </p>
@@ -1389,23 +1529,106 @@
     </div>
   </section>
 
-  <!-- ===== 3. What MapScore includes ===== -->
-  <section class="cbb-ms__section cbb-ms__section--glow" id="ms-includes" aria-labelledby="ms-includes-title">
+  <!-- ===== 3. Discover MapScore (marketing video) =====
+       The player shows "Coming soon" until SETTINGS.marketingVideo is set. -->
+  <section class="cbb-ms__section cbb-ms__section--surface" id="discover" aria-labelledby="ms-discover-title">
+    <div class="cbb-ms__inner">
+      <div class="cbb-ms__video-wrap">
+        <div class="cbb-ms__video-copy">
+          <p class="cbb-ms__eyebrow">Discover MapScore</p>
+          <h2 class="cbb-ms__h2" id="ms-discover-title">What MapScore does for a local business</h2>
+          <p class="cbb-ms__lede">
+            A short introduction to MapScore: how it keeps your business information current, manages reviews
+            and content, and helps you appear where people nearby are searching.
+          </p>
+        </div>
+        <div class="cbb-ms__video" data-ms-video="marketing">
+          <div class="cbb-ms__video-soon">
+            <svg viewBox="0 0 34 48" aria-hidden="true" focusable="false"><path d="M17 2C8.7 2 2 8.4 2 16.4 2 27.5 17 46 17 46s15-18.5 15-29.6C32 8.4 25.3 2 17 2z" fill="none" stroke="#D5A756" stroke-width="2.6"/><path d="M10 20l4.4-5.3 3.5 3.5 6.1-7" fill="none" stroke="#D5A756" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="cbb-ms__video-soon-name">Discover MapScore</span>
+            <span class="cbb-ms__video-soon-tag">Coming soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. What MapScore includes ===== -->
+  <section class="cbb-ms__section" id="ms-includes" aria-labelledby="ms-includes-title">
     <div class="cbb-ms__inner">
       <header class="cbb-ms__header">
         <p class="cbb-ms__eyebrow">What's Included</p>
         <h2 class="cbb-ms__h2" id="ms-includes-title">Every service. <span class="cbb-ms__gold">One plan.</span></h2>
         <p class="cbb-ms__lede">
-          MapScore includes every service in the Paige agency platform except the website builder, plus guidance
-          and support from CBB. Here's what that covers.
+          MapScore covers your Google Business Profile, reviews, content, listings, social channels, reporting and
+          your existing website, with guidance and support from CBB.
         </p>
       </header>
 
+      <div class="cbb-ms__spots">
+        <div class="cbb-ms__spot">
+          <figure class="cbb-ms__spot-media" data-ms-asset-wrap>
+            <img data-ms-asset="graphicProfile" alt="Illustration of a business profile in Google search results, showing the business name, rating, photo tabs and a gallery of team and job photos." width="960" height="876" loading="lazy" decoding="async">
+            <figcaption>Illustration. Sample business shown.</figcaption>
+          </figure>
+          <div>
+            <p class="cbb-ms__eyebrow">Google Business Profile</p>
+            <h3 class="cbb-ms__h3">A complete, current profile</h3>
+            <p class="cbb-ms__p">We optimize your business description, services, attributes and social links, and keep photos and videos coming, so your profile reflects the business you run today.</p>
+          </div>
+        </div>
+        <div class="cbb-ms__spot">
+          <figure class="cbb-ms__spot-media" data-ms-asset-wrap>
+            <img data-ms-asset="graphicPosts" alt="Illustration of a Google post editor with a suggested post, tone options such as Professional and Casual, and an Add Photos button." width="960" height="876" loading="lazy" decoding="async">
+            <figcaption>Illustration. Sample business shown.</figcaption>
+          </figure>
+          <div>
+            <p class="cbb-ms__eyebrow">Posts and offers</p>
+            <h3 class="cbb-ms__h3">Scheduled posts in your voice</h3>
+            <p class="cbb-ms__p">Google posts and offers written for your services and location, in the tone you choose, and scheduled so your profile stays active.</p>
+          </div>
+        </div>
+        <div class="cbb-ms__spot">
+          <figure class="cbb-ms__spot-media" data-ms-asset-wrap>
+            <img data-ms-asset="graphicReviews" alt="Illustration of a business profile with recent five-star reviews, and review requests sent by text message, QR code and email." width="960" height="876" loading="lazy" decoding="async">
+            <figcaption>Illustration. Sample business and reviews shown.</figcaption>
+          </figure>
+          <div>
+            <p class="cbb-ms__eyebrow">Review collection</p>
+            <h3 class="cbb-ms__h3">Make it easy to leave a review</h3>
+            <p class="cbb-ms__p">Review request tools and reminders help you ask happy customers for feedback through the channels you use, with alerts when new reviews arrive.</p>
+          </div>
+        </div>
+        <div class="cbb-ms__spot">
+          <figure class="cbb-ms__spot-media" data-ms-asset-wrap>
+            <img data-ms-asset="graphicApproval" alt="Illustration of a suggested reply to a five-star review, waiting for the business owner's approval before it is published." width="960" height="876" loading="lazy" decoding="async">
+            <figcaption>Illustration. Sample business and review shown.</figcaption>
+          </figure>
+          <div>
+            <p class="cbb-ms__eyebrow">Review responses</p>
+            <h3 class="cbb-ms__h3">Replies you can approve</h3>
+            <p class="cbb-ms__p">Review responses follow your preferences. Choose what needs your approval, and you'll get a request before those replies are published.</p>
+          </div>
+        </div>
+        <div class="cbb-ms__spot">
+          <figure class="cbb-ms__spot-media" data-ms-asset-wrap>
+            <img data-ms-asset="graphicDirectory" alt="Illustration of a Google logo connected to the icons of other directories and platforms." width="960" height="876" loading="lazy" decoding="async">
+            <figcaption>Illustration. The directories set up for each business may vary.</figcaption>
+          </figure>
+          <div>
+            <p class="cbb-ms__eyebrow">Listings and search</p>
+            <h3 class="cbb-ms__h3">Consistent details across directories</h3>
+            <p class="cbb-ms__p">Citation creation and directory listings kept in sync with your business details, plus visibility checks across supported AI platforms such as ChatGPT, Gemini and Perplexity.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="cbb-ms__h2 cbb-ms__subhead">Everything in the plan</h3>
       <ul class="cbb-ms__groups">
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Google Business Profile</h3>
+            <h4 class="cbb-ms__h3">Google Business Profile</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">Profile optimization, including business descriptions, services, attributes and social links</li>
               <li class="cbb-ms__bullet">Scheduled Google posts and offers</li>
@@ -1417,9 +1640,9 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Reviews and reputation</h3>
+            <h4 class="cbb-ms__h3">Reviews and reputation</h4>
             <ul class="cbb-ms__bullets">
-              <li class="cbb-ms__bullet">Review request tools and reminders to help you ask happy customers for feedback</li>
+              <li class="cbb-ms__bullet">Review request tools and reminders</li>
               <li class="cbb-ms__bullet">AI-assisted review responses that follow your approval settings</li>
               <li class="cbb-ms__bullet">New-review alerts</li>
               <li class="cbb-ms__bullet">Flagging reviews that may break Google's policies (Google decides whether to remove them)</li>
@@ -1430,7 +1653,7 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9.5 5 2.5-5 2.5z"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Social media and video</h3>
+            <h4 class="cbb-ms__h3">Social media and video</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">Social publishing to supported Facebook, Instagram and LinkedIn accounts</li>
               <li class="cbb-ms__bullet">Video creation for your business</li>
@@ -1441,7 +1664,7 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><path d="m17 16 2 2 3-4"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Directory listings and citations</h3>
+            <h4 class="cbb-ms__h3">Directory listings and citations</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">Citation creation on business directories</li>
               <li class="cbb-ms__bullet">Directory listings kept in sync with your business details</li>
@@ -1452,7 +1675,7 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">AI search visibility</h3>
+            <h4 class="cbb-ms__h3">AI search visibility</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">Visibility checks and reporting across supported AI platforms, such as ChatGPT, Gemini and Perplexity</li>
               <li class="cbb-ms__bullet">Clearer, consistent business information for AI assistants to draw on</li>
@@ -1462,7 +1685,7 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Your existing website</h3>
+            <h4 class="cbb-ms__h3">Your existing website</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">SEO recommendations for the website you already have</li>
               <li class="cbb-ms__bullet">Supported review, photo and post widgets you can add to your site</li>
@@ -1472,7 +1695,7 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M7 15v-4M12 15V7M17 15v-6"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Rankings, reporting and strategy</h3>
+            <h4 class="cbb-ms__h3">Rankings, reporting and strategy</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">Google Maps ranking heatmaps and keyword tracking</li>
               <li class="cbb-ms__bullet">Before-and-after comparisons, reports and action logs</li>
@@ -1483,7 +1706,7 @@
         <li class="cbb-ms__group">
           <span class="cbb-ms__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
           <div>
-            <h3 class="cbb-ms__h3">Updates, approvals and CBB support</h3>
+            <h4 class="cbb-ms__h3">Updates, approvals and CBB support</h4>
             <ul class="cbb-ms__bullets">
               <li class="cbb-ms__bullet">AI account-manager updates, reminders, approval requests and reports</li>
               <li class="cbb-ms__bullet">Approval preferences you set for content and review replies</li>
@@ -1493,78 +1716,57 @@
           </div>
         </li>
       </ul>
-
-      <div class="cbb-ms__notice">
-        <p><strong>Not included:</strong> the website builder. MapScore works with the website you already have.</p>
-        <p><strong>Account access:</strong> features that publish to an account need that account connected first.</p>
-      </div>
+      <p class="cbb-ms__notice">Features that publish to an account, such as your Google Business Profile or social channels, start once that account is connected.</p>
     </div>
   </section>
 
-  <!-- ===== 4. Two ways to start ===== -->
-  <section class="cbb-ms__section" id="ms-start" aria-labelledby="ms-start-title">
+  <!-- ===== 5. The free guided audit (single booking journey) ===== -->
+  <section class="cbb-ms__section cbb-ms__section--glow" id="ms-book" aria-labelledby="ms-book-title">
     <div class="cbb-ms__inner">
-      <header class="cbb-ms__header cbb-ms__header--center">
-        <p class="cbb-ms__eyebrow">Get Started</p>
-        <h2 class="cbb-ms__h2" id="ms-start-title">Two ways to see where you stand</h2>
-        <p class="cbb-ms__lede">Both start with the free MapScore audit. Choose the one that suits you.</p>
-      </header>
-
-      <div class="cbb-ms__paths">
-        <article class="cbb-ms__path cbb-ms__path--featured" aria-labelledby="ms-path-call">
-          <p class="cbb-ms__path-tag">Guided</p>
-          <h3 class="cbb-ms__h3" id="ms-path-call">Arrange a guided audit call</h3>
-          <p class="cbb-ms__p">A conversation of about 30 minutes with a CBB sales officer.</p>
-          <ol class="cbb-ms__path-steps">
-            <li class="cbb-ms__path-step">At your scheduled time, your officer calls and shares our Free Audit page.</li>
-            <li class="cbb-ms__path-step">You run the audit while you talk, so you can ask questions as you go.</li>
-            <li class="cbb-ms__path-step">Together you go over the findings and talk through sensible next steps.</li>
-          </ol>
-          <div class="cbb-ms__path-foot">
-            <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://coveredbridgebrands.com/contact" data-ms-book>
-              <span data-ms-book-label>Request Your Free Audit Call</span>
+      <div class="cbb-ms__guided">
+        <div>
+          <p class="cbb-ms__eyebrow">Free Guided Audit</p>
+          <h2 class="cbb-ms__h2" id="ms-book-title">See where you stand, with a CBB officer by your side</h2>
+          <p class="cbb-ms__lede">Book a 30-minute call. It's free, and there's no obligation to sign up.</p>
+          <div class="cbb-ms__actions">
+            <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+              Book a Free Guided Audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
-            <p class="cbb-ms__small" data-ms-book-note>Send us a request through our contact page and we'll reach out to arrange a time.</p>
-            <p class="cbb-ms__small">Booking a call doesn't run an audit by itself. You'll complete it together during the call.</p>
           </div>
-        </article>
-
-        <article class="cbb-ms__path" aria-labelledby="ms-path-self">
-          <p class="cbb-ms__path-tag">On your own</p>
-          <h3 class="cbb-ms__h3" id="ms-path-self">Start the free audit yourself</h3>
-          <p class="cbb-ms__p">No call or booking needed.</p>
-          <ol class="cbb-ms__path-steps">
-            <li class="cbb-ms__path-step">Open our Free Audit page.</li>
-            <li class="cbb-ms__path-step">Find your business, choose your keywords and set your area.</li>
-            <li class="cbb-ms__path-step">Run the audit and review your results at your own pace.</li>
-          </ol>
-          <div class="cbb-ms__path-foot">
-            <a class="cbb-ms__btn cbb-ms__btn--outline" href="https://coveredbridgebrands.com/mapscore-free-audit">
-              Start Free Audit
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-            </a>
-            <p class="cbb-ms__small">Want to talk it over afterward? You can still arrange a call.</p>
-          </div>
-        </article>
+        </div>
+        <ol class="cbb-ms__guided-steps">
+          <li class="cbb-ms__guided-step">
+            <h3 class="cbb-ms__h3">Pick a time for your call</h3>
+            <p class="cbb-ms__p">Choose a 30-minute slot that suits you.</p>
+          </li>
+          <li class="cbb-ms__guided-step">
+            <h3 class="cbb-ms__h3">Complete the audit together</h3>
+            <p class="cbb-ms__p">At your scheduled time, your CBB officer calls, shares the audit and guides you through it step by step.</p>
+          </li>
+          <li class="cbb-ms__guided-step">
+            <h3 class="cbb-ms__h3">Review your results</h3>
+            <p class="cbb-ms__p">Your officer explains what the audit shows, introduces MapScore and answers your questions.</p>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <!-- ===== 5. How it works ===== -->
+  <!-- ===== 6. How it works ===== -->
   <section class="cbb-ms__section cbb-ms__section--surface" id="ms-how" aria-labelledby="ms-how-title">
     <div class="cbb-ms__inner">
       <header class="cbb-ms__header">
         <p class="cbb-ms__eyebrow">How It Works</p>
-        <h2 class="cbb-ms__h2" id="ms-how-title">From first audit to ongoing service</h2>
-        <p class="cbb-ms__lede">Completing an audit doesn't start a subscription or give us access to any of your accounts.</p>
+        <h2 class="cbb-ms__h2" id="ms-how-title">From guided audit to ongoing service</h2>
+        <p class="cbb-ms__lede">Completing the audit doesn't start a subscription or give us access to any of your accounts.</p>
       </header>
       <ol class="cbb-ms__timeline">
         <li class="cbb-ms__tstep">
           <span class="cbb-ms__tdot" aria-hidden="true">1</span>
           <div>
-            <h3 class="cbb-ms__h3">Run the free audit</h3>
-            <p class="cbb-ms__p">On a guided call with a CBB officer, or on your own from our Free Audit page.</p>
+            <h3 class="cbb-ms__h3">Book your guided audit</h3>
+            <p class="cbb-ms__p">A 30-minute call where your CBB officer walks you through the free audit.</p>
           </div>
         </li>
         <li class="cbb-ms__tstep">
@@ -1599,137 +1801,237 @@
     </div>
   </section>
 
-  <!-- ===== 6. Demo video =====
-       Hidden until a video is set in MAPSCORE PAGE SETTINGS (demoVideo). -->
-  <section class="cbb-ms__section" id="demo" aria-labelledby="ms-demo-title" hidden data-ms-demo>
+  <!-- ===== 7. See MapScore in Action (demo video) =====
+       The player shows "Coming soon" until SETTINGS.demoVideo is set. -->
+  <section class="cbb-ms__section" id="demo" aria-labelledby="ms-demo-title">
     <div class="cbb-ms__inner">
-      <header class="cbb-ms__header cbb-ms__header--center">
-        <p class="cbb-ms__eyebrow">See It in Action</p>
-        <h2 class="cbb-ms__h2" id="ms-demo-title">Watch the MapScore demo</h2>
-      </header>
-      <div class="cbb-ms__video" data-ms-demo-frame></div>
+      <div class="cbb-ms__video-wrap cbb-ms__video-wrap--flip">
+        <div class="cbb-ms__video-copy">
+          <p class="cbb-ms__eyebrow">See MapScore in Action</p>
+          <h2 class="cbb-ms__h2" id="ms-demo-title">A look inside the service</h2>
+          <p class="cbb-ms__lede">
+            A walkthrough of MapScore at work: profile updates, review responses and approvals, posts and the
+            ranking reports you'll receive.
+          </p>
+        </div>
+        <div class="cbb-ms__video" data-ms-video="demo">
+          <div class="cbb-ms__video-soon">
+            <svg viewBox="0 0 34 48" aria-hidden="true" focusable="false"><path d="M17 2C8.7 2 2 8.4 2 16.4 2 27.5 17 46 17 46s15-18.5 15-29.6C32 8.4 25.3 2 17 2z" fill="none" stroke="#D5A756" stroke-width="2.6"/><path d="M10 20l4.4-5.3 3.5 3.5 6.1-7" fill="none" stroke="#D5A756" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="cbb-ms__video-soon-name">MapScore demo</span>
+            <span class="cbb-ms__video-soon-tag">Coming soon</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== 7. Results and reviews (provider evidence) ===== -->
+  <!-- ===== 8. Results and customer experiences (provider evidence) ===== -->
   <section class="cbb-ms__section cbb-ms__section--glow" id="ms-results" aria-labelledby="ms-results-title">
     <div class="cbb-ms__inner">
       <header class="cbb-ms__header">
-        <p class="cbb-ms__eyebrow">Results From the Platform Behind MapScore</p>
-        <h2 class="cbb-ms__h2" id="ms-results-title">What Paige-powered businesses have seen</h2>
+        <p class="cbb-ms__eyebrow">Customer Success Stories</p>
+        <h2 class="cbb-ms__h2" id="ms-results-title">Results from the technology behind MapScore</h2>
         <p class="cbb-ms__lede">
-          MapScore runs on Paige, from Merchynt. These are Paige's own customer examples, shared with
-          permission through its agency program. They are not CBB client results.
+          These businesses use the same technology that powers MapScore. They are provider-reported customer
+          examples, not CBB clients, and they don't guarantee similar results.
         </p>
       </header>
 
-      <ul class="cbb-ms__cases">
-        <li class="cbb-ms__case">
-          <h3 class="cbb-ms__case-name">Home Crush</h3>
-          <p class="cbb-ms__case-type">Home goods retailer</p>
-          <p class="cbb-ms__case-big cbb-ms__gold">7,320%</p>
-          <p class="cbb-ms__case-label">ranking improvement in 30 days</p>
-          <dl class="cbb-ms__case-stats">
-            <dt>Customer activity</dt>
-            <dd>225 people found the business on Google</dd>
-            <dt>Estimated potential revenue</dt>
-            <dd>$1,112,500 (estimate, not verified sales)</dd>
-          </dl>
+      <ul class="cbb-ms__stories">
+        <li class="cbb-ms__story">
+          <div>
+            <div class="cbb-ms__story-head">
+              <img class="cbb-ms__story-logo" data-ms-asset="rroofLogo" alt="Rooster Roofers logo" width="64" height="64" loading="lazy" decoding="async">
+              <div>
+                <h3 class="cbb-ms__story-name">Rooster Roofers</h3>
+                <p class="cbb-ms__story-type">Roofing contractor</p>
+              </div>
+            </div>
+            <p class="cbb-ms__story-big cbb-ms__gold">19,862%</p>
+            <p class="cbb-ms__story-label">ranking improvement in 3&frac12; months</p>
+            <p class="cbb-ms__p">Before, the business ranked outside the top 20 at every point on its map grid. After 3&frac12; months, it ranked in the top 4 at every point, and first or second across most of the area.</p>
+            <dl class="cbb-ms__story-stats">
+              <dt>Customer activity</dt>
+              <dd>29 customer actions from the campaign</dd>
+              <dt>Estimated potential revenue</dt>
+              <dd>$520,000 (estimate, not verified sales)</dd>
+            </dl>
+          </div>
+          <div class="cbb-ms__compare">
+            <figure>
+              <img data-ms-asset="rroofBefore" alt="Rooster Roofers before: every point on the ranking grid shows 20 or lower." width="560" height="560" loading="lazy" decoding="async">
+              <figcaption>Before</figcaption>
+            </figure>
+            <figure>
+              <img data-ms-asset="rroofAfter" alt="Rooster Roofers after three and a half months: every point ranks between 1 and 4, mostly 1 or 2." width="560" height="560" loading="lazy" decoding="async">
+              <figcaption>After 3&frac12; months</figcaption>
+            </figure>
+          </div>
         </li>
-        <li class="cbb-ms__case">
-          <h3 class="cbb-ms__case-name">Rooster Roofers</h3>
-          <p class="cbb-ms__case-type">Roofing contractor</p>
-          <p class="cbb-ms__case-big cbb-ms__gold">19,862%</p>
-          <p class="cbb-ms__case-label">ranking improvement in 3&frac12; months</p>
-          <dl class="cbb-ms__case-stats">
-            <dt>Customer activity</dt>
-            <dd>29 customer actions from the campaign</dd>
-            <dt>Estimated potential revenue</dt>
-            <dd>$520,000 (estimate, not verified sales)</dd>
-          </dl>
+        <li class="cbb-ms__story">
+          <div>
+            <div class="cbb-ms__story-head">
+              <img class="cbb-ms__story-logo" data-ms-asset="hybridLogo" alt="The Hybrid Clinic Wellness Center logo" width="64" height="64" loading="lazy" decoding="async">
+              <div>
+                <h3 class="cbb-ms__story-name">The Hybrid Clinic Wellness Center</h3>
+                <p class="cbb-ms__story-type">Wellness center</p>
+              </div>
+            </div>
+            <p class="cbb-ms__story-big cbb-ms__gold">2,674%</p>
+            <p class="cbb-ms__story-label">ranking improvement in 30 days</p>
+            <p class="cbb-ms__p">Before, the clinic ranked outside the top 20 at most points, with a few in the 9&ndash;19 range. After 30 days, most of the grid ranked in the top 3, with lower positions along the western edge.</p>
+            <dl class="cbb-ms__story-stats">
+              <dt>Customer activity</dt>
+              <dd>2,768 calls, clicks and direction requests</dd>
+              <dt>Estimated potential revenue</dt>
+              <dd>$415,200 (estimate, not verified sales)</dd>
+            </dl>
+          </div>
+          <div class="cbb-ms__compare">
+            <figure>
+              <img data-ms-asset="hybridBefore" alt="The Hybrid Clinic before: most grid points show 20 or lower, with scattered points between 9 and 19." width="560" height="560" loading="lazy" decoding="async">
+              <figcaption>Before</figcaption>
+            </figure>
+            <figure>
+              <img data-ms-asset="hybridAfter" alt="The Hybrid Clinic after 30 days: most grid points rank 1 to 3, with some lower positions on the west side." width="560" height="560" loading="lazy" decoding="async">
+              <figcaption>After 30 days</figcaption>
+            </figure>
+          </div>
         </li>
-        <li class="cbb-ms__case">
-          <h3 class="cbb-ms__case-name">The Hybrid Clinic</h3>
-          <p class="cbb-ms__case-type">Wellness center</p>
-          <p class="cbb-ms__case-big cbb-ms__gold">2,674%</p>
-          <p class="cbb-ms__case-label">ranking improvement in 30 days</p>
-          <dl class="cbb-ms__case-stats">
-            <dt>Customer activity</dt>
-            <dd>2,768 calls, clicks and direction requests</dd>
-            <dt>Estimated potential revenue</dt>
-            <dd>$415,200 (estimate, not verified sales)</dd>
-          </dl>
+        <li class="cbb-ms__story">
+          <div>
+            <div class="cbb-ms__story-head">
+              <img class="cbb-ms__story-logo" data-ms-asset="homecrushLogo" alt="Home Crush logo" width="64" height="64" loading="lazy" decoding="async">
+              <div>
+                <h3 class="cbb-ms__story-name">Home Crush</h3>
+                <p class="cbb-ms__story-type">Home goods retailer</p>
+              </div>
+            </div>
+            <p class="cbb-ms__story-big cbb-ms__gold">7,320%</p>
+            <p class="cbb-ms__story-label">ranking improvement in 30 days</p>
+            <p class="cbb-ms__p">Before, the store ranked outside the top 20 at every point on its grid. After 30 days, most points ranked in the top 3, with positions 4&ndash;9 in part of the southeast.</p>
+            <dl class="cbb-ms__story-stats">
+              <dt>Customer activity</dt>
+              <dd>225 people found the business on Google</dd>
+              <dt>Estimated potential revenue</dt>
+              <dd>$1,112,500 (estimate, not verified sales)</dd>
+            </dl>
+          </div>
+          <div class="cbb-ms__compare">
+            <figure>
+              <img data-ms-asset="homecrushBefore" alt="Home Crush before: every point on the ranking grid shows 20 or lower." width="560" height="560" loading="lazy" decoding="async">
+              <figcaption>Before</figcaption>
+            </figure>
+            <figure>
+              <img data-ms-asset="homecrushAfter" alt="Home Crush after 30 days: most grid points rank 1 to 3, with some 4 to 9 in the southeast." width="560" height="560" loading="lazy" decoding="async">
+              <figcaption>After 30 days</figcaption>
+            </figure>
+          </div>
         </li>
       </ul>
+      <ul class="cbb-ms__legend" aria-label="Heatmap legend">
+        <li><span class="cbb-ms__swatch" style="background:#4CB82E" aria-hidden="true"></span>Top positions</li>
+        <li><span class="cbb-ms__swatch" style="background:#E8B21A" aria-hidden="true"></span>Middle positions</li>
+        <li><span class="cbb-ms__swatch" style="background:#8E1515" aria-hidden="true"></span>20+ (outside the top 20)</li>
+      </ul>
       <p class="cbb-ms__disclaimer">
-        Provider-reported examples, not CBB client results. Dollar amounts are estimated potential revenue from
-        Paige's materials, not verified sales. Individual outcomes vary, and these results are not what every
-        business should expect.
+        Each dot is a Google Maps ranking position at one point on the business's grid; lower numbers appear
+        higher in results. Provider-reported examples and timeframes, not CBB client results. Dollar amounts are
+        estimated potential revenue, not verified sales. Rankings depend on keyword, location and timing;
+        individual outcomes vary. Map data &copy; OpenStreetMap contributors.
       </p>
 
-      <h3 class="cbb-ms__h2 cbb-ms__subhead">Reading a ranking heatmap</h3>
-      <div class="cbb-ms__heatmaps">
-        <figure class="cbb-ms__heatmap">
-          <img src="__HEATMAP_BEFORE__" alt="Before: a 13 by 13 grid over a coastal city map where every point shows a ranking of 20 or lower." width="520" height="520" loading="lazy" decoding="async">
-          <figcaption>Before</figcaption>
+      <div class="cbb-ms__anim-wrap">
+        <figure class="cbb-ms__anim" data-ms-anim>
+          <figcaption>Illustrative ranking progression. Not an identified client case study or a promised timeframe.</figcaption>
         </figure>
-        <figure class="cbb-ms__heatmap">
-          <img src="__HEATMAP_AFTER__" alt="After: the same grid with most points ranking between 1 and 5." width="520" height="520" loading="lazy" decoding="async">
-          <figcaption>After</figcaption>
-        </figure>
-        <div class="cbb-ms__heatmap-note">
-          <h4 class="cbb-ms__h3">Visibility, location by location</h4>
-          <p class="cbb-ms__p">Each dot is a Google Maps ranking position for one keyword at one point on the grid. Lower numbers mean the business appears higher in results.</p>
-          <ul class="cbb-ms__legend">
-            <li><span class="cbb-ms__swatch" style="background:#4CB82E" aria-hidden="true"></span>Top positions</li>
-            <li><span class="cbb-ms__swatch" style="background:#E8B21A" aria-hidden="true"></span>Middle</li>
-            <li><span class="cbb-ms__swatch" style="background:#8E1515" aria-hidden="true"></span>20+ (not in the top 20)</li>
-          </ul>
-          <p class="cbb-ms__small">
-            Provider-supplied example pair from Paige's materials. The images don't identify the business,
-            keyword or timeframe, and they aren't a CBB client report. Rankings depend on keyword, location
-            and timing; results vary. Map data &copy; OpenStreetMap contributors.
-          </p>
+        <div>
+          <h3 class="cbb-ms__h3">Watching visibility change</h3>
+          <p class="cbb-ms__p">Ranking heatmaps show how visible a business is across its area, point by point. MapScore reports use the same kind of grid, so you can compare before and after for the keywords you track.</p>
         </div>
       </div>
 
-      <!-- Ranking animation: hidden until rankingAnimation is set in MAPSCORE PAGE SETTINGS. -->
-      <figure class="cbb-ms__anim" hidden data-ms-anim>
-        <figcaption>Illustration of a ranking change from Paige's materials. It doesn't show a specific business, keyword or timeframe, and it isn't a CBB client report.</figcaption>
-      </figure>
-
-      <h3 class="cbb-ms__h2 cbb-ms__subhead">What Paige customers say</h3>
+      <h3 class="cbb-ms__h2 cbb-ms__subhead">Customer experiences with the technology behind MapScore</h3>
       <div class="cbb-ms__reviews">
         <div>
           <dl class="cbb-ms__provider-stats">
             <div><dt>4.9/5</dt><dd>Provider-reported average rating</dd></div>
             <div><dt>1,000+</dt><dd>Reviews across Google, Trustpilot and G2</dd></div>
-            <div><dt>13,000+</dt><dd>Businesses using Paige</dd></div>
+            <div><dt>13,000+</dt><dd>Businesses using the technology</dd></div>
           </dl>
-          <p class="cbb-ms__disclaimer">These are Paige / Merchynt figures, not CBB ratings or client counts.</p>
+          <p class="cbb-ms__disclaimer">Provider-reported figures for the technology behind MapScore, not CBB ratings or client counts.</p>
         </div>
         <ul class="cbb-ms__quotes">
           <li>
             <figure class="cbb-ms__quote">
-              <blockquote><p>&ldquo;Two weeks working in the Paige system and now I&rsquo;m number 2 in my market.&rdquo;</p></blockquote>
-              <figcaption><strong>Will Higgins</strong>, Realtor &middot; Paige customer</figcaption>
+              <blockquote><p>&ldquo;&hellip;now I&rsquo;m number 2 in my market.&rdquo;</p></blockquote>
+              <figcaption><strong>Will Higgins</strong>, Realtor</figcaption>
             </figure>
           </li>
           <li>
             <figure class="cbb-ms__quote">
               <blockquote><p>&ldquo;&hellip;an absolute game changer for my agency.&rdquo;</p></blockquote>
-              <figcaption><strong>Ryan Fullarton</strong>, Agency owner &middot; Paige customer</figcaption>
+              <figcaption><strong>Ryan Fullarton</strong>, Agency owner</figcaption>
             </figure>
           </li>
         </ul>
       </div>
-      <p class="cbb-ms__disclaimer">Excerpts from Paige / Merchynt customer reviews. Individual experiences vary.</p>
+      <p class="cbb-ms__disclaimer">Excerpts from published customer reviews of the technology behind MapScore. Individual experiences vary.</p>
     </div>
   </section>
 
-  <!-- ===== 8. Revenue scenario calculator =====
+  <!-- ===== 9. Explore MapScore (presentation viewer) ===== -->
+  <section class="cbb-ms__section" id="ms-presentation" aria-labelledby="ms-deck-title">
+    <div class="cbb-ms__inner">
+      <header class="cbb-ms__header cbb-ms__header--center">
+        <p class="cbb-ms__eyebrow">Explore MapScore</p>
+        <h2 class="cbb-ms__h2" id="ms-deck-title">Flip through the MapScore presentation</h2>
+        <p class="cbb-ms__lede">The same overview our officers share, slide by slide.</p>
+      </header>
+      <div class="cbb-ms__deck" data-ms-deck>
+        <div class="cbb-ms__deck-viewer" data-ms-deck-viewer hidden>
+          <div class="cbb-ms__deck-stage" tabindex="0" role="group" aria-roledescription="slide viewer" aria-label="MapScore presentation. Use the left and right arrow keys to change slides." data-ms-deck-stage>
+            <img alt="" data-ms-deck-img>
+          </div>
+          <div class="cbb-ms__deck-bar">
+            <div class="cbb-ms__deck-nav">
+              <button class="cbb-ms__btn cbb-ms__btn--ghost" type="button" data-ms-deck-prev aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+                Previous
+              </button>
+              <span class="cbb-ms__deck-count" aria-live="polite" data-ms-deck-count></span>
+              <button class="cbb-ms__btn cbb-ms__btn--ghost" type="button" data-ms-deck-next aria-label="Next slide">
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </button>
+            </div>
+            <a class="cbb-ms__link" href="#ms-presentation" download data-ms-deck-download hidden>Download the presentation (PowerPoint)</a>
+          </div>
+          <p class="cbb-ms__deck-title" data-ms-deck-title></p>
+        </div>
+        <details class="cbb-ms__deck-text">
+          <summary>Text version of the presentation</summary>
+          <ol>
+            <li><strong>MapScore.</strong> Local visibility, managed by CBB: AI-assisted Google Business Profile management for local businesses.</li>
+            <li><strong>Local marketing needs regular attention.</strong> A one-time setup is only the beginning. MapScore keeps business details accurate, posts and photos fresh, and reviews answered in line with your preferences.</li>
+            <li><strong>Your profile, kept current.</strong> Profile optimization, review management, regular posts, and photos and video through supported account connections.</li>
+            <li><strong>Local visibility across your online presence.</strong> Google Business Profile, customer reviews, directory listings, social accounts (Facebook, Instagram, LinkedIn, YouTube and TikTok), AI search visibility and your existing website.</li>
+            <li><strong>Real results from the technology behind MapScore.</strong> Home Crush: 7,320% ranking improvement in 30 days; 225 people found the business on Google. Rooster Roofers: 19,862% in 3&frac12; months; 29 customer actions. The Hybrid Clinic: 2,674% in 30 days; 2,768 calls, clicks and direction requests. Provider-reported examples, not CBB clients; dollar figures are estimated potential revenue.</li>
+            <li><strong>Visibility, location by location.</strong> Home Crush ranking heatmaps before and after 30 days. Each number is a Google Maps ranking position at one point on the grid.</li>
+            <li><strong>A managed service, with your business in view.</strong> Guided onboarding, your preferences, business-specific content, connected activity, competitor intelligence and proactive support.</li>
+            <li><strong>What customers say.</strong> Provider-reported 4.9/5 average rating, 1,000+ reviews and 13,000+ businesses using the technology. Review excerpts from Will Higgins, Realtor, and Ryan Fullarton, agency owner.</li>
+            <li><strong>Every service. One plan.</strong> Profile management, review management, existing-website SEO, directory citations, video content, social publishing, AI search visibility, and reports and heatmaps.</li>
+            <li><strong>One complete plan.</strong> $395 per month, per business location. No setup fee, no term commitment, non-refundable payments. Each additional location needs its own plan.</li>
+            <li><strong>Your next move starts with a free audit.</strong> Book a Free Guided Audit: a 30-minute call where your CBB officer guides the audit with you. david@coveredbridgebrands.com, 814-893-1075.</li>
+          </ol>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 10. Revenue scenario calculator =====
        Everything is calculated in the visitor's browser. Nothing is stored or sent. -->
-  <section class="cbb-ms__section" id="ms-calculator" aria-labelledby="ms-calc-title">
+  <section class="cbb-ms__section cbb-ms__section--surface" id="ms-calculator" aria-labelledby="ms-calc-title">
     <div class="cbb-ms__inner">
       <header class="cbb-ms__header">
         <p class="cbb-ms__eyebrow">Revenue Scenario Calculator</p>
@@ -1814,62 +2116,63 @@
     </div>
   </section>
 
-  <!-- ===== 9. Pricing and guarantee ===== -->
-  <section class="cbb-ms__section cbb-ms__section--surface" id="ms-pricing" aria-labelledby="ms-pricing-title">
+  <!-- ===== 11. Pricing ===== -->
+  <section class="cbb-ms__section" id="ms-pricing" aria-labelledby="ms-pricing-title">
     <div class="cbb-ms__inner">
       <header class="cbb-ms__header cbb-ms__header--center">
         <p class="cbb-ms__eyebrow">Pricing</p>
         <h2 class="cbb-ms__h2" id="ms-pricing-title">One complete plan</h2>
       </header>
-      <div class="cbb-ms__pricing">
-        <div class="cbb-ms__plan">
+      <div class="cbb-ms__plan">
+        <div>
           <p class="cbb-ms__eyebrow">MapScore</p>
           <p class="cbb-ms__price" aria-label="395 dollars"><span class="cbb-ms__price-cur" aria-hidden="true">$</span><span class="cbb-ms__price-num" aria-hidden="true">395</span></p>
           <p class="cbb-ms__price-per">per month, per business location</p>
-          <ul class="cbb-ms__terms">
-            <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All Paige services except the website builder</li>
-            <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Existing-website SEO recommendations and widgets</li>
-            <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Directory citations and listing sync</li>
-            <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CBB guidance, support and approved extras</li>
-            <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No setup fee</li>
-            <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No term commitment</li>
-            <li class="cbb-ms__term cbb-ms__term--x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Payments are non-refundable</li>
-            <li class="cbb-ms__term cbb-ms__term--x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Each additional location needs its own plan</li>
-          </ul>
           <div class="cbb-ms__actions">
-            <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://coveredbridgebrands.com/contact" data-ms-book>
-              <span data-ms-book-label>Request Your Free Audit Call</span>
+            <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+              Book a Free Guided Audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
           </div>
         </div>
-        <div class="cbb-ms__guarantee">
-          <span class="cbb-ms__seal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
-          <p class="cbb-ms__eyebrow">Our Six-Month Guarantee</p>
-          <blockquote><p>&ldquo;If you don&rsquo;t see measurable improvement in your local search rankings within 6 months, we&rsquo;ll work with you until you do, at no additional cost.&rdquo;</p></blockquote>
-          <p class="cbb-ms__p">
-            This is a continued-service guarantee, not a refund. Payments already made remain non-refundable;
-            if the guarantee applies, we keep working on your rankings without charging you more for that work.
-            It doesn't promise a particular position, such as number one, or any level of sales.
-          </p>
-        </div>
+        <ul class="cbb-ms__terms">
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google Business Profile management</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Review tools and responses</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Social and video publishing</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Directory citations and listing sync</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Existing-website SEO and widgets</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Heatmaps, reports and AI search visibility</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CBB guidance, support and approved extras</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No setup fee</li>
+          <li class="cbb-ms__term"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No term commitment</li>
+          <li class="cbb-ms__term cbb-ms__term--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Payments are non-refundable</li>
+          <li class="cbb-ms__term cbb-ms__term--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Each additional location needs its own plan</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ===== 10. FAQs ===== -->
-  <section class="cbb-ms__section" id="ms-faq" aria-labelledby="ms-faq-title">
+  <!-- ===== 12. FAQs ===== -->
+  <section class="cbb-ms__section cbb-ms__section--surface" id="ms-faq" aria-labelledby="ms-faq-title">
     <div class="cbb-ms__inner">
       <div class="cbb-ms__faq-wrap">
         <header>
           <p class="cbb-ms__eyebrow">Questions</p>
           <h2 class="cbb-ms__h2" id="ms-faq-title">Frequently asked questions</h2>
-          <p class="cbb-ms__p">Have a question that isn't covered here? <a class="cbb-ms__link" href="/contact">Contact us</a> or call or text <a class="cbb-ms__link" href="tel:+18148931075">814-893-1075</a>.</p>
+          <p class="cbb-ms__p">Have a question that isn't covered here? Call or text <a class="cbb-ms__link" href="tel:+18148931075">814-893-1075</a> or email <a class="cbb-ms__link" href="mailto:david@coveredbridgebrands.com">david@coveredbridgebrands.com</a>.</p>
         </header>
         <div class="cbb-ms__faqs">
           <details class="cbb-ms__faq">
             <summary>What does MapScore include?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">Every Paige service except the website builder: Google Business Profile optimization and posting, review tools and responses, social and video publishing to supported accounts, AI search visibility reporting, directory citations and listing sync, SEO recommendations and widgets for your existing website, ranking heatmaps, keyword tracking and competitor analysis, plus account-manager updates and CBB support.</p></div>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">Google Business Profile optimization and posting, review tools and responses, social and video publishing to supported accounts, AI search visibility reporting, directory citations and listing sync, SEO recommendations and widgets for your existing website, ranking heatmaps, keyword tracking and competitor analysis, plus account-manager updates and CBB support.</p></div>
+          </details>
+          <details class="cbb-ms__faq">
+            <summary>How does the free guided audit work?</summary>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">You book a 30-minute call. At the scheduled time, your CBB officer shares the audit, helps you complete it, explains the results and introduces MapScore. Booking the call doesn't run an audit by itself; you complete it together during the call.</p></div>
+          </details>
+          <details class="cbb-ms__faq">
+            <summary>Does the audit sign me up for MapScore?</summary>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">No. The audit is free and doesn't start a subscription or give us access to your Google account. You decide afterward whether you'd like to go ahead.</p></div>
           </details>
           <details class="cbb-ms__faq">
             <summary>How is MapScore priced if I have more than one location?</summary>
@@ -1880,12 +2183,12 @@
             <div class="cbb-ms__faq-body"><p class="cbb-ms__p">There's no setup fee and no term commitment; MapScore is a monthly service. Payments already made are non-refundable.</p></div>
           </details>
           <details class="cbb-ms__faq">
-            <summary>Do you build websites?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">The website builder isn't part of MapScore. We work with the website you already have, providing SEO recommendations and supported review, photo and post widgets you can add to it.</p></div>
+            <summary>Will MapScore work with my current website?</summary>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">Yes. We provide SEO recommendations for the website you already have, plus supported review, photo and post widgets you can add to it.</p></div>
           </details>
           <details class="cbb-ms__faq">
             <summary>What account access will you need?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">After you subscribe, you'll connect your Google Business Profile and any supported social or video accounts you'd like included, such as Facebook, Instagram, LinkedIn, YouTube or TikTok. Features that publish to an account can't run until that account is connected. Running the free audit doesn't give us access to any account.</p></div>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">After you subscribe, you'll connect your Google Business Profile and any supported social or video accounts you'd like included, such as Facebook, Instagram, LinkedIn, YouTube or TikTok. Features that publish to an account start once that account is connected.</p></div>
           </details>
           <details class="cbb-ms__faq">
             <summary>Can I approve content before it goes live?</summary>
@@ -1896,46 +2199,29 @@
             <div class="cbb-ms__faq-body"><p class="cbb-ms__p">You'll get account-manager updates, reminders and reports, including ranking heatmaps, keyword tracking and action logs. The CBB team is also available for guidance and questions.</p></div>
           </details>
           <details class="cbb-ms__faq">
-            <summary>What's the difference between the guided call and the free audit?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">Both use the same free audit. On the guided call, a CBB officer walks you through it and discusses the findings with you. The free audit on your own lets you run it any time from our <a class="cbb-ms__link" href="https://coveredbridgebrands.com/mapscore-free-audit">Free Audit page</a>, with no booking needed.</p></div>
-          </details>
-          <details class="cbb-ms__faq">
-            <summary>What happens on the guided audit call?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">The call takes about 30 minutes. At the scheduled time, your CBB sales officer shares our Free Audit page, you complete the audit while you talk, and then you discuss the findings and possible next steps. Booking the call doesn't run an audit by itself.</p></div>
-          </details>
-          <details class="cbb-ms__faq">
-            <summary>Does completing the audit sign me up for MapScore?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">No. The audit is free and doesn't start a subscription or give us access to your Google account. You decide afterward whether you'd like to go ahead.</p></div>
-          </details>
-          <details class="cbb-ms__faq">
             <summary>Can you remove negative reviews?</summary>
             <div class="cbb-ms__faq-body"><p class="cbb-ms__p">We can help you respond professionally and flag reviews that may break Google's policies. Google decides whether a flagged review is removed, so removal isn't guaranteed.</p></div>
           </details>
           <details class="cbb-ms__faq">
-            <summary>What does the six-month guarantee mean?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">If you don't see measurable improvement in your local search rankings within 6 months, we'll keep working with you until you do, at no additional cost. It's a continued-service guarantee, not a refund, and it doesn't promise a specific ranking or sales.</p></div>
-          </details>
-          <details class="cbb-ms__faq">
             <summary>Who is MapScore for?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">Local businesses across the United States that want to be found by people searching nearby. The free audit is a good way to see whether MapScore fits your business.</p></div>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">Local businesses across the United States that want to be found by people searching nearby. The guided audit is a good way to see whether MapScore fits your business.</p></div>
           </details>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== 11. Final CTA ===== -->
+  <!-- ===== 13. Final CTA ===== -->
   <section class="cbb-ms__section cbb-ms__final" id="ms-get-started" aria-labelledby="ms-final-title">
     <div class="cbb-ms__inner cbb-ms__inner--narrow">
       <p class="cbb-ms__eyebrow">Your Next Move</p>
-      <h2 class="cbb-ms__h2" id="ms-final-title">Start with a <span class="cbb-ms__gold">free audit</span></h2>
-      <p class="cbb-ms__lede">Talk it through with a CBB officer on a guided call, or run the audit on your own right now.</p>
+      <h2 class="cbb-ms__h2" id="ms-final-title">Start with a <span class="cbb-ms__gold">free guided audit</span></h2>
+      <p class="cbb-ms__lede">Book a 30-minute call. Your CBB officer will guide you through the audit, explain the results and introduce MapScore.</p>
       <div class="cbb-ms__actions">
-        <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://coveredbridgebrands.com/contact" data-ms-book>
-          <span data-ms-book-label>Request Your Free Audit Call</span>
+        <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+          Book a Free Guided Audit
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
-        <a class="cbb-ms__btn cbb-ms__btn--outline" href="https://coveredbridgebrands.com/mapscore-free-audit">Start Free Audit</a>
       </div>
       <p class="cbb-ms__small">Questions first? Call or text <a class="cbb-ms__link" href="tel:+18148931075">814-893-1075</a> or email <a class="cbb-ms__link" href="mailto:david@coveredbridgebrands.com">david@coveredbridgebrands.com</a>.</p>
     </div>
@@ -1947,31 +2233,44 @@
   (function () {
     /* ==========================================================
        MAPSCORE PAGE SETTINGS — the only place you need to edit.
-       ----------------------------------------------------------
-       bookingUrl
-         Leave '' until the GHL booking calendar is ready. While
-         empty, every guided-call button goes to the Contact page
-         and reads "Request Your Free Audit Call". Paste the full
-         calendar link (https://...) to switch every button to
-         that calendar with the label "Book Your Free Audit Call".
-
-       demoVideo
-         Leave '' to keep the demo section (#demo) and every
-         "Watch the Demo" link hidden. Paste a YouTube link or
-         11-character video ID to show it.
-       demoVideoTitle
-         Accessible title for the video player.
-
-       rankingAnimation
-         Leave '' to keep the ranking animation hidden. Paste the
-         public https:// URL of the uploaded MP4 (for example from
-         the GHL media library) to show it.
+       Paste full https:// links between the quotes. Anything left
+       '' keeps the fallback described next to it.
        ========================================================== */
     var SETTINGS = {
+      /* GHL booking calendar. Every "Book a Free Guided Audit" button
+         uses this link. Empty: buttons scroll to the guided-audit
+         section on this page. */
       bookingUrl: '',
-      demoVideo: '',
-      demoVideoTitle: 'MapScore by Covered Bridge Brands demo video',
-      rankingAnimation: ''
+
+      /* YouTube link or 11-character video ID.
+         Empty: that player shows "Coming soon". */
+      marketingVideo: '',            /* Discover MapScore */
+      demoVideo: '',                 /* See MapScore in Action */
+
+      /* GHL Media URLs for each uploaded file (README has the list).
+         Empty: that image or media item stays hidden. */
+      assets: {
+        mapscoreLogo: '',            /* approved MapScore logo (replaces the drawn wordmark) */
+        graphicProfile: '__A_graphicProfile__',
+        graphicPosts: '__A_graphicPosts__',
+        graphicReviews: '__A_graphicReviews__',
+        graphicApproval: '__A_graphicApproval__',
+        graphicDirectory: '__A_graphicDirectory__',
+        rroofLogo: '__A_rroofLogo__',
+        rroofBefore: '__A_rroofBefore__',
+        rroofAfter: '__A_rroofAfter__',
+        hybridLogo: '__A_hybridLogo__',
+        hybridBefore: '__A_hybridBefore__',
+        hybridAfter: '__A_hybridAfter__',
+        homecrushLogo: '__A_homecrushLogo__',
+        homecrushBefore: '__A_homecrushBefore__',
+        homecrushAfter: '__A_homecrushAfter__',
+        rankingAnimation: '__A_rankingAnimation__',
+        rankingAnimationPoster: '__A_rankingAnimationPoster__',
+        presentationDownload: '__A_presentationDownload__',
+        /* the 11 slide images, in order */
+        slides: [__A_slides__]
+      }
     };
     /* ======================= end of settings ======================= */
 
@@ -1979,54 +2278,83 @@
     if (!root) return;
     root.setAttribute('data-ms-ready', '');
 
-    var isHttps = function (u) { return /^https:\/\/[^\s"'<>]+$/i.test(String(u || '').trim()); };
     var each = function (sel, fn) { Array.prototype.forEach.call(root.querySelectorAll(sel), fn); };
+    var isUrl = function (u) {
+      u = String(u || '').trim();
+      return /^https:\/\/[^\s"'<>]+$/i.test(u) || /^\.{0,2}\/[^\s"'<>:]+$/.test(u);
+    };
+    var A = SETTINGS.assets || {};
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ---- Booking links ---- */
-    if (isHttps(SETTINGS.bookingUrl)) {
+    /* ---- Booking: one destination for every CTA ---- */
+    if (/^https:\/\/[^\s"'<>]+$/i.test(String(SETTINGS.bookingUrl || '').trim())) {
       var bookUrl = SETTINGS.bookingUrl.trim();
       each('[data-ms-book]', function (a) { a.setAttribute('href', bookUrl); });
-      each('[data-ms-book-label]', function (s) { s.textContent = 'Book Your Free Audit Call'; });
-      each('[data-ms-book-note]', function (n) { n.hidden = true; });
     }
 
-    /* ---- Demo video (YouTube) ---- */
-    var videoId = (function (v) {
+    /* ---- Logo ---- */
+    if (isUrl(A.mapscoreLogo)) {
+      var logoBox = root.querySelector('[data-ms-logo]');
+      var logo = new Image();
+      logo.className = 'cbb-ms__logo-img';
+      logo.alt = 'MapScore by Covered Bridge Brands';
+      logo.decoding = 'async';
+      logo.onload = function () { logoBox.innerHTML = ''; logoBox.appendChild(logo); };
+      logo.src = A.mapscoreLogo.trim();
+    }
+
+    /* ---- Images: fill from settings, hide any that are missing ---- */
+    each('img[data-ms-asset]', function (img) {
+      var key = img.getAttribute('data-ms-asset');
+      var wrap = img.closest('[data-ms-asset-wrap]') || img.closest('figure') || img;
+      if (!isUrl(A[key])) { wrap.hidden = true; return; }
+      img.addEventListener('error', function () { wrap.hidden = true; });
+      img.src = A[key].trim();
+    });
+    each('.cbb-ms__compare', function (c) {
+      if (!c.querySelector('figure:not([hidden])')) c.hidden = true;
+    });
+
+    /* ---- Videos (YouTube) ---- */
+    var ytId = function (v) {
       v = String(v || '').trim();
       if (/^[A-Za-z0-9_-]{11}$/.test(v)) return v;
       var m = v.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
       return m ? m[1] : '';
-    })(SETTINGS.demoVideo);
-    if (videoId) {
-      var frameBox = root.querySelector('[data-ms-demo-frame]');
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?rel=0';
-      iframe.title = SETTINGS.demoVideoTitle || 'MapScore demo video';
-      iframe.loading = 'lazy';
-      iframe.setAttribute('allow', 'encrypted-media; picture-in-picture; fullscreen');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-      frameBox.appendChild(iframe);
-      each('[data-ms-demo]', function (s) { s.hidden = false; });
-      each('[data-ms-demo-link]', function (a) { a.hidden = false; });
-    }
+    };
+    [['marketing', SETTINGS.marketingVideo, 'Discover MapScore video'], ['demo', SETTINGS.demoVideo, 'MapScore demo video']].forEach(function (v) {
+      var id = ytId(v[1]);
+      if (!id) return;
+      var box = root.querySelector('[data-ms-video="' + v[0] + '"]');
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0';
+      f.title = v[2];
+      f.loading = 'lazy';
+      f.setAttribute('allow', 'encrypted-media; picture-in-picture; fullscreen');
+      f.setAttribute('allowfullscreen', '');
+      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
 
     /* ---- Ranking animation (muted, inline, with controls) ---- */
-    if (isHttps(SETTINGS.rankingAnimation)) {
-      var fig = root.querySelector('[data-ms-anim]');
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var animFig = root.querySelector('[data-ms-anim]');
+    var animWrap = animFig && animFig.closest('.cbb-ms__anim-wrap');
+    if (animFig && isUrl(A.rankingAnimation)) {
       var vid = document.createElement('video');
-      vid.src = SETTINGS.rankingAnimation.trim();
       vid.muted = true;
+      vid.defaultMuted = true;
       vid.loop = true;
       vid.controls = true;
       vid.playsInline = true;
       vid.preload = 'metadata';
+      vid.setAttribute('muted', '');
       vid.setAttribute('playsinline', '');
       vid.setAttribute('aria-label', 'Animated ranking heatmap illustration');
-      vid.addEventListener('error', function () { fig.hidden = true; });
-      fig.insertBefore(vid, fig.firstChild);
-      fig.hidden = false;
+      if (isUrl(A.rankingAnimationPoster)) vid.poster = A.rankingAnimationPoster.trim();
+      vid.addEventListener('error', function () { animWrap.hidden = true; });
+      vid.src = A.rankingAnimation.trim();
+      animFig.insertBefore(vid, animFig.firstChild);
       if (!reduce && 'IntersectionObserver' in window) {
         new IntersectionObserver(function (entries, obs) {
           if (entries[0].isIntersecting) {
@@ -2036,17 +2364,78 @@
           }
         }, { threshold: 0.4 }).observe(vid);
       }
+    } else if (animWrap) {
+      animWrap.hidden = true;
+    }
+
+    /* ---- Presentation viewer ---- */
+    var TITLES = [
+      'MapScore: local visibility, managed by CBB',
+      'Local marketing needs regular attention',
+      'Your profile, kept current',
+      'Local visibility across your online presence',
+      'Real results from the technology behind MapScore',
+      'Visibility, location by location: Home Crush heatmaps',
+      'A managed service, with your business in view',
+      'What customers say',
+      'Every service. One plan.',
+      'One complete plan: $395 per month, per location',
+      'Your next move starts with a free audit'
+    ];
+    var slides = (A.slides || []).filter(isUrl);
+    var deck = root.querySelector('[data-ms-deck]');
+    if (deck && slides.length) {
+      var viewer = deck.querySelector('[data-ms-deck-viewer]');
+      var stage = deck.querySelector('[data-ms-deck-stage]');
+      var slideImg = deck.querySelector('[data-ms-deck-img]');
+      var count = deck.querySelector('[data-ms-deck-count]');
+      var title = deck.querySelector('[data-ms-deck-title]');
+      var prev = deck.querySelector('[data-ms-deck-prev]');
+      var next = deck.querySelector('[data-ms-deck-next]');
+      var cur = 0;
+      var show = function (i) {
+        cur = Math.max(0, Math.min(slides.length - 1, i));
+        slideImg.src = slides[cur].trim();
+        slideImg.alt = 'Slide ' + (cur + 1) + ': ' + (TITLES[cur] || 'MapScore presentation');
+        count.textContent = (cur + 1) + ' / ' + slides.length;
+        title.textContent = TITLES[cur] || '';
+        prev.disabled = cur === 0;
+        next.disabled = cur === slides.length - 1;
+        if (slides[cur + 1]) { var pre = new Image(); pre.src = slides[cur + 1].trim(); }
+      };
+      prev.addEventListener('click', function () { show(cur - 1); });
+      next.addEventListener('click', function () { show(cur + 1); });
+      stage.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+        else if (e.key === 'Home') { e.preventDefault(); show(0); }
+        else if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+      });
+      var x0 = null;
+      stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+        x0 = null;
+      }, { passive: true });
+      slideImg.addEventListener('error', function () { viewer.hidden = true; });
+      var dl = deck.querySelector('[data-ms-deck-download]');
+      if (isUrl(A.presentationDownload)) { dl.href = A.presentationDownload.trim(); dl.hidden = false; }
+      viewer.hidden = false;
+      show(0);
     }
 
     /* ---- Revenue scenario calculator (runs locally only) ---- */
     var calc = root.querySelector('[data-ms-calc]');
     if (calc) {
+      var LIMIT = 1e12; /* larger values can't be displayed reliably */
       var fields = {
-        customers: { el: calc.querySelector('#ms-calc-customers'), name: 'customers per day', min: 0, minExclusive: false },
-        value: { el: calc.querySelector('#ms-calc-value'), name: 'average revenue per customer', min: 0, minExclusive: false },
-        increase: { el: calc.querySelector('#ms-calc-increase'), name: 'an increase to test', min: 0, minExclusive: false },
-        days: { el: calc.querySelector('#ms-calc-days'), name: 'operating days per month', min: 0, minExclusive: true, max: 31 },
-        cost: { el: calc.querySelector('#ms-calc-cost'), name: 'a monthly service cost', min: 0, minExclusive: true }
+        customers: { el: calc.querySelector('#ms-calc-customers'), name: 'customers per day' },
+        value: { el: calc.querySelector('#ms-calc-value'), name: 'average revenue per customer' },
+        increase: { el: calc.querySelector('#ms-calc-increase'), name: 'an increase to test' },
+        days: { el: calc.querySelector('#ms-calc-days'), name: 'operating days per month', positive: true, max: 31 },
+        cost: { el: calc.querySelector('#ms-calc-cost'), name: 'a monthly service cost', positive: true }
       };
       var toNumber = function (raw) {
         var s = String(raw == null ? '' : raw).trim().replace(/[\s,$%]/g, '');
@@ -2059,18 +2448,26 @@
         if (msg) f.el.setAttribute('aria-invalid', 'true');
         else f.el.removeAttribute('aria-invalid');
       };
+      var round = function (n, dp) {
+        var f = Math.pow(10, dp), r = Math.round(n * f) / f;
+        return Object.is(r, -0) ? 0 : r;
+      };
+      /* "≈" marks a figure that was rounded for display */
+      var approx = function (n, dp) { return round(n, dp) !== n ? '≈ ' : ''; };
       var money = function (n) {
-        var r = Math.round(n * 100) / 100;
-        if (Object.is(r, -0)) r = 0;
-        return r.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: Math.abs(r % 1) > 0 ? 2 : 0, maximumFractionDigits: 2 });
+        var r = round(n, 2);
+        return r.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: r % 1 ? 2 : 0, maximumFractionDigits: 2 });
       };
-      var num = function (n, maxDp) {
-        var f = Math.pow(10, maxDp);
-        var r = Math.round(n * f) / f;
-        if (Object.is(r, -0)) r = 0;
-        return r.toLocaleString('en-US', { maximumFractionDigits: maxDp });
-      };
+      var num = function (n, dp) { return round(n, dp).toLocaleString('en-US', { maximumFractionDigits: dp }); };
       var out = function (k) { return calc.querySelector('[data-ms-out="' + k + '"]'); };
+      var resultsBox = calc.querySelector('[data-ms-calc-results]');
+      var empty = calc.querySelector('[data-ms-calc-empty]');
+      var fail = function (msg, focusEl) {
+        resultsBox.hidden = true;
+        empty.hidden = false;
+        empty.textContent = msg;
+        if (focusEl) focusEl.focus();
+      };
 
       var run = function () {
         var vals = {}, firstBad = null;
@@ -2079,41 +2476,40 @@
           if (f.el.value.trim() === '') msg = 'Please enter ' + f.name + '.';
           else if (!isFinite(v)) msg = 'Please enter a number, such as 10 or 12.5.';
           else if (v < 0) msg = 'Please enter a number that isn’t negative.';
-          else if (f.minExclusive && v <= f.min) msg = 'Please enter a number greater than 0.';
+          else if (f.positive && v <= 0) msg = 'Please enter a number greater than 0.';
           else if (f.max != null && v > f.max) msg = 'Please enter ' + f.max + ' or fewer.';
+          else if (v > LIMIT) msg = 'Please enter a smaller number.';
           setError(f, msg);
           if (msg && !firstBad) firstBad = f.el;
           vals[k] = v;
         });
-        var resultsBox = calc.querySelector('[data-ms-calc-results]');
-        var empty = calc.querySelector('[data-ms-calc-empty]');
-        if (firstBad) {
-          resultsBox.hidden = true;
-          empty.hidden = false;
-          empty.textContent = 'Please check the highlighted fields.';
-          firstBad.focus();
-          return;
-        }
-        /* No rounding until display. */
+        if (firstBad) { fail('Please check the highlighted fields.', firstBad); return; }
+
+        /* Calculated with unrounded values; rounding happens only for display. */
         var addCustomers = vals.customers * vals.increase / 100 * vals.days;
         var addRevenue = addCustomers * vals.value;
         var net = addRevenue - vals.cost;
         var ret = net / vals.cost * 100;
+        if (![addCustomers, addRevenue, net, ret].every(function (n) { return isFinite(n) && Math.abs(n) <= LIMIT; })) {
+          fail('These numbers are too large to calculate reliably. Please try smaller values.', null);
+          return;
+        }
 
-        out('customers').textContent = num(addCustomers, 2);
-        out('revenue').textContent = money(addRevenue);
-        out('net').textContent = money(net);
-        out('ret').textContent = num(ret, 1) + '%';
+        out('customers').textContent = approx(addCustomers, 2) + num(addCustomers, 2);
+        out('revenue').textContent = approx(addRevenue, 2) + money(addRevenue);
+        out('net').textContent = approx(net, 2) + money(net);
+        out('ret').textContent = approx(ret, 1) + num(ret, 1) + '%';
         var negative = net < 0;
         calc.querySelector('[data-ms-out-row="net"]').classList.toggle('cbb-ms__calc-row--neg', negative);
         calc.querySelector('[data-ms-out-row="ret"]').classList.toggle('cbb-ms__calc-row--neg', negative);
         calc.querySelector('[data-ms-calc-neg]').hidden = !negative;
+        var rounded = [addCustomers, addRevenue, net].some(function (n) { return round(n, 2) !== n; }) || round(ret, 1) !== ret;
         out('math').textContent =
-          num(vals.customers, 2) + ' customers/day × ' + num(vals.increase, 2) + '% × ' + num(vals.days, 2) +
-          ' days = ' + num(addCustomers, 2) + ' additional customers. ' +
-          num(addCustomers, 2) + ' × ' + money(vals.value) + ' = ' + money(addRevenue) + '. ' +
-          money(addRevenue) + ' − ' + money(vals.cost) + ' = ' + money(net) + '. ' +
-          money(net) + ' ÷ ' + money(vals.cost) + ' × 100 = ' + num(ret, 1) + '%.';
+          'How it’s calculated: ' + num(vals.customers, 4) + ' customers/day × ' + num(vals.increase, 4) + '% × ' +
+          num(vals.days, 4) + ' days = additional customers. Additional customers × ' + money(vals.value) +
+          ' = additional revenue. Additional revenue − ' + money(vals.cost) + ' = revenue after cost. ' +
+          'Revenue after cost ÷ ' + money(vals.cost) + ' × 100 = revenue-based return.' +
+          (rounded ? ' Each step uses unrounded values; figures marked ≈ are rounded for display only.' : '');
         empty.hidden = true;
         resultsBox.hidden = false;
       };
