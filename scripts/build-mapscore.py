@@ -57,9 +57,24 @@ def fill(text, value_for, slide_value_for, indent=" " * 10):
     return text.replace("__A_slides__", slides)
 
 
-# Paste-ready block: empty values with the file each one expects
-block = fill(tpl, lambda p: f"''  /* upload: {Path(p).name} */",
-             lambda p: f"''  /* upload: {Path(p).name} */")
+# Paste-ready block: GHL Media links from asset-urls.json; anything not
+# uploaded yet stays '' with a note of the file it expects.
+import json
+urls = json.loads((root / "pages/mapscore/asset-urls.json").read_text(encoding="utf-8"))
+by_path = {path: urls.get(key, "") for key, path in ASSETS.items()}
+by_path.update({p: (urls.get("slides") or [""] * len(SLIDES))[i] for i, p in enumerate(SLIDES)})
+for v in list(by_path.values()) + [urls.get("mapscoreLogo", "")]:
+    assert v == "" or (v.startswith("https://") and "'" not in v and " " not in v), v
+
+
+def prod(p):
+    u = by_path[p]
+    return f"'{u}'" if u else f"''  /* upload: {Path(p).name} */"
+
+
+block = fill(tpl, prod, prod)
+if urls.get("mapscoreLogo"):
+    block = block.replace("mapscoreLogo: '',", f"mapscoreLogo: '{urls['mapscoreLogo']}',", 1)
 block = block.replace(" */  /* upload", " — upload")  # tidy double comments
 out = root / "pages/mapscore/mapscore-main.html"
 out.write_text(block, encoding="utf-8")
