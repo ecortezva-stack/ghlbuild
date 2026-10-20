@@ -1,5 +1,7 @@
 {
   "_note": "GHL Media links for the MapScore block. Used by scripts/build-mapscore.py. Empty means not uploaded yet.",
+  "marketingVideo": "https://assets.cdn.filesafe.space/1LlHASBki3wgNdbhAlBp/media/6ad62b4ff9a985d42c17064e.mp4",
+  "marketingVideoPoster": "",
   "mapscoreLogo": "",
   "graphicProfile": "https://assets.cdn.filesafe.space/1LlHASBki3wgNdbhAlBp/media/6ad4e7b2f9a985d42cf6f1d9.jpg",
   "graphicPosts": "https://assets.cdn.filesafe.space/1LlHASBki3wgNdbhAlBp/media/6ad4e7b2cd7225ed37ccaa1e.jpg",

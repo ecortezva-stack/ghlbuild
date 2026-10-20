@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds review-only preview pages. Paste the individual blocks into
 # GoHighLevel, never these preview files.
-#   preview.html                  home page (every file in sections/)
+#   preview.html                  home page (Home header + sections/01-06)
 #   pages/<name>/preview.html     each page listed in pages/<name>/blocks.txt
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -31,7 +31,9 @@ HEAD
   echo "Wrote $out"
 }
 
-write_page preview.html "CBB Home Preview" sections/*.html
+# Home uses its own header; the other header files belong to other pages.
+write_page preview.html "CBB Home Preview" sections/00-header-home.html \
+  $(ls sections/[0-9][0-9]-*.html | grep -v '/00-header')
 
 for list in pages/*/blocks.txt; do
   [ -e "$list" ] || continue

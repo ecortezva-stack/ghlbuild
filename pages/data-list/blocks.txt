@@ -1,0 +1,4 @@
+# Paste order for the /data-list page.
+sections/00-header-capital.html
+pages/data-list/01-data-list-soon.html
+sections/06-footer.html

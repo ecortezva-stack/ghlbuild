@@ -444,12 +444,29 @@
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
     overflow: hidden;
   }
-  .cbb-mapscore .cbb-ms__video iframe {
+  .cbb-mapscore .cbb-ms__video iframe,
+  .cbb-mapscore .cbb-ms__video video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
+  }
+  .cbb-mapscore .cbb-ms__video video {
+    display: block;
+    object-fit: contain;
+    background: #000;
+  }
+  .cbb-mapscore .cbb-ms__video-error {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--cbb-cream);
+  }
+  .cbb-mapscore .cbb-ms__video-error a {
+    color: var(--cbb-gold-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .cbb-mapscore .cbb-ms__video-soon {
     position: absolute;
@@ -840,6 +857,16 @@
     font-size: 0.8125rem;
     line-height: 1.6;
     color: var(--cbb-muted);
+  }
+  .cbb-mapscore .cbb-ms__footnote {
+    max-width: 72ch;
+    margin: 20px 0 0;
+    padding: 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(246, 239, 227, 0.8);
   }
   .cbb-mapscore .cbb-ms__subhead {
     margin: clamp(56px, 6vw, 80px) 0 clamp(24px, 3vw, 32px);
@@ -1530,7 +1557,8 @@
   </section>
 
   <!-- ===== 3. Discover MapScore (marketing video) =====
-       The player shows "Coming soon" until SETTINGS.marketingVideo is set. -->
+       The player shows "Coming soon" until SETTINGS.marketingVideo is set
+       (GHL Media .mp4 link or a YouTube link). -->
   <section class="cbb-ms__section cbb-ms__section--surface" id="discover" aria-labelledby="ms-discover-title">
     <div class="cbb-ms__inner">
       <div class="cbb-ms__video-wrap">
@@ -1726,7 +1754,7 @@
       <div class="cbb-ms__guided">
         <div>
           <p class="cbb-ms__eyebrow">Free Guided Audit</p>
-          <h2 class="cbb-ms__h2" id="ms-book-title">See where you stand, with a CBB officer by your side</h2>
+          <h2 class="cbb-ms__h2" id="ms-book-title">See where you stand, with a CBB marketing analyst by your side.</h2>
           <p class="cbb-ms__lede">Book a 30-minute call. It's free, and there's no obligation to sign up.</p>
           <div class="cbb-ms__actions">
             <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
@@ -1742,11 +1770,11 @@
           </li>
           <li class="cbb-ms__guided-step">
             <h3 class="cbb-ms__h3">Complete the audit together</h3>
-            <p class="cbb-ms__p">At your scheduled time, your CBB officer calls, shares the audit and guides you through it step by step.</p>
+            <p class="cbb-ms__p">At your scheduled time, your CBB marketing analyst calls, shares the audit and guides you through it step by step.</p>
           </li>
           <li class="cbb-ms__guided-step">
             <h3 class="cbb-ms__h3">Review your results</h3>
-            <p class="cbb-ms__p">Your officer explains what the audit shows, introduces MapScore and answers your questions.</p>
+            <p class="cbb-ms__p">Your marketing analyst explains what the audit shows, introduces MapScore and answers your questions.</p>
           </li>
         </ol>
       </div>
@@ -1766,7 +1794,7 @@
           <span class="cbb-ms__tdot" aria-hidden="true">1</span>
           <div>
             <h3 class="cbb-ms__h3">Book your guided audit</h3>
-            <p class="cbb-ms__p">A 30-minute call where your CBB officer walks you through the free audit.</p>
+            <p class="cbb-ms__p">A 30-minute call where your CBB marketing analyst walks you through the free audit.</p>
           </div>
         </li>
         <li class="cbb-ms__tstep">
@@ -1831,10 +1859,6 @@
       <header class="cbb-ms__header">
         <p class="cbb-ms__eyebrow">Customer Success Stories</p>
         <h2 class="cbb-ms__h2" id="ms-results-title">Results from the technology behind MapScore</h2>
-        <p class="cbb-ms__lede">
-          These businesses use the same technology that powers MapScore. They are provider-reported customer
-          examples, not CBB clients, and they don't guarantee similar results.
-        </p>
       </header>
 
       <ul class="cbb-ms__stories">
@@ -1929,6 +1953,10 @@
           </div>
         </li>
       </ul>
+      <p class="cbb-ms__footnote">
+        These businesses use the same technology that powers MapScore. They are provider-reported customer
+        examples, not CBB clients, and they don't guarantee similar results.
+      </p>
       <ul class="cbb-ms__legend" aria-label="Heatmap legend">
         <li><span class="cbb-ms__swatch" style="background:#4CB82E" aria-hidden="true"></span>Top positions</li>
         <li><span class="cbb-ms__swatch" style="background:#E8B21A" aria-hidden="true"></span>Middle positions</li>
@@ -1986,7 +2014,7 @@
       <header class="cbb-ms__header cbb-ms__header--center">
         <p class="cbb-ms__eyebrow">Explore MapScore</p>
         <h2 class="cbb-ms__h2" id="ms-deck-title">Flip through the MapScore presentation</h2>
-        <p class="cbb-ms__lede">The same overview our officers share, slide by slide.</p>
+        <p class="cbb-ms__lede">The same overview our marketing analysts share, slide by slide.</p>
       </header>
       <div class="cbb-ms__deck" data-ms-deck>
         <div class="cbb-ms__deck-viewer" data-ms-deck-viewer hidden>
@@ -2022,7 +2050,7 @@
             <li><strong>What customers say.</strong> Provider-reported 4.9/5 average rating, 1,000+ reviews and 13,000+ businesses using the technology. Review excerpts from Will Higgins, Realtor, and Ryan Fullarton, agency owner.</li>
             <li><strong>Every service. One plan.</strong> Profile management, review management, existing-website SEO, directory citations, video content, social publishing, AI search visibility, and reports and heatmaps.</li>
             <li><strong>One complete plan.</strong> $395 per month, per business location. No setup fee, no term commitment, non-refundable payments. Each additional location needs its own plan.</li>
-            <li><strong>Your next move starts with a free audit.</strong> Book a Free Guided Audit: a 30-minute call where your CBB officer guides the audit with you. david@coveredbridgebrands.com, 814-893-1075.</li>
+            <li><strong>Your next move starts with a free audit.</strong> Book a Free Guided Audit: a 30-minute call where your CBB marketing analyst guides the audit with you. david@coveredbridgebrands.com, 814-893-1075.</li>
           </ol>
         </details>
       </div>
@@ -2168,7 +2196,7 @@
           </details>
           <details class="cbb-ms__faq">
             <summary>How does the free guided audit work?</summary>
-            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">You book a 30-minute call. At the scheduled time, your CBB officer shares the audit, helps you complete it, explains the results and introduces MapScore. Booking the call doesn't run an audit by itself; you complete it together during the call.</p></div>
+            <div class="cbb-ms__faq-body"><p class="cbb-ms__p">You book a 30-minute call. At the scheduled time, your CBB marketing analyst shares the audit, helps you complete it, explains the results and introduces MapScore. Booking the call doesn't run an audit by itself; you complete it together during the call.</p></div>
           </details>
           <details class="cbb-ms__faq">
             <summary>Does the audit sign me up for MapScore?</summary>
@@ -2216,7 +2244,7 @@
     <div class="cbb-ms__inner cbb-ms__inner--narrow">
       <p class="cbb-ms__eyebrow">Your Next Move</p>
       <h2 class="cbb-ms__h2" id="ms-final-title">Start with a <span class="cbb-ms__gold">free guided audit</span></h2>
-      <p class="cbb-ms__lede">Book a 30-minute call. Your CBB officer will guide you through the audit, explain the results and introduce MapScore.</p>
+      <p class="cbb-ms__lede">Book a 30-minute call. Your CBB marketing analyst will guide you through the audit, explain the results and introduce MapScore.</p>
       <div class="cbb-ms__actions">
         <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
           Book a Free Guided Audit
@@ -2242,10 +2270,16 @@
          section on this page. */
       bookingUrl: '',
 
-      /* YouTube link or 11-character video ID.
-         Empty: that player shows "Coming soon". */
+      /* Video players. Each takes a GHL Media .mp4 link (plays in a
+         built-in player with controls; no autoplay) or a YouTube
+         link / 11-character video ID.
+         Empty: that player shows "Coming soon".
+         The poster is an optional still image (GHL Media link) shown
+         before an .mp4 plays; it isn't used for YouTube. */
       marketingVideo: '',            /* Discover MapScore */
+      marketingVideoPoster: '',
       demoVideo: '',                 /* See MapScore in Action */
+      demoVideoPoster: '',
 
       /* GHL Media URLs for each uploaded file (README has the list).
          Empty: that image or media item stays hidden. */
@@ -2315,17 +2349,55 @@
       if (!c.querySelector('figure:not([hidden])')) c.hidden = true;
     });
 
-    /* ---- Videos (YouTube) ---- */
+    /* ---- Videos (GHL Media .mp4 or YouTube) ---- */
     var ytId = function (v) {
       v = String(v || '').trim();
       if (/^[A-Za-z0-9_-]{11}$/.test(v)) return v;
       var m = v.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
       return m ? m[1] : '';
     };
-    [['marketing', SETTINGS.marketingVideo, 'Discover MapScore video'], ['demo', SETTINGS.demoVideo, 'MapScore demo video']].forEach(function (v) {
+    var isVideoFile = function (u) {
+      return isUrl(u) && /\.(mp4|m4v|webm|mov)(?:[?#]|$)/i.test(String(u).trim());
+    };
+    [
+      ['marketing', SETTINGS.marketingVideo, SETTINGS.marketingVideoPoster, 'Discover MapScore video'],
+      ['demo', SETTINGS.demoVideo, SETTINGS.demoVideoPoster, 'MapScore demo video']
+    ].forEach(function (v) {
+      var box = root.querySelector('[data-ms-video="' + v[0] + '"]');
+      if (!box) return;
+      if (isVideoFile(v[1])) {
+        var src = String(v[1]).trim();
+        var vid = document.createElement('video');
+        vid.controls = true;
+        vid.playsInline = true;
+        vid.preload = 'metadata';
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('aria-label', v[3]);
+        if (isUrl(v[2])) vid.poster = String(v[2]).trim();
+        vid.addEventListener('error', function () {
+          /* The file couldn't load: offer it in a new tab instead of a dead player. */
+          var soon = document.createElement('div');
+          soon.className = 'cbb-ms__video-soon';
+          var msg = document.createElement('p');
+          msg.className = 'cbb-ms__video-error';
+          msg.appendChild(document.createTextNode('This video couldn\u2019t load here. '));
+          var a = document.createElement('a');
+          a.href = src;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = 'Open the video in a new tab';
+          msg.appendChild(a);
+          soon.appendChild(msg);
+          box.innerHTML = '';
+          box.appendChild(soon);
+        });
+        vid.src = src;
+        box.innerHTML = '';
+        box.appendChild(vid);
+        return;
+      }
       var id = ytId(v[1]);
       if (!id) return;
-      var box = root.querySelector('[data-ms-video="' + v[0] + '"]');
       var f = document.createElement('iframe');
       f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0';
       f.title = v[2];

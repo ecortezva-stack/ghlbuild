@@ -1,6 +1,6 @@
 # MapScore main page (`/mapscore`)
 
-Replaces the Coming Soon block on the existing `/mapscore` page. The audit-tool page (`/mapscore-free-audit`) stays published and unchanged for officers to share during booked calls, but this page doesn't link to it.
+Replaces the Coming Soon block on the existing `/mapscore` page. The audit-tool page (`/mapscore-free-audit`) stays published and unchanged for marketing analysts to share during booked calls, but this page doesn't link to it.
 
 ## Placement in GHL
 
@@ -23,8 +23,10 @@ Anything left `''` is hidden on the page; it never shows a broken image.
 | Setting | Upload this file (`assets/mapscore/…`) | Used for |
 |---|---|---|
 | `bookingUrl` | — (GHL calendar link) | Every **Book a Free Guided Audit** button. While empty, the buttons scroll to the guided-audit section on the page. |
-| `marketingVideo` | — (YouTube link or ID) | **Discover MapScore** player. Shows "Coming soon" until set. |
-| `demoVideo` | — (YouTube link or ID) | **See MapScore in Action** player. Shows "Coming soon" until set. |
+| `marketingVideo` | `White Label Promo Video.mp4` (already set to its GHL Media link) | **Discover MapScore** player: built-in 16:9 player with controls and fullscreen, no autoplay. Also accepts a YouTube link or ID. |
+| `marketingVideoPoster` | optional still image (16:9 JPG/WebP) | Picture shown in the Discover player before the video plays. Empty: the browser shows the video's first frame. |
+| `demoVideo` | — (GHL Media .mp4, or YouTube link or ID) | **See MapScore in Action** player. Shows "Coming soon" until set. |
+| `demoVideoPoster` | optional still image | Same as above, for the demo player. |
 | `assets.mapscoreLogo` | approved MapScore logo (not supplied yet) | Replaces the drawn MapScore wordmark in the hero. |
 | `assets.graphicProfile` | `graphics/google-business-profile.webp` | Google Business Profile illustration |
 | `assets.graphicPosts` | `graphics/automated-google-posts.webp` | Posts illustration |
@@ -41,9 +43,11 @@ Anything left `''` is hidden on the page; it never shows a broken image.
 
 The hero photo (`hero-gold-pin.webp`) is already embedded in the block.
 
+The promo video link and any poster come from `pages/mapscore/asset-urls.json` (`marketingVideo`, `marketingVideoPoster`) when you run the build. If a video file can't load, the player is replaced by a short note with a link to open the video in a new tab.
+
 ## The presentation
 
-`assets/mapscore/CBB_MapScore_Presentation.pptx` is the corrected deck: the guarantee and website-builder wording are removed, supplier names are out of the slides and speaker notes, slide 11 has a single **Book a Free Guided Audit** action, and slide 6 now identifies its heatmaps as Home Crush (before and after 30 days). `slides/` holds its 11 slides exported for the viewer, and `CBB_MapScore_Presentation.pdf` is a PDF copy. Slide 11's link points to `https://coveredbridgebrands.com/mapscore#ms-book`.
+The page uses the slide images and .pptx you uploaded to GHL Media (links in `asset-urls.json`). `assets/mapscore/CBB_MapScore_Presentation.pptx` is the repo copy of the corrected deck: the guarantee and website-builder wording are removed, supplier names are out, there are no speaker notes, slide 11 has a single **Book a Free Guided Audit** action and says "Your CBB marketing analyst guides the audit with you", and slide 6 identifies its heatmaps as Home Crush (before and after 30 days). `slides/` holds its 11 slides exported for the viewer, and `CBB_MapScore_Presentation.pdf` is a PDF copy. Slide 11's link points to `https://coveredbridgebrands.com/mapscore#ms-book`.
 
 ## Editing
 

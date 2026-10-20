@@ -63,8 +63,20 @@ import json
 urls = json.loads((root / "pages/mapscore/asset-urls.json").read_text(encoding="utf-8"))
 by_path = {path: urls.get(key, "") for key, path in ASSETS.items()}
 by_path.update({p: (urls.get("slides") or [""] * len(SLIDES))[i] for i, p in enumerate(SLIDES)})
-for v in list(by_path.values()) + [urls.get("mapscoreLogo", "")]:
+# Settings filled the same way in both outputs (no local copy exists).
+DIRECT = ["marketingVideo", "marketingVideoPoster"]
+for v in list(by_path.values()) + [urls.get(k, "") for k in ["mapscoreLogo"] + DIRECT]:
     assert v == "" or (v.startswith("https://") and "'" not in v and " " not in v), v
+
+
+def fill_direct(text):
+    for k in DIRECT:
+        if urls.get(k):
+            token = f"      {k}: '',"
+            assert text.count(token) == 1, k
+            text = text.replace(token + " " * 12, token + "  ")  # long link: drop the column padding
+            text = text.replace(token, f"      {k}: '{urls[k]}',")
+    return text
 
 
 def prod(p):
@@ -72,7 +84,7 @@ def prod(p):
     return f"'{u}'" if u else f"''  /* upload: {Path(p).name} */"
 
 
-block = fill(tpl, prod, prod)
+block = fill_direct(fill(tpl, prod, prod))
 if urls.get("mapscoreLogo"):
     block = block.replace("mapscoreLogo: '',", f"mapscoreLogo: '{urls['mapscoreLogo']}',", 1)
 block = block.replace(" */  /* upload", " — upload")  # tidy double comments
@@ -80,7 +92,7 @@ out = root / "pages/mapscore/mapscore-main.html"
 out.write_text(block, encoding="utf-8")
 
 # Preview: local files
-local = fill(tpl, lambda p: f"'../../assets/mapscore/{p}'", lambda p: f"'../../assets/mapscore/{p}'")
+local = fill_direct(fill(tpl, lambda p: f"'../../assets/mapscore/{p}'", lambda p: f"'../../assets/mapscore/{p}'"))
 header = (root / "sections/00-header.html").read_text(encoding="utf-8")
 footer = (root / "sections/06-footer.html").read_text(encoding="utf-8")
 page = f"""<!DOCTYPE html>

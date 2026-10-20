@@ -10,19 +10,26 @@
 </head>
 <body>
 <!-- ============================================================
-     CBB — HEADER / NAVIGATION
+     CBB — HEADER / NAVIGATION (HOME PAGE ONLY)
+     Use this on the Home page in place of sections/00-header.html.
+     Every other page keeps sections/00-header.html.
      Paste into a GoHighLevel Custom HTML/JavaScript element.
-     All styles are scoped to .cbb-header; the script only touches
-     elements inside .cbb-header.
+     All styles are scoped to .cbb-hh; the script only touches
+     elements inside .cbb-hh.
+
+     Links: Home, COVERED BRIDGE BRAND CAPITAL (/funding),
+     Data List (/data-list), Services, About, Contact. With six links
+     the menu switches to the mobile (hamburger) menu at 1024px and
+     below, so the long label never squeezes the logo.
 
      Stays pinned to the top while scrolling. It uses position: fixed
      (not sticky) because GHL wraps each element in its own container,
      which would stop a sticky header from staying up. The outer
-     .cbb-header box reserves the header's height so page content
+     .cbb-hh box reserves the header's height so page content
      starts below it.
      ============================================================ -->
 <style>
-  .cbb-header {
+  .cbb-hh {
     --cbb-gold: #D5A756;
     --cbb-gold-light: #F3CF7C;
     --cbb-gold-deep: #C9994A;
@@ -33,26 +40,26 @@
     --cbb-muted: #B9BEC4;
     --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
-    --cbb-header-h: 88px;
+    --cbb-hh-h: 88px;
 
     /* This outer box is the spacer: same height as the fixed bar */
     position: relative;
     display: block;
     width: 100%;
-    height: calc(var(--cbb-header-h) + 1px); /* + the bar's 1px gold border */
+    height: calc(var(--cbb-hh-h) + 1px); /* + the bar's 1px gold border */
     margin: 0;
     padding: 0;
     background: var(--cbb-black);
     font-family: var(--cbb-sans);
   }
-  .cbb-header,
-  .cbb-header *,
-  .cbb-header *::before,
-  .cbb-header *::after {
+  .cbb-hh,
+  .cbb-hh *,
+  .cbb-hh *::before,
+  .cbb-hh *::after {
     box-sizing: border-box;
   }
 
-  .cbb-header .cbb-header__bar {
+  .cbb-hh .cbb-hh__bar {
     position: fixed;
     top: 0;
     left: 0;
@@ -65,52 +72,52 @@
     border-bottom: 1px solid rgba(213, 167, 86, 0.45);
     transition: box-shadow 0.25s ease, background-color 0.25s ease;
   }
-  .cbb-header.is-scrolled .cbb-header__bar {
+  .cbb-hh.is-scrolled .cbb-hh__bar {
     background: rgba(10, 11, 12, 0.94);
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
   }
   @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-    .cbb-header.is-scrolled .cbb-header__bar {
+    .cbb-hh.is-scrolled .cbb-hh__bar {
       -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
     }
   }
 
-  .cbb-header .cbb-header__inner {
+  .cbb-hh .cbb-hh__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
     max-width: 1320px;
-    height: var(--cbb-header-h);
+    height: var(--cbb-hh-h);
     margin: 0 auto;
   }
 
   /* ---- Logo ---- */
-  .cbb-header .cbb-header__brand {
+  .cbb-hh .cbb-hh__brand {
     display: flex;
     align-items: center;
     flex: 0 1 auto;
     min-width: 0;
     text-decoration: none;
   }
-  .cbb-header .cbb-header__logo {
+  .cbb-hh .cbb-hh__logo {
     display: block;
     width: auto;
     max-width: 100%;
     height: clamp(46px, 4.8vw, 66px);
     border: 0;
   }
-  .cbb-header .cbb-header__brand:focus-visible {
+  .cbb-hh .cbb-hh__brand:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
     outline-offset: 4px;
   }
 
   /* ---- Desktop nav ---- */
-  .cbb-header .cbb-header__nav {
+  .cbb-hh .cbb-hh__nav {
     display: block;
   }
-  .cbb-header .cbb-header__list {
+  .cbb-hh .cbb-hh__list {
     display: flex;
     align-items: center;
     gap: clamp(24px, 3.4vw, 48px);
@@ -118,14 +125,14 @@
     padding: 0;
     list-style: none;
   }
-  .cbb-header .cbb-header__item {
+  .cbb-hh .cbb-hh__item {
     margin: 0;
     padding: 0;
   }
-  .cbb-header .cbb-header__item::marker {
+  .cbb-hh .cbb-hh__item::marker {
     content: none;
   }
-  .cbb-header .cbb-header__link {
+  .cbb-hh .cbb-hh__link {
     position: relative;
     display: inline-block;
     padding: 8px 0;
@@ -139,7 +146,7 @@
     text-decoration: none;
     transition: color 0.2s ease;
   }
-  .cbb-header .cbb-header__link::after {
+  .cbb-hh .cbb-hh__link::after {
     content: "";
     position: absolute;
     left: 0;
@@ -153,21 +160,21 @@
   }
   /* Hover / keyboard focus: gold text + gold underline sliding in from
      the left. Same for every link, including the current page. */
-  .cbb-header .cbb-header__link:hover,
-  .cbb-header .cbb-header__link:focus-visible {
+  .cbb-hh .cbb-hh__link:hover,
+  .cbb-hh .cbb-hh__link:focus-visible {
     color: var(--cbb-gold);
   }
-  .cbb-header .cbb-header__link:hover::after,
-  .cbb-header .cbb-header__link:focus-visible::after {
+  .cbb-hh .cbb-hh__link:hover::after,
+  .cbb-hh .cbb-hh__link:focus-visible::after {
     transform: scaleX(1);
   }
-  .cbb-header .cbb-header__link:focus-visible {
+  .cbb-hh .cbb-hh__link:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
     outline-offset: 4px;
   }
 
   /* ---- Hamburger (mobile only) ---- */
-  .cbb-header .cbb-header__toggle {
+  .cbb-hh .cbb-hh__toggle {
     display: none;
     flex: 0 0 auto;
     flex-direction: column;
@@ -185,27 +192,27 @@
     -webkit-appearance: none;
     appearance: none;
   }
-  .cbb-header .cbb-header__toggle:focus-visible {
+  .cbb-hh .cbb-hh__toggle:focus-visible {
     outline: 2px solid var(--cbb-gold-light);
     outline-offset: 3px;
   }
-  .cbb-header .cbb-header__bar-line {
+  .cbb-hh .cbb-hh__bar-line {
     display: block;
     width: 100%;
     height: 1.5px;
     background: var(--cbb-gold);
     transition: transform 0.25s ease, opacity 0.2s ease;
   }
-  .cbb-header.is-open .cbb-header__bar-line:nth-child(1) {
+  .cbb-hh.is-open .cbb-hh__bar-line:nth-child(1) {
     transform: translateY(7.5px) rotate(45deg);
   }
-  .cbb-header.is-open .cbb-header__bar-line:nth-child(2) {
+  .cbb-hh.is-open .cbb-hh__bar-line:nth-child(2) {
     opacity: 0;
   }
-  .cbb-header.is-open .cbb-header__bar-line:nth-child(3) {
+  .cbb-hh.is-open .cbb-hh__bar-line:nth-child(3) {
     transform: translateY(-7.5px) rotate(-45deg);
   }
-  .cbb-header .cbb-header__sr {
+  .cbb-hh .cbb-hh__sr {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -217,15 +224,31 @@
     border: 0;
   }
 
-  /* ---- Mobile: slide-down menu ---- */
-  @media (max-width: 860px) {
-    .cbb-header {
-      --cbb-header-h: 72px;
+  /* ---- Six links: tighter spacing so everything fits on one line ---- */
+  .cbb-hh .cbb-hh__list {
+    gap: clamp(20px, 2.1vw, 40px);
+  }
+  .cbb-hh .cbb-hh__link {
+    white-space: nowrap;
+  }
+  @media (max-width: 1240px) {
+    .cbb-hh .cbb-hh__logo {
+      height: clamp(46px, 4.4vw, 54px);
     }
-    .cbb-header .cbb-header__toggle {
+    .cbb-hh .cbb-hh__link {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* ---- Mobile: slide-down menu ---- */
+  @media (max-width: 1024px) {
+    .cbb-hh {
+      --cbb-hh-h: 72px;
+    }
+    .cbb-hh .cbb-hh__toggle {
       display: flex;
     }
-    .cbb-header .cbb-header__nav {
+    .cbb-hh .cbb-hh__nav {
       position: absolute;
       top: 100%;
       left: 0;
@@ -237,28 +260,28 @@
       border-bottom: 1px solid rgba(213, 167, 86, 0);
       transition: max-height 0.35s ease, visibility 0s linear 0.35s, border-color 0.35s ease;
     }
-    .cbb-header.is-open .cbb-header__nav {
-      max-height: calc(100vh - var(--cbb-header-h));
+    .cbb-hh.is-open .cbb-hh__nav {
+      max-height: calc(100vh - var(--cbb-hh-h));
       overflow-y: auto;
       visibility: visible;
       border-bottom-color: rgba(213, 167, 86, 0.45);
       box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6);
       transition: max-height 0.35s ease, visibility 0s linear 0s, border-color 0.35s ease;
     }
-    .cbb-header .cbb-header__list {
+    .cbb-hh .cbb-hh__list {
       flex-direction: column;
       align-items: stretch;
       gap: 0;
       padding: 8px clamp(16px, 4vw, 48px) 24px;
     }
-    .cbb-header .cbb-header__link {
+    .cbb-hh .cbb-hh__link {
       display: block;
       padding: 16px 0;
       border-bottom: 1px solid rgba(213, 167, 86, 0.15);
       font-size: 1.0625rem;
     }
     /* On mobile the hover underline is a short gold bar under the label */
-    .cbb-header .cbb-header__link::after {
+    .cbb-hh .cbb-hh__link::after {
       right: auto;
       bottom: 10px;
       width: 28px;
@@ -266,40 +289,42 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .cbb-header .cbb-header__bar,
-    .cbb-header .cbb-header__link,
-    .cbb-header .cbb-header__link::after,
-    .cbb-header .cbb-header__bar-line,
-    .cbb-header .cbb-header__nav {
+    .cbb-hh .cbb-hh__bar,
+    .cbb-hh .cbb-hh__link,
+    .cbb-hh .cbb-hh__link::after,
+    .cbb-hh .cbb-hh__bar-line,
+    .cbb-hh .cbb-hh__nav {
       transition: none;
     }
   }
 </style>
 
-<div class="cbb-header">
-  <header class="cbb-header__bar">
-    <div class="cbb-header__inner">
-      <a class="cbb-header__brand" href="/" aria-label="Covered Bridge Brands home">
+<div class="cbb-hh">
+  <header class="cbb-hh__bar">
+    <div class="cbb-hh__inner">
+      <a class="cbb-hh__brand" href="/" aria-label="Covered Bridge Brands home">
         <!-- LOGO: served from the GHL media library (Covered Bridge Brands logo). -->
-        <img class="cbb-header__logo" src="https://assets.cdn.filesafe.space/1LlHASBki3wgNdbhAlBp/media/6abd1ce51b644080e36e3b11.webp" alt="Covered Bridge Brands" width="576" height="120" decoding="async">
+        <img class="cbb-hh__logo" src="https://assets.cdn.filesafe.space/1LlHASBki3wgNdbhAlBp/media/6abd1ce51b644080e36e3b11.webp" alt="Covered Bridge Brands" width="576" height="120" decoding="async">
       </a>
 
-      <button class="cbb-header__toggle" type="button" aria-expanded="false" aria-controls="cbb-header-nav">
-        <span class="cbb-header__bar-line" aria-hidden="true"></span>
-        <span class="cbb-header__bar-line" aria-hidden="true"></span>
-        <span class="cbb-header__bar-line" aria-hidden="true"></span>
-        <span class="cbb-header__sr">Open menu</span>
+      <button class="cbb-hh__toggle" type="button" aria-expanded="false" aria-controls="cbb-hh-nav">
+        <span class="cbb-hh__bar-line" aria-hidden="true"></span>
+        <span class="cbb-hh__bar-line" aria-hidden="true"></span>
+        <span class="cbb-hh__bar-line" aria-hidden="true"></span>
+        <span class="cbb-hh__sr">Open menu</span>
       </button>
 
-      <nav class="cbb-header__nav" id="cbb-header-nav" aria-label="Main">
+      <nav class="cbb-hh__nav" id="cbb-hh-nav" aria-label="Main">
         <!-- Links only turn gold and underline on hover. The current page is
              tagged for screen readers (aria-current) from the URL, with no
              visual change. -->
-        <ul class="cbb-header__list">
-          <li class="cbb-header__item"><a class="cbb-header__link" href="/">Home</a></li>
-          <li class="cbb-header__item"><a class="cbb-header__link" href="/services">Services</a></li>
-          <li class="cbb-header__item"><a class="cbb-header__link" href="/about">About</a></li>
-          <li class="cbb-header__item"><a class="cbb-header__link" href="/contact">Contact</a></li>
+        <ul class="cbb-hh__list">
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/">Home</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/funding">COVERED BRIDGE BRAND CAPITAL</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/data-list">Data List</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/services">Services</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/about">About</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -308,13 +333,13 @@
 
 <script>
   (function () {
-    var roots = document.querySelectorAll('.cbb-header:not([data-cbb-ready])');
+    var roots = document.querySelectorAll('.cbb-hh:not([data-cbb-ready])');
     Array.prototype.forEach.call(roots, function (root) {
       root.setAttribute('data-cbb-ready', '');
-      var toggle = root.querySelector('.cbb-header__toggle');
-      var label = root.querySelector('.cbb-header__sr');
-      var links = root.querySelectorAll('.cbb-header__link');
-      var desktop = window.matchMedia('(min-width: 861px)');
+      var toggle = root.querySelector('.cbb-hh__toggle');
+      var label = root.querySelector('.cbb-hh__sr');
+      var links = root.querySelectorAll('.cbb-hh__link');
+      var desktop = window.matchMedia('(min-width: 1025px)');
 
       /* Current page: tag the matching link for screen readers */
       var clean = function (p) { return (p || '/').replace(/\/+$/, '') || '/'; };

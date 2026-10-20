@@ -1,0 +1,367 @@
+<!-- ============================================================
+     CBB — HEADER / NAVIGATION (FUNDING AND DATA LIST PAGES)
+     Use this on /funding and /data-list in place of
+     sections/00-header.html. The same block works on both pages.
+     Paste into a GoHighLevel Custom HTML/JavaScript element.
+     All styles are scoped to .cbb-hc; the script only touches
+     elements inside .cbb-hc.
+
+     Links: Marketing (the main site), COVERED BRIDGE BRAND CAPITAL
+     (/funding), Data List (/data-list). The link for the page you're
+     on is highlighted in gold with an underline, picked from the page
+     address. GHL's editor preview uses a different address, so the
+     highlight only shows on the published pages.
+
+     Stays pinned to the top while scrolling. It uses position: fixed
+     (not sticky) because GHL wraps each element in its own container,
+     which would stop a sticky header from staying up. The outer
+     .cbb-hc box reserves the header's height so page content
+     starts below it.
+     ============================================================ -->
+<style>
+  .cbb-hc {
+    --cbb-gold: #D5A756;
+    --cbb-gold-light: #F3CF7C;
+    --cbb-gold-deep: #C9994A;
+    --cbb-black: #0A0B0C;
+    --cbb-surface: #121415;
+    --cbb-white: #FFFFFF;
+    --cbb-cream: #F6EFE3;
+    --cbb-muted: #B9BEC4;
+    --cbb-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --cbb-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    --cbb-hc-h: 88px;
+
+    /* This outer box is the spacer: same height as the fixed bar */
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(var(--cbb-hc-h) + 1px); /* + the bar's 1px gold border */
+    margin: 0;
+    padding: 0;
+    background: var(--cbb-black);
+    font-family: var(--cbb-sans);
+  }
+  .cbb-hc,
+  .cbb-hc *,
+  .cbb-hc *::before,
+  .cbb-hc *::after {
+    box-sizing: border-box;
+  }
+
+  .cbb-hc .cbb-hc__bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    margin: 0;
+    padding: 0 clamp(16px, 4vw, 48px);
+    background: rgba(10, 11, 12, 0.97);
+    border-bottom: 1px solid rgba(213, 167, 86, 0.45);
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+  .cbb-hc.is-scrolled .cbb-hc__bar {
+    background: rgba(10, 11, 12, 0.94);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+  }
+  @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .cbb-hc.is-scrolled .cbb-hc__bar {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  .cbb-hc .cbb-hc__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1320px;
+    height: var(--cbb-hc-h);
+    margin: 0 auto;
+  }
+
+  /* ---- Logo ---- */
+  .cbb-hc .cbb-hc__brand {
+    display: flex;
+    align-items: center;
+    flex: 0 1 auto;
+    min-width: 0;
+    text-decoration: none;
+  }
+  .cbb-hc .cbb-hc__logo {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: clamp(46px, 4.8vw, 66px);
+    border: 0;
+  }
+  .cbb-hc .cbb-hc__brand:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 4px;
+  }
+
+  /* ---- Desktop nav ---- */
+  .cbb-hc .cbb-hc__nav {
+    display: block;
+  }
+  .cbb-hc .cbb-hc__list {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 3.4vw, 48px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbb-hc .cbb-hc__item {
+    margin: 0;
+    padding: 0;
+  }
+  .cbb-hc .cbb-hc__item::marker {
+    content: none;
+  }
+  .cbb-hc .cbb-hc__link {
+    position: relative;
+    display: inline-block;
+    padding: 8px 0;
+    font-family: var(--cbb-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--cbb-cream);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .cbb-hc .cbb-hc__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cbb-gold-deep), var(--cbb-gold-light));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+  }
+  /* Hover / keyboard focus: gold text + gold underline sliding in from
+     the left. Same for every link, including the current page. */
+  .cbb-hc .cbb-hc__link:hover,
+  .cbb-hc .cbb-hc__link:focus-visible {
+    color: var(--cbb-gold);
+  }
+  .cbb-hc .cbb-hc__link:hover::after,
+  .cbb-hc .cbb-hc__link:focus-visible::after {
+    transform: scaleX(1);
+  }
+  .cbb-hc .cbb-hc__link:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 4px;
+  }
+
+  /* ---- Hamburger (mobile only) ---- */
+  .cbb-hc .cbb-hc__toggle {
+    display: none;
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 6px;
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    padding: 0 11px;
+    border: 1px solid rgba(213, 167, 86, 0.55);
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .cbb-hc .cbb-hc__toggle:focus-visible {
+    outline: 2px solid var(--cbb-gold-light);
+    outline-offset: 3px;
+  }
+  .cbb-hc .cbb-hc__bar-line {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--cbb-gold);
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .cbb-hc.is-open .cbb-hc__bar-line:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .cbb-hc.is-open .cbb-hc__bar-line:nth-child(2) {
+    opacity: 0;
+  }
+  .cbb-hc.is-open .cbb-hc__bar-line:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+  .cbb-hc .cbb-hc__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ---- Current page: gold text with the underline showing ---- */
+  .cbb-hc .cbb-hc__link[aria-current="page"] {
+    color: var(--cbb-gold);
+    font-weight: 500;
+  }
+  .cbb-hc .cbb-hc__link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+  .cbb-hc .cbb-hc__link {
+    white-space: nowrap;
+  }
+
+  /* ---- Mobile: slide-down menu ---- */
+  @media (max-width: 860px) {
+    .cbb-hc {
+      --cbb-hc-h: 72px;
+    }
+    .cbb-hc .cbb-hc__toggle {
+      display: flex;
+    }
+    .cbb-hc .cbb-hc__nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      background: var(--cbb-black);
+      border-bottom: 1px solid rgba(213, 167, 86, 0);
+      transition: max-height 0.35s ease, visibility 0s linear 0.35s, border-color 0.35s ease;
+    }
+    .cbb-hc.is-open .cbb-hc__nav {
+      max-height: calc(100vh - var(--cbb-hc-h));
+      overflow-y: auto;
+      visibility: visible;
+      border-bottom-color: rgba(213, 167, 86, 0.45);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6);
+      transition: max-height 0.35s ease, visibility 0s linear 0s, border-color 0.35s ease;
+    }
+    .cbb-hc .cbb-hc__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px clamp(16px, 4vw, 48px) 24px;
+    }
+    .cbb-hc .cbb-hc__link {
+      display: block;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(213, 167, 86, 0.15);
+      font-size: 1.0625rem;
+    }
+    /* On mobile the hover underline is a short gold bar under the label */
+    .cbb-hc .cbb-hc__link::after {
+      right: auto;
+      bottom: 10px;
+      width: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cbb-hc .cbb-hc__bar,
+    .cbb-hc .cbb-hc__link,
+    .cbb-hc .cbb-hc__link::after,
+    .cbb-hc .cbb-hc__bar-line,
+    .cbb-hc .cbb-hc__nav {
+      transition: none;
+    }
+  }
+</style>
+
+<div class="cbb-hc">
+  <header class="cbb-hc__bar">
+    <div class="cbb-hc__inner">
+      <a class="cbb-hc__brand" href="https://coveredbridgebrands.com/" aria-label="Covered Bridge Brands home">
+        <!-- LOGO: served from the GHL media library (Covered Bridge Brands logo). -->
+        <img class="cbb-hc__logo" src="https://assets.cdn.filesafe.space/1LlHASBki3wgNdbhAlBp/media/6abd1ce51b644080e36e3b11.webp" alt="Covered Bridge Brands" width="576" height="120" decoding="async">
+      </a>
+
+      <button class="cbb-hc__toggle" type="button" aria-expanded="false" aria-controls="cbb-hc-nav">
+        <span class="cbb-hc__bar-line" aria-hidden="true"></span>
+        <span class="cbb-hc__bar-line" aria-hidden="true"></span>
+        <span class="cbb-hc__bar-line" aria-hidden="true"></span>
+        <span class="cbb-hc__sr">Open menu</span>
+      </button>
+
+      <nav class="cbb-hc__nav" id="cbb-hc-nav" aria-label="Main">
+        <!-- The current page's link stays gold with an underline and is
+             tagged for screen readers (aria-current), picked from the URL. -->
+        <ul class="cbb-hc__list">
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="https://coveredbridgebrands.com/">Marketing</a></li>
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/funding">COVERED BRIDGE BRAND CAPITAL</a></li>
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/data-list">Data List</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script>
+  (function () {
+    var roots = document.querySelectorAll('.cbb-hc:not([data-cbb-ready])');
+    Array.prototype.forEach.call(roots, function (root) {
+      root.setAttribute('data-cbb-ready', '');
+      var toggle = root.querySelector('.cbb-hc__toggle');
+      var label = root.querySelector('.cbb-hc__sr');
+      var links = root.querySelectorAll('.cbb-hc__link');
+      var desktop = window.matchMedia('(min-width: 861px)');
+
+      /* Current page: tag the matching link for screen readers */
+      var clean = function (p) { return (p || '/').replace(/\/+$/, '') || '/'; };
+      var here = clean(window.location.pathname);
+      var match = null;
+      Array.prototype.forEach.call(links, function (a) {
+        var path = clean(a.pathname);
+        if (path === here || (path !== '/' && here.indexOf(path + '/') === 0)) match = a;
+      });
+      if (match) match.setAttribute('aria-current', 'page');
+
+      /* Mobile menu */
+      var setOpen = function (open) {
+        root.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        label.textContent = open ? 'Close menu' : 'Open menu';
+      };
+      toggle.addEventListener('click', function () {
+        setOpen(!root.classList.contains('is-open'));
+      });
+      Array.prototype.forEach.call(links, function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && root.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+      document.addEventListener('click', function (e) {
+        if (root.classList.contains('is-open') && !root.contains(e.target)) setOpen(false);
+      });
+      var onBreakpoint = function () { if (desktop.matches) setOpen(false); };
+      if (desktop.addEventListener) desktop.addEventListener('change', onBreakpoint);
+      else if (desktop.addListener) desktop.addListener(onBreakpoint);
+
+      /* Shadow once the page scrolls */
+      var onScroll = function () { root.classList.toggle('is-scrolled', window.scrollY > 8); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    });
+  })();
+</script>

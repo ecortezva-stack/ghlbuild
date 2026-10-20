@@ -10,7 +10,11 @@
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done |
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
-| Super LOA, MapScore, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/mapscore`, `/roof-rocket`, `/comfort-flow`, `/service-flow`, `/practice-flow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
+| MapScore | `/mapscore` | [`pages/mapscore/README.md`](pages/mapscore/README.md) | Done, booking link pending |
+| MapScore Free Audit | `/mapscore-free-audit` | [`pages/mapscore-free-audit/README.md`](pages/mapscore-free-audit/README.md) | Done |
+| COVERED BRIDGE BRAND CAPITAL | `/funding` | [`pages/funding/README.md`](pages/funding/README.md) | Coming Soon page |
+| Data List | `/data-list` | [`pages/data-list/README.md`](pages/data-list/README.md) | Coming Soon page |
+| Super LOA, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/roof-rocket`, `/comfort-flow`, `/service-flow`, `/practice-flow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
 
 ## Home page
 
@@ -18,7 +22,7 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 
 | File | Section | Wrapper class | Anchor |
 |---|---|---|---|
-| `sections/00-header.html` | Header / nav | `.cbb-header` | none |
+| `sections/00-header-home.html` | Header / nav (Home only: adds COVERED BRIDGE BRAND CAPITAL and Data List) | `.cbb-hh` | none |
 | `sections/01-hero.html` | Hero | `.cbb-hero` | none |
 | `sections/02-our-systems.html` | Our Systems (Super LOA, MapScore™, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow) | `.cbb-systems` | `#our-systems` |
 | `sections/03-how-it-works.html` | How It Works | `.cbb-process` | none |
@@ -27,6 +31,18 @@ Each file in `sections/` is one self-contained block for a GHL **Custom HTML/Jav
 | `sections/06-footer.html` | Footer | `.cbb-footer` | none |
 
 `preview.html` (and `pages/<page>/preview.html` for other pages) joins all the blocks into one page so you can look it over in a browser. **Don't paste it into GHL.** To rebuild it after you edit a section, run `./scripts/build-preview.sh`.
+
+## Headers
+
+There are three header blocks. They look and behave the same; only the links differ.
+
+| File | Use on | Links |
+|---|---|---|
+| `sections/00-header.html` | Every page except the three below | Home, Services, About, Contact |
+| `sections/00-header-home.html` | Home (`/`) only | Home, COVERED BRIDGE BRAND CAPITAL, Data List, Services, About, Contact |
+| `sections/00-header-capital.html` | `/funding` and `/data-list` | Marketing (main site), COVERED BRIDGE BRAND CAPITAL, Data List; the current page is highlighted |
+
+The Home and capital headers are generated from `00-header.html` by `python3 scripts/build-variants.py` (which also builds the `/funding` and `/data-list` Coming Soon blocks). If you change `00-header.html`, run it again. If your header is a GHL **global section**, unlink it on the Home, `/funding` and `/data-list` pages before replacing it there, or the change will spread to every page.
 
 ## GHL setup
 

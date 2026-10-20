@@ -1,0 +1,4 @@
+# Paste order for the /funding page.
+sections/00-header-capital.html
+pages/funding/01-funding-soon.html
+sections/06-footer.html
