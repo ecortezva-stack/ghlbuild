@@ -22,7 +22,7 @@ Anything left `''` is hidden on the page; it never shows a broken image.
 
 | Setting | Upload this file (`assets/mapscore/…`) | Used for |
 |---|---|---|
-| `bookingUrl` | — (GHL calendar link) | Every **Book a Free Guided Audit** button. While empty, the buttons scroll to the guided-audit section on the page. |
+| `bookingUrl` | — (GHL calendar link, set to `https://api.leadconnectorhq.com/widget/bookings/mapscore-guided-audit`) | Every **Book a Free Guided Audit** button opens this calendar as an ordinary link (same tab, no popup). The link is also written into each button, so it works before the script runs. |
 | `marketingVideo` | `White Label Promo Video.mp4` (already set to its GHL Media link) | **Discover MapScore** player: built-in 16:9 player with controls and fullscreen, no autoplay. Also accepts a YouTube link or ID. |
 | `marketingVideoPoster` | optional still image (16:9 JPG/WebP) | Picture shown in the Discover player before the video plays. Empty: the browser shows the video's first frame. |
 | `demoVideo` | — (GHL Media .mp4, or YouTube link or ID) | **See MapScore in Action** player. Shows "Coming soon" until set. |

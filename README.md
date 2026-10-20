@@ -10,7 +10,7 @@
 | Privacy Policy | `/privacy-policy` | [`pages/privacy/README.md`](pages/privacy/README.md) | Done |
 | About | `/about` | [`pages/about/README.md`](pages/about/README.md) | Done |
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
-| MapScore | `/mapscore` | [`pages/mapscore/README.md`](pages/mapscore/README.md) | Done, booking link pending |
+| MapScore | `/mapscore` | [`pages/mapscore/README.md`](pages/mapscore/README.md) | Done |
 | MapScore Free Audit | `/mapscore-free-audit` | [`pages/mapscore-free-audit/README.md`](pages/mapscore-free-audit/README.md) | Done |
 | Covered Bridge Capital (menu: Funding) | `/funding` | [`pages/funding/README.md`](pages/funding/README.md) | Coming Soon page |
 | Data List | `/data-list` | [`pages/data-list/README.md`](pages/data-list/README.md) | Coming Soon page |

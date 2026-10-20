@@ -1496,7 +1496,7 @@
           local businesses across the United States.
         </p>
         <div class="cbb-ms__actions">
-          <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+          <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://api.leadconnectorhq.com/widget/bookings/mapscore-guided-audit" data-ms-book>
             Book a Free Guided Audit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
@@ -1757,7 +1757,7 @@
           <h2 class="cbb-ms__h2" id="ms-book-title">See where you stand, with a CBB marketing analyst by your side.</h2>
           <p class="cbb-ms__lede">Book a 30-minute call. It's free, and there's no obligation to sign up.</p>
           <div class="cbb-ms__actions">
-            <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+            <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://api.leadconnectorhq.com/widget/bookings/mapscore-guided-audit" data-ms-book>
               Book a Free Guided Audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
@@ -2157,7 +2157,7 @@
           <p class="cbb-ms__price" aria-label="395 dollars"><span class="cbb-ms__price-cur" aria-hidden="true">$</span><span class="cbb-ms__price-num" aria-hidden="true">395</span></p>
           <p class="cbb-ms__price-per">per month, per business location</p>
           <div class="cbb-ms__actions">
-            <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+            <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://api.leadconnectorhq.com/widget/bookings/mapscore-guided-audit" data-ms-book>
               Book a Free Guided Audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
@@ -2246,7 +2246,7 @@
       <h2 class="cbb-ms__h2" id="ms-final-title">Start with a <span class="cbb-ms__gold">free guided audit</span></h2>
       <p class="cbb-ms__lede">Book a 30-minute call. Your CBB marketing analyst will guide you through the audit, explain the results and introduce MapScore.</p>
       <div class="cbb-ms__actions">
-        <a class="cbb-ms__btn cbb-ms__btn--gold" href="#ms-book" data-ms-book>
+        <a class="cbb-ms__btn cbb-ms__btn--gold" href="https://api.leadconnectorhq.com/widget/bookings/mapscore-guided-audit" data-ms-book>
           Book a Free Guided Audit
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
@@ -2266,9 +2266,10 @@
        ========================================================== */
     var SETTINGS = {
       /* GHL booking calendar. Every "Book a Free Guided Audit" button
-         uses this link. Empty: buttons scroll to the guided-audit
-         section on this page. */
-      bookingUrl: '',
+         opens this link in the same tab. The same link is also written
+         into each button, so the buttons work even before this script
+         runs. To change the calendar, change it here. */
+      bookingUrl: 'https://api.leadconnectorhq.com/widget/bookings/mapscore-guided-audit',
 
       /* Video players. Each takes a GHL Media .mp4 link (plays in a
          built-in player with controls; no autoplay) or a YouTube
