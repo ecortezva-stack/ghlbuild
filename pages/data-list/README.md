@@ -6,7 +6,7 @@ Create a GHL page at `/data-list`, then paste these blocks in order, each into i
 
 | # | File | Block |
 |---|---|---|
-| 1 | `sections/00-header-capital.html` | Header: Marketing, COVERED BRIDGE BRAND CAPITAL, Data List (the current page is highlighted) |
+| 1 | `sections/00-header-capital.html` | Header: Marketing, Funding, Data List (the current page is highlighted) |
 | 2 | `pages/data-list/01-data-list-soon.html` | Coming Soon body (`.cbb-dsoon`) |
 | 3 | `sections/06-footer.html` | Footer (same as every page) |
 

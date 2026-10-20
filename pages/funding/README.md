@@ -1,12 +1,12 @@
-# COVERED BRIDGE BRAND CAPITAL (`/funding`) — Coming Soon
+# Covered Bridge Capital (`/funding`) — Coming Soon
 
-A simple branded holding page: the heading **COVERED BRIDGE BRAND CAPITAL** and a **Coming Soon** status. No offers, pricing, forms or dates.
+A simple branded holding page: the heading **COVERED BRIDGE CAPITAL** and a **Coming Soon** status. The menu link to this page reads **Funding**; in GHL, name the page "Funding" too. No offers, pricing, forms or dates.
 
 Create a GHL page at `/funding`, then paste these blocks in order, each into its own full-width Custom HTML/JavaScript element (0 padding, no background):
 
 | # | File | Block |
 |---|---|---|
-| 1 | `sections/00-header-capital.html` | Header: Marketing, COVERED BRIDGE BRAND CAPITAL, Data List (the current page is highlighted) |
+| 1 | `sections/00-header-capital.html` | Header: Marketing, Funding, Data List (the current page is highlighted) |
 | 2 | `pages/funding/01-funding-soon.html` | Coming Soon body (`.cbb-fsoon`) |
 | 3 | `sections/06-footer.html` | Footer (same as every page) |
 

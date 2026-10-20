@@ -2,12 +2,11 @@
 """Build the header variants and the /funding and /data-list pages.
 
 Writes:
-  sections/00-header-home.html     Home page header: Home, COVERED BRIDGE
-                                   BRAND CAPITAL, Data List, Services, About,
-                                   Contact. Root class .cbb-hh.
+  sections/00-header-home.html     Home page header: Home, Funding, Data List,
+                                   Services, About, Contact. Root class .cbb-hh.
   sections/00-header-capital.html  Header for /funding and /data-list:
-                                   Marketing, COVERED BRIDGE BRAND CAPITAL,
-                                   Data List, with the current page
+                                   Marketing, Funding, Data List, with the
+                                   current page
                                    highlighted. Root class .cbb-hc.
   pages/funding/01-funding-soon.html      Coming Soon body (.cbb-fsoon)
   pages/data-list/01-data-list-soon.html  Coming Soon body (.cbb-dsoon)
@@ -61,7 +60,8 @@ def variant(prefix, intro, note, links, extra_css="", breakpoint=860, logo_href=
     return out
 
 
-CAPITAL = "COVERED BRIDGE BRAND CAPITAL"
+CAPITAL = "COVERED BRIDGE CAPITAL"  # heading on the /funding page
+FUNDING = "Funding"                  # its menu link
 
 # ---------- Home header ----------
 home = variant(
@@ -73,32 +73,17 @@ home = variant(
      All styles are scoped to .cbb-hh; the script only touches
      elements inside .cbb-hh.
 
-     Links: Home, {CAPITAL} (/funding),
-     Data List (/data-list), Services, About, Contact. With six links
-     the menu switches to the mobile (hamburger) menu at 1024px and
-     below, so the long label never squeezes the logo.
+     Links: Home, Funding (/funding), Data List (/data-list),
+     Services, About, Contact.
 """,
     note=BASE_NAV_NOTE,
-    links=[("/", "Home"), ("/funding", CAPITAL), ("/data-list", "Data List"),
+    links=[("/", "Home"), ("/funding", FUNDING), ("/data-list", "Data List"),
            ("/services", "Services"), ("/about", "About"), ("/contact", "Contact")],
-    extra_css="""  /* ---- Six links: tighter spacing so everything fits on one line ---- */
-  .cbb-header .cbb-header__list {
-    gap: clamp(20px, 2.1vw, 40px);
-  }
-  .cbb-header .cbb-header__link {
+    extra_css="""  .cbb-header .cbb-header__link {
     white-space: nowrap;
-  }
-  @media (max-width: 1240px) {
-    .cbb-header .cbb-header__logo {
-      height: clamp(46px, 4.4vw, 54px);
-    }
-    .cbb-header .cbb-header__link {
-      font-size: 0.875rem;
-    }
   }
 
 """,
-    breakpoint=1024,
 )
 (root / "sections/00-header-home.html").write_text(home, encoding="utf-8")
 
@@ -112,8 +97,8 @@ cap = variant(
      All styles are scoped to .cbb-hc; the script only touches
      elements inside .cbb-hc.
 
-     Links: Marketing (the main site), {CAPITAL}
-     (/funding), Data List (/data-list). The link for the page you're
+     Links: Marketing (the main site), Funding (/funding),
+     Data List (/data-list). The link for the page you're
      on is highlighted in gold with an underline, picked from the page
      address. GHL's editor preview uses a different address, so the
      highlight only shows on the published pages.
@@ -121,7 +106,7 @@ cap = variant(
     note="""        <!-- The current page's link stays gold with an underline and is
              tagged for screen readers (aria-current), picked from the URL. -->
 """,
-    links=[("https://coveredbridgebrands.com/", "Marketing"), ("/funding", CAPITAL), ("/data-list", "Data List")],
+    links=[("https://coveredbridgebrands.com/", "Marketing"), ("/funding", FUNDING), ("/data-list", "Data List")],
     extra_css="""  /* ---- Current page: gold text with the underline showing ---- */
   .cbb-header .cbb-header__link[aria-current="page"] {
     color: var(--cbb-gold);
@@ -299,8 +284,8 @@ def soon(rootcls, title, path, size, track):
                .replace("__SIZE__", size).replace("__TRACK__", track))
 
 
-# The capital heading is long and set in capitals, so it uses a smaller size
-# and slight tracking; it wraps onto two or three lines on phones.
+# The capital heading is set in capitals, so it uses a smaller size and slight
+# tracking; it wraps onto two lines on phones.
 (root / "pages/funding").mkdir(exist_ok=True)
 (root / "pages/funding/01-funding-soon.html").write_text(
     soon("cbb-fsoon", CAPITAL, "/funding", "clamp(1.875rem, 3.6vw + 0.9rem, 4rem)", "0.02em"), encoding="utf-8")
