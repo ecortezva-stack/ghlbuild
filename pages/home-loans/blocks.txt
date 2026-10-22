@@ -1,0 +1,4 @@
+# Paste order for the /home-loans page.
+sections/00-header-capital.html
+pages/home-loans/01-home-loans-soon.html
+sections/06-footer.html

@@ -10,15 +10,17 @@
 </head>
 <body>
 <!-- ============================================================
-     CBB — HEADER / NAVIGATION (FUNDING AND DATA LIST PAGES)
-     Use this on /funding and /data-list in place of
-     sections/00-header.html. The same block works on both pages.
+     CBB — HEADER / NAVIGATION (FUNDING, HOME LOANS AND LEADS PAGES)
+     Use this on /funding, /home-loans and /data-list in place of
+     sections/00-header.html. The same block works on all three.
      Paste into a GoHighLevel Custom HTML/JavaScript element.
      All styles are scoped to .cbb-hc; the script only touches
      elements inside .cbb-hc.
 
-     Links: Marketing (the main site), Funding (/funding),
-     Data List (/data-list). The link for the page you're
+     Links: Marketing Services (the main site's /services), Business
+     Funding (/funding), Home Loans (/home-loans), High Converting
+     Leads (/data-list). The menu switches to the mobile (hamburger)
+     menu at 920px and below. The link for the page you're
      on is highlighted in gold with an underline, picked from the page
      address. GHL's editor preview uses a different address, so the
      highlight only shows on the published pages.
@@ -225,6 +227,22 @@
     border: 0;
   }
 
+  /* ---- Long labels: tighter spacing so everything fits on one line ---- */
+  .cbb-hc .cbb-hc__list {
+    gap: clamp(18px, 1.9vw, 36px);
+  }
+  .cbb-hc .cbb-hc__link {
+    white-space: nowrap;
+  }
+  @media (max-width: 1280px) {
+    .cbb-hc .cbb-hc__logo {
+      height: clamp(46px, 4.2vw, 54px);
+    }
+    .cbb-hc .cbb-hc__link {
+      font-size: 0.875rem;
+    }
+  }
+
   /* ---- Current page: gold text with the underline showing ---- */
   .cbb-hc .cbb-hc__link[aria-current="page"] {
     color: var(--cbb-gold);
@@ -233,12 +251,9 @@
   .cbb-hc .cbb-hc__link[aria-current="page"]::after {
     transform: scaleX(1);
   }
-  .cbb-hc .cbb-hc__link {
-    white-space: nowrap;
-  }
 
   /* ---- Mobile: slide-down menu ---- */
-  @media (max-width: 860px) {
+  @media (max-width: 920px) {
     .cbb-hc {
       --cbb-hc-h: 72px;
     }
@@ -315,9 +330,10 @@
         <!-- The current page's link stays gold with an underline and is
              tagged for screen readers (aria-current), picked from the URL. -->
         <ul class="cbb-hc__list">
-          <li class="cbb-hc__item"><a class="cbb-hc__link" href="https://coveredbridgebrands.com/">Marketing</a></li>
-          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/funding">Funding</a></li>
-          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/data-list">Data List</a></li>
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="https://coveredbridgebrands.com/services">Marketing Services</a></li>
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/funding">Business Funding</a></li>
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/home-loans">Home Loans</a></li>
+          <li class="cbb-hc__item"><a class="cbb-hc__link" href="/data-list">High Converting Leads</a></li>
         </ul>
       </nav>
     </div>
@@ -332,7 +348,7 @@
       var toggle = root.querySelector('.cbb-hc__toggle');
       var label = root.querySelector('.cbb-hc__sr');
       var links = root.querySelectorAll('.cbb-hc__link');
-      var desktop = window.matchMedia('(min-width: 861px)');
+      var desktop = window.matchMedia('(min-width: 921px)');
 
       /* Current page: tag the matching link for screen readers */
       var clean = function (p) { return (p || '/').replace(/\/+$/, '') || '/'; };
@@ -378,7 +394,7 @@
 </script>
 
 <!-- ============================================================
-     CBB — Data List: COMING SOON  (page: /data-list)
+     CBB — High Converting Leads: COMING SOON  (page: /data-list)
      Paste into a GoHighLevel Custom HTML/JavaScript element, between
      sections/00-header-capital.html and sections/06-footer.html.
      All styles are scoped to .cbb-dsoon. No script.
@@ -437,7 +453,7 @@
     margin: 0;
     padding: 0;
     font-family: var(--cbb-serif);
-    font-size: clamp(2.6rem, 4.4vw + 1rem, 5rem);
+    font-size: clamp(2.25rem, 3.8vw + 1rem, 4.5rem);
     font-weight: 600;
     line-height: 1.12;
     letter-spacing: -0.01em;
@@ -513,7 +529,7 @@
 <section class="cbb-dsoon" aria-labelledby="cbb-dsoon-title">
   <div class="cbb-dsoon__inner">
     <p class="cbb-dsoon__eyebrow">Covered Bridge Brands</p>
-    <h1 class="cbb-dsoon__title" id="cbb-dsoon-title">Data List</h1>
+    <h1 class="cbb-dsoon__title" id="cbb-dsoon-title">High Converting Leads</h1>
     <span class="cbb-dsoon__rule" aria-hidden="true"></span>
     <p class="cbb-dsoon__status"><span class="cbb-dsoon__dot" aria-hidden="true"></span>Coming Soon</p>
     <p class="cbb-dsoon__note">

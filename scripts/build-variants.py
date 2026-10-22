@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""Build the header variants and the /funding and /data-list pages.
+"""Build the header variants and the /funding, /home-loans and /data-list pages.
 
 Writes:
-  sections/00-header-home.html     Home page header: Home, Funding, Data List,
-                                   Services, About, Contact. Root class .cbb-hh.
-  sections/00-header-capital.html  Header for /funding and /data-list:
-                                   Marketing, Funding, Data List, with the
-                                   current page
-                                   highlighted. Root class .cbb-hc.
-  pages/funding/01-funding-soon.html      Coming Soon body (.cbb-fsoon)
-  pages/data-list/01-data-list-soon.html  Coming Soon body (.cbb-dsoon)
+  sections/00-header-home.html     Home page header: Home, Marketing Services,
+                                   Business Funding, Home Loans, High
+                                   Converting Leads, About, Contact.
+                                   Root class .cbb-hh.
+  sections/00-header-capital.html  Header for /funding, /home-loans and
+                                   /data-list: Marketing Services, Business
+                                   Funding, Home Loans, High Converting Leads,
+                                   with the current page highlighted.
+                                   Root class .cbb-hc.
+  pages/funding/01-funding-soon.html        Coming Soon body (.cbb-fsoon)
+  pages/home-loans/01-home-loans-soon.html  Coming Soon body (.cbb-lsoon)
+  pages/data-list/01-data-list-soon.html    Coming Soon body (.cbb-dsoon)
 
 Both headers are made from sections/00-header.html (the header every other
 page uses), so styling and behavior stay the same. Edit that file or this
@@ -21,7 +25,7 @@ root = Path(__file__).resolve().parent.parent
 base = (root / "sections/00-header.html").read_text(encoding="utf-8")
 
 BASE_NAV = """          <li class="cbb-header__item"><a class="cbb-header__link" href="/">Home</a></li>
-          <li class="cbb-header__item"><a class="cbb-header__link" href="/services">Services</a></li>
+          <li class="cbb-header__item"><a class="cbb-header__link" href="/services">Marketing Services</a></li>
           <li class="cbb-header__item"><a class="cbb-header__link" href="/about">About</a></li>
           <li class="cbb-header__item"><a class="cbb-header__link" href="/contact">Contact</a></li>
 """
@@ -60,8 +64,33 @@ def variant(prefix, intro, note, links, extra_css="", breakpoint=860, logo_href=
     return out
 
 
-CAPITAL = "COVERED BRIDGE CAPITAL"  # heading on the /funding page
-FUNDING = "Funding"                  # its menu link
+# Menu label -> page heading for each page these headers add.
+SERVICES = "Marketing Services"
+FUNDING, CAPITAL = "Business Funding", "COVERED BRIDGE CAPITAL"          # /funding
+LOANS, HOME_LOANS = "Home Loans", "COVERED BRIDGE HOME LOANS"            # /home-loans
+LEADS = "High Converting Leads"                                          # /data-list (menu and heading)
+
+# Long labels: tighter spacing, labels on one line, and between the
+# breakpoint and 1280px a slightly smaller logo and link text.
+TIGHT = """  /* ---- Long labels: tighter spacing so everything fits on one line ---- */
+  .cbb-header .cbb-header__list {
+    gap: clamp(18px, 1.9vw, 36px);
+  }
+  .cbb-header .cbb-header__link {
+    white-space: nowrap;
+  }
+  @media (max-width: 1280px) {
+    .cbb-header .cbb-header__logo {
+      height: clamp(46px, 4.2vw, 54px);
+    }
+    .cbb-header .cbb-header__link {
+      font-size: 0.875rem;
+    }
+  }
+
+"""
+
+HOME_BP, CAP_BP = 1150, 920  # mobile menu at this width and below
 
 # ---------- Home header ----------
 home = variant(
@@ -73,32 +102,33 @@ home = variant(
      All styles are scoped to .cbb-hh; the script only touches
      elements inside .cbb-hh.
 
-     Links: Home, Funding (/funding), Data List (/data-list),
-     Services, About, Contact.
+     Links: Home, Marketing Services (/services), Business Funding
+     (/funding), Home Loans (/home-loans), High Converting Leads
+     (/data-list), About, Contact. With seven links the menu switches
+     to the mobile (hamburger) menu at __HOME_BP__px and below.
 """,
     note=BASE_NAV_NOTE,
-    links=[("/", "Home"), ("/funding", FUNDING), ("/data-list", "Data List"),
-           ("/services", "Services"), ("/about", "About"), ("/contact", "Contact")],
-    extra_css="""  .cbb-header .cbb-header__link {
-    white-space: nowrap;
-  }
-
-""",
-)
+    links=[("/", "Home"), ("/services", SERVICES), ("/funding", FUNDING), ("/home-loans", LOANS),
+           ("/data-list", LEADS), ("/about", "About"), ("/contact", "Contact")],
+    extra_css=TIGHT,
+    breakpoint=HOME_BP,
+).replace("__HOME_BP__", str(HOME_BP))
 (root / "sections/00-header-home.html").write_text(home, encoding="utf-8")
 
-# ---------- /funding and /data-list header ----------
+# ---------- /funding, /home-loans and /data-list header ----------
 cap = variant(
     "cbb-hc",
-    intro=f"""     CBB — HEADER / NAVIGATION (FUNDING AND DATA LIST PAGES)
-     Use this on /funding and /data-list in place of
-     sections/00-header.html. The same block works on both pages.
+    intro=f"""     CBB — HEADER / NAVIGATION (FUNDING, HOME LOANS AND LEADS PAGES)
+     Use this on /funding, /home-loans and /data-list in place of
+     sections/00-header.html. The same block works on all three.
      Paste into a GoHighLevel Custom HTML/JavaScript element.
      All styles are scoped to .cbb-hc; the script only touches
      elements inside .cbb-hc.
 
-     Links: Marketing (the main site), Funding (/funding),
-     Data List (/data-list). The link for the page you're
+     Links: Marketing Services (the main site's /services), Business
+     Funding (/funding), Home Loans (/home-loans), High Converting
+     Leads (/data-list). The menu switches to the mobile (hamburger)
+     menu at __CAP_BP__px and below. The link for the page you're
      on is highlighted in gold with an underline, picked from the page
      address. GHL's editor preview uses a different address, so the
      highlight only shows on the published pages.
@@ -106,8 +136,10 @@ cap = variant(
     note="""        <!-- The current page's link stays gold with an underline and is
              tagged for screen readers (aria-current), picked from the URL. -->
 """,
-    links=[("https://coveredbridgebrands.com/", "Marketing"), ("/funding", FUNDING), ("/data-list", "Data List")],
-    extra_css="""  /* ---- Current page: gold text with the underline showing ---- */
+    links=[("https://coveredbridgebrands.com/services", SERVICES), ("/funding", FUNDING),
+           ("/home-loans", LOANS), ("/data-list", LEADS)],
+    breakpoint=CAP_BP,
+    extra_css=TIGHT + """  /* ---- Current page: gold text with the underline showing ---- */
   .cbb-header .cbb-header__link[aria-current="page"] {
     color: var(--cbb-gold);
     font-weight: 500;
@@ -115,15 +147,12 @@ cap = variant(
   .cbb-header .cbb-header__link[aria-current="page"]::after {
     transform: scaleX(1);
   }
-  .cbb-header .cbb-header__link {
-    white-space: nowrap;
-  }
 
 """,
     logo_href="https://coveredbridgebrands.com/",
-)
-# The Marketing link is a full URL: match on its path, and never mark it
-# current on these pages (its path is "/").
+).replace("__CAP_BP__", str(CAP_BP))
+# The Marketing Services link is a full URL, so match on each link's path
+# rather than its href.
 old_match = "        var path = clean(a.getAttribute('href'));\n"
 assert cap.count(old_match) == 1
 cap = cap.replace(old_match, "        var path = clean(a.pathname);\n")
@@ -284,14 +313,18 @@ def soon(rootcls, title, path, size, track):
                .replace("__SIZE__", size).replace("__TRACK__", track))
 
 
-# The capital heading is set in capitals, so it uses a smaller size and slight
-# tracking; it wraps onto two lines on phones.
+# The two brand headings are set in capitals, so they use a smaller size and
+# slight tracking; they wrap onto two lines on phones.
 (root / "pages/funding").mkdir(exist_ok=True)
 (root / "pages/funding/01-funding-soon.html").write_text(
     soon("cbb-fsoon", CAPITAL, "/funding", "clamp(1.875rem, 3.6vw + 0.9rem, 4rem)", "0.02em"), encoding="utf-8")
+(root / "pages/home-loans").mkdir(exist_ok=True)
+(root / "pages/home-loans/01-home-loans-soon.html").write_text(
+    soon("cbb-lsoon", HOME_LOANS, "/home-loans", "clamp(1.875rem, 3.6vw + 0.9rem, 4rem)", "0.02em"), encoding="utf-8")
 (root / "pages/data-list").mkdir(exist_ok=True)
 (root / "pages/data-list/01-data-list-soon.html").write_text(
-    soon("cbb-dsoon", "Data List", "/data-list", "clamp(2.6rem, 4.4vw + 1rem, 5rem)", "-0.01em"), encoding="utf-8")
+    soon("cbb-dsoon", LEADS, "/data-list", "clamp(2.25rem, 3.8vw + 1rem, 4.5rem)", "-0.01em"), encoding="utf-8")
 
 print("Wrote sections/00-header-home.html, sections/00-header-capital.html,")
-print("      pages/funding/01-funding-soon.html, pages/data-list/01-data-list-soon.html")
+print("      pages/funding/01-funding-soon.html, pages/home-loans/01-home-loans-soon.html,")
+print("      pages/data-list/01-data-list-soon.html")

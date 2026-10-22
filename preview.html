@@ -17,8 +17,10 @@
      All styles are scoped to .cbb-hh; the script only touches
      elements inside .cbb-hh.
 
-     Links: Home, Funding (/funding), Data List (/data-list),
-     Services, About, Contact.
+     Links: Home, Marketing Services (/services), Business Funding
+     (/funding), Home Loans (/home-loans), High Converting Leads
+     (/data-list), About, Contact. With seven links the menu switches
+     to the mobile (hamburger) menu at 1150px and below.
 
      Stays pinned to the top while scrolling. It uses position: fixed
      (not sticky) because GHL wraps each element in its own container,
@@ -222,12 +224,24 @@
     border: 0;
   }
 
+  /* ---- Long labels: tighter spacing so everything fits on one line ---- */
+  .cbb-hh .cbb-hh__list {
+    gap: clamp(18px, 1.9vw, 36px);
+  }
   .cbb-hh .cbb-hh__link {
     white-space: nowrap;
   }
+  @media (max-width: 1280px) {
+    .cbb-hh .cbb-hh__logo {
+      height: clamp(46px, 4.2vw, 54px);
+    }
+    .cbb-hh .cbb-hh__link {
+      font-size: 0.875rem;
+    }
+  }
 
   /* ---- Mobile: slide-down menu ---- */
-  @media (max-width: 860px) {
+  @media (max-width: 1150px) {
     .cbb-hh {
       --cbb-hh-h: 72px;
     }
@@ -306,9 +320,10 @@
              visual change. -->
         <ul class="cbb-hh__list">
           <li class="cbb-hh__item"><a class="cbb-hh__link" href="/">Home</a></li>
-          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/funding">Funding</a></li>
-          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/data-list">Data List</a></li>
-          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/services">Services</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/services">Marketing Services</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/funding">Business Funding</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/home-loans">Home Loans</a></li>
+          <li class="cbb-hh__item"><a class="cbb-hh__link" href="/data-list">High Converting Leads</a></li>
           <li class="cbb-hh__item"><a class="cbb-hh__link" href="/about">About</a></li>
           <li class="cbb-hh__item"><a class="cbb-hh__link" href="/contact">Contact</a></li>
         </ul>
@@ -325,7 +340,7 @@
       var toggle = root.querySelector('.cbb-hh__toggle');
       var label = root.querySelector('.cbb-hh__sr');
       var links = root.querySelectorAll('.cbb-hh__link');
-      var desktop = window.matchMedia('(min-width: 861px)');
+      var desktop = window.matchMedia('(min-width: 1151px)');
 
       /* Current page: tag the matching link for screen readers */
       var clean = function (p) { return (p || '/').replace(/\/+$/, '') || '/'; };

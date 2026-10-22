@@ -1,12 +1,12 @@
-# Data List (`/data-list`) — Coming Soon
+# High Converting Leads (`/data-list`) — Coming Soon
 
-A simple branded holding page: the heading **Data List** and a **Coming Soon** status. No offers, pricing, forms or dates.
+A simple branded holding page: the heading **High Converting Leads** and a **Coming Soon** status. The page keeps its `/data-list` address; in GHL, rename the page itself to "High Converting Leads". No offers, pricing, forms or dates.
 
-Create a GHL page at `/data-list`, then paste these blocks in order, each into its own full-width Custom HTML/JavaScript element (0 padding, no background):
+On the existing `/data-list` page, then paste these blocks in order, each into its own full-width Custom HTML/JavaScript element (0 padding, no background):
 
 | # | File | Block |
 |---|---|---|
-| 1 | `sections/00-header-capital.html` | Header: Marketing, Funding, Data List (the current page is highlighted) |
+| 1 | `sections/00-header-capital.html` | Header: Marketing Services, Business Funding, Home Loans, High Converting Leads (the current page is highlighted) |
 | 2 | `pages/data-list/01-data-list-soon.html` | Coming Soon body (`.cbb-dsoon`) |
 | 3 | `sections/06-footer.html` | Footer (same as every page) |
 
