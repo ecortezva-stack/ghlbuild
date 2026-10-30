@@ -1,4 +1,4 @@
 # Paste order for the /home-loans page.
 sections/00-header-capital.html
-pages/home-loans/01-home-loans-soon.html
+pages/home-loans/cbb-home-loans-overview.html
 sections/06-footer.html

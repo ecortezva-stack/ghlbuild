@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the header variants and the /funding, /home-loans and /data-list pages.
+"""Build the header variants and the /data-list Coming Soon page.
 
 Writes:
   sections/00-header-home.html     Home page header: Home, Marketing Services,
@@ -11,9 +11,10 @@ Writes:
                                    Funding, Home Loans, High Converting Leads,
                                    with the current page highlighted.
                                    Root class .cbb-hc.
-  pages/funding/01-funding-soon.html        Coming Soon body (.cbb-fsoon)
-  pages/home-loans/01-home-loans-soon.html  Coming Soon body (.cbb-lsoon)
   pages/data-list/01-data-list-soon.html    Coming Soon body (.cbb-dsoon)
+
+The /funding and /home-loans page bodies are built by
+scripts/build-overviews.py.
 
 Both headers are made from sections/00-header.html (the header every other
 page uses), so styling and behavior stay the same. Edit that file or this
@@ -315,16 +316,10 @@ def soon(rootcls, title, path, size, track):
 
 # The two brand headings are set in capitals, so they use a smaller size and
 # slight tracking; they wrap onto two lines on phones.
-(root / "pages/funding").mkdir(exist_ok=True)
-(root / "pages/funding/01-funding-soon.html").write_text(
-    soon("cbb-fsoon", CAPITAL, "/funding", "clamp(1.875rem, 3.6vw + 0.9rem, 4rem)", "0.02em"), encoding="utf-8")
-(root / "pages/home-loans").mkdir(exist_ok=True)
-(root / "pages/home-loans/01-home-loans-soon.html").write_text(
-    soon("cbb-lsoon", HOME_LOANS, "/home-loans", "clamp(1.875rem, 3.6vw + 0.9rem, 4rem)", "0.02em"), encoding="utf-8")
+# /funding and /home-loans now use full overview pages (scripts/build-overviews.py).
 (root / "pages/data-list").mkdir(exist_ok=True)
 (root / "pages/data-list/01-data-list-soon.html").write_text(
     soon("cbb-dsoon", LEADS, "/data-list", "clamp(2.25rem, 3.8vw + 1rem, 4.5rem)", "-0.01em"), encoding="utf-8")
 
 print("Wrote sections/00-header-home.html, sections/00-header-capital.html,")
-print("      pages/funding/01-funding-soon.html, pages/home-loans/01-home-loans-soon.html,")
 print("      pages/data-list/01-data-list-soon.html")

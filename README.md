@@ -12,8 +12,8 @@
 | Contact | `/contact` | [`pages/contact/README.md`](pages/contact/README.md) | Done, needs its GHL form |
 | MapScore | `/mapscore` | [`pages/mapscore/README.md`](pages/mapscore/README.md) | Done |
 | MapScore Free Audit | `/mapscore-free-audit` | [`pages/mapscore-free-audit/README.md`](pages/mapscore-free-audit/README.md) | Done |
-| Covered Bridge Capital (menu: Business Funding) | `/funding` | [`pages/funding/README.md`](pages/funding/README.md) | Coming Soon page |
-| Covered Bridge Home Loans (menu: Home Loans) | `/home-loans` | [`pages/home-loans/README.md`](pages/home-loans/README.md) | Coming Soon page |
+| Covered Bridge Capital (menu: Business Funding) | `/funding` | [`pages/funding/README.md`](pages/funding/README.md) | Overview page, website link pending |
+| CBB Home Loans (menu: Home Loans) | `/home-loans` | [`pages/home-loans/README.md`](pages/home-loans/README.md) | Overview page, website link and licensing disclosure pending |
 | High Converting Leads | `/data-list` | [`pages/data-list/README.md`](pages/data-list/README.md) | Coming Soon page |
 | Super LOA, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/roof-rocket`, `/comfort-flow`, `/service-flow`, `/practice-flow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
 
@@ -43,7 +43,7 @@ There are three header blocks. They look and behave the same; only the links dif
 | `sections/00-header-home.html` | Home (`/`) only | Home, Marketing Services, Business Funding, Home Loans, High Converting Leads, About, Contact. Mobile menu at 1150px and below. |
 | `sections/00-header-capital.html` | `/funding`, `/home-loans` and `/data-list` | Marketing Services (main site's `/services`), Business Funding, Home Loans, High Converting Leads; the current page is highlighted. Mobile menu at 920px and below. |
 
-The Home and capital headers are generated from `00-header.html` by `python3 scripts/build-variants.py` (which also builds the `/funding`, `/home-loans` and `/data-list` Coming Soon blocks). If you change `00-header.html`, run it again. If your header is a GHL **global section**, unlink it on the Home, `/funding`, `/home-loans` and `/data-list` pages before replacing it there, or the change will spread to every page.
+The Home and capital headers are generated from `00-header.html` by `python3 scripts/build-variants.py` (which also builds the `/data-list` Coming Soon block; the `/funding` and `/home-loans` overview pages come from `scripts/build-overviews.py`). If you change `00-header.html`, run it again. If your header is a GHL **global section**, unlink it on the Home, `/funding`, `/home-loans` and `/data-list` pages before replacing it there, or the change will spread to every page.
 
 ## GHL setup
 
