@@ -13,7 +13,7 @@
 | MapScore | `/mapscore` | [`pages/mapscore/README.md`](pages/mapscore/README.md) | Done |
 | MapScore Free Audit | `/mapscore-free-audit` | [`pages/mapscore-free-audit/README.md`](pages/mapscore-free-audit/README.md) | Done |
 | Covered Bridge Capital (menu: Business Funding) | `/funding` | [`pages/funding/README.md`](pages/funding/README.md) | Introduction page, website link pending |
-| CBB Home Loans (menu: Home Loans) | `/home-loans` | [`pages/home-loans/README.md`](pages/home-loans/README.md) | Introduction page, website link pending |
+| Covered Bridge Home Loans (menu: Home Loans) | `/home-loans` | [`pages/home-loans/README.md`](pages/home-loans/README.md) | Introduction page, website link pending |
 | High Converting Leads | `/data-list` | [`pages/data-list/README.md`](pages/data-list/README.md) | Coming Soon page |
 | Super LOA, RoofRocket, ComfortFlow, ServiceFlow, PracticeFlow | `/super-loa`, `/roof-rocket`, `/comfort-flow`, `/service-flow`, `/practice-flow` | [`pages/coming-soon/README.md`](pages/coming-soon/README.md) | Coming Soon page |
 

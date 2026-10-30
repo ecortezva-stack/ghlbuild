@@ -2,7 +2,7 @@
 """Build the two short business introduction pages.
 
 Writes:
-  pages/home-loans/cbb-home-loans-overview.html  CBB Home Loans (.cbb-hlo)
+  pages/home-loans/cbb-home-loans-overview.html  Covered Bridge Home Loans (.cbb-hlo)
   pages/funding/cbb-capital-overview.html        Covered Bridge Capital (.cbb-cap)
 
 Both use one layout: a COVERED BRIDGE BRANDS eyebrow, the business name,
@@ -292,12 +292,12 @@ def build(r, name, path, url, label, headline, intro, highlights, support, fine)
 PAGES = [
     dict(
         out="pages/home-loans/cbb-home-loans-overview.html",
-        r="cbb-hlo", name="CBB Home Loans", path="/home-loans",
-        url="REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL",
-        label="Visit CBB Home Loans",
+        r="cbb-hlo", name="Covered Bridge Home Loans", path="/home-loans",
+        url="REPLACE_WITH_COVERED_BRIDGE_HOME_LOANS_WEBSITE_URL",
+        label="Visit Covered Bridge Home Loans",
         headline="Your next chapter starts at home.",
         intro=("Whether you&rsquo;re buying your first home, making your next move or exploring "
-               "refinancing, CBB Home Loans helps you understand your options and take the next "
+               "refinancing, Covered Bridge Home Loans helps you understand your options and take the next "
                "step with confidence."),
         highlights=[
             ("Purchase &amp; Refinance",
