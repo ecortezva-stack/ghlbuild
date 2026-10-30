@@ -400,10 +400,11 @@
      sections/06-footer.html. Section: full width, 0 padding, no
      background. All styles are scoped to .cbb-hlo. No script.
 
-     >>> URL TO REPLACE BEFORE PUBLISHING (1 place: the button)
+     >>> URL TO REPLACE BEFORE PUBLISHING (1 place: the button below)
          REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL
-         Replace it with the full https:// address of the standalone
-         CBB Home Loans website.
+         Placeholder for the standalone CBB Home Loans website, which
+         doesn't have its address yet. Replace it with the full
+         https:// address.
      ============================================================ -->
 <style>
   .cbb-hlo {
@@ -417,22 +418,19 @@
     --cbb-hlo-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-hlo-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
 
-    position: relative;
-    display: flex;
-    align-items: center;
+    display: block;
     width: 100%;
-    min-height: clamp(560px, 78vh, 820px);
     margin: 0;
-    padding: clamp(80px, 10vw, 136px) clamp(20px, 4vw, 48px);
+    padding: clamp(72px, 9vw, 128px) clamp(20px, 4vw, 48px);
     background:
-      radial-gradient(55% 70% at 85% 15%, rgba(210, 163, 76, 0.14), rgba(210, 163, 76, 0) 65%),
-      linear-gradient(180deg, #0D0D0D 0%, #111417 100%);
+      radial-gradient(55% 70% at 85% 10%, rgba(210, 163, 76, 0.12), rgba(210, 163, 76, 0) 65%),
+      linear-gradient(180deg, var(--cbb-hlo-bg) 0%, var(--cbb-hlo-surface) 100%);
     color: var(--cbb-hlo-text);
     font-family: var(--cbb-hlo-sans);
     font-size: 16px;
     line-height: 1.6;
     text-align: left;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   .cbb-hlo,
   .cbb-hlo *,
@@ -441,8 +439,6 @@
     box-sizing: border-box;
   }
   .cbb-hlo .cbb-hlo__inner {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: clamp(40px, 7vw, 112px);
@@ -452,28 +448,34 @@
     margin: 0 auto;
   }
 
-  /* ---------- Name, headline, intro ---------- */
-  .cbb-hlo .cbb-hlo__h1 {
-    margin: 0;
+  /* ---------- Eyebrow, name, headline, intro ---------- */
+  .cbb-hlo .cbb-hlo__eyebrow {
+    margin: 0 0 18px;
     padding: 0;
-    font-weight: 400;
-    text-transform: none;
-  }
-  .cbb-hlo .cbb-hlo__name {
-    display: block;
-    margin: 0 0 20px;
     font-family: var(--cbb-hlo-sans);
-    font-size: clamp(0.8125rem, 0.25vw + 0.75rem, 0.9375rem);
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--cbb-hlo-gold);
   }
-  .cbb-hlo .cbb-hlo__headline {
-    display: block;
+  .cbb-hlo .cbb-hlo__name {
+    margin: 0 0 14px;
+    padding: 0;
     font-family: var(--cbb-hlo-serif);
-    font-size: clamp(2.5rem, 3.8vw + 1rem, 4.5rem);
+    font-size: clamp(1.5rem, 1vw + 1.15rem, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    text-transform: none;
+    color: var(--cbb-hlo-gold);
+  }
+  .cbb-hlo .cbb-hlo__headline {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-hlo-serif);
+    font-size: clamp(2.5rem, 3.6vw + 1rem, 4.25rem);
     font-weight: 600;
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -488,14 +490,14 @@
   }
   .cbb-hlo .cbb-hlo__intro {
     max-width: 36em;
-    margin: 0 0 clamp(32px, 4vw, 40px);
+    margin: 0 0 clamp(30px, 3.6vw, 38px);
     padding: 0;
-    font-size: clamp(1.0625rem, 0.4vw + 0.98rem, 1.25rem);
+    font-size: clamp(1.0625rem, 0.35vw + 0.98rem, 1.1875rem);
     line-height: 1.7;
     color: rgba(242, 240, 235, 0.9);
   }
 
-  /* ---------- Button ---------- */
+  /* ---------- Button and the lines beneath it ---------- */
   .cbb-hlo .cbb-hlo__btn {
     display: inline-flex;
     align-items: center;
@@ -533,10 +535,19 @@
     outline: 2px solid var(--cbb-hlo-gold-hover);
     outline-offset: 4px;
   }
+  .cbb-hlo .cbb-hlo__support {
+    max-width: 36em;
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--cbb-hlo-muted);
+  }
   .cbb-hlo .cbb-hlo__fine {
     max-width: 36em;
-    margin: 18px 0 0;
-    padding: 0;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(191, 186, 171, 0.18);
     font-size: 0.875rem;
     line-height: 1.6;
     color: var(--cbb-hlo-muted);
@@ -586,29 +597,10 @@
     color: var(--cbb-hlo-muted);
   }
 
-  /* ---------- Decoration ---------- */
-  .cbb-hlo .cbb-hlo__art {
-    position: absolute;
-    right: 0;
-    bottom: -2px;
-    z-index: 0;
-    width: clamp(320px, 42vw, 620px);
-    height: auto;
-    color: var(--cbb-hlo-gold);
-    opacity: 0.16;
-    pointer-events: none;
-  }
-
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
-    .cbb-hlo {
-      min-height: 0;
-    }
     .cbb-hlo .cbb-hlo__inner {
       grid-template-columns: minmax(0, 1fr);
-    }
-    .cbb-hlo .cbb-hlo__art {
-      opacity: 0.1;
     }
   }
   @media (max-width: 480px) {
@@ -629,53 +621,40 @@
 </style>
 
 <section class="cbb-hlo" aria-labelledby="cbb-hlo-title">
-  <svg class="cbb-hlo__art" viewBox="0 0 520 240" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-    <path d="M10 230 Q260 20 510 230" />
-    <path d="M0 230 H520" />
-    <path d="M60 230 V192.2" />
-    <path d="M110 230 V162.8" />
-    <path d="M160 230 V141.8" />
-    <path d="M210 230 V129.2" />
-    <path d="M260 230 V125.0" />
-    <path d="M310 230 V129.2" />
-    <path d="M360 230 V141.8" />
-    <path d="M410 230 V162.8" />
-    <path d="M460 230 V192.2" />
-  </svg>
   <div class="cbb-hlo__inner">
     <div>
-      <h1 class="cbb-hlo__h1" id="cbb-hlo-title">
-        <span class="cbb-hlo__name">CBB Home Loans</span>
-        <span class="cbb-hlo__headline">Your path home, guided every step of the way.</span>
-      </h1>
+      <p class="cbb-hlo__eyebrow">Covered Bridge Brands</p>
+      <h1 class="cbb-hlo__name" id="cbb-hlo-title">CBB Home Loans</h1>
+      <p class="cbb-hlo__headline">Your next chapter starts at home.</p>
       <span class="cbb-hlo__rule" aria-hidden="true"></span>
-      <p class="cbb-hlo__intro">Whether you're buying a home or refinancing the one you have, CBB Home Loans explains your options in plain language and helps you move forward with confidence.</p>
-      <!-- Button destination: REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL -->
+      <p class="cbb-hlo__intro">Whether you&rsquo;re buying your first home, making your next move or exploring refinancing, CBB Home Loans helps you understand your options and take the next step with confidence.</p>
+      <!-- WEBSITE BUTTON: replace REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL -->
       <a class="cbb-hlo__btn" href="REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL">
         Visit CBB Home Loans
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
       </a>
+      <p class="cbb-hlo__support">Explore loan options and connect with the team on our dedicated website.</p>
     </div>
     <ul class="cbb-hlo__list" aria-label="What CBB Home Loans offers">
         <li class="cbb-hlo__item">
           <span class="cbb-hlo__num" aria-hidden="true">01</span>
           <div>
-            <h2 class="cbb-hlo__h2">Home purchase &amp; refinancing</h2>
-            <p class="cbb-hlo__p">Financing for your first home, your next move or a mortgage that better fits your life today.</p>
+            <h2 class="cbb-hlo__h2">Purchase &amp; Refinance</h2>
+            <p class="cbb-hlo__p">Explore financing for a home purchase or refinancing your current mortgage.</p>
           </div>
         </li>
         <li class="cbb-hlo__item">
           <span class="cbb-hlo__num" aria-hidden="true">02</span>
           <div>
-            <h2 class="cbb-hlo__h2">Conventional, FHA, VA &amp; USDA loans</h2>
-            <p class="cbb-hlo__p">A range of loan programs, explained so you can compare them clearly.</p>
+            <h2 class="cbb-hlo__h2">A Range of Loan Options</h2>
+            <p class="cbb-hlo__p">Conventional, FHA, VA and USDA loan options.</p>
           </div>
         </li>
         <li class="cbb-hlo__item">
           <span class="cbb-hlo__num" aria-hidden="true">03</span>
           <div>
-            <h2 class="cbb-hlo__h2">Guidance from start to finish</h2>
-            <p class="cbb-hlo__p">Help preparing your documents and answers to your questions throughout the process.</p>
+            <h2 class="cbb-hlo__h2">Guidance Along the Way</h2>
+            <p class="cbb-hlo__p">Get help understanding loan options, preparing documents and navigating the process.</p>
           </div>
         </li>
     </ul>

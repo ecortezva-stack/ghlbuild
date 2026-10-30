@@ -5,29 +5,19 @@ Writes:
   pages/home-loans/cbb-home-loans-overview.html  CBB Home Loans (.cbb-hlo)
   pages/funding/cbb-capital-overview.html        Covered Bridge Capital (.cbb-cap)
 
-Each is one concise section: business name, headline, short intro, three
-highlights and one button to that business's standalone website, written
-as a REPLACE_WITH_... value until the address exists. Both share the
-layout and stylesheet below, scoped to each page's own root class.
+Both use one layout: a COVERED BRIDGE BRANDS eyebrow, the business name,
+a headline, a short intro, three highlights and one button to that
+business's standalone website, with a supporting line (and, for Capital,
+a disclaimer) under it. The button's destination is a REPLACE_WITH_...
+value until the real address exists. The stylesheet is shared and scoped
+to each page's own root class. The visible copy is the approved wording;
+change it only in PAGES below.
 
 Run:  python3 scripts/build-overviews.py
 """
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
-
-
-def bridge_svg():
-    """Decorative truss-arch line drawing (aria-hidden)."""
-    lines = ['<path d="M10 230 Q260 20 510 230" />', '<path d="M0 230 H520" />']
-    for x in range(60, 461, 50):
-        t = (x - 10) / 500
-        y = 230 * (1 - t) ** 2 + 40 * (1 - t) * t + 230 * t ** 2
-        lines.append(f'<path d="M{x} 230 V{y:.1f}" />')
-    body = "\n    ".join(lines)
-    return (f'<svg class="__R____art" viewBox="0 0 520 240" fill="none" stroke="currentColor" '
-            f'stroke-width="1.5" aria-hidden="true" focusable="false">\n    {body}\n  </svg>')
-
 
 CSS = """<style>
   .__R__ {
@@ -41,22 +31,19 @@ CSS = """<style>
     --__R__-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --__R__-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
 
-    position: relative;
-    display: flex;
-    align-items: center;
+    display: block;
     width: 100%;
-    min-height: clamp(560px, 78vh, 820px);
     margin: 0;
-    padding: clamp(80px, 10vw, 136px) clamp(20px, 4vw, 48px);
+    padding: clamp(72px, 9vw, 128px) clamp(20px, 4vw, 48px);
     background:
-      radial-gradient(55% 70% at 85% 15%, rgba(210, 163, 76, 0.14), rgba(210, 163, 76, 0) 65%),
-      linear-gradient(180deg, #0D0D0D 0%, #111417 100%);
+      radial-gradient(55% 70% at 85% 10%, rgba(210, 163, 76, 0.12), rgba(210, 163, 76, 0) 65%),
+      linear-gradient(180deg, var(--__R__-bg) 0%, var(--__R__-surface) 100%);
     color: var(--__R__-text);
     font-family: var(--__R__-sans);
     font-size: 16px;
     line-height: 1.6;
     text-align: left;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   .__R__,
   .__R__ *,
@@ -65,8 +52,6 @@ CSS = """<style>
     box-sizing: border-box;
   }
   .__R__ .__R____inner {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: clamp(40px, 7vw, 112px);
@@ -76,28 +61,34 @@ CSS = """<style>
     margin: 0 auto;
   }
 
-  /* ---------- Name, headline, intro ---------- */
-  .__R__ .__R____h1 {
-    margin: 0;
+  /* ---------- Eyebrow, name, headline, intro ---------- */
+  .__R__ .__R____eyebrow {
+    margin: 0 0 18px;
     padding: 0;
-    font-weight: 400;
-    text-transform: none;
-  }
-  .__R__ .__R____name {
-    display: block;
-    margin: 0 0 20px;
     font-family: var(--__R__-sans);
-    font-size: clamp(0.8125rem, 0.25vw + 0.75rem, 0.9375rem);
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--__R__-gold);
   }
-  .__R__ .__R____headline {
-    display: block;
+  .__R__ .__R____name {
+    margin: 0 0 14px;
+    padding: 0;
     font-family: var(--__R__-serif);
-    font-size: clamp(2.5rem, 3.8vw + 1rem, 4.5rem);
+    font-size: clamp(1.5rem, 1vw + 1.15rem, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    text-transform: none;
+    color: var(--__R__-gold);
+  }
+  .__R__ .__R____headline {
+    margin: 0;
+    padding: 0;
+    font-family: var(--__R__-serif);
+    font-size: clamp(2.5rem, 3.6vw + 1rem, 4.25rem);
     font-weight: 600;
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -112,14 +103,14 @@ CSS = """<style>
   }
   .__R__ .__R____intro {
     max-width: 36em;
-    margin: 0 0 clamp(32px, 4vw, 40px);
+    margin: 0 0 clamp(30px, 3.6vw, 38px);
     padding: 0;
-    font-size: clamp(1.0625rem, 0.4vw + 0.98rem, 1.25rem);
+    font-size: clamp(1.0625rem, 0.35vw + 0.98rem, 1.1875rem);
     line-height: 1.7;
     color: rgba(242, 240, 235, 0.9);
   }
 
-  /* ---------- Button ---------- */
+  /* ---------- Button and the lines beneath it ---------- */
   .__R__ .__R____btn {
     display: inline-flex;
     align-items: center;
@@ -157,10 +148,19 @@ CSS = """<style>
     outline: 2px solid var(--__R__-gold-hover);
     outline-offset: 4px;
   }
+  .__R__ .__R____support {
+    max-width: 36em;
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--__R__-muted);
+  }
   .__R__ .__R____fine {
     max-width: 36em;
-    margin: 18px 0 0;
-    padding: 0;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(191, 186, 171, 0.18);
     font-size: 0.875rem;
     line-height: 1.6;
     color: var(--__R__-muted);
@@ -210,29 +210,10 @@ CSS = """<style>
     color: var(--__R__-muted);
   }
 
-  /* ---------- Decoration ---------- */
-  .__R__ .__R____art {
-    position: absolute;
-    right: 0;
-    bottom: -2px;
-    z-index: 0;
-    width: clamp(320px, 42vw, 620px);
-    height: auto;
-    color: var(--__R__-gold);
-    opacity: 0.16;
-    pointer-events: none;
-  }
-
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
-    .__R__ {
-      min-height: 0;
-    }
     .__R__ .__R____inner {
       grid-template-columns: minmax(0, 1fr);
-    }
-    .__R__ .__R____art {
-      opacity: 0.1;
     }
   }
   @media (max-width: 480px) {
@@ -257,7 +238,7 @@ ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-widt
          'stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>')
 
 
-def build(r, name, path, url, label, headline, intro, highlights, fine):
+def build(r, name, path, url, label, headline, intro, highlights, support, fine):
     items = "\n".join(f"""        <li class="__R____item">
           <span class="__R____num" aria-hidden="true">{i:02d}</span>
           <div>
@@ -273,27 +254,27 @@ def build(r, name, path, url, label, headline, intro, highlights, fine):
      sections/06-footer.html. Section: full width, 0 padding, no
      background. All styles are scoped to .{r}. No script.
 
-     >>> URL TO REPLACE BEFORE PUBLISHING (1 place: the button)
+     >>> URL TO REPLACE BEFORE PUBLISHING (1 place: the button below)
          {url}
-         Replace it with the full https:// address of the standalone
-         {name} website.
+         Placeholder for the standalone {name} website, which
+         doesn't have its address yet. Replace it with the full
+         https:// address.
      ============================================================ -->
 {CSS}
 <section class="__R__" aria-labelledby="__R__-title">
-  {bridge_svg()}
   <div class="__R____inner">
     <div>
-      <h1 class="__R____h1" id="__R__-title">
-        <span class="__R____name">{name}</span>
-        <span class="__R____headline">{headline}</span>
-      </h1>
+      <p class="__R____eyebrow">Covered Bridge Brands</p>
+      <h1 class="__R____name" id="__R__-title">{name}</h1>
+      <p class="__R____headline">{headline}</p>
       <span class="__R____rule" aria-hidden="true"></span>
       <p class="__R____intro">{intro}</p>
-      <!-- Button destination: {url} -->
+      <!-- WEBSITE BUTTON: replace {url} -->
       <a class="__R____btn" href="{url}">
         {label}
         {ARROW}
-      </a>{fine_html}
+      </a>
+      <p class="__R____support">{support}</p>{fine_html}
     </div>
     <ul class="__R____list" aria-label="What {name} offers">
 {items}
@@ -302,7 +283,9 @@ def build(r, name, path, url, label, headline, intro, highlights, fine):
 </section>
 """
     html = html.replace("__R__", r)
-    assert html.count(f'href="{url}"') == 1 and "Trulli" not in html and "__" + "R" not in html
+    assert html.count(f'href="{url}"') == 1 and "__" + "R" not in html
+    for banned in ("Trulli", "Valor", "Coming Soon", "Scout", "Floify"):
+        assert banned.lower() not in html.lower(), banned
     return html
 
 
@@ -312,17 +295,19 @@ PAGES = [
         r="cbb-hlo", name="CBB Home Loans", path="/home-loans",
         url="REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL",
         label="Visit CBB Home Loans",
-        headline="Your path home, guided every step of the way.",
-        intro=("Whether you're buying a home or refinancing the one you have, CBB Home Loans "
-               "explains your options in plain language and helps you move forward with confidence."),
+        headline="Your next chapter starts at home.",
+        intro=("Whether you&rsquo;re buying your first home, making your next move or exploring "
+               "refinancing, CBB Home Loans helps you understand your options and take the next "
+               "step with confidence."),
         highlights=[
-            ("Home purchase &amp; refinancing",
-             "Financing for your first home, your next move or a mortgage that better fits your life today."),
-            ("Conventional, FHA, VA &amp; USDA loans",
-             "A range of loan programs, explained so you can compare them clearly."),
-            ("Guidance from start to finish",
-             "Help preparing your documents and answers to your questions throughout the process."),
+            ("Purchase &amp; Refinance",
+             "Explore financing for a home purchase or refinancing your current mortgage."),
+            ("A Range of Loan Options",
+             "Conventional, FHA, VA and USDA loan options."),
+            ("Guidance Along the Way",
+             "Get help understanding loan options, preparing documents and navigating the process."),
         ],
+        support="Explore loan options and connect with the team on our dedicated website.",
         fine="",
     ),
     dict(
@@ -330,18 +315,21 @@ PAGES = [
         r="cbb-cap", name="Covered Bridge Capital", path="/funding",
         url="REPLACE_WITH_COVERED_BRIDGE_CAPITAL_WEBSITE_URL",
         label="Visit Covered Bridge Capital",
-        headline="Capital to build, grow and invest.",
-        intro=("Covered Bridge Capital helps business owners and real estate investors explore "
-               "financing for what comes next, from steadier cash flow to new equipment or your next investment property."),
+        headline="Capital for your next move.",
+        intro=("From managing cash flow to investing in equipment or real estate, Covered Bridge "
+               "Capital helps business owners and investors explore financing options that fit "
+               "their goals."),
         highlights=[
-            ("Working capital &amp; lines of credit",
-             "Flexible funding for payroll, inventory, growth and the gaps in between."),
-            ("Equipment financing",
-             "Financing for the vehicles, machinery and tools your business runs on."),
-            ("Investment-property financing",
-             "Options for rental, renovation and construction projects, short-term bridge needs and growing a portfolio."),
+            ("Working Capital &amp; Credit",
+             "Explore working capital, business lines of credit and term financing."),
+            ("Equipment &amp; Business Growth",
+             "Discover equipment, asset-backed and SBA financing options."),
+            ("Real Estate Investment",
+             "Explore financing for investment properties, commercial real estate and construction."),
         ],
-        fine="All financing is subject to program requirements and underwriting approval.",
+        support="Explore financing options and connect with the team on our dedicated website.",
+        fine=("Financing is subject to applicable program requirements and underwriting approval. "
+              "Availability and terms vary."),
     ),
 ]
 

@@ -5,10 +5,11 @@
      sections/06-footer.html. Section: full width, 0 padding, no
      background. All styles are scoped to .cbb-cap. No script.
 
-     >>> URL TO REPLACE BEFORE PUBLISHING (1 place: the button)
+     >>> URL TO REPLACE BEFORE PUBLISHING (1 place: the button below)
          REPLACE_WITH_COVERED_BRIDGE_CAPITAL_WEBSITE_URL
-         Replace it with the full https:// address of the standalone
-         Covered Bridge Capital website.
+         Placeholder for the standalone Covered Bridge Capital website, which
+         doesn't have its address yet. Replace it with the full
+         https:// address.
      ============================================================ -->
 <style>
   .cbb-cap {
@@ -22,22 +23,19 @@
     --cbb-cap-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --cbb-cap-sans: 'Inter', -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
 
-    position: relative;
-    display: flex;
-    align-items: center;
+    display: block;
     width: 100%;
-    min-height: clamp(560px, 78vh, 820px);
     margin: 0;
-    padding: clamp(80px, 10vw, 136px) clamp(20px, 4vw, 48px);
+    padding: clamp(72px, 9vw, 128px) clamp(20px, 4vw, 48px);
     background:
-      radial-gradient(55% 70% at 85% 15%, rgba(210, 163, 76, 0.14), rgba(210, 163, 76, 0) 65%),
-      linear-gradient(180deg, #0D0D0D 0%, #111417 100%);
+      radial-gradient(55% 70% at 85% 10%, rgba(210, 163, 76, 0.12), rgba(210, 163, 76, 0) 65%),
+      linear-gradient(180deg, var(--cbb-cap-bg) 0%, var(--cbb-cap-surface) 100%);
     color: var(--cbb-cap-text);
     font-family: var(--cbb-cap-sans);
     font-size: 16px;
     line-height: 1.6;
     text-align: left;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   .cbb-cap,
   .cbb-cap *,
@@ -46,8 +44,6 @@
     box-sizing: border-box;
   }
   .cbb-cap .cbb-cap__inner {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: clamp(40px, 7vw, 112px);
@@ -57,28 +53,34 @@
     margin: 0 auto;
   }
 
-  /* ---------- Name, headline, intro ---------- */
-  .cbb-cap .cbb-cap__h1 {
-    margin: 0;
+  /* ---------- Eyebrow, name, headline, intro ---------- */
+  .cbb-cap .cbb-cap__eyebrow {
+    margin: 0 0 18px;
     padding: 0;
-    font-weight: 400;
-    text-transform: none;
-  }
-  .cbb-cap .cbb-cap__name {
-    display: block;
-    margin: 0 0 20px;
     font-family: var(--cbb-cap-sans);
-    font-size: clamp(0.8125rem, 0.25vw + 0.75rem, 0.9375rem);
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--cbb-cap-gold);
   }
-  .cbb-cap .cbb-cap__headline {
-    display: block;
+  .cbb-cap .cbb-cap__name {
+    margin: 0 0 14px;
+    padding: 0;
     font-family: var(--cbb-cap-serif);
-    font-size: clamp(2.5rem, 3.8vw + 1rem, 4.5rem);
+    font-size: clamp(1.5rem, 1vw + 1.15rem, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    text-transform: none;
+    color: var(--cbb-cap-gold);
+  }
+  .cbb-cap .cbb-cap__headline {
+    margin: 0;
+    padding: 0;
+    font-family: var(--cbb-cap-serif);
+    font-size: clamp(2.5rem, 3.6vw + 1rem, 4.25rem);
     font-weight: 600;
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -93,14 +95,14 @@
   }
   .cbb-cap .cbb-cap__intro {
     max-width: 36em;
-    margin: 0 0 clamp(32px, 4vw, 40px);
+    margin: 0 0 clamp(30px, 3.6vw, 38px);
     padding: 0;
-    font-size: clamp(1.0625rem, 0.4vw + 0.98rem, 1.25rem);
+    font-size: clamp(1.0625rem, 0.35vw + 0.98rem, 1.1875rem);
     line-height: 1.7;
     color: rgba(242, 240, 235, 0.9);
   }
 
-  /* ---------- Button ---------- */
+  /* ---------- Button and the lines beneath it ---------- */
   .cbb-cap .cbb-cap__btn {
     display: inline-flex;
     align-items: center;
@@ -138,10 +140,19 @@
     outline: 2px solid var(--cbb-cap-gold-hover);
     outline-offset: 4px;
   }
+  .cbb-cap .cbb-cap__support {
+    max-width: 36em;
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--cbb-cap-muted);
+  }
   .cbb-cap .cbb-cap__fine {
     max-width: 36em;
-    margin: 18px 0 0;
-    padding: 0;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(191, 186, 171, 0.18);
     font-size: 0.875rem;
     line-height: 1.6;
     color: var(--cbb-cap-muted);
@@ -191,29 +202,10 @@
     color: var(--cbb-cap-muted);
   }
 
-  /* ---------- Decoration ---------- */
-  .cbb-cap .cbb-cap__art {
-    position: absolute;
-    right: 0;
-    bottom: -2px;
-    z-index: 0;
-    width: clamp(320px, 42vw, 620px);
-    height: auto;
-    color: var(--cbb-cap-gold);
-    opacity: 0.16;
-    pointer-events: none;
-  }
-
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
-    .cbb-cap {
-      min-height: 0;
-    }
     .cbb-cap .cbb-cap__inner {
       grid-template-columns: minmax(0, 1fr);
-    }
-    .cbb-cap .cbb-cap__art {
-      opacity: 0.1;
     }
   }
   @media (max-width: 480px) {
@@ -234,54 +226,41 @@
 </style>
 
 <section class="cbb-cap" aria-labelledby="cbb-cap-title">
-  <svg class="cbb-cap__art" viewBox="0 0 520 240" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-    <path d="M10 230 Q260 20 510 230" />
-    <path d="M0 230 H520" />
-    <path d="M60 230 V192.2" />
-    <path d="M110 230 V162.8" />
-    <path d="M160 230 V141.8" />
-    <path d="M210 230 V129.2" />
-    <path d="M260 230 V125.0" />
-    <path d="M310 230 V129.2" />
-    <path d="M360 230 V141.8" />
-    <path d="M410 230 V162.8" />
-    <path d="M460 230 V192.2" />
-  </svg>
   <div class="cbb-cap__inner">
     <div>
-      <h1 class="cbb-cap__h1" id="cbb-cap-title">
-        <span class="cbb-cap__name">Covered Bridge Capital</span>
-        <span class="cbb-cap__headline">Capital to build, grow and invest.</span>
-      </h1>
+      <p class="cbb-cap__eyebrow">Covered Bridge Brands</p>
+      <h1 class="cbb-cap__name" id="cbb-cap-title">Covered Bridge Capital</h1>
+      <p class="cbb-cap__headline">Capital for your next move.</p>
       <span class="cbb-cap__rule" aria-hidden="true"></span>
-      <p class="cbb-cap__intro">Covered Bridge Capital helps business owners and real estate investors explore financing for what comes next, from steadier cash flow to new equipment or your next investment property.</p>
-      <!-- Button destination: REPLACE_WITH_COVERED_BRIDGE_CAPITAL_WEBSITE_URL -->
+      <p class="cbb-cap__intro">From managing cash flow to investing in equipment or real estate, Covered Bridge Capital helps business owners and investors explore financing options that fit their goals.</p>
+      <!-- WEBSITE BUTTON: replace REPLACE_WITH_COVERED_BRIDGE_CAPITAL_WEBSITE_URL -->
       <a class="cbb-cap__btn" href="REPLACE_WITH_COVERED_BRIDGE_CAPITAL_WEBSITE_URL">
         Visit Covered Bridge Capital
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
       </a>
-      <p class="cbb-cap__fine">All financing is subject to program requirements and underwriting approval.</p>
+      <p class="cbb-cap__support">Explore financing options and connect with the team on our dedicated website.</p>
+      <p class="cbb-cap__fine">Financing is subject to applicable program requirements and underwriting approval. Availability and terms vary.</p>
     </div>
     <ul class="cbb-cap__list" aria-label="What Covered Bridge Capital offers">
         <li class="cbb-cap__item">
           <span class="cbb-cap__num" aria-hidden="true">01</span>
           <div>
-            <h2 class="cbb-cap__h2">Working capital &amp; lines of credit</h2>
-            <p class="cbb-cap__p">Flexible funding for payroll, inventory, growth and the gaps in between.</p>
+            <h2 class="cbb-cap__h2">Working Capital &amp; Credit</h2>
+            <p class="cbb-cap__p">Explore working capital, business lines of credit and term financing.</p>
           </div>
         </li>
         <li class="cbb-cap__item">
           <span class="cbb-cap__num" aria-hidden="true">02</span>
           <div>
-            <h2 class="cbb-cap__h2">Equipment financing</h2>
-            <p class="cbb-cap__p">Financing for the vehicles, machinery and tools your business runs on.</p>
+            <h2 class="cbb-cap__h2">Equipment &amp; Business Growth</h2>
+            <p class="cbb-cap__p">Discover equipment, asset-backed and SBA financing options.</p>
           </div>
         </li>
         <li class="cbb-cap__item">
           <span class="cbb-cap__num" aria-hidden="true">03</span>
           <div>
-            <h2 class="cbb-cap__h2">Investment-property financing</h2>
-            <p class="cbb-cap__p">Options for rental, renovation and construction projects, short-term bridge needs and growing a portfolio.</p>
+            <h2 class="cbb-cap__h2">Real Estate Investment</h2>
+            <p class="cbb-cap__p">Explore financing for investment properties, commercial real estate and construction.</p>
           </div>
         </li>
     </ul>

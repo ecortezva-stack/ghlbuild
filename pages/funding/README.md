@@ -1,6 +1,6 @@
 # Covered Bridge Capital overview (`/funding`)
 
-A short introduction to Covered Bridge Capital on the main CBB site (about 100 words): the business name, a headline, a short intro, three highlights and one button to its standalone website. It replaces the Coming Soon body that was on this page.
+A short introduction to Covered Bridge Capital on the main CBB site (an eyebrow, the business name, a headline, a short intro, three highlights and one button to its standalone website, with a supporting line and a short financing disclaimer beneath it). The visible wording is the approved copy. It replaces the Coming Soon body that was on this page.
 
 Paste these blocks in order, each into its own full-width Custom HTML/JavaScript element (0 padding, no background):
 
@@ -13,7 +13,6 @@ Paste these blocks in order, each into its own full-width Custom HTML/JavaScript
 ## Before publishing
 
 1. Replace `REPLACE_WITH_COVERED_BRIDGE_CAPITAL_WEBSITE_URL` (the button, one place) with the standalone Covered Bridge Capital website's full `https://` address.
-2. Check the wording against the Covered Bridge Capital financing PDFs (they weren't available when the page was written).
 
 ## Page settings
 

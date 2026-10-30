@@ -1,6 +1,6 @@
 # CBB Home Loans overview (`/home-loans`)
 
-A short introduction to CBB Home Loans on the main CBB site (about 100 words): the business name, a headline, a short intro, three highlights and one button to its standalone website. It replaces the Coming Soon body that was on this page.
+A short introduction to CBB Home Loans on the main CBB site (an eyebrow, the business name, a headline, a short intro, three highlights and one button to its standalone website, with a supporting line beneath it). The visible wording is the approved copy. It replaces the Coming Soon body that was on this page.
 
 Paste these blocks in order, each into its own full-width Custom HTML/JavaScript element (0 padding, no background):
 
@@ -14,7 +14,6 @@ Paste these blocks in order, each into its own full-width Custom HTML/JavaScript
 
 1. Replace `REPLACE_WITH_CBB_HOME_LOANS_WEBSITE_URL` (the button, one place) with the standalone CBB Home Loans website's full `https://` address.
 2. Add the approved NMLS / licensing disclosure if the page needs one. None is included.
-3. Check the wording against https://valorhldirect.com/ (it couldn't be reviewed when the page was written).
 
 ## Page settings
 
